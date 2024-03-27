@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import { reactive, watch } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 
 const state = reactive({
@@ -62,6 +62,12 @@ const rules = {
 const onInput = () => {
   emit("input", state.localValue);
 };
+
+state.localValue = props.value
+
+watch(() => props.value, (newValue) => {
+  state.localValue = newValue;
+});
 
 const v$ = useVuelidate(rules, state);
 </script>

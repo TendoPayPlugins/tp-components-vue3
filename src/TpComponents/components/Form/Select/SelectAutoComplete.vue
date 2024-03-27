@@ -69,7 +69,7 @@
 
 <script setup>
 import { useVuelidate } from "@vuelidate/core";
-import { reactive, ref } from "vue";
+import {reactive, ref, watch} from "vue";
 import { CheckIcon, ChevronDownIcon } from "@heroicons/vue/solid";
 import {
   Combobox,
@@ -138,6 +138,10 @@ const onInput = (value) => {
     emit("input", value);
   }
 };
+
+watch(() => props.value, (newValue) => {
+  state.localValue = newValue;
+});
 
 const v$ = useVuelidate(rules, state);
 </script>

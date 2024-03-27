@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import {reactive, watch} from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { email } from "@vuelidate/validators";
 import { ExclamationCircleIcon } from "@heroicons/vue/solid";
@@ -55,6 +55,12 @@ const rules = {
     email: email,
   },
 };
+
+state.localValue = props.value
+
+watch(() => props.value, (newValue) => {
+  state.localValue = newValue;
+});
 
 const onInput = () => {
   emit("input", state.localValue);

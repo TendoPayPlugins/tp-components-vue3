@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import {reactive, watch} from "vue";
 import { useVuelidate } from "@vuelidate/core";
 
 const props = defineProps({
@@ -30,6 +30,12 @@ const state = reactive({
   localValue: [],
 });
 
+state.localValue = props.value
+
+watch(() => props.value, (newValue) => {
+  state.localValue = newValue;
+});
+
 const emit = defineEmits(["input"]);
 
 const rules = {
@@ -47,10 +53,10 @@ const v$ = useVuelidate(rules, state);
   <div>
     <fieldset>
       <legend
-        v-if="props.label"
+        v-if="label"
         class="text-sm font-semibold leading-6 text-gray-900"
       >
-        {{ props.label }}
+        {{ label }}
       </legend>
       <div class="mt-6 space-y-6">
         <div

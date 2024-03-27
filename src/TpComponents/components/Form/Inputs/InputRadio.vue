@@ -1,6 +1,6 @@
 <script setup>
 import { useVuelidate } from "@vuelidate/core";
-import { reactive } from "vue";
+import { reactive, watch } from "vue";
 
 const state = reactive({
   localValue: null,
@@ -28,6 +28,11 @@ const props = defineProps({
   dataTest: {
     type: String,
     required: true
+  },
+  value: {
+    type: [String,Number],
+    required: false,
+    default: null,
   }
 });
 
@@ -37,9 +42,15 @@ const onInput = () => {
   emit("input", state.localValue);
 };
 
+state.localValue = props.value
+
 const rules = {
-  localValue: props.validator,
+  localValue: props.validator || {},
 };
+
+watch(() => props.value, (newValue) => {
+  state.localValue = newValue;
+});
 
 const v$ = useVuelidate(rules, state);
 </script>
@@ -52,6 +63,7 @@ const v$ = useVuelidate(rules, state);
     <p v-if="description" class="mt-1 text-sm leading-6 text-gray-600">
       {{ description }}
     </p>
+
     <div class="mt-6 space-y-6">
       <div
         class="flex items-center gap-x-3"

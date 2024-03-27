@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "dev": "vite",
+    "link-dev": "vite build --mode production --watch && npm run generate:types",
     "build": "vite build --mode production && npm run generate:types",
     "prepare": "vite build --mode production && npm run generate:types",
     "generate:types": "vue-tsc -p tsconfig-build.json --declaration --emitDeclarationOnly true --outdir ./dist",

@@ -1,6 +1,6 @@
 
 <script setup>
-import { reactive, ref } from "vue";
+import {reactive, ref, watch} from "vue";
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 import { useVuelidate } from "@vuelidate/core";
 const props = defineProps({
@@ -38,6 +38,12 @@ const onInput = () => {
 };
 
 const rules = props.validator;
+
+state.localValue = props.value
+
+watch(() => props.value, (newValue) => {
+  state.localValue = newValue;
+});
 
 const v$ = useVuelidate(rules, state);
 </script>
