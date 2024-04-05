@@ -9,22 +9,22 @@
                 <p class="text-sm text-gray-700">
                     Showing
                     {{ ' ' }}
-                    <span class="font-medium">1</span>
+                    <span class="font-medium">{{ pagination.from || 0 }}</span>
                     {{ ' ' }}
                     to
                     {{ ' ' }}
-                    <span class="font-medium">10</span>
+                    <span class="font-medium">{{ pagination.to || 0 }}</span>
                     {{ ' ' }}
                     of
                     {{ ' ' }}
-                    <span class="font-medium">97</span>
+                    <span class="font-medium">{{ pagination.total || 0 }}</span>
                     {{ ' ' }}
                     results
                 </p>
             </div>
             <div>
                 <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                    <a href="#" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                    <a @click="" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 cursor-pointer">
                         <span class="sr-only">Previous</span>
                         <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
                     </a>
@@ -46,11 +46,18 @@
 </template>
 
 <script setup>
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/solid'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
 
-const items = [
-  { id: 1, title: 'Back End Developer', department: 'Engineering', type: 'Full-time', location: 'Remote' },
-  { id: 2, title: 'Front End Developer', department: 'Engineering', type: 'Full-time', location: 'Remote' },
-  { id: 3, title: 'User Interface Designer', department: 'Design', type: 'Full-time', location: 'Remote' },
-]
+const emit = defineEmits(['input'])
+
+const props = defineProps({
+  pagination: {
+    type: Object,
+    default: () => {},
+  },
+})
+
+function onInput(page) {
+  emit('input', page)
+}
 </script>

@@ -13,6 +13,7 @@ export { default as InputCheckbox } from "./Form/Inputs/InputCheckbox.vue";
 export { default as InputRadio } from "./Form/Inputs/InputRadio.vue";
 export { default as InputCopy } from "./Form/Inputs/InputCopy.vue";
 export { default as InputTextarea } from "./Form/Inputs/InputTextarea.vue";
+export { default as InputUrl } from "./Form/Inputs/InputUrl.vue";
 
 // Select
 export { default as Select } from "./Form/Select/Select.vue";

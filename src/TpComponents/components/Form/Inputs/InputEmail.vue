@@ -2,7 +2,8 @@
 import {reactive, watch} from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { email } from "@vuelidate/validators";
-import { ExclamationCircleIcon } from "@heroicons/vue/solid";
+import { ExclamationCircleIcon } from '@heroicons/vue/24/solid'
+
 
 const state = reactive({
   localValue: null,
@@ -102,6 +103,7 @@ const v$ = useVuelidate(rules, state);
         class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
         v-if="v$.localValue.$invalid"
       >
+
         <ExclamationCircleIcon
           class="h-5 w-5 text-red-500"
           aria-hidden="true"
