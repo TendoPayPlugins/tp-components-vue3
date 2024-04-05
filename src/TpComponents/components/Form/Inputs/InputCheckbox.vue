@@ -83,7 +83,7 @@ const v$ = useVuelidate(rules, state);
               class="font-medium text-gray-900"
               >{{ option.label }}</label
             >
-            <p class="text-gray-500" v-if="option.description">
+            <p class="text-gray-500" v-if="option.description" :data-test="dataTest + '-description-' + index">
               {{ option.description }}
             </p>
           </div>

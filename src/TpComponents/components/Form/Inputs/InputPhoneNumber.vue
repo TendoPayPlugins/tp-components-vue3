@@ -1,10 +1,12 @@
 <script setup>
-import {reactive, watch} from "vue";
+import { reactive, watch } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { minLength, maxLength } from "@vuelidate/validators";
 
+
 const state = reactive({
-  localValue: "",
+  phoneNumber: "",
+  phoneNumberWithoutAreaCode: "",
 });
 
 const emit = defineEmits(["input"]);
@@ -25,7 +27,7 @@ const props = defineProps({
   },
   placeholder: {
     type: String,
-    default: "+1 (555) 987-6543",
+    default: "starts with 0",
   },
   validator: {
     type: Object,
@@ -47,11 +49,11 @@ const rules = {
 };
 
 const onInput = () => {
-  emit("input", state.localValue);
+  emit("input", state.phoneNumber);
 };
 
 watch(() => props.value, (newValue) => {
-  state.localValue = newValue;
+  state.phoneNumber = newValue;
 });
 
 const v$ = useVuelidate(rules, state);
@@ -90,11 +92,12 @@ const v$ = useVuelidate(rules, state);
         type="text"
         name="phone-number"
         id="phone-number"
-        v-model="v$.localValue.$model"
+        v-model="state.phoneNumberWithoutAreaCode"
         class="block w-full rounded-md border-0 py-1.5 pl-16 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-tp-primary focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
         :placeholder="placeholder"
         :data-test="dataTest + '-input'"
       />
+      <input type="hidden" v-model="v$.localValue.$model">
     </div>
   </div>
 </template>

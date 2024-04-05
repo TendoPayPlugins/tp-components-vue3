@@ -79,7 +79,7 @@ const v$ = useVuelidate(rules, state);
       v-model="v$.localValue.$model"
       :disabled="disabled"
       :readonly="readonly"
-      :data-test="dataTest"
+      :data-test="dataTest + '-input'"
       :class="{
           'pr-10 text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
             v$.localValue.$invalid,

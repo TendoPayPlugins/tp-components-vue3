@@ -127,7 +127,7 @@ const v$ = useVuelidate(rules, state);
           v-if="v$.localValue?.minLength?.$invalid"
           class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-maxLength-error'">{{
+        <span class="font-medium" :data-test="dataTest + '-minLength-error'">{{
             v$.localValue?.minLength.$message
             }}</span>
       </p>

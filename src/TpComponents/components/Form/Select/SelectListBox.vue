@@ -5,13 +5,17 @@
     v-model="v$.localValue.$model"
     :multiple="multiple"
     :disabled="disabled"
+    :data-test="dataTest + '-listbox'"
+
   >
-    <ListboxLabel class="block text-sm font-medium leading-6 text-gray-900">{{
+    <ListboxLabel class="block text-sm font-medium leading-6 text-gray-900" :data-test="dataTest + '-label'"
+    >{{
       props.label
     }}</ListboxLabel>
     <div class="relative mt-2">
       <ListboxButton
         v-if="!multiple"
+        :data-test="dataTest + '-button'"
         class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-tp-primary sm:text-sm sm:leading-6"
       >
         <span class="block truncate">{{
@@ -25,6 +29,7 @@
       </ListboxButton>
       <ListboxButton
         v-if="multiple"
+        :data-test="dataTest + '-button'"
         class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-tp-primary sm:text-sm sm:leading-6"
       >
         <span class="block truncate">{{
@@ -56,7 +61,8 @@
               ]"
             >
               <span
-                :class="[
+                  :data-test="dataTest + '-option-label' + index"
+                  :class="[
                   selected ? 'font-semibold' : 'font-normal',
                   'block truncate',
                 ]"
@@ -90,6 +96,7 @@
 import { useVuelidate } from "@vuelidate/core";
 import { reactive } from "vue";
 import {
+  ComboboxInput,
   Listbox,
   ListboxButton,
   ListboxLabel,

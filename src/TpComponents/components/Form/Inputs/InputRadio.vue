@@ -57,10 +57,10 @@ const v$ = useVuelidate(rules, state);
 
 <template>
   <fieldset>
-    <legend v-if="legend" class="text-sm font-semibold leading-6 text-gray-900">
+    <legend v-if="legend" class="text-sm font-semibold leading-6 text-gray-900" :data-test="dataTest + '-legend'">
       {{ legend }}
     </legend>
-    <p v-if="description" class="mt-1 text-sm leading-6 text-gray-600">
+    <p v-if="description" class="mt-1 text-sm leading-6 text-gray-600" :data-test="dataTest + '-description'">
       {{ description }}
     </p>
 
@@ -77,11 +77,12 @@ const v$ = useVuelidate(rules, state);
           type="radio"
           class="h-4 w-4 border-gray-300 text-tp-primary focus:ring-tp-primary"
           @change="onInput"
-          :data-test="dataTest"
+          :data-test="dataTest + '-input-' + index"
         />
         <label
           :for="option.value"
           class="block text-sm font-medium leading-6 text-gray-900"
+          :data-test="dataTest + '-label-' + index"
           >{{ option.label }}</label
         >
       </div>

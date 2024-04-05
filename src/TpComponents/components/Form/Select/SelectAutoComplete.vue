@@ -8,6 +8,7 @@
     <ComboboxLabel
       v-if="props.label"
       class="block text-sm font-medium text-gray-700"
+      :data-test="dataTest + '-label'"
       >{{ props.label }}</ComboboxLabel
     >
     <div class="relative mt-1">
@@ -16,9 +17,11 @@
         :placeholder="props.placeholder"
         :displayValue="(option) => option?.label"
         @change="query = $event.target.value"
+        :data-test="dataTest + '-input'"
       />
       <ComboboxButton
         class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
+        :data-test="dataTest + '-button'"
       >
         <ChevronDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
       </ComboboxButton>
@@ -40,7 +43,7 @@
               active ? 'bg-tp-primary text-white' : 'text-gray-900',
             ]"
           >
-            <span :class="['block truncate', selected && 'font-semibold']">
+            <span :class="['block truncate', selected && 'font-semibold']" :data-test="dataTest + '-option-label-' + index">
               {{ option.label }}
             </span>
 

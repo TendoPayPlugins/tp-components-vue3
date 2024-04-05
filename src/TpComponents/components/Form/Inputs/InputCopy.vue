@@ -54,12 +54,14 @@ function toggleSecret() {
           :type="(hidden && state.secretHidden) ? 'password': 'text'"
           name="text"
           id="copy"
+          :data-test="dataTest + '-input'"
           class="block w-full focus:ring-tp-primary rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
         />
       </div>
       <button
         @click="copy"
         type="button"
+        :data-test="dataTest + '-copy-button'"
         :class="{ 'rounded-r-md': !hidden }"
         class="relative -ml-px inline-flex items-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
       >
@@ -72,6 +74,7 @@ function toggleSecret() {
           v-if="hidden"
           @click="toggleSecret"
           type="button"
+          :data-test="dataTest + '-toggle-button'"
           class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
       >
         <EyeIcon
