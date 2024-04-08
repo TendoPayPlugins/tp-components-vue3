@@ -15,6 +15,9 @@ export { default as InputCopy } from "./Form/Inputs/InputCopy.vue";
 export { default as InputTextarea } from "./Form/Inputs/InputTextarea.vue";
 export { default as InputUrl } from "./Form/Inputs/InputUrl.vue";
 
+// Date
+export { default as DatePicker } from "./Form/Date/DatePicker.vue";
+
 // Select
 export { default as Select } from "./Form/Select/Select.vue";
 export { default as SelectAutoComplete } from "./Form/Select/SelectAutoComplete.vue";
@@ -25,6 +28,8 @@ export { default as Button } from "./Form/Buttons/Button.vue";
 
 // Utils
 export { default as StepBar } from "./Utils/StepBar.vue";
+export { default as Tooltip } from "./Utils/Tooltip.vue";
+export { default as Copy } from "./Utils/Copy.vue";
 
 // Table
 export { default as Pagination }  from "./Table/Pagination.vue";
