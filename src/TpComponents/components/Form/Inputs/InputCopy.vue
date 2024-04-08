@@ -14,7 +14,7 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  hidden: {
+  hide: {
     type: Boolean,
     default: false,
   },
@@ -51,7 +51,7 @@ function toggleSecret() {
         <input
           :value="value"
           readonly
-          :type="(hidden && state.secretHidden) ? 'password': 'text'"
+          :type="(hide && state.secretHidden) ? 'password': 'text'"
           name="text"
           id="copy"
           :data-test="dataTest + '-input'"
@@ -62,7 +62,7 @@ function toggleSecret() {
         @click="copy"
         type="button"
         :data-test="dataTest + '-copy-button'"
-        :class="{ 'rounded-r-md': !hidden }"
+        :class="{ 'rounded-r-md': !hide }"
         class="relative -ml-px inline-flex items-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
       >
         <DocumentDuplicateIcon
@@ -71,7 +71,7 @@ function toggleSecret() {
         />
       </button>
       <button
-          v-if="hidden"
+          v-if="hide"
           @click="toggleSecret"
           type="button"
           :data-test="dataTest + '-toggle-button'"

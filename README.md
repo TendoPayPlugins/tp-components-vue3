@@ -20,3 +20,16 @@ Example import of component from the package
 # Docs
 -  <a href="https://tailwindui.com" target="_blank">https://tailwindui.com</a>
 -  <a href="https://pnpm.io" target="_blank">https://pnpm.io</a>
+
+## Local development
+
+# Component library
+1. In tp-components vue3 
+> pnpm link --global
+
+2. In tp-storybook-vue3
+> pnpm link --global tp-components-vue3
+
+3. In tp-storybook-vue3 adjust path in package.json dependency to:
+
+`"tp-components-vue3": "file:../temporary/tp-components-vue3/dist",`
