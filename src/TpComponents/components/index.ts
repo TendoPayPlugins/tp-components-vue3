@@ -39,3 +39,4 @@ export { default as Tabs } from "./Tabs/Tabs.vue";
 
 // Table
 export { default as Pagination }  from "./Table/Pagination.vue";
+export { default as Table }  from "./Table/Table.vue";
