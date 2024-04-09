@@ -8,5 +8,5 @@ const dateValue = ref([]);
 </script>
 
 <template>
-    <vue-tailwind-datepicker v-model="dateValue" />
+    <vue-tailwind-datepicker v-model="dateValue" overlay />
 </template>

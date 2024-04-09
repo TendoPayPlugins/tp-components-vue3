@@ -30,6 +30,7 @@ export { default as Button } from "./Form/Buttons/Button.vue";
 export { default as StepBar } from "./Utils/StepBar.vue";
 export { default as Tooltip } from "./Utils/Tooltip.vue";
 export { default as Copy } from "./Utils/Copy.vue";
+export { default as Alert } from "./Utils/Alert.vue";
 
 // Table
 export { default as Pagination }  from "./Table/Pagination.vue";
