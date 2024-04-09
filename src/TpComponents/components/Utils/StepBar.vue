@@ -1,5 +1,5 @@
 <script setup>
-import { CheckIcon } from "@heroicons/vue/solid";
+import { CheckIcon } from '@heroicons/vue/24/solid'
 
 const props = defineProps({
   steps: {

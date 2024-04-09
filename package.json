@@ -13,7 +13,7 @@
     "prepare": "vite build --mode production && npm run generate:types",
     "generate:types": "vue-tsc -p tsconfig-build.json --declaration --emitDeclarationOnly true --outdir ./dist",
     "preview": "vite preview",
-    "tailwind": "npx tailwindcss -i ./src/TpComponents/tailwind.css -o ./src/TpComponentsmain.css --watch"
+    "tailwind": "npx tailwindcss -i ./src/TpComponents/tailwind.css -o ./src/TpComponents/style.css --watch"
   },
   "main": "./dist/tp-components.umd.cjs",
   "module": "./dist/tp-components.js",
@@ -36,12 +36,14 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.19",
     "@heroicons/vue": "^2.1.3",
+    "@popperjs/core": "^2.11.8",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
     "autoprefixer": "^10.4.18",
+    "dayjs": "^1.11.10",
     "flowbite": "^2.3.0",
     "postcss": "^8.4.35",
-    "v-calendar": "^3.1.2"
+    "vue-tailwind-datepicker": "^1.7.3"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",

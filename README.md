@@ -20,6 +20,8 @@ Example import of component from the package
 # Docs
 -  <a href="https://tailwindui.com" target="_blank">https://tailwindui.com</a>
 -  <a href="https://pnpm.io" target="_blank">https://pnpm.io</a>
+-  <a href="https://vue-tailwind-datepicker.com/" target="_blank">https://vue-tailwind-datepicker.com</a>
+
 
 ## Local development
 
@@ -33,3 +35,5 @@ Example import of component from the package
 3. In tp-storybook-vue3 adjust path in package.json dependency to:
 
 `"tp-components-vue3": "file:../temporary/tp-components-vue3/dist",`
+
+

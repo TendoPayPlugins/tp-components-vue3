@@ -73,7 +73,7 @@
 <script setup>
 import { useVuelidate } from "@vuelidate/core";
 import {reactive, ref, watch} from "vue";
-import { CheckIcon, ChevronDownIcon } from "@heroicons/vue/solid";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/vue/24/solid";
 import {
   Combobox,
   ComboboxButton,

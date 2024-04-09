@@ -103,7 +103,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/vue";
-import { CheckIcon, ChevronDownIcon } from "@heroicons/vue/solid";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/vue/24/solid";
 
 const state = reactive({
   localValue: [],

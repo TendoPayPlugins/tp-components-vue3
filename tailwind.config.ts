@@ -13,7 +13,9 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
     content: [
         './index.html',
-        './src/components/**/*.{js,jsx,ts,tsx,html,js,vue}'
+        './src/TpComponents/components/**/*.{js,jsx,ts,tsx,html,js,vue}',
+        "./node_modules/vue-tailwind-datepicker/**/*.js",
+        "./node_modules/flowbite/**/*.js"
     ],
     darkMode: ['class', '[data-mode="dark"]'],
     theme: {
@@ -41,6 +43,8 @@ module.exports = {
                 "facebook": "#4267b2",
                 "apple": "#333333",
                 "playstore": "#01875f",
+                "vtd-primary": colors.sky, // Light mode Datepicker color
+                "vtd-secondary": colors.gray, // Dark mode Datepicker color
             },
             screens: {
                 "max-sm": {
