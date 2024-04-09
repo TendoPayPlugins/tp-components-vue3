@@ -1,6 +1,9 @@
+@import '@vuepic/vue-datepicker/dist/main.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 .cursor-pointer {
     cursor: pointer;
