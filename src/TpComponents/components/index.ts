@@ -17,6 +17,8 @@ export { default as InputUrl } from "./Form/Inputs/InputUrl.vue";
 
 // Date
 export { default as DatePicker } from "./Form/Date/DatePicker.vue";
+export { default as DatePrevNextPicker } from "./Form/Date/DatePrevNextPicker.vue";
+export { default as DateRangePicker } from "./Form/Date/DateRangePicker.vue";
 
 // Select
 export { default as Select } from "./Form/Select/Select.vue";
@@ -31,6 +33,9 @@ export { default as StepBar } from "./Utils/StepBar.vue";
 export { default as Tooltip } from "./Utils/Tooltip.vue";
 export { default as Copy } from "./Utils/Copy.vue";
 export { default as Alert } from "./Utils/Alert.vue";
+
+// Tabs
+export { default as Tabs } from "./Tabs/Tabs.vue";
 
 // Table
 export { default as Pagination }  from "./Table/Pagination.vue";

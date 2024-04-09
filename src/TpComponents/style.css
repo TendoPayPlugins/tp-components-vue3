@@ -2778,6 +2778,10 @@ input:checked + .toggle-bg{
   margin-left:auto
 }
 
+.-mb-px{
+  margin-bottom:-1px
+}
+
 .block{
   display:block
 }
@@ -3134,6 +3138,12 @@ input:checked + .toggle-bg{
   margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))
 }
 
+.space-x-8 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse:0;
+  margin-right:calc(2rem * var(--tw-space-x-reverse));
+  margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))
+}
+
 .overflow-auto{
   overflow:auto
 }
@@ -3244,6 +3254,10 @@ input:checked + .toggle-bg{
   border-top-width:1px
 }
 
+.border-b-2{
+  border-bottom-width:2px
+}
+
 .border-solid{
   border-style:solid
 }
@@ -3298,6 +3312,11 @@ input:checked + .toggle-bg{
 .border-vtd-secondary-300{
   --tw-border-opacity:1;
   border-color:rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.border-indigo-500{
+  --tw-border-opacity:1;
+  border-color:rgb(99 102 241 / var(--tw-border-opacity))
 }
 
 .bg-black{
@@ -3514,6 +3533,11 @@ input:checked + .toggle-bg{
 .py-6{
   padding-top:1.5rem;
   padding-bottom:1.5rem
+}
+
+.py-4{
+  padding-top:1rem;
+  padding-bottom:1rem
 }
 
 .pl-10{
@@ -3813,6 +3837,11 @@ input:checked + .toggle-bg{
 .text-green-700{
   --tw-text-opacity:1;
   color:rgb(21 128 61 / var(--tw-text-opacity))
+}
+
+.text-indigo-600{
+  --tw-text-opacity:1;
+  color:rgb(79 70 229 / var(--tw-text-opacity))
 }
 
 .placeholder-vtd-secondary-400::-moz-placeholder{
@@ -4120,8 +4149,17 @@ input:checked + .toggle-bg{
   color:rgb(255 255 255 / var(--tw-text-opacity))
 }
 
+.hover\:text-gray-700:hover{
+  --tw-text-opacity:1;
+  color:rgb(55 65 81 / var(--tw-text-opacity))
+}
+
 .focus\:z-20:focus{
   z-index:20
+}
+
+.focus\:z-10:focus{
+  z-index:10
 }
 
 .focus\:border-tp-primary:focus{
@@ -4132,6 +4170,11 @@ input:checked + .toggle-bg{
 .focus\:border-vtd-primary-300:focus{
   --tw-border-opacity:1;
   border-color:rgb(125 211 252 / var(--tw-border-opacity))
+}
+
+.focus\:border-indigo-500:focus{
+  --tw-border-opacity:1;
+  border-color:rgb(99 102 241 / var(--tw-border-opacity))
 }
 
 .focus\:bg-vtd-primary-50:focus{
@@ -4617,6 +4660,10 @@ input:checked + .toggle-bg{
 
   .sm\:mt-2\.5{
     margin-top:0.625rem
+  }
+
+  .sm\:block{
+    display:block
   }
 
   .sm\:flex{
