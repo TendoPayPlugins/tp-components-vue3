@@ -33,6 +33,7 @@ export { default as StepBar } from "./Utils/StepBar.vue";
 export { default as Tooltip } from "./Utils/Tooltip.vue";
 export { default as Copy } from "./Utils/Copy.vue";
 export { default as Alert } from "./Utils/Alert.vue";
+export { default as Modal } from './Utils/Modal.vue';
 
 // Tabs
 export { default as Tabs } from "./Tabs/Tabs.vue";
