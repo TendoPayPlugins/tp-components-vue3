@@ -1,13 +1,24 @@
 
 <script setup>
 import { DocumentDuplicateIcon, EyeIcon } from '@heroicons/vue/24/solid'
-import {reactive} from "vue";
+import { computed, reactive} from "vue";
+import Alert from "~/components/Utils/Alert.vue";
 
 const emit = defineEmits(['copy'])
 
 const state = reactive({
   secretHidden: true,
+  copied: false,
+  timeoutObj: null,
 });
+
+const showResult = computed(() => {
+  if (!!state.copied) {
+    const timeout = 800;
+    state.timeoutObj = setTimeout(() => (state.copied = false), timeout);
+  }
+  return !!state.copied;
+})
 
 const props = defineProps({
   value: {
@@ -27,10 +38,15 @@ const props = defineProps({
     default: null,
     required: false,
   },
+  resultMessage: {
+    type: String,
+    default: 'Copied'
+  }
 });
 function copy() {
   navigator.clipboard.writeText(props.value);
   emit('copy')
+  state.copied = true
 }
 
 function toggleSecret() {
@@ -84,4 +100,5 @@ function toggleSecret() {
       </button>
     </div>
   </div>
+  <Alert v-if="showResult" :message="props.resultMessage" type="success"/>
 </template>
