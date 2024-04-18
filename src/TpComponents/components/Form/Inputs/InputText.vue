@@ -1,12 +1,8 @@
 <script setup>
-import {reactive, watch} from "vue";
+import { watch} from "vue";
 import { useVuelidate } from "@vuelidate/core";
 
-const state = reactive({
-  localValue: "",
-});
-
-const emit = defineEmits(["input"]);
+const localValue = defineModel({ required: true })
 
 const props = defineProps({
   value: {
@@ -47,35 +43,34 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(["update:value"]);
+
 const rules = {
   localValue: props.validator || {},
 };
 
+const v$ = useVuelidate(rules, { localValue });
+
 const onInput = () => {
-  emit("input", state.localValue);
+  emit("update:value", localValue.value);
 };
 
-state.localValue = props.value
+watch(localValue, onInput);
 
-watch(() => props.value, (newValue) => {
-  state.localValue = newValue;
-});
-
-const v$ = useVuelidate(rules, state);
 </script>
 
 <template>
   <div>
     <label
       v-if="label"
-      for="input-text"
+      :for="dataTest"
       :data-test="dataTest + '-label'"
       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       >{{ label }}</label
     >
     <input
       type="text"
-      id="input-text"
+      :id="dataTest"
       v-model="v$.localValue.$model"
       :disabled="disabled"
       :readonly="readonly"
@@ -89,7 +84,6 @@ const v$ = useVuelidate(rules, state);
       class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset"
       :placeholder="placeholder"
       :maxlength="maxLength || null"
-      @input="onInput"
     />
     <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
       <slot name="info" />

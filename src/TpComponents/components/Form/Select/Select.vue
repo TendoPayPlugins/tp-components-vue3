@@ -2,11 +2,9 @@
 import {reactive, watch} from "vue";
 import { useVuelidate } from "@vuelidate/core";
 
-const state = reactive({
-  localValue: [],
-});
+const localValue = defineModel({ required: true })
 
-const emit = defineEmits(["input"]);
+const emit = defineEmits(["update:value"]);
 
 const props = defineProps({
   label: {
@@ -51,31 +49,27 @@ const rules = {
   localValue: props.validator || {},
 };
 
+const v$ = useVuelidate(rules, { localValue });
+
 const onInput = () => {
-  emit("input", state.localValue);
+  emit("update:value", localValue.value);
 };
 
-state.localValue = props.value
-
-watch(() => props.value, (newValue) => {
-  state.localValue = newValue;
-});
-
-const v$ = useVuelidate(rules, state);
+watch(localValue, onInput);
 </script>
 
 <template>
   <div>
     <label
       v-if="label"
-      for="select"
+      :for="dataTest"
       :data-test="dataTest + '-label'"
       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       >{{ label }}</label
     >
     <select
       :multiple="multiple"
-      id="select"
+      :id="dataTest"
       :disabled="disabled"
       v-model="v$.localValue.$model"
       :data-test="dataTest + '-select'"
