@@ -1,10 +1,12 @@
 <script setup>
 const emit = defineEmits(['input'])
 
-import { ref } from "vue";
+import {ref, watch} from "vue";
 import VueTailwindDatepicker from "vue-tailwind-datepicker";
 
-const dateValue = ref([]);
+// const dateValue = ref([]);
+
+const dateValue = defineModel([])
 
 const formatter = ref({
     date: 'YYYY-MM-DD',
@@ -12,6 +14,10 @@ const formatter = ref({
 })
 
 const props = defineProps({
+  value: {
+    type: Array,
+    default: []
+  },
   disabled: {
     type: Boolean,
     default: false,
@@ -30,9 +36,11 @@ const props = defineProps({
   }
 })
 
-const onInput = (value) => {
-  emit("input", value);
+const onInput = () => {
+    emit("update:value", dateValue.value);
 };
+
+watch(dateValue, onInput);
 </script>
 
 <template>
