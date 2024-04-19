@@ -14,6 +14,8 @@ export { default as InputRadio } from "./Form/Inputs/InputRadio.vue";
 export { default as InputCopy } from "./Form/Inputs/InputCopy.vue";
 export { default as InputTextarea } from "./Form/Inputs/InputTextarea.vue";
 export { default as InputUrl } from "./Form/Inputs/InputUrl.vue";
+export { default as InputCurrency } from "./Form/Inputs/InputCurrency.vue";
+
 
 // Date
 export { default as DatePicker } from "./Form/Date/DatePicker.vue";

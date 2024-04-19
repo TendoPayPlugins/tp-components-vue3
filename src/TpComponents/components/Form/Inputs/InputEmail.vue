@@ -4,12 +4,7 @@ import { useVuelidate } from "@vuelidate/core";
 import { email } from "@vuelidate/validators";
 import { ExclamationCircleIcon } from '@heroicons/vue/24/solid'
 
-
-const state = reactive({
-  localValue: null,
-});
-
-const emit = defineEmits(["input"]);
+const localValue = defineModel({ required: true })
 
 const props = defineProps({
   label: {
@@ -50,6 +45,9 @@ const props = defineProps({
   },
 });
 
+
+const emit = defineEmits(["update:value"]);
+
 const rules = {
   localValue: {
     ...props.validator,
@@ -57,17 +55,13 @@ const rules = {
   },
 };
 
-state.localValue = props.value
-
-watch(() => props.value, (newValue) => {
-  state.localValue = newValue;
-});
+const v$ = useVuelidate(rules, { localValue });
 
 const onInput = () => {
-  emit("input", state.localValue);
+  emit("update:value", localValue.value);
 };
 
-const v$ = useVuelidate(rules, state);
+watch(localValue, onInput);
 </script>
 
 <template>
