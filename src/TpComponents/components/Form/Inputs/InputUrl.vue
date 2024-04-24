@@ -1,31 +1,21 @@
 <script setup>
-import {reactive, watch} from "vue";
+import {computed, watch, ref, onMounted} from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { minLength, maxLength } from "@vuelidate/validators";
 
-const state = reactive({
-  type: 'https://',
-});
+const endpoint = ref('');
+const protocol = ref('https');
 
-const localValue = defineModel({ required: true })
+const { modelValue: initialUrl } = defineModel();
 
 const types = [
-    'https://',
-    'http://'
+    'https',
+    'http'
 ]
 
-const emit = defineEmits(["update:value"]);
+const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
-  value: {
-    type: String,
-    default: null,
-    required: false,
-  },
-  countries: {
-    type: Array,
-    default: () => ["PH"],
-  },
   label: {
     type: String,
     default: null,
@@ -44,20 +34,36 @@ const props = defineProps({
   },
 });
 
-const rules = {
-  localValue: {
-    maxLength: maxLength(18),
-    minLength: minLength(18),
-  },
+// const rules = {
+//   localValue: {
+//     maxLength: maxLength(18),
+//     minLength: minLength(18),
+//   },
+// };
+
+// const v$ = useVuelidate(rules, { localValue });
+
+// Obliczona właściwość pełnego adresu URL
+const fullUrl = computed(() => {
+  return `${protocol.value}://${endpoint.value}`;
+});
+
+const setProtocolFromUrl = () => {
+  if (initialUrl) {
+    protocol.value = initialUrl.startsWith('https') ? 'https' : 'http';
+    endpoint.value = initialUrl.replace(/^https?:\/\//, '');
+  }
 };
 
-const v$ = useVuelidate(rules, { localValue });
+setProtocolFromUrl();
 
-const onInput = () => {
-  emit("update:value", localValue.value);
-};
+watch(() => initialUrl, () => {
+  setProtocolFromUrl();
+});
 
-watch(localValue, onInput);
+watch([protocol, endpoint], () => {
+  emit('update:modelValue', fullUrl.value);
+});
 </script>
 
 <template>
@@ -73,11 +79,10 @@ watch(localValue, onInput);
       <div class="absolute inset-y-0 left-0 flex items-center">
         <select
             name="type"
-            @change="onInput"
-            v-model="state.type"
+            v-model="protocol"
             autocomplete="type"
             :data-test="dataTest + '-select-type'"
-            class="h-full rounded-md border-0 bg-transparent py-0 pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-inset sm:text-sm"
+            class="h-full rounded-md border-0 bg-transparent pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-inset sm:text-sm"
         >
           <option
               :data-test="dataTest + '-option-' + index"
@@ -89,11 +94,10 @@ watch(localValue, onInput);
         </select>
       </div>
       <input
-          @change="onInput"
           type="text"
           name="url"
           :id="dataTest"
-          v-model="v$.localValue.$model"
+          v-model="endpoint"
           class="block w-full rounded-md border-0 py-1.5 pl-16 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-tp-primary focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           :placeholder="placeholder"
           :data-test="dataTest + '-input'"
