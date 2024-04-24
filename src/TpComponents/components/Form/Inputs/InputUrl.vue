@@ -32,6 +32,11 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  }
 });
 
 // const rules = {
@@ -78,6 +83,7 @@ watch([protocol, endpoint], () => {
     <div class="relative mt-2 rounded-md shadow-sm">
       <div class="absolute inset-y-0 left-0 flex items-center">
         <select
+            :disabled="disabled"
             name="type"
             v-model="protocol"
             autocomplete="type"
@@ -94,6 +100,7 @@ watch([protocol, endpoint], () => {
         </select>
       </div>
       <input
+          :disabled="disabled"
           type="text"
           name="url"
           :id="dataTest"
