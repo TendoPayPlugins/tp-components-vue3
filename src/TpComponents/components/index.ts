@@ -37,6 +37,7 @@ export { default as Copy } from "./Utils/Copy.vue";
 export { default as Alert } from "./Utils/Alert.vue";
 export { default as Modal } from './Utils/Modal.vue';
 export { default as Chart } from './Utils/Chart.vue';
+export { default as SideMenu } from "./Utils/SideMenu.vue";
 
 // Tabs
 export { default as Tabs } from "./Tabs/Tabs.vue";
