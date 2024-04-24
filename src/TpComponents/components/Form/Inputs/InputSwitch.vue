@@ -12,6 +12,14 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
+  enabledIcon: {
+    type: Object,
+    default: null,
+  },
+  disabledIcon: {
+    type: Object,
+    default: null,
+  },
   enabledText: {
     type: String,
     default: null,
@@ -30,40 +38,41 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(["input"]);
+const emit = defineEmits(["update:modelValue"]);
 
-const state = reactive({
-  localValue: false,
-});
-
-const onInput = () => {
-  emit("input", Boolean(state.localValue));
-};
-
+const localValue = defineModel({ required: true })
 const rules = props.validator;
 
-state.localValue = props.value
+const onInput = () => {
+  emit("update:modelValue", Boolean(localValue.value));
+};
 
-watch(() => props.value, (newValue) => {
-  state.localValue = newValue;
-});
+watch(localValue, onInput);
 
-const v$ = useVuelidate(rules, state);
+const v$ = useVuelidate(rules, { localValue: localValue});
 </script>
 
 <template>
   <SwitchGroup as="div" class="flex items-center">
-    <SwitchLabel v-if="enabledText" as="span" class="mr-3 text-sm">
+    <SwitchLabel v-if="disabledText" as="span" class="mr-3 text-sm">
+        <span class="font-medium text-gray-900" :data-test="dataTest + '-disabled-text'">{{ disabledText }}</span>
+        {{ ' ' }}
+    </SwitchLabel>
+    <SwitchLabel v-if="disabledIcon" as="span" class="mr-3" :data-test="dataTest + '-disabled-icon'">
+        <component :is="disabledIcon" class="h-6 w-6" />
+        {{ ' ' }}
+    </SwitchLabel>
+    <Switch :disabled="disabled" :data-test="dataTest + '-switch'" @click="onInput" v-model="localValue" :class="[localValue ? 'bg-tp-primary' : 'bg-gray-300', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-offset-2']">
+        <span class="sr-only">Use setting</span>
+        <span aria-hidden="true" :class="[localValue ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+    </Switch>
+    <SwitchLabel v-if="enabledText" as="span" class="ml-3 text-sm">
         <span class="font-medium text-gray-900" :data-test="dataTest + '-enabled-text'">{{ enabledText }}</span>
         {{ ' ' }}
     </SwitchLabel>
-    <Switch :disabled="disabled" :data-test="dataTest + '-switch'" @click="onInput" v-model="state.localValue" :class="[state.localValue ? 'bg-tp-primary' : 'bg-gray-200', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-offset-2']">
-        <span class="sr-only">Use setting</span>
-        <span aria-hidden="true" :class="[state.localValue ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
-    </Switch>
-    <SwitchLabel v-if="disabledText" as="span" class="ml-3 text-sm">
-        <span class="font-medium text-gray-900" :data-test="dataTest + '-disabled-text'">{{ disabledText }}</span>
-        {{ ' ' }}
+    <SwitchLabel v-if="enabledIcon" as="span" class="ml-3" :data-test="dataTest + '-enabled-icon'">
+      <component :is="enabledIcon" class="h-6 w-6" />
+      {{ ' ' }}
     </SwitchLabel>
   </SwitchGroup>
 </template>

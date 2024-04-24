@@ -1,5 +1,5 @@
 <template>
-    <span class="isolate inline-flex rounded-md shadow-sm">
+  <span class="isolate inline-flex rounded-md shadow-sm">
     <button :class="{ disabled: !isPrevEnable }" @click="goPrev" type="button" class="relative inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
       <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
       <span>Prev</span>
@@ -11,142 +11,86 @@
   </span>
 </template>
 
-<script>
+<script setup>
 import dayjs from "dayjs";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/20/solid'
-export default {
-  name: "DatePrevNextPicker",
-  components: {
-    ChevronLeftIcon, ChevronRightIcon
-  },
-  emits: ["input"],
-  props: {
-    position: {
-      type: String,
-      default: "center",
-    },
-    initDate: {
-      type: Object || {},
-    },
-  },
-  data() {
-    return {
-      from: null,
-      to: null,
-    };
-  },
-  watch: {
-    initDate(val, old) {
-      const { from, to } = val;
-      this.from = from;
-      this.to = to;
-    },
-  },
-  computed: {
-    paginationStyle() {
-      const position =
-        this.position === "left"
-          ? "flex-start"
-          : this.position === "right"
-            ? "flex-end"
-            : "center";
+import {ref, watch} from 'vue';
 
-      return {
-        "justify-content": position,
-      };
-    },
-    isPrevEnable() {
-      return true;
-    },
-    isNextEnable() {
-      return true;
-    },
-  },
-  methods: {
-    goPrev() {
-      const from = dayjs(this.from, "YYYY-MM-DD");
-      const to = dayjs(this.to, "YYYY-MM-DD");
+const emit = defineEmits(['update:modelValue'])
+const localValue = defineModel({ required: true })
 
-      if (to.diff(from, "years") === to.diff(from, "years", true)) {
-        this.to = from.clone().subtract(1, "days");
-        this.from = this.to.clone().subtract(to.diff(from, "years"), "years");
-      } else if (
-        from.format("YYYY-MM-DD") ===
-        from.clone().startOf("months").format("YYYY-MM-DD") &&
-        to.format("YYYY-MM-DD") ===
-        to.clone().endOf("months").format("YYYY-MM-DD")
-      ) {
-        this.to = from.clone().subtract(1, "days");
-        this.from = this.to
-          .clone()
-          .subtract(to.diff(from, "months"), "months")
-          .startOf("months");
-      } else if (to.diff(from, "days", true) === 7) {
-        this.to = from.clone().subtract(1, "days");
-        this.from = this.to.clone().subtract(to.diff(from, "weeks"), "weeks");
-      } else {
-        this.to = from.clone().subtract(1, "days");
-        this.from = this.to.clone().subtract(to.diff(from, "days"), "days");
-      }
+const from = ref(localValue.value[0]);
+const to = ref(localValue.value[1]);
 
-      // emit("input", {
-      //   from: this.from.format("YYYY-MM-DD"),
-      //   to: this.to.format("YYYY-MM-DD"),
-      // })
-    },
-    goNext() {
-      const from = dayjs(this.from, "YYYY-MM-DD");
-      const to = dayjs(this.to, "YYYY-MM-DD");
+const isPrevEnable = true;
+const isNextEnable = true;
 
-      if (to.diff(from, "years") === to.diff(from, "years", true)) {
-        this.from = to.clone().add(1, "days");
-        this.to = this.from.clone().add(to.diff(from, "years"), "years");
-      } else if (
-        from.format("YYYY-MM-DD") ===
-        from.clone().startOf("months").format("YYYY-MM-DD") &&
-        to.format("YYYY-MM-DD") ===
-        to.clone().endOf("months").format("YYYY-MM-DD")
-      ) {
-        this.from = to.clone().add(1, "days");
-        this.to = this.from
-          .clone()
-          .add(to.diff(from, "months"), "months")
-          .endOf("months");
-      } else if (to.diff(from, "days", true) === 7) {
-        this.from = to.clone().add(1, "days");
-        this.to = this.from.clone().add(to.diff(from, "weeks"), "weeks");
-      } else {
-        this.from = to.clone().add(1, "days");
-        this.to = this.from.clone().add(to.diff(from, "days"), "days");
-      }
+watch(localValue, ([fromValue, toValue]) => {
+  from.value = fromValue;
+  to.value = toValue;
+});
 
-      // emit("input", {
-      //   from: this.from.format("YYYY-MM-DD"),
-      //   to: this.to.format("YYYY-MM-DD"),
-      // })
-    },
-  },
-  created() {
-    const { from, to } = this.initDate;
-    this.from = from;
-    this.to = to;
-  },
+const goPrev = () => {
+  const fromValue = dayjs(from.value, "YYYY-MM-DD");
+  const toValue = dayjs(to.value, "YYYY-MM-DD");
+
+  if (toValue.diff(fromValue, "years") === toValue.diff(fromValue, "years", true)) {
+    to.value = fromValue.clone().subtract(1, "days");
+    from.value = to.value.clone().subtract(toValue.diff(fromValue, "years"), "years");
+  } else if (
+    fromValue.format("YYYY-MM-DD") ===
+    fromValue.clone().startOf("months").format("YYYY-MM-DD") &&
+    toValue.format("YYYY-MM-DD") ===
+    toValue.clone().endOf("months").format("YYYY-MM-DD")
+  ) {
+    to.value = fromValue.clone().subtract(1, "days");
+    from.value = to.value
+      .clone()
+      .subtract(toValue.diff(fromValue, "months"), "months")
+      .startOf("months");
+  } else if (toValue.diff(fromValue, "days", true) === 7) {
+    to.value = fromValue.clone().subtract(1, "days");
+    from.value = to.value.clone().subtract(toValue.diff(fromValue, "weeks"), "weeks");
+  } else {
+    to.value = fromValue.clone().subtract(1, "days");
+    from.value = to.value.clone().subtract(toValue.diff(fromValue, "days"), "days");
+  }
+
+  emit("update:modelValue", [
+    from.value.format("YYYY-MM-DD"),
+    to.value.format("YYYY-MM-DD"),
+  ])
+};
+
+const goNext = () => {
+  const fromValue = dayjs(from.value, "YYYY-MM-DD");
+  const toValue = dayjs(to.value, "YYYY-MM-DD");
+
+  if (toValue.diff(fromValue, "years") === toValue.diff(fromValue, "years", true)) {
+    from.value = toValue.clone().add(1, "days");
+    to.value = from.value.clone().add(toValue.diff(fromValue, "years"), "years");
+  } else if (
+    fromValue.format("YYYY-MM-DD") ===
+    fromValue.clone().startOf("months").format("YYYY-MM-DD") &&
+    toValue.format("YYYY-MM-DD") ===
+    toValue.clone().endOf("months").format("YYYY-MM-DD")
+  ) {
+    from.value = toValue.clone().add(1, "days");
+    to.value = from.value
+      .clone()
+      .add(toValue.diff(fromValue, "months"), "months")
+      .endOf("months");
+  } else if (toValue.diff(fromValue, "days", true) === 7) {
+    from.value = toValue.clone().add(1, "days");
+    to.value = from.value.clone().add(toValue.diff(fromValue, "weeks"), "weeks");
+  } else {
+    from.value = toValue.clone().add(1, "days");
+    to.value = from.value.clone().add(toValue.diff(fromValue, "days"), "days");
+  }
+
+  emit("update:modelValue", [
+    from.value.format("YYYY-MM-DD"),
+    to.value.format("YYYY-MM-DD"),
+  ])
 };
 </script>
-
-<style scoped>
-div.row > div[class^="col-"]:last-child {
-    padding-right: 0;
-}
-
-ul.pagination {
-    margin: 2px 0;
-    white-space: nowrap;
-    justify-content: flex-end;
-}
-
-.previous,
-.next {
-    min-width: 6rem;
-}
-</style>
