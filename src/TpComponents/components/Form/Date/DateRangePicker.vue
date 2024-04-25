@@ -44,12 +44,16 @@ watch(dateValue, onInput);
 </script>
 
 <template>
-    <vue-tailwind-datepicker
+    <div>
+        <vue-tailwind-datepicker
             v-model="dateValue"
             :disabled="disabled"
             :placeholder="placeholder"
             @update:modelValue="onInput"
             :formatter="formatter"
             :no-input="inline"
-    />
+            use-range
+            as-single
+        />
+    </div>
 </template>

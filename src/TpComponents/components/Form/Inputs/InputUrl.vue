@@ -6,7 +6,7 @@ import { minLength, maxLength } from "@vuelidate/validators";
 const endpoint = ref('');
 const protocol = ref('https');
 
-const { modelValue: initialUrl } = defineModel();
+const initialUrl = defineModel({ required: true });
 
 const types = [
     'https',
@@ -39,36 +39,33 @@ const props = defineProps({
   }
 });
 
-// const rules = {
-//   localValue: {
-//     maxLength: maxLength(18),
-//     minLength: minLength(18),
-//   },
-// };
-
-// const v$ = useVuelidate(rules, { localValue });
-
 // Obliczona właściwość pełnego adresu URL
 const fullUrl = computed(() => {
   return `${protocol.value}://${endpoint.value}`;
 });
 
 const setProtocolFromUrl = () => {
-  if (initialUrl) {
-    protocol.value = initialUrl.startsWith('https') ? 'https' : 'http';
-    endpoint.value = initialUrl.replace(/^https?:\/\//, '');
+  if (initialUrl?.value) {
+    protocol.value = (initialUrl.value).startsWith('https') ? 'https' : 'http';
+    endpoint.value = (initialUrl.value).replace(/^https?:\/\//, '');
   }
 };
 
 setProtocolFromUrl();
 
-watch(() => initialUrl, () => {
+watch(initialUrl, () => {
   setProtocolFromUrl();
 });
 
 watch([protocol, endpoint], () => {
+  if((endpoint.value).length === 0) {
+    emit('update:modelValue', null);
+    return
+  }
   emit('update:modelValue', fullUrl.value);
 });
+
+
 </script>
 
 <template>
@@ -88,7 +85,7 @@ watch([protocol, endpoint], () => {
             v-model="protocol"
             autocomplete="type"
             :data-test="dataTest + '-select-type'"
-            class="h-full rounded-md border-0 bg-transparent pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-inset sm:text-sm"
+            class="h-full rounded-md border-0 bg-transparent pl-3 pr-12 text-gray-500 focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-inset sm:text-sm"
         >
           <option
               :data-test="dataTest + '-option-' + index"
@@ -105,10 +102,16 @@ watch([protocol, endpoint], () => {
           name="url"
           :id="dataTest"
           v-model="endpoint"
-          class="block w-full rounded-md border-0 py-1.5 pl-16 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-tp-primary focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+          class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-tp-primary focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           :placeholder="placeholder"
           :data-test="dataTest + '-input'"
       />
     </div>
   </div>
 </template>
+
+<style scoped>
+.input-offset {
+    padding-left: 90px;
+}
+</style>
