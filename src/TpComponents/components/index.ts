@@ -10,6 +10,7 @@ export { default as InputText } from "./Form/Inputs/InputText.vue";
 export { default as InputZipCode } from  "./Form/Inputs/InputZipCode.vue";
 export { default as InputSwitch } from "./Form/Inputs/InputSwitch.vue";
 export { default as InputCheckbox } from "./Form/Inputs/InputCheckbox.vue";
+export { default as InputCheckboxGroup } from "./Form/Inputs/InputCheckboxGroup.vue";
 export { default as InputRadio } from "./Form/Inputs/InputRadio.vue";
 export { default as InputCopy } from "./Form/Inputs/InputCopy.vue";
 export { default as InputTextarea } from "./Form/Inputs/InputTextarea.vue";

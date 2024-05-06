@@ -2297,11 +2297,6 @@ input:checked + .toggle-bg {
   padding-bottom: 0.75rem;
 }
 
-.py-3\.5 {
-  padding-top: 0.875rem;
-  padding-bottom: 0.875rem;
-}
-
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -2344,10 +2339,6 @@ input:checked + .toggle-bg {
   padding-right: 3rem;
 }
 
-.pr-16 {
-  padding-right: 4rem;
-}
-
 .pr-2 {
   padding-right: 0.5rem;
 }
@@ -2362,10 +2353,6 @@ input:checked + .toggle-bg {
 
 .pr-5 {
   padding-right: 1.25rem;
-}
-
-.pr-7 {
-  padding-right: 1.75rem;
 }
 
 .pr-8 {
@@ -2394,10 +2381,6 @@ input:checked + .toggle-bg {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pl-96 {
-  padding-left: 24rem;
 }
 
 .text-left {
@@ -2942,11 +2925,6 @@ input:checked + .toggle-bg {
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
-.hover\:text-indigo-900:hover {
-  --tw-text-opacity: 1;
-  color: rgb(49 46 129 / var(--tw-text-opacity));
 }
 
 .hover\:text-vtd-primary-700:hover {
