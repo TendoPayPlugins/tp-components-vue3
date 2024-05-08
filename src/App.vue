@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div>
-        TpComponents
-    </div>
+  <div>
+    TpComponents
+  </div>
 </template>

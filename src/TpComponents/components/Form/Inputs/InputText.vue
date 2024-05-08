@@ -81,7 +81,7 @@ watch(localValue, onInput);
           'text-gray-900 shadow-sm placeholder:text-gray-400':
             !v$.localValue.$invalid,
       }"
-      class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset"
+      class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
       :placeholder="placeholder"
       :maxlength="maxLength || null"
     />
