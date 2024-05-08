@@ -100,5 +100,5 @@ function toggleSecret() {
       </button>
     </div>
   </div>
-  <Alert v-if="showResult" :message="props.resultMessage" type="success"/>
+  <Alert class="mt-2 mb-2" v-if="showResult" :message="props.resultMessage" type="success"/>
 </template>
