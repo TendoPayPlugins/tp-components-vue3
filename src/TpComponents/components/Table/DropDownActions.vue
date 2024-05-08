@@ -3,7 +3,7 @@
         <div>
             <MenuButton class="flex items-center rounded-full bg-gray-100 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                 <span class="sr-only">Open options</span>
-                <EllipsisHorizontalIcon class="h-5 w-5" aria-hidden="true" />
+                <EllipsisVerticalIcon class="h-5 w-5" aria-hidden="true" />
             </MenuButton>
         </div>
 
@@ -33,7 +33,7 @@
 <script setup>
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { ref, defineProps, computed } from 'vue';
-import { EllipsisHorizontalIcon } from "@heroicons/vue/24/solid/index.js";
+import { EllipsisVerticalIcon } from "@heroicons/vue/24/solid/index.js";
 
 const props = defineProps({
   items: {
@@ -78,5 +78,4 @@ const disabled = (item) => {
 </script>
 
 <style scoped>
-/* Dodaj dowolne style Tailwind CSS tutaj, jeśli to konieczne */
 </style>

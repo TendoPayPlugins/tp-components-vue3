@@ -10,7 +10,6 @@
                                 :data-test="'checkbox-batch-all' + dataTest"
                                 v-model="state.batchAll"
                                 type="checkbox"
-                                @update:modelValue="toggleBatchAll"
                                 @clicked="clickBatchAll"
                             />
                         </th>
@@ -94,9 +93,6 @@ const getPageResource = async (queryParams) => {
 }
 
 getPageResource()
-// defineExpose({
-//     getPageResource
-// })
 
 const setPage = (page) => {
     props.goPage(page)
