@@ -30,6 +30,7 @@ export { default as SelectListBox } from "./Form/Select/SelectListBox.vue";
 
 // Buttons
 export { default as Button } from "./Form/Buttons/Button.vue";
+export { default as DropDownActions } from "./Table/DropDownActions.vue";
 
 // Utils
 export { default as StepBar } from "./Utils/StepBar.vue";
