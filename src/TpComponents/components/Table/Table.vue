@@ -2,7 +2,7 @@
     <div class="mt-8 flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <table class="min-w-full divide-y divide-gray-300">
+                <table class="min-w-full divide-y divide-gray-300" data-test="table">
                     <thead>
                     <tr>
                         <th v-if="batchActions">
@@ -10,8 +10,9 @@
                                 :data-test="'checkbox-batch-all' + dataTest"
                                 v-model="state.batchAll"
                                 type="checkbox"
+                                @update:modelValue="toggleBatchAll"
+                                @clicked="clickBatchAll"
                             />
-                            <p>(all)</p>
                         </th>
                         <th v-if="numerate">No.</th>
                         <slot name="headers" />
@@ -20,11 +21,19 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                     <tr v-for="(item, index) in data" :key="index" :data-test="'row-index-' + index">
-                        <td v-if="batchActions" class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                            <Numbering :pagination="state.pagination" idx="" data-test="numbering" />
+                        <td v-if="batchActions" class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900">
+                            <InputCheckbox
+                                :data-test="'batch-list-' + index"
+                                :value="hasItemInBatchList(item.id)"
+                                @update:modelValue="toggleBatchItem(item)"
+                                type="checkbox"
+                            />
                         </td>
-                        <slot name="columns" :item="item" />
-                        <td v-if="itemActions" class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                        <td v-if="numerate" class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900">
+                            <Numbering :pagination="state.pagination" :idx="index" data-test="numbering" />
+                        </td>
+                        <slot name="columns" :item="item" class="text-center" />
+                        <td v-if="itemActions" class="relative whitespace-nowrap py-4 text-sm font-medium sm:pr-0">
                             <DropDownActions :items="itemActions" />
                         </td>
                     </tr>
@@ -39,16 +48,14 @@
 import DropDownActions from "~/components/Table/DropDownActions.vue";
 import Numbering from "~/components/Table/Numbering.vue";
 import InputCheckbox from "~/components/Form/Inputs/InputCheckbox.vue";
-import {watch, reactive, ref} from "vue";
-
-
-const batchAll = ref(false)
+import {watch, reactive, ref, computed} from "vue";
 
 const state = reactive({
     batchList: [],
     batchAll: false,
     pagination: {},
     loading: false,
+    data: [],
 })
 
 const props = defineProps({
@@ -56,9 +63,9 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
-    data: {
-        type: Array,
-        default: [],
+    goPage: {
+        type: Function,
+        default: () => Function(),
     },
     batchActions: {
         type: Array,
@@ -74,26 +81,44 @@ const props = defineProps({
     },
 })
 
-const toggleBatchAll = () => {
-    if(state.batchAll) {
-        state.batchAll = true
-        state.batchList = [] // @ todo - add all items
+const clickBatchAll = (value) => {
+    if (value) {
+        state.batchList = state.data
     } else {
-        state.batchAll = false
         state.batchList = []
     }
 }
 
-const removeFromBatchList = (item) => {
-    state.batchList = state.batchList.filter(function (el) { return el.id !== item.id })
+const getPageResource = async (queryParams) => {
+    state.data = props.goPage(1)
 }
 
-const addToBatchList = (item) => {
-    state.batchList.push(item)
+getPageResource()
+// defineExpose({
+//     getPageResource
+// })
+
+const setPage = (page) => {
+    props.goPage(page)
 }
 
+const hasItemInBatchList = (itemId) => state.batchList.some(i => i.id === itemId)
 
-// Watchers
+const toggleBatchItem = (item) => {
+    if (!hasItemInBatchList(item.id)) {
+      state.batchList.push(item)
+    } else {
+        state.batchList = state.batchList.filter(batchItem => batchItem.id !== item.id);
+    }
 
-// watch([])
+    if (state.batchList.length > 0) {
+        state.batchAll = state.batchList.length === state.data.length
+    }
+}
 </script>
+
+<style>
+tr > td {
+    text-align: center;
+}
+</style>

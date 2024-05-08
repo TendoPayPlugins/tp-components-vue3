@@ -1,5 +1,5 @@
 <script setup>
-import {reactive, watch} from "vue";
+import { watch } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 
 const localValue = defineModel({ required: true })
@@ -18,6 +18,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  value: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -26,13 +30,21 @@ const rules = {
   localValue: props.validator || {},
 };
 
+
 const v$ = useVuelidate(rules, { localValue });
 
+const onClickInput = () => {
+  emit("clicked", !localValue.value)
+}
 const onInput = () => {
   emit("update:modelValue", localValue.value);
 };
 
-watch(localValue, onInput);
+watch(localValue, onInput)
+
+watch(() => props.value, () => {
+  localValue.value = props.value
+})
 
 </script>
 
@@ -42,6 +54,7 @@ watch(localValue, onInput);
         v-model="v$.localValue.$model"
         type="checkbox"
         :data-test="dataTest + '-option'"
+        @click="onClickInput"
         class="h-4 w-4 rounded border-gray-300 text-tp-primary focus:ring-tp-primary"
       />
       <label
