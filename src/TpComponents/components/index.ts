@@ -40,6 +40,7 @@ export { default as Alert } from "./Utils/Alert.vue";
 export { default as Modal } from './Utils/Modal.vue';
 export { default as Chart } from './Utils/Chart.vue';
 export { default as SideMenu } from "./Utils/SideMenu.vue";
+export { default as ImageCropper } from "./Utils/ImageCropper.vue";
 
 // Tabs
 export { default as Tabs } from "./Tabs/Tabs.vue";
