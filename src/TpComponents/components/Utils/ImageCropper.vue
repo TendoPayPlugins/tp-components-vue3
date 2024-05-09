@@ -1,6 +1,6 @@
 <template>
-    <div class="row">
-        <div class="col-lg-8 col-12">
+    <div class="flex flex-col space-y-4">
+        <div class="bg-gray-200 h-80 flex items-center justify-center w-full max-w-md">
             <cropper
               v-if="image.src"
               ref="cropper"
@@ -10,7 +10,7 @@
                 handlers: {},
                 movable: false,
                 scalable: false,
-                aspectRatio: 1/1,
+                aspectRatio: 1,
               }"
               :canvas="{
                 height: width,
@@ -19,35 +19,41 @@
               image-restriction="stencil"
             />
         </div>
-        <div class="col-lg-4 col-12">
-            <h4>Select image</h4>
+
+        <div class="bg-gray-100 flex items-center justify-center p-4">
             <input
                 ref="file"
-                class="btn btn-secondary form-control"
                 type="file"
                 accept="image/*"
                 @change="loadImage($event)"
-            >
+            />
+        </div>
 
-            <button
-                    class="btn btn-default form-control mt-5"
-                    @click="reset"
-            >
-                Reset
-            </button>
-            <button
-                    class="btn btn-success form-control mt-2"
-                    :disabled="!image.src"
-                    @click="save"
-            >
-                Save
-            </button>
+        <div class="flex items-center justify-between p-4">
+          <Button
+            class="py-2 px-4"
+            type="secondary"
+            @click="reset"
+          >
+            Reset
+          </Button>
+          <Button
+            class="py-2 px-4"
+            type="primary"
+            :disabled="!image.src"
+            @click="save"
+          >
+            Save
+          </Button>
         </div>
     </div>
 </template>
 
 <script>
 import { Cropper } from 'vue-advanced-cropper'
+import Button from "~/components/Form/Buttons/Button.vue";
+
+
 import 'vue-advanced-cropper/dist/style.css';
 
 function getMimeType(file, fallback = null) {
@@ -75,6 +81,7 @@ function getMimeType(file, fallback = null) {
 export default {
   components: {
     Cropper,
+    Button
   },
   props: {
     width: {
@@ -137,6 +144,6 @@ export default {
 .cropper {
     background: #DDD;
     height: 400px;
-    width: 90%;
+    width: 100%;
 }
 </style>
