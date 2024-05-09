@@ -16,11 +16,9 @@
             @blur="closeEditable"
         >
         <input
-            v-model="phoneNumber"
+            v-model="phoneNumberLocal"
             type="hidden"
         >
-
-        {{ phoneNumber }} / {{ phoneNumberWithoutAreaCode }}
     </div>
 </template>
 
@@ -30,6 +28,7 @@ import {onMounted, watch, ref, defineModel, defineEmits, nextTick} from "vue";
 const INPUT_PHONE_PATTERN_11 = /(\w)(\w{3})(\w{3})(\w{4})/
 
 const phoneNumber = defineModel({ required: true })
+const phoneNumberLocal = ref()
 
 const props = defineProps({
     placeholder: {
@@ -70,22 +69,20 @@ const formatPhoneNumberWithoutAreaCode = (phone) => {
 }
 
 const updateValue = () => {
-    const value = sanitizePhoneNumber(phoneNumber.value).replace(/^63/, '0')
+    const value = sanitizePhoneNumber(phoneNumberLocal.value).replace(/^63/, '0')
     phoneNumberWithoutAreaCode.value = formatPhoneNumberWithoutAreaCode(value)
-    emit('update:modelValue', phoneNumber.value)
+    // emit('update:modelValue', phoneNumber.value)
 }
 
 const closeEditable = () => {
-    alert('close')
-    const value = sanitizePhoneNumber(phoneNumber.value).replace(/^63/, '0')
+    const value = sanitizePhoneNumber(phoneNumberLocal.value).replace(/^63/, '0')
     phoneNumberWithoutAreaCode.value = formatPhoneNumberWithoutAreaCode(value)
     emit('close');
-    emit('update:modelValue', phoneNumber.value)
-    alert(phoneNumber.value)
-    alert(phoneNumberWithoutAreaCode.value)
+    // emit('update:modelValue', phoneNumberLocal.value)
 }
 
 watch(phoneNumber, () => {
+    phoneNumberLocal.value = phoneNumber.value
     updateValue()
 })
 
@@ -127,14 +124,12 @@ const updatePhoneFormat = (value, el = null, target = null, targetWithoutAreaCod
         this[target] = formatInputPhoneNumber(value)
         this[targetWithoutAreaCode] = formatPhoneNumberWithoutAreaCode(value)
         emit("update:modelValue", this[target]);
-        console.log('x: ' + this[target])
         return
     }
 
-    phoneNumber.value = formatInputPhoneNumber(value)
+    phoneNumberLocal.value = formatInputPhoneNumber(value)
     phoneNumberWithoutAreaCode.value = formatPhoneNumberWithoutAreaCode(value)
-    emit("update:modelValue", phoneNumber.value);
-    console.log(phoneNumber.value)
+    emit("update:modelValue", phoneNumberLocal.value);
 }
 
 const setCaretPosition = (ctrl, pos) => {
