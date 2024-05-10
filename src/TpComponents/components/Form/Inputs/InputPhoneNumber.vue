@@ -25,6 +25,14 @@
             @focus="openEditable"
             v-model="phoneNumberLocal"
         >
+        <span v-if="showError && v?.$invalid">
+          <p
+              v-for="error in v?.$silentErrors"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+          >
+            <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+          </p>
+        </span>
     </div>
 </template>
 
@@ -50,6 +58,14 @@ const props = defineProps({
     dataTest: {
         type: String,
         required: true
+    },
+    v: {
+        type: Object,
+        default: () => null
+    },
+    showError: {
+        type: Boolean,
+        default: true,
     }
 })
 

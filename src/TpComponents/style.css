@@ -1587,6 +1587,10 @@ input:checked + .toggle-bg {
   height: 2rem;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
 .h-9 {
   height: 2.25rem;
 }
@@ -1597,18 +1601,6 @@ input:checked + .toggle-bg {
 
 .h-full {
   height: 100%;
-}
-
-.h-24 {
-  height: 6rem;
-}
-
-.h-dvh {
-  height: 100dvh;
-}
-
-.h-80 {
-  height: 20rem;
 }
 
 .max-h-60 {
@@ -1685,6 +1677,10 @@ input:checked + .toggle-bg {
 
 .min-w-full {
   min-width: 100%;
+}
+
+.max-w-md {
+  max-width: 28rem;
 }
 
 .max-w-sm {
@@ -2391,16 +2387,8 @@ input:checked + .toggle-bg {
   padding-left: 2.5rem;
 }
 
-.pl-16 {
-  padding-left: 4rem;
-}
-
 .pl-3 {
   padding-left: 0.75rem;
-}
-
-.pl-4 {
-  padding-left: 1rem;
 }
 
 .pl-7 {
@@ -2465,10 +2453,6 @@ input:checked + .toggle-bg {
 
 .text-center {
   text-align: center;
-}
-
-.text-right {
-  text-align: right;
 }
 
 .align-middle {
@@ -2807,6 +2791,11 @@ input:checked + .toggle-bg {
   --tw-ring-color: rgb(239 68 68 / var(--tw-ring-opacity));
 }
 
+.ring-tp-primary {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(37 165 241 / var(--tw-ring-opacity));
+}
+
 .ring-opacity-5 {
   --tw-ring-opacity: 0.05;
 }
@@ -3019,11 +3008,6 @@ input:checked + .toggle-bg {
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
-.hover\:text-tp-primary-dark:hover {
-  --tw-text-opacity: 1;
-  color: rgb(37 163 255 / var(--tw-text-opacity));
 }
 
 .hover\:text-vtd-primary-700:hover {
@@ -3690,10 +3674,6 @@ input:checked + .toggle-bg {
   .sm\:py-4 {
     padding-top: 1rem;
     padding-bottom: 1rem;
-  }
-
-  .sm\:pl-0 {
-    padding-left: 0px;
   }
 
   .sm\:pr-0 {

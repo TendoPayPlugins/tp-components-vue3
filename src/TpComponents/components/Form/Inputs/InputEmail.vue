@@ -1,7 +1,5 @@
 <script setup>
-import {reactive, watch} from "vue";
-import { useVuelidate } from "@vuelidate/core";
-import { email } from "@vuelidate/validators";
+import { watch} from "vue";
 import { ExclamationCircleIcon } from '@heroicons/vue/24/solid'
 
 const localValue = defineModel({ required: true })
@@ -35,9 +33,9 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  validator: {
+  v: {
     type: Object,
-    default: () => {},
+    default: () => null,
   },
   dataTest: {
     type: String,
@@ -47,15 +45,6 @@ const props = defineProps({
 
 
 const emit = defineEmits(["update:value"]);
-
-const rules = {
-  localValue: {
-    ...props.validator,
-    email: email,
-  },
-};
-
-const v$ = useVuelidate(rules, { localValue });
 
 const onInput = () => {
   emit("update:value", localValue.value);
@@ -73,11 +62,11 @@ watch(localValue, onInput);
       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       >{{ label }}</label
     >
-    <div class="relative mt-2 rounded-md shadow-sm">
+    <div class="relative rounded-md shadow-sm">
       <input
         type="email"
         :maxlength="maxLength"
-        v-model="v$.localValue.$model"
+        v-model="localValue"
         :disabled="disabled"
         :readonly="readonly"
         id="email-input"
@@ -86,16 +75,16 @@ watch(localValue, onInput);
         class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
         :class="{
           'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
-            v$.localValue.$invalid,
+            v?.$invalid,
           'text-gray-900 shadow-sm placeholder:text-gray-400':
-            !v$.localValue.$invalid,
+            !v?.$invalid,
         }"
         :placeholder="placeholder"
         @input="onInput"
       />
       <div
         class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-        v-if="v$.localValue.$invalid"
+        v-if="v?.$invalid"
       >
 
         <ExclamationCircleIcon
@@ -113,27 +102,12 @@ watch(localValue, onInput);
       <slot name="success" />
     </p>
 
-    <span v-if="showError">
+    <span v-if="showError && v?.$invalid">
       <p
-        v-if="v$.localValue?.email?.$invalid"
+        v-for="error in v?.$silentErrors"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-email-error'">{{ v$.localValue.email.$message }}</span>
-      </p>
-      <p
-        v-if="v$.localValue?.required?.$invalid"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
-      >
-        <span class="font-medium" :data-test="dataTest + '-required-error'">{{ v$.localValue.required.$message }}</span>
-      </p>
-      <p
-        v-if="v$.localValue?.maxLength?.$invalid"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
-      >
-        <span class="font-medium" :data-test="dataTest + '-maxLength-error'">{{ v$.localValue?.maxLength.$message }}</span>
-      </p>
-      <p class="mt-2 text-xs text-red-600 dark:text-red-400">
-        <span class="font-medium"><slot name="error" /></span>
+        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
       </p>
     </span>
   </div>

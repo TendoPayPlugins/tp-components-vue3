@@ -24,9 +24,9 @@ const props = defineProps({
     type: String,
     default: "example.com",
   },
-  validator: {
+  v: {
     type: Object,
-    default: () => {},
+    default: () => null,
   },
   dataTest: {
     type: String,
@@ -36,6 +36,10 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: false,
+  },
+  showError: {
+    type: Boolean,
+    default: true,
   }
 });
 
@@ -77,7 +81,7 @@ watch([protocol, endpoint], () => {
         :data-test="dataTest + '-label'"
     >{{ label }}</label
     >
-    <div class="relative mt-2 rounded-md shadow-sm">
+    <div class="relative rounded-md shadow-sm">
       <div class="absolute inset-y-0 left-0 flex items-center">
         <select
             :disabled="disabled"
@@ -107,6 +111,14 @@ watch([protocol, endpoint], () => {
           :data-test="dataTest + '-input'"
       />
     </div>
+    <span v-if="showError && v?.$invalid">
+      <p
+        v-for="error in v?.$silentErrors"
+        class="mt-2 text-xs text-red-600 dark:text-red-400"
+      >
+        <span class="font-medium" :data-test="dataTest + '-url-error' + error.$uid">{{ error.$message }}</span>
+      </p>
+    </span>
   </div>
 </template>
 
