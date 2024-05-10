@@ -1,10 +1,10 @@
 <template>
     <div>
         <input
-            :id="'phone-number-input-' + reference"
-            :ref="reference"
+            v-if="editable"
+            ref="editableField"
             v-model="phoneNumberWithoutAreaCode"
-            class="form-control form-control-input"
+            class="block w-full rounded-md border-0 py-2 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
             :placeholder="placeholder"
             aria-describedby="PhoneNumberHelp"
             data-private
@@ -16,8 +16,14 @@
             @blur="closeEditable"
         >
         <input
+            class="block w-full rounded-md border-0 py-2 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
+            v-if="!editable"
+            name="phone"
+            aria-describedby="PhoneNumberHelp"
+            data-private
+            type="tel"
+            @focus="openEditable"
             v-model="phoneNumberLocal"
-            type="hidden"
         >
     </div>
 </template>
@@ -27,22 +33,24 @@ import {onMounted, watch, ref, defineModel, defineEmits, nextTick} from "vue";
 
 const INPUT_PHONE_PATTERN_11 = /(\w)(\w{3})(\w{3})(\w{4})/
 
+const editableField = ref()
 const phoneNumber = defineModel({ required: true })
 const phoneNumberLocal = ref()
+const editable = ref(false)
 
 const props = defineProps({
     placeholder: {
       type: String,
       default: 'starts with 09',
     },
-    reference: {
-        type: String,
-        default: 'phoneRef'
-    },
     title: {
         type: String,
         default: 'Mobile Number',
     },
+    dataTest: {
+        type: String,
+        required: true
+    }
 })
 
 const emit = defineEmits(['error', 'close', 'update:modelValue'])
@@ -71,14 +79,19 @@ const formatPhoneNumberWithoutAreaCode = (phone) => {
 const updateValue = () => {
     const value = sanitizePhoneNumber(phoneNumberLocal.value).replace(/^63/, '0')
     phoneNumberWithoutAreaCode.value = formatPhoneNumberWithoutAreaCode(value)
-    // emit('update:modelValue', phoneNumber.value)
 }
 
+const openEditable = () => {
+    editable.value = true;
+    nextTick(() => {
+        editableField.value.focus()
+    })
+}
 const closeEditable = () => {
     const value = sanitizePhoneNumber(phoneNumberLocal.value).replace(/^63/, '0')
     phoneNumberWithoutAreaCode.value = formatPhoneNumberWithoutAreaCode(value)
+    editable.value = false
     emit('close');
-    // emit('update:modelValue', phoneNumberLocal.value)
 }
 
 watch(phoneNumber, () => {
