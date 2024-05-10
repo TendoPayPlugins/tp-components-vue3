@@ -70,9 +70,7 @@ const basicColors = {
 const props = defineProps({
   config: {
     type: Object,
-    default: () => {
-      return {}
-    }
+    default: () => {}
   },
   data: {
     required: true,
@@ -87,11 +85,10 @@ const props = defineProps({
 function extractObject2Array (items) {
 
   if (!items || !Array.isArray(items) || items.length === 0) {
-    console.log('Chart: empty items')
     return []
   }
 
-  const { x, headers, type, opacity, options } = this.config
+  const { x, headers, type, opacity, options } = props.config
   const keys = Object.keys(headers)
   const initObj = keys.reduce((c, k) => ({ ...c, [k]: [] }), { x: [] })
 
@@ -107,7 +104,7 @@ function extractObject2Array (items) {
 
   const objX = objs.x
   delete objs.x
-  const { parents } = this.config
+  const { parents } = props.config
   switch (type) {
     case 'pie':
       return Object.keys(objs).reduce((c, k) => ([...c, {
@@ -143,7 +140,7 @@ const drawPlot = () => {
     Plotly.newPlot(
       props.id,
       extractObject2Array(props.data),
-      props.config.layout || {},
+      props.config?.layout || {},
       {
         showSendToCloud: true, responsive: true
       }
