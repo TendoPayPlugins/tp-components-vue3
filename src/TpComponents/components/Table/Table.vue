@@ -19,7 +19,7 @@
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                    <tr v-for="(item, index) in data" :key="index" :data-test="'row-index-' + index">
+                    <tr v-for="(item, index) in state.data" :key="index" :data-test="'row-index-' + index">
                         <td v-if="batchActions" class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900">
                             <InputCheckbox
                                 :data-test="'batch-list-' + index"
@@ -98,6 +98,14 @@ const setPage = (page) => {
     props.goPage(page)
 }
 
+const setData = (inputData) => {
+    console.log(inputData)
+
+    const { data: rowsData = [], current_page = 1, from = 0, per_page = 30, to = 0, total = 0 } = inputData
+    console.log(rowsData)
+    state.data = rowsData
+}
+
 const hasItemInBatchList = (itemId) => state.batchList.some(i => i.id === itemId)
 
 const toggleBatchItem = (item) => {
@@ -111,6 +119,10 @@ const toggleBatchItem = (item) => {
         state.batchAll = state.batchList.length === state.data.length
     }
 }
+
+defineExpose({
+    setData,
+});
 </script>
 
 <style>
