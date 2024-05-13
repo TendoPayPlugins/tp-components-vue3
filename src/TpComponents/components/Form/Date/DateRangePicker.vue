@@ -110,9 +110,15 @@ watch(localValue, onInput);
 </template>
 
 <style>
-div:has(>div.vtd-datepicker) {
-    max-width: 610px;
-    max-height: 378px;
+@media only screen and (min-width: 600px) {
+    .vtd-datepicker {
+        width: 610px !important;
+    }
+    div:has(>div.vtd-datepicker) {
+        max-width: 610px;
+        max-height: 378px;
+        position: relative !important;
+    }
 }
 
 </style>
