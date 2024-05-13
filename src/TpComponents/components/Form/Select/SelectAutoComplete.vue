@@ -62,17 +62,18 @@
     </div>
     {{ props.localValue }}
   </Combobox>
-  <p
-    v-if="v$.localValue?.required?.$invalid"
-    class="mt-2 text-xs text-red-600 dark:text-red-400"
-  >
-    <span class="font-medium">{{ v$.localValue.required.$message }}</span>
-  </p>
+  <span v-if="showError && v?.$invalid">
+    <p
+      v-for="error in v?.$silentErrors"
+      class="mt-2 text-xs text-red-600 dark:text-red-400"
+    >
+      <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+    </p>
+  </span>
 </template>
 
 <script setup>
-import { useVuelidate } from "@vuelidate/core";
-import {reactive, ref, watch} from "vue";
+import { ref, watch } from "vue";
 import { CheckIcon, ChevronDownIcon } from "@heroicons/vue/24/solid";
 import {
   Combobox,
@@ -83,19 +84,13 @@ import {
   ComboboxOptions,
 } from "@headlessui/vue";
 
-const state = reactive({
-  localValue: [],
-});
+const localValue = defineModel({ required: true })
 
 let query = ref("");
 
 const props = defineProps({
   label: {
     type: String,
-    default: null,
-  },
-  value: {
-    type: [String, Number, Array],
     default: null,
   },
   placeholder: {
@@ -114,7 +109,7 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-  validator: {
+  v: {
     type: Object,
     default: () => {},
   },
@@ -128,23 +123,19 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["input"]);
+const emit = defineEmits(["update:modelValue"]);
 
-const rules = {
-  localValue: props.validator || {},
+const onInput = () => {
+  emit("update:modelValue", localValue.value);
 };
 
-const onInput = (value) => {
-  if (props.emitType === "value") {
-    emit("input", value.value);
-  } else {
-    emit("input", value);
-  }
-};
+watch(localValue, onInput)
 
-watch(() => props.value, (newValue) => {
-  state.localValue = newValue;
-});
-
-const v$ = useVuelidate(rules, state);
+// const onInput = (value) => {
+//   if (props.emitType === "value") {
+//     emit("input", value.value);
+//   } else {
+//     emit("input", value);
+//   }
+// };
 </script>

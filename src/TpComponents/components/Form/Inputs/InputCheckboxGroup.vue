@@ -1,6 +1,5 @@
 <script setup>
-import {reactive, watch} from "vue";
-import { useVuelidate } from "@vuelidate/core";
+import { watch } from "vue";
 
 const localValue = defineModel({ required: true })
 
@@ -14,7 +13,7 @@ const props = defineProps({
     default: null,
     required: false,
   },
-  validator: {
+  v: {
     type: Object,
     default: () => {},
   },
@@ -22,15 +21,13 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  showError: {
+    type: Boolean,
+    default: true
+  }
 });
 
 const emit = defineEmits(["update:modelValue"]);
-
-const rules = {
-  localValue: props.validator || {},
-};
-
-const v$ = useVuelidate(rules, { localValue });
 
 const onInput = () => {
   emit("update:modelValue", localValue.value);
@@ -44,21 +41,20 @@ watch(localValue, onInput);
     <div>
         <fieldset>
             <legend
-                    v-if="label"
-                    class="text-sm font-semibold leading-6 text-gray-900"
+              v-if="label"
+              class="text-sm font-semibold leading-6 text-gray-900"
             >
-                {{ label }} // {{ localValue }}
             </legend>
             <div class="mt-6 space-y-6">
                 <div
-                        class="relative flex gap-x-3"
-                        v-for="(option, index) in options"
-                        :key="index"
+                  class="relative flex gap-x-3"
+                  v-for="(option, index) in options"
+                  :key="index"
                 >
                     <div class="flex h-6 items-center">
                         <input
                                 :id="option.value"
-                                v-model="v$.localValue.$model"
+                                v-model="localValue"
                                 name="comments"
                                 type="checkbox"
                                 :value="option.value"
@@ -80,11 +76,13 @@ watch(localValue, onInput);
                 </div>
             </div>
         </fieldset>
-        <p
-                v-if="v$.localValue?.required?.$invalid"
-                class="mt-2 text-xs text-red-600 dark:text-red-400"
-        >
-            <span class="font-medium">{{ v$.localValue.required.$message }}</span>
-        </p>
+        <span v-if="showError && v?.$invalid">
+          <p
+              v-for="error in v?.$silentErrors"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+          >
+            <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+          </p>
+      </span>
     </div>
 </template>

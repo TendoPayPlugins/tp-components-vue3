@@ -37,11 +37,6 @@ const onInput = () => {
 };
 
 watch(localValue, onInput)
-
-watch(() => props.value, () => {
-  localValue.value = props.value
-})
-
 </script>
 
 <template>
