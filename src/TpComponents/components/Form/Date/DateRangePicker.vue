@@ -42,6 +42,46 @@ const onInput = () => {
     emit("update:modelValue", localValue.value);
 };
 
+const customShortcuts = () => {
+  return [
+    {
+      label: "Past 1 week",
+      atClick: () => {
+        const date = new Date();
+        return [new Date(date.setDate(date.getDate() - 7)), new Date()];
+      },
+    },
+    {
+      label: "Past 1 month",
+      atClick: () => {
+        const date = new Date();
+        return [new Date(date.setMonth(date.getMonth() - 1)), new Date()];
+      },
+    },
+    {
+      label: "Past 3 months",
+      atClick: () => {
+        const date = new Date();
+        return [new Date(date.setMonth(date.getMonth() - 3)), new Date()];
+      },
+    },
+    {
+      label: "Past 6 months",
+      atClick: () => {
+        const date = new Date();
+        return [new Date(date.setMonth(date.getMonth() - 6)), new Date()];
+      },
+    },
+    {
+      label: "Past 1 year",
+      atClick: () => {
+        const date = new Date();
+        return [new Date(date.setFullYear(date.getFullYear() - 1)), new Date()];
+      },
+    },
+  ];
+};
+
 watch(localValue, onInput);
 </script>
 
@@ -55,6 +95,7 @@ watch(localValue, onInput);
             :no-input="inline"
             use-range
             as-single
+            :shortcuts="customShortcuts"
         />
         <span v-if="showError && v?.$invalid">
           <p
