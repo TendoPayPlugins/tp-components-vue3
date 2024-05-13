@@ -86,24 +86,33 @@ watch(localValue, onInput);
 </script>
 
 <template>
-    <div>
-        <vue-tailwind-datepicker
-            v-model="localValue"
-            :disabled="disabled"
-            :placeholder="placeholder"
-            :formatter="formatter"
-            :no-input="inline"
-            use-range
-            as-single
-            :shortcuts="customShortcuts"
-        />
-        <span v-if="showError && v?.$invalid">
-          <p
-              v-for="error in v?.$silentErrors"
-              class="mt-2 text-xs text-red-600 dark:text-red-400"
-          >
-            <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
-          </p>
-    </span>
+    <div class="flex">
+      <vue-tailwind-datepicker
+          v-model="localValue"
+          :disabled="disabled"
+          :placeholder="placeholder"
+          :formatter="formatter"
+          :no-input="inline"
+          use-range
+          as-single
+          :shortcuts="customShortcuts"
+          input-classes=""
+      />
+      <span v-if="showError && v?.$invalid">
+        <p
+          v-for="error in v?.$silentErrors"
+          class="mt-2 text-xs text-red-600 dark:text-red-400"
+        >
+          <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+        </p>
+      </span>
     </div>
 </template>
+
+<style>
+div:has(>div.vtd-datepicker) {
+    max-width: 610px;
+    max-height: 378px;
+}
+
+</style>
