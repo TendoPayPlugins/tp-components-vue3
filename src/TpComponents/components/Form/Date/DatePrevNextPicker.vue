@@ -1,11 +1,12 @@
 <template>
-  <span class="isolate inline-flex rounded-md shadow-sm">
-    <button :class="{ disabled: !isPrevEnable }" @click="goPrev" type="button" class="relative inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
+  <span class="isolate inline-flex items-center">
+    <button :class="{ disabled: !isPrevEnable }" @click="goPrev" type="button" class="relative inline-flex items-center px-2 py-2 text-gray-400 hover:bg-gray-50 focus:z-10">
       <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
-      <span>Prev</span>
+      <span class="uppercase text-xxs">Previous</span>
     </button>
-    <button :class="{ disabled: !isNextEnable }" @click="goNext" type="button" class="relative -ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
-      <span>Next</span>
+    <div class="text-gray-300">|</div>
+    <button :class="{ disabled: !isNextEnable }" @click="goNext" type="button" class="relative -ml-px inline-flex items-center px-2 py-2 text-gray-400 hover:bg-gray-50 focus:z-10">
+      <span class="uppercase text-xxs">Next</span>
       <ChevronRightIcon class="h-5 w-5" aria-hidden="true" />
     </button>
   </span>
