@@ -99,10 +99,7 @@ const setPage = (page) => {
 }
 
 const setData = (inputData) => {
-    console.log(inputData)
-
     const { data: rowsData = [], current_page = 1, from = 0, per_page = 30, to = 0, total = 0 } = inputData
-    console.log(rowsData)
     state.data = rowsData
 }
 
