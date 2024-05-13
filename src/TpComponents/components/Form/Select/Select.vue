@@ -4,7 +4,7 @@ import { useVuelidate } from "@vuelidate/core";
 
 const localValue = defineModel({ required: true })
 
-const emit = defineEmits(["update:value"]);
+const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
   label: {
@@ -35,7 +35,7 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-  validator: {
+  v: {
     type: Object,
     default: () => {},
   },
@@ -45,14 +45,8 @@ const props = defineProps({
   },
 });
 
-const rules = {
-  localValue: props.validator || {},
-};
-
-const v$ = useVuelidate(rules, { localValue });
-
 const onInput = () => {
-  emit("update:value", localValue.value);
+  emit("update:modelValue", localValue.value);
 };
 
 watch(localValue, onInput);
@@ -71,7 +65,7 @@ watch(localValue, onInput);
       :multiple="multiple"
       :id="dataTest"
       :disabled="disabled"
-      v-model="v$.localValue.$model"
+      v-model="localValue"
       :data-test="dataTest + '-select'"
       @change="onInput"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-tp-primary block w-full p-2.0 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -94,15 +88,12 @@ watch(localValue, onInput);
     <p class="mt-2 text-xs text-green-600 dark:text-green-400">
       <slot name="success" />
     </p>
-    <span v-if="showError">
+    <span v-if="showError && v?.$invalid">
       <p
-        v-if="v$.localValue?.required?.$invalid"
+        v-for="error in v?.$silentErrors"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium">{{ v$.localValue.required.$message }}</span>
-      </p>
-      <p class="mt-2 text-xs text-red-600 dark:text-red-400">
-        <span class="font-medium"><slot name="error" /></span>
+        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
       </p>
     </span>
   </div>

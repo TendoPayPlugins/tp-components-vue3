@@ -1,19 +1,8 @@
 <script setup>
-import { reactive, watch } from "vue";
-import { useVuelidate } from "@vuelidate/core";
-
-const state = reactive({
-  localValue: "",
-});
-
-const emit = defineEmits(["input"]);
+import { watch } from "vue";
 
 const props = defineProps({
   label: {
-    type: String,
-    default: null,
-  },
-  value: {
     type: String,
     default: null,
   },
@@ -45,7 +34,7 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  validator: {
+  v: {
     type: Object,
     default: () => {},
   },
@@ -55,21 +44,15 @@ const props = defineProps({
   },
 });
 
-const rules = {
-  localValue: props.validator || {},
-};
+const localValue = defineModel({ required: true })
+
+const emit = defineEmits(["update:modelValue"]);
 
 const onInput = () => {
-  emit("input", state.localValue);
+  emit("update:modelValue", localValue.value);
 };
 
-state.localValue = props.value
-
-watch(() => props.value, (newValue) => {
-  state.localValue = newValue;
-});
-
-const v$ = useVuelidate(rules, state);
+watch(localValue, onInput);
 </script>
 
 <template>
@@ -88,7 +71,7 @@ const v$ = useVuelidate(rules, state);
         :step="step"
         :min="min"
         :max="max"
-        v-model="v$.localValue.$model"
+        v-model="localValue"
         :disabled="disabled"
         :readonly="readonly"
         id="number-input"
@@ -96,9 +79,9 @@ const v$ = useVuelidate(rules, state);
         class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
         :class="{
           'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
-            v$.localValue.$invalid,
+            v?.$invalid,
           'text-gray-900 shadow-sm placeholder:text-gray-400':
-            !v$.localValue.$invalid,
+            !v?.$invalid,
         }"
         :placeholder="placeholder"
         @input="onInput"
@@ -113,41 +96,12 @@ const v$ = useVuelidate(rules, state);
       <slot name="success" />
     </p>
 
-    <span v-if="showError">
+    <span v-if="showError && v?.$invalid">
       <p
-        v-if="v$.localValue?.required?.$invalid"
+        v-for="error in v?.$silentErrors"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-required-error'">{{
-          v$.localValue.required.$message
-        }}</span>
-      </p>
-      <p
-        v-if="v$.localValue?.requiredIf?.$invalid"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
-      >
-        <span class="font-medium" :data-test="dataTest + '-requiredIf-error'">{{
-          v$.localValue.requiredIf.$message
-        }}</span>
-      </p>
-      <p
-        v-if="v$.localValue?.max?.$invalid"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
-      >
-        <span class="font-medium" :data-test="dataTest + '-min-error'">{{
-          v$.localValue?.max.$message
-        }}</span>
-      </p>
-      <p
-        v-if="v$.localValue?.min?.$invalid"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
-      >
-        <span class="font-medium" :data-test="dataTest + '-max-error'">{{
-          v$.localValue?.min.$message
-        }}</span>
-      </p>
-      <p class="mt-2 text-xs text-red-600 dark:text-red-400">
-        <span class="font-medium"><slot name="error" /></span>
+        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
       </p>
     </span>
   </div>

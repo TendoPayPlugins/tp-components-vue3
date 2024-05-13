@@ -42,13 +42,13 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["update:value"]);
+const emit = defineEmits(["update:modelValue"]);
 
 const onInput = () => {
   if(localValue.value === "") {
     localValue.value = null
   }
-  emit("update:value", localValue.value);
+  emit("update:modelValue", localValue.value);
 };
 
 watch(localValue, onInput);

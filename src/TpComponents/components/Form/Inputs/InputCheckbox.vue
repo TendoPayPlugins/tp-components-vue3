@@ -17,10 +17,6 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  value: {
-    type: Boolean,
-    default: false,
-  },
   showError: {
     type: Boolean,
     default: true,
