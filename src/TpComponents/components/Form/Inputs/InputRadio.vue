@@ -1,10 +1,7 @@
 <script setup>
-import { useVuelidate } from "@vuelidate/core";
-import { reactive, watch } from "vue";
+import { watch, defineEmits, defineModel } from "vue";
 
-const state = reactive({
-  localValue: null,
-});
+const localValue = defineModel({ required: true })
 
 const props = defineProps({
   options: {
@@ -21,7 +18,7 @@ const props = defineProps({
     required: false,
     default: null,
   },
-  validator: {
+  v: {
     type: Object,
     default: () => {},
   },
@@ -29,30 +26,20 @@ const props = defineProps({
     type: String,
     required: true
   },
-  value: {
-    type: [String,Number],
-    required: false,
-    default: null,
+  showError: {
+    type: Boolean,
+    default: true
   }
 });
 
-const emit = defineEmits(["input"]);
+const emit = defineEmits(["update:modelValue"]);
 
 const onInput = () => {
-  emit("input", state.localValue);
+  emit("update:modelValue", localValue.value);
 };
 
-state.localValue = props.value
+watch(localValue, onInput);
 
-const rules = {
-  localValue: props.validator || {},
-};
-
-watch(() => props.value, (newValue) => {
-  state.localValue = newValue;
-});
-
-const v$ = useVuelidate(rules, state);
 </script>
 
 <template>
@@ -72,7 +59,7 @@ const v$ = useVuelidate(rules, state);
       >
         <input
           :id="option.value"
-          v-model="v$.localValue.$model"
+          v-model="localValue"
           :value="option.value"
           type="radio"
           class="h-4 w-4 border-gray-300 text-tp-primary focus:ring-tp-primary"
@@ -85,6 +72,14 @@ const v$ = useVuelidate(rules, state);
           :data-test="dataTest + '-label-' + index"
           >{{ option.label }}</label
         >
+        <span v-if="showError && v?.$invalid">
+          <p
+            v-for="error in v?.$silentErrors"
+            class="mt-2 text-xs text-red-600 dark:text-red-400"
+          >
+            <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+          </p>
+        </span>
       </div>
     </div>
   </fieldset>

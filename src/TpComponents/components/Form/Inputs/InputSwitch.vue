@@ -1,14 +1,14 @@
 
 <script setup>
-import {reactive, ref, watch} from "vue";
+import { watch} from "vue";
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
-import { useVuelidate } from "@vuelidate/core";
+
 const props = defineProps({
   value: {
     type: Boolean,
     default: false,
   },
-  validator: {
+  v: {
     type: Object,
     default: () => {},
   },
@@ -35,21 +35,22 @@ const props = defineProps({
   dataTest: {
     type: String,
     required: true,
+  },
+  showError: {
+    type: Boolean,
+    default: true,
   }
 });
 
 const emit = defineEmits(["update:modelValue"]);
 
 const localValue = defineModel({ required: true })
-const rules = props.validator;
 
 const onInput = () => {
   emit("update:modelValue", Boolean(localValue.value));
 };
 
 watch(localValue, onInput);
-
-const v$ = useVuelidate(rules, { localValue: localValue});
 </script>
 
 <template>
@@ -75,5 +76,13 @@ const v$ = useVuelidate(rules, { localValue: localValue});
       {{ ' ' }}
     </SwitchLabel>
   </SwitchGroup>
+  <span v-if="showError && v?.$invalid">
+    <p
+      v-for="error in v?.$silentErrors"
+      class="mt-2 text-xs text-red-600 dark:text-red-400"
+    >
+      <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+    </p>
+  </span>
 </template>
 

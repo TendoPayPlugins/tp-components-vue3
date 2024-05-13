@@ -4,9 +4,7 @@ const emit = defineEmits(['input'])
 import {ref, watch} from "vue";
 import VueTailwindDatepicker from "vue-tailwind-datepicker";
 
-// const dateValue = ref([]);
-
-const dateValue = defineModel([])
+const localValue = defineModel({ required: true })
 
 const formatter = ref({
     date: 'YYYY-MM-DD',
@@ -14,10 +12,6 @@ const formatter = ref({
 })
 
 const props = defineProps({
-  value: {
-    type: Array,
-    default: []
-  },
   disabled: {
     type: Boolean,
     default: false,
@@ -26,34 +20,49 @@ const props = defineProps({
     type: String,
     default: 'Select'
   },
-  validator: {
+  v: {
     type: Object,
     default: () => {}
   },
   inline: {
     type: Boolean,
     default: false,
+  },
+  showError: {
+    type: Boolean,
+    default: true
+  },
+  dataTest: {
+    type: String,
+    required: true
   }
 })
 
 const onInput = () => {
-    emit("update:value", dateValue.value);
+    emit("update:modelValue", localValue.value);
 };
 
-watch(dateValue, onInput);
+watch(localValue, onInput);
 </script>
 
 <template>
     <div>
         <vue-tailwind-datepicker
-            v-model="dateValue"
+            v-model="localValue"
             :disabled="disabled"
             :placeholder="placeholder"
-            @update:modelValue="onInput"
             :formatter="formatter"
             :no-input="inline"
             use-range
             as-single
         />
+        <span v-if="showError && v?.$invalid">
+          <p
+              v-for="error in v?.$silentErrors"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+          >
+            <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+          </p>
+    </span>
     </div>
 </template>
