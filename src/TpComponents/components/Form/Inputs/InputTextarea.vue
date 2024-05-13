@@ -36,7 +36,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  validator: {
+  v: {
     type: Object,
     default: () => {},
   },
@@ -47,12 +47,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["update:value"]);
-
-const rules = {
-  localValue: props.validator || {},
-};
-
-const v$ = useVuelidate(rules, { localValue });
 
 const onInput = () => {
   emit("update:value", localValue.value);
@@ -72,7 +66,7 @@ watch(localValue, onInput);
     >
     <div class="mt-2">
       <textarea
-        v-model="v$.localValue.$model"
+        v-model="localValue"
         @input="onInput"
         rows="4"
         :placeholder="placeholder"
@@ -85,48 +79,37 @@ watch(localValue, onInput);
         class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
         :class="{
           'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
-            v$.localValue.$invalid,
+            v?.$invalid,
           'text-gray-900 shadow-sm placeholder:text-gray-400':
-            !v$.localValue.$invalid,
+            !v?.$invalid,
         }"
       >{{ value }}</textarea
       >
     </div>
-    <span v-if="showError">
+    <span v-if="showError && v?.$invalid">
       <p
-        v-if="v$.localValue?.email?.$invalid"
+        v-for="error in v?.$silentErrors"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-email-error'">{{
-          v$.localValue.email.$message
-        }}</span>
+        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
       </p>
+
       <p
-        v-if="v$.localValue?.required?.$invalid"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
-      >
-        <span class="font-medium" :data-test="dataTest + '-required-error'">{{
-          v$.localValue.required.$message
-        }}</span>
-      </p>
-      <p
-        v-if="v$.localValue?.maxLength?.$invalid"
+        v-if="v?.maxLength?.$invalid"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
         <span class="font-medium" :data-test="dataTest + '-maxLength-error'">{{
-          v$.localValue?.maxLength.$message
+          v?.maxLength.$message
         }}</span>
       </p>
+
       <p
-          v-if="v$.localValue?.minLength?.$invalid"
-          class="mt-2 text-xs text-red-600 dark:text-red-400"
+        v-if="v?.minLength?.$invalid"
+        class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
         <span class="font-medium" :data-test="dataTest + '-minLength-error'">{{
-            v$.localValue?.minLength.$message
+            v?.minLength.$message
             }}</span>
-      </p>
-      <p class="mt-2 text-xs text-red-600 dark:text-red-400">
-        <span class="font-medium"><slot name="error" /></span>
       </p>
     </span>
   </div>

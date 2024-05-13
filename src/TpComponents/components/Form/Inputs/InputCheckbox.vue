@@ -1,6 +1,5 @@
 <script setup>
 import { watch } from "vue";
-import { useVuelidate } from "@vuelidate/core";
 
 const localValue = defineModel({ required: true })
 
@@ -10,7 +9,7 @@ const props = defineProps({
     default: null,
     required: false,
   },
-  validator: {
+  v: {
     type: Object,
     default: () => {},
   },
@@ -21,17 +20,14 @@ const props = defineProps({
   value: {
     type: Boolean,
     default: false,
+  },
+  showError: {
+    type: Boolean,
+    default: true,
   }
 });
 
 const emit = defineEmits(["update:modelValue"]);
-
-const rules = {
-  localValue: props.validator || {},
-};
-
-
-const v$ = useVuelidate(rules, { localValue });
 
 const onClickInput = () => {
   emit("clicked", !localValue.value)
@@ -51,7 +47,7 @@ watch(() => props.value, () => {
 <template>
       <input
         :id="dataTest + 'checkbox-label'"
-        v-model="v$.localValue.$model"
+        v-model="localValue"
         type="checkbox"
         :data-test="dataTest + '-option'"
         @click="onClickInput"
@@ -63,4 +59,12 @@ watch(() => props.value, () => {
         :data-test="dataTest + '-label'"
         class="font-medium text-gray-900 ml-2"
         >{{ label }}</label>
+      <span v-if="showError && v?.$invalid">
+        <p
+          v-for="error in v?.$silentErrors"
+          class="mt-2 text-xs text-red-600 dark:text-red-400"
+        >
+          <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+        </p>
+      </span>
 </template>

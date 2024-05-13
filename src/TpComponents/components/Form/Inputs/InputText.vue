@@ -1,6 +1,5 @@
 <script setup>
 import { watch} from "vue";
-import { useVuelidate } from "@vuelidate/core";
 
 const localValue = defineModel({ required: true })
 

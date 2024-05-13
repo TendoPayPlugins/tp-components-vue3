@@ -20,13 +20,17 @@ const props = defineProps({
         type: String,
         default: 'Select'
     },
-    validator: {
+    v: {
         type: Object,
         default: () => {}
     },
     inline: {
         type: Boolean,
         default: false,
+    },
+    showError: {
+        type: Boolean,
+        default: true
     }
 })
 
@@ -45,4 +49,12 @@ const onInput = (value) => {
         :formatter="formatter"
         :no-input="inline"
     />
+    <span v-if="showError && v?.$invalid">
+      <p
+          v-for="error in v?.$silentErrors"
+          class="mt-2 text-xs text-red-600 dark:text-red-400"
+      >
+        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+      </p>
+    </span>
 </template>
