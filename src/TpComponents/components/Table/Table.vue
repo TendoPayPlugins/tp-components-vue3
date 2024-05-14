@@ -39,6 +39,7 @@
                     </tbody>
                 </table>
             </div>
+            <Pagination v-if="showPagination" :pagination="state.pagination" @page="setPage" />
         </div>
     </div>
 </template>
@@ -48,6 +49,7 @@ import DropDownActions from "~/components/Table/DropDownActions.vue";
 import Numbering from "~/components/Table/Numbering.vue";
 import InputCheckbox from "~/components/Form/Inputs/InputCheckbox.vue";
 import {watch, reactive, ref, computed} from "vue";
+import Pagination from "~/components/Table/Pagination.vue";
 
 const state = reactive({
     batchList: [],
@@ -65,6 +67,10 @@ const props = defineProps({
     goPage: {
         type: Function,
         default: () => Function(),
+    },
+    showPagination: {
+        type: Boolean,
+        default: true,
     },
     batchActions: {
         type: Array,
@@ -99,8 +105,21 @@ const setPage = (page) => {
 }
 
 const setData = (inputData) => {
-    const { data: rowsData = [], current_page = 1, from = 0, per_page = 30, to = 0, total = 0 } = inputData
+    const { data: rowsData = [], current_page = 1, from = 0, per_page = 30, to = 0, total = 0, last_page = 1 } = inputData
     state.data = rowsData
+
+    if(props.showPagination) {
+        state.pagination = {
+            has_next: current_page < last_page,
+            has_prev: current_page >= 2,
+            current_page: current_page,
+            from: from,
+            to: to,
+            per_page: per_page,
+            total: total,
+            last_page: last_page
+        }
+    }
 }
 
 const hasItemInBatchList = (itemId) => state.batchList.some(i => i.id === itemId)

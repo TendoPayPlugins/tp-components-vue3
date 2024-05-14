@@ -43,7 +43,6 @@ const props = defineProps({
   }
 });
 
-// Obliczona właściwość pełnego adresu URL
 const fullUrl = computed(() => {
   return `${protocol.value}://${endpoint.value}`;
 });

@@ -1,17 +1,13 @@
 <template>
     <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
-        <div class="flex flex-1 justify-between sm:hidden">
-            <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-            <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
-        </div>
-        <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+        <div class=" sm:flex sm:flex-1 sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700">
                     Showing
                     {{ ' ' }}
                     <span class="font-medium">{{ pagination.from || 0 }}</span>
                     {{ ' ' }}
-                    to
+                    -
                     {{ ' ' }}
                     <span class="font-medium">{{ pagination.to || 0 }}</span>
                     {{ ' ' }}
@@ -24,21 +20,15 @@
             </div>
             <div>
                 <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                    <a @click="" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 cursor-pointer">
-                        <span class="sr-only">Previous</span>
+                    <button  @click="goPrev()" :disabled="!pagination.has_prev" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 cursor-pointer mr-2">
                         <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
-                    </a>
-                    <a href="#" aria-current="page" class="relative z-10 inline-flex items-center bg-tp-primary px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tp-primary">1</a>
-                    <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">2</a>
-                    <a href="#" class="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex">3</a>
-                    <span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">...</span>
-                    <a href="#" class="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex">8</a>
-                    <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">9</a>
-                    <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">10</a>
-                    <a href="#" class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                        <span class="sr-only">Next</span>
+                        <span>Previous</span>
+                    </button>
+                    {{ pagination.current_page }} out of {{ pagination.last_page }}
+                    <button @click="goNext()" :disabled="!pagination.has_next" class="ml-2 relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                        <span>Next</span>
                         <ChevronRightIcon class="h-5 w-5" aria-hidden="true" />
-                    </a>
+                    </button>
                 </nav>
             </div>
         </div>
@@ -47,17 +37,35 @@
 
 <script setup>
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
+import { computed } from "vue"
 
-const emit = defineEmits(['input'])
+const emit = defineEmits(['page'])
+
+const setData = (inputData) => {
+
+}
 
 const props = defineProps({
   pagination: {
     type: Object,
-    default: () => {},
+    required: true,
+    default: {
+      current_page: 1,
+      last_page: 1,
+      to: 0,
+      from: 0,
+      total: 0,
+      has_prev: false,
+      has_next: false,
+    }
   },
 })
-
-function onInput(page) {
-  emit('input', page)
+const goPrev = () => {
+    emit('page', props.pagination.current_page - 1)
 }
+
+const goNext = () => {
+    emit('page', props.pagination.current_page + 1)
+}
+
 </script>

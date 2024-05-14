@@ -1515,6 +1515,10 @@ input:checked + .toggle-bg {
   margin-top: 2rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -2488,6 +2492,10 @@ input:checked + .toggle-bg {
   line-height: 1rem;
 }
 
+.text-xxs {
+  font-size: 10px;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -2549,6 +2557,11 @@ input:checked + .toggle-bg {
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .text-gray-400 {
