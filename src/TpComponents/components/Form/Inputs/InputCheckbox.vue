@@ -42,7 +42,7 @@ watch(localValue, onInput)
         type="checkbox"
         :data-test="dataTest + '-option'"
         @click="onClickInput"
-        class="h-4 w-4 rounded border-gray-300 text-tp-primary focus:ring-tp-primary"
+        class="size-4 rounded border-gray-300 text-tp-primary focus:ring-tp-primary"
       />
       <label
         v-if="label"

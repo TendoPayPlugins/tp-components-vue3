@@ -42,8 +42,8 @@ const emit = defineEmits(["clickout"]);
             <component :is="item.icon" class="mr-3 h-6 w-6 flex-shrink-0" aria-hidden="true" />
             <span class="flex-1">{{ item.name }}</span>
             <span v-if="item.count" :class="[item.current ? 'bg-slate-600' : 'bg-slate-800', 'ml-3 inline-block py-0.5 px-3 text-xs font-medium rounded-full']">{{ item.count }}</span>
-            <ChevronRightIcon v-if="!item.expanded" class="h-5 w-5" />
-            <ChevronDownIcon v-else class="h-5 w-5" />
+            <ChevronRightIcon v-if="!item.expanded" class="size-5" />
+            <ChevronDownIcon v-else class="size-5" />
           </a>
           <a
             v-for="sub in item.children"

@@ -3,9 +3,9 @@
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <table class="min-w-full divide-y divide-gray-300" data-test="table">
-                    <thead>
+                    <thead class="bg-gray-300 text-gray-600 text-xxs">
                     <tr>
-                        <th v-if="batchActions">
+                        <th v-if="batchActions" class="py-2.5">
                             <InputCheckbox
                                 :data-test="'checkbox-batch-all' + dataTest"
                                 v-model="state.batchAll"

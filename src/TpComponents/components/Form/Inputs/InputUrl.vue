@@ -89,7 +89,7 @@ watch([protocol, endpoint], () => {
             v-model="protocol"
             autocomplete="type"
             :data-test="dataTest + '-select-type'"
-            class="h-full rounded-md border-0 bg-transparent pl-3 pr-12 text-gray-500 focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-inset sm:text-sm"
+            class="h-full rounded-md border-0 bg-transparent pl-3 pr-12 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tp-primary sm:text-sm"
         >
           <option
               :data-test="dataTest + '-option-' + index"
@@ -106,7 +106,7 @@ watch([protocol, endpoint], () => {
           name="url"
           :id="dataTest"
           v-model="endpoint"
-          class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-tp-primary focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+          class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary sm:text-sm sm:leading-6"
           :placeholder="placeholder"
           :data-test="dataTest + '-input'"
       />

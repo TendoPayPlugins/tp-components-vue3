@@ -3,7 +3,7 @@
     <a class="clickable" href="#" v-on:click.prevent="doCopy">
       <slot>
           <DocumentDuplicateIcon
-              class="-ml-0.5 h-5 w-5 text-gray-400"
+              class="-ml-0.5 size-5 text-gray-400"
               aria-hidden="true"
       /></slot>
     </a>

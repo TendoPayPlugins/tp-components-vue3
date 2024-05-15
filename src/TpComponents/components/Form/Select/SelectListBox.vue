@@ -95,7 +95,7 @@ watch(localValue, onInput)
               }}
           </span>
           <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-            <ChevronDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+            <ChevronDownIcon class="size-5 text-gray-400" aria-hidden="true" />
           </span>
         </ListboxButton>
 
@@ -132,7 +132,7 @@ watch(localValue, onInput)
                       {{ option.label }}
                     </span>
                     <span v-if="selected" :class="[active ? 'text-white' : 'text-tp-primary', 'absolute inset-y-0 right-0 flex items-center pr-4']">
-                      <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                      <CheckIcon class="size-5" aria-hidden="true" />
                     </span>
                   </li>
                 </ListboxOption>

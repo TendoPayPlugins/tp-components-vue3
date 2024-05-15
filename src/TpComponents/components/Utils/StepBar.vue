@@ -34,7 +34,7 @@ const onInput = (step) => {
             class="cursor-pointer relative flex h-8 w-8 items-center justify-center rounded-full bg-tp-primary hover:bg-tp-primary-dark"
             @click="onInput(step)"
           >
-            <CheckIcon class="h-5 w-5 text-white" aria-hidden="true" />
+            <CheckIcon class="size-5 text-white" aria-hidden="true" />
             <span class="sr-only">{{ step.name }}</span>
           </a>
         </template>

@@ -88,7 +88,7 @@ watch(localValue, onInput);
       >
 
         <ExclamationCircleIcon
-          class="h-5 w-5 text-red-500"
+          class="size-5 text-red-500"
           aria-hidden="true"
         />
       </div>
