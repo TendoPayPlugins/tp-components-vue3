@@ -31,6 +31,7 @@ export { default as SelectListBox } from "./Form/Select/SelectListBox.vue";
 // Buttons
 export { default as Button } from "./Form/Buttons/Button.vue";
 export { default as DropDownActions } from "./Table/DropDownActions.vue";
+export { default as Download } from './Form/Buttons/Download.vue';
 
 // Utils
 export { default as StepBar } from "./Utils/StepBar.vue";
@@ -41,6 +42,7 @@ export { default as Modal } from './Utils/Modal.vue';
 export { default as Chart } from './Utils/Chart.vue';
 export { default as SideMenu } from "./Utils/SideMenu.vue";
 export { default as ImageCropper } from "./Utils/ImageCropper.vue";
+export { default as ConfirmDialog } from './Utils/ConfirmDialog.vue';
 
 // Tabs
 export { default as Tabs } from "./Tabs/Tabs.vue";
@@ -48,3 +50,4 @@ export { default as Tabs } from "./Tabs/Tabs.vue";
 // Table
 export { default as Pagination }  from "./Table/Pagination.vue";
 export { default as Table }  from "./Table/Table.vue";
+export { default as Sort } from "./Table/Sort.vue";

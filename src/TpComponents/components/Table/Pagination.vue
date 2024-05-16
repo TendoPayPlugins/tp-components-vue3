@@ -20,7 +20,7 @@
             </div>
             <div>
                 <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                    <button  @click="goPrev()" :disabled="!pagination.has_prev" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 cursor-pointer mr-2">
+                    <button @click="goPrev()" :disabled="!pagination.has_prev" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 mr-2">
                         <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
                         <span>Previous</span>
                     </button>
@@ -37,7 +37,6 @@
 
 <script setup>
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
-import { computed } from "vue"
 
 const emit = defineEmits(['page'])
 
