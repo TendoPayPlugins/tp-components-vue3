@@ -228,11 +228,11 @@ module.exports = {
     plugins: [
         require("@tailwindcss/forms"),
         require("flowbite/plugin"),
-        plugin(function({
-                            addUtilities,
-                            addComponents,
-                            theme
-                        }) {
+        plugin(function ({
+                             addUtilities,
+                             addComponents,
+                             theme
+                         }) {
             const screens = theme("screens", {});
             addComponents(
                 [{

@@ -1,16 +1,14 @@
 <script setup>
-import {computed, watch, ref, onMounted} from "vue";
-import { useVuelidate } from "@vuelidate/core";
-import { minLength, maxLength } from "@vuelidate/validators";
+import {computed, ref, watch} from "vue";
 
 const endpoint = ref('');
 const protocol = ref('https');
 
-const initialUrl = defineModel({ required: true });
+const initialUrl = defineModel({type: String, required: false, default: null});
 
 const types = [
-    'https',
-    'http'
+  'https',
+  'http'
 ]
 
 const emit = defineEmits(["update:modelValue"]);
@@ -61,7 +59,7 @@ watch(initialUrl, () => {
 });
 
 watch([protocol, endpoint], () => {
-  if((endpoint.value).length === 0) {
+  if ((endpoint.value).length === 0) {
     emit('update:modelValue', null);
     return
   }
@@ -74,48 +72,51 @@ watch([protocol, endpoint], () => {
 <template>
   <div>
     <label
-        v-if="label"
-        :for="dataTest"
-        class="block text-sm font-medium leading-6 text-gray-900"
-        :data-test="dataTest + '-label'"
-    >{{ label }}</label
-    >
+      v-if="label"
+      :data-test="dataTest + '-label'"
+      :for="dataTest"
+      class="block text-sm font-medium leading-6 text-gray-900"
+    >{{ label }}</label>
     <div class="relative rounded-md shadow-sm">
       <div class="absolute inset-y-0 left-0 flex items-center">
         <select
-            :disabled="disabled"
-            name="type"
-            v-model="protocol"
-            autocomplete="type"
-            :data-test="dataTest + '-select-type'"
-            class="h-full rounded-md border-0 bg-transparent pl-3 pr-12 text-gray-500 focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-inset sm:text-sm"
+          v-model="protocol"
+          :data-test="dataTest + '-select-type'"
+          :disabled="disabled"
+          autocomplete="type"
+          class="h-full rounded-md border-0 bg-transparent pl-3 pr-12 text-gray-500 focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-inset sm:text-sm"
+          name="type"
         >
           <option
-              :data-test="dataTest + '-option-' + index"
-              v-for="(type, index) in types"
-              :key="index"
+            v-for="(type, index) in types"
+            :key="index"
+            :data-test="dataTest + '-option-' + index"
           >
             {{ type }}
           </option>
         </select>
       </div>
       <input
-          :disabled="disabled"
-          type="text"
-          name="url"
-          :id="dataTest"
-          v-model="endpoint"
-          class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-tp-primary focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-          :placeholder="placeholder"
-          :data-test="dataTest + '-input'"
-      />
+        :id="dataTest"
+        v-model="endpoint"
+        :data-test="dataTest + '-input'"
+        :disabled="disabled"
+        :placeholder="placeholder"
+        class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-tp-primary focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+        name="url"
+        type="text"
+      >
     </div>
     <span v-if="showError && v?.$invalid">
       <p
-        v-for="error in v?.$silentErrors"
+        v-for="(error, index) in v?.$silentErrors"
+        :key="index"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-url-error' + error.$uid">{{ error.$message }}</span>
+        <span
+          :data-test="dataTest + '-url-error' + error.$uid"
+          class="font-medium"
+        >{{ error.$message }}</span>
       </p>
     </span>
   </div>

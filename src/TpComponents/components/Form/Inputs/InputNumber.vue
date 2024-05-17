@@ -1,5 +1,5 @@
 <script setup>
-import { watch } from "vue";
+import {watch} from "vue";
 
 const props = defineProps({
   label: {
@@ -36,7 +36,8 @@ const props = defineProps({
   },
   v: {
     type: Object,
-    default: () => {},
+    default: () => {
+    },
   },
   dataTest: {
     type: String,
@@ -44,7 +45,7 @@ const props = defineProps({
   },
 });
 
-const localValue = defineModel({ required: true })
+const localValue = defineModel({required: false, default: null, type: Number})
 
 const emit = defineEmits(["update:modelValue"]);
 
@@ -59,34 +60,32 @@ watch(localValue, onInput);
   <div>
     <label
       v-if="label"
-      for="number-input"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       :data-test="dataTest + '-label'"
-      >{{ label }}</label
-    >
-      <div class="relative mt-2 rounded-md shadow-sm">
-
-        <input
-        type="number"
-        :step="step"
-        :min="min"
-        :max="max"
-        v-model="localValue"
-        :disabled="disabled"
-        :readonly="readonly"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      for="number-input"
+    >{{ label }}</label>
+    <div class="relative mt-2 rounded-md shadow-sm">
+      <input
         id="number-input"
-        aria-describedby="helper-text-explanation"
-        class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
+        v-model="localValue"
         :class="{
           'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
             v?.$invalid,
           'text-gray-900 shadow-sm placeholder:text-gray-400':
             !v?.$invalid,
         }"
-        :placeholder="placeholder"
-        @input="onInput"
         :data-test="dataTest + '-input'"
-      />
+        :disabled="disabled"
+        :max="max"
+        :min="min"
+        :placeholder="placeholder"
+        :readonly="readonly"
+        :step="step"
+        aria-describedby="helper-text-explanation"
+        class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
+        type="number"
+        @input="onInput"
+      >
     </div>
     <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
       <slot name="info" />
@@ -98,10 +97,14 @@ watch(localValue, onInput);
 
     <span v-if="showError && v?.$invalid">
       <p
-        v-for="error in v?.$silentErrors"
+        v-for="(error, index) in v?.$silentErrors"
+        :key="index"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+        <span
+          :data-test="dataTest + '-email-error' + error.$uid"
+          class="font-medium"
+        >{{ error.$message }}</span>
       </p>
     </span>
   </div>

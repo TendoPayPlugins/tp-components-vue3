@@ -70,7 +70,8 @@ const basicColors = {
 const props = defineProps({
   config: {
     type: Object,
-    default: () => {}
+    default: () => {
+    }
   },
   data: {
     required: true,
@@ -82,15 +83,15 @@ const props = defineProps({
   }
 })
 
-function extractObject2Array (items) {
+function extractObject2Array(items) {
 
   if (!items || !Array.isArray(items) || items.length === 0) {
     return []
   }
 
-  const { x, headers, type, opacity, options } = props.config
+  const {x, headers, type, opacity, options} = props.config
   const keys = Object.keys(headers)
-  const initObj = keys.reduce((c, k) => ({ ...c, [k]: [] }), { x: [] })
+  const initObj = keys.reduce((c, k) => ({...c, [k]: []}), {x: []})
 
   const objs = items.reduce((c, item) => {
     const obj = keys.reduce((c, k) => {
@@ -104,7 +105,7 @@ function extractObject2Array (items) {
 
   const objX = objs.x
   delete objs.x
-  const { parents } = props.config
+  const {parents} = props.config
   switch (type) {
     case 'pie':
       return Object.keys(objs).reduce((c, k) => ([...c, {
@@ -137,14 +138,14 @@ function extractObject2Array (items) {
 }
 
 const drawPlot = () => {
-    Plotly.newPlot(
-      props.id,
-      extractObject2Array(props.data),
-      props.config?.layout || {},
-      {
-        showSendToCloud: true, responsive: true
-      }
-    )
+  Plotly.newPlot(
+    props.id,
+    extractObject2Array(props.data),
+    props.config?.layout || {},
+    {
+      showSendToCloud: true, responsive: true
+    }
+  )
 };
 
 watch(props, () => {
@@ -152,7 +153,7 @@ watch(props, () => {
 });
 
 onMounted(() => {
-    drawPlot();
+  drawPlot();
 });
 </script>
 

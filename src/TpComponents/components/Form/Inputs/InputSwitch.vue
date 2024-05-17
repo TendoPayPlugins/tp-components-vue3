@@ -1,7 +1,6 @@
-
 <script setup>
-import { watch} from "vue";
-import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
+import {watch} from "vue";
+import {Switch, SwitchGroup, SwitchLabel} from '@headlessui/vue'
 
 const props = defineProps({
   value: {
@@ -10,7 +9,8 @@ const props = defineProps({
   },
   v: {
     type: Object,
-    default: () => {},
+    default: () => {
+    },
   },
   enabledIcon: {
     type: Object,
@@ -44,7 +44,7 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue"]);
 
-const localValue = defineModel({ required: true })
+const localValue = defineModel({required: false, default: null, type: [Number, String]})
 
 const onInput = () => {
   emit("update:modelValue", Boolean(localValue.value));
@@ -54,34 +54,80 @@ watch(localValue, onInput);
 </script>
 
 <template>
-  <SwitchGroup as="div" class="flex items-center">
-    <SwitchLabel v-if="disabledText" as="span" class="mr-3 text-sm">
-        <span class="font-medium text-gray-900" :data-test="dataTest + '-disabled-text'">{{ disabledText }}</span>
-        {{ ' ' }}
+  <SwitchGroup
+    as="div"
+    class="flex items-center"
+  >
+    <SwitchLabel
+      v-if="disabledText"
+      as="span"
+      class="mr-3 text-sm"
+    >
+      <span
+        :data-test="dataTest + '-disabled-text'"
+        class="font-medium text-gray-900"
+      >{{ disabledText }}</span>
+      {{ ' ' }}
     </SwitchLabel>
-    <SwitchLabel v-if="disabledIcon" as="span" class="mr-3" :data-test="dataTest + '-disabled-icon'">
-        <component :is="disabledIcon" class="h-6 w-6" />
-        {{ ' ' }}
+    <SwitchLabel
+      v-if="disabledIcon"
+      :data-test="dataTest + '-disabled-icon'"
+      as="span"
+      class="mr-3"
+    >
+      <component
+        :is="disabledIcon"
+        class="h-6 w-6"
+      />
+      {{ ' ' }}
     </SwitchLabel>
-    <Switch :disabled="disabled" :data-test="dataTest + '-switch'" @click="onInput" v-model="localValue" :class="[localValue ? 'bg-tp-primary' : 'bg-gray-300', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-offset-2']">
-        <span class="sr-only">Use setting</span>
-        <span aria-hidden="true" :class="[localValue ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+    <Switch
+      v-model="localValue"
+      :class="[localValue ? 'bg-tp-primary' : 'bg-gray-300', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-offset-2']"
+      :data-test="dataTest + '-switch'"
+      :disabled="disabled"
+      @click="onInput"
+    >
+      <span class="sr-only">Use setting</span>
+      <span
+        :class="[localValue ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']"
+        aria-hidden="true"
+      />
     </Switch>
-    <SwitchLabel v-if="enabledText" as="span" class="ml-3 text-sm">
-        <span class="font-medium text-gray-900" :data-test="dataTest + '-enabled-text'">{{ enabledText }}</span>
-        {{ ' ' }}
+    <SwitchLabel
+      v-if="enabledText"
+      as="span"
+      class="ml-3 text-sm"
+    >
+      <span
+        :data-test="dataTest + '-enabled-text'"
+        class="font-medium text-gray-900"
+      >{{ enabledText }}</span>
+      {{ ' ' }}
     </SwitchLabel>
-    <SwitchLabel v-if="enabledIcon" as="span" class="ml-3" :data-test="dataTest + '-enabled-icon'">
-      <component :is="enabledIcon" class="h-6 w-6" />
+    <SwitchLabel
+      v-if="enabledIcon"
+      :data-test="dataTest + '-enabled-icon'"
+      as="span"
+      class="ml-3"
+    >
+      <component
+        :is="enabledIcon"
+        class="h-6 w-6"
+      />
       {{ ' ' }}
     </SwitchLabel>
   </SwitchGroup>
   <span v-if="showError && v?.$invalid">
     <p
-      v-for="error in v?.$silentErrors"
+      v-for="(error, index) in v?.$silentErrors"
+      :key="index"
       class="mt-2 text-xs text-red-600 dark:text-red-400"
     >
-      <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+      <span
+        :data-test="dataTest + '-email-error' + error.$uid"
+        class="font-medium"
+      >{{ error.$message }}</span>
     </p>
   </span>
 </template>

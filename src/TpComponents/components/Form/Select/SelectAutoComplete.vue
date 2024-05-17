@@ -1,29 +1,33 @@
 <template>
   <Combobox
-    @update:modelValue="onInput"
-    as="div"
-    v-model="v$.localValue.$model"
+    v-model="localValue"
     :disabled="disabled"
+    as="div"
+    @update:model-value="onInput"
   >
     <ComboboxLabel
       v-if="props.label"
-      class="block text-sm font-medium text-gray-700"
       :data-test="dataTest + '-label'"
-      >{{ props.label }}</ComboboxLabel
+      class="block text-sm font-medium text-gray-700"
     >
+      {{ props.label }}
+    </ComboboxLabel>
     <div class="relative mt-1">
       <ComboboxInput
-        class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-tp-primary focus:outline-none focus:ring-1 focus:ring-tp-primary sm:text-sm"
-        :placeholder="props.placeholder"
-        :displayValue="(option) => option?.label"
-        @change="query = $event.target.value"
         :data-test="dataTest + '-input'"
+        :display-value="(option) => option?.label"
+        :placeholder="props.placeholder"
+        class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-tp-primary focus:outline-none focus:ring-1 focus:ring-tp-primary sm:text-sm"
+        @change="query = $event.target.value"
       />
       <ComboboxButton
-        class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
         :data-test="dataTest + '-button'"
+        class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
       >
-        <ChevronDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+        <ChevronDownIcon
+          aria-hidden="true"
+          class="h-5 w-5 text-gray-400"
+        />
       </ComboboxButton>
 
       <ComboboxOptions
@@ -33,9 +37,9 @@
         <ComboboxOption
           v-for="(option, index) in options"
           :key="index"
+          v-slot="{ active, selected }"
           :value="option"
           as="template"
-          v-slot="{ active, selected }"
         >
           <li
             :class="[
@@ -43,7 +47,10 @@
               active ? 'bg-tp-primary text-white' : 'text-gray-900',
             ]"
           >
-            <span :class="['block truncate', selected && 'font-semibold']" :data-test="dataTest + '-option-label-' + index">
+            <span
+              :class="['block truncate', selected && 'font-semibold']"
+              :data-test="dataTest + '-option-label-' + index"
+            >
               {{ option.label }}
             </span>
 
@@ -54,27 +61,33 @@
                 active ? 'text-white' : 'text-tp-primary',
               ]"
             >
-              <CheckIcon class="h-5 w-5" aria-hidden="true" />
+              <CheckIcon
+                aria-hidden="true"
+                class="h-5 w-5"
+              />
             </span>
           </li>
         </ComboboxOption>
       </ComboboxOptions>
     </div>
-    {{ props.localValue }}
   </Combobox>
   <span v-if="showError && v?.$invalid">
     <p
-      v-for="error in v?.$silentErrors"
+      v-for="(error, index) in v?.$silentErrors"
+      :key="index"
       class="mt-2 text-xs text-red-600 dark:text-red-400"
     >
-      <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+      <span
+        :data-test="dataTest + '-email-error' + error.$uid"
+        class="font-medium"
+      >{{ error.$message }}</span>
     </p>
   </span>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import { CheckIcon, ChevronDownIcon } from "@heroicons/vue/24/solid";
+import {ref, watch} from "vue";
+import {CheckIcon, ChevronDownIcon} from "@heroicons/vue/24/solid";
 import {
   Combobox,
   ComboboxButton,
@@ -84,7 +97,7 @@ import {
   ComboboxOptions,
 } from "@headlessui/vue";
 
-const localValue = defineModel({ required: true })
+const localValue = defineModel({required: false, default: null, type: String})
 
 let query = ref("");
 
@@ -111,7 +124,8 @@ const props = defineProps({
   },
   v: {
     type: Object,
-    default: () => {},
+    default: () => {
+    },
   },
   dataTest: {
     type: String,
@@ -130,12 +144,4 @@ const onInput = () => {
 };
 
 watch(localValue, onInput)
-
-// const onInput = (value) => {
-//   if (props.emitType === "value") {
-//     emit("input", value.value);
-//   } else {
-//     emit("input", value);
-//   }
-// };
 </script>

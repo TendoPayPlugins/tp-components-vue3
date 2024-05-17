@@ -1,36 +1,36 @@
 <template>
-    <div class="help-tooltip px-0 py-0">
-        aaa {{ positionClass() }}
-        <slot name="icon">
-            <QuestionMarkCircleIcon />
-        </slot>
-        <div :class="positionClass">
-            <slot>slots to do</slot>
-            <i></i>
-        </div>
+  <div class="help-tooltip px-0 py-0">
+    aaa {{ positionClass() }}
+    <slot name="icon">
+      <QuestionMarkCircleIcon />
+    </slot>
+    <div :class="positionClass">
+      <slot>slots to do</slot>
+      <i />
     </div>
+  </div>
 </template>
 
 <script setup>
-import { QuestionMarkCircleIcon } from '@heroicons/vue/24/solid';
+import {QuestionMarkCircleIcon} from '@heroicons/vue/24/solid';
 
 const props = defineProps({
-    position: {
-        type: String,
-        default: 'top'
-    }
+  position: {
+    type: String,
+    default: 'top'
+  }
 })
 
 function positionClass() {
-    switch (props.position) {
-        case "top":
-        case "bottom":
-        case "right":
-        case "left":
-            return props.position;
-        default:
-            return "right";
-    }
+  switch (props.position) {
+    case "top":
+    case "bottom":
+    case "right":
+    case "left":
+      return props.position;
+    default:
+      return "right";
+  }
 }
 </script>
 

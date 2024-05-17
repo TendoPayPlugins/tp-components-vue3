@@ -1,8 +1,8 @@
 <script setup>
-import { watch} from "vue";
-import { ExclamationCircleIcon } from '@heroicons/vue/24/solid'
+import {watch} from "vue";
+import {ExclamationCircleIcon} from '@heroicons/vue/24/solid'
 
-const localValue = defineModel({ required: true })
+const localValue = defineModel({type: String, required: false, default: null})
 
 const props = defineProps({
   label: {
@@ -57,39 +57,37 @@ watch(localValue, onInput);
   <div>
     <label
       v-if="label"
-      for="number-input"
       :data-test="dataTest + '-label'"
       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >{{ label }}</label
-    >
+      for="number-input"
+    >{{ label }}</label>
     <div class="relative rounded-md shadow-sm">
       <input
-        type="email"
-        :maxlength="maxLength"
-        v-model="localValue"
-        :disabled="disabled"
-        :readonly="readonly"
         id="email-input"
-        :data-test="dataTest + '-input'"
-        aria-describedby="helper-text-explanation"
-        class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
+        v-model="localValue"
         :class="{
           'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
             v?.$invalid,
           'text-gray-900 shadow-sm placeholder:text-gray-400':
             !v?.$invalid,
         }"
+        :data-test="dataTest + '-input'"
+        :disabled="disabled"
+        :maxlength="maxLength"
         :placeholder="placeholder"
+        :readonly="readonly"
+        aria-describedby="helper-text-explanation"
+        class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
+        type="email"
         @input="onInput"
-      />
-      <div
-        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-        v-if="v?.$invalid"
       >
-
+      <div
+        v-if="v?.$invalid"
+        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+      >
         <ExclamationCircleIcon
-          class="h-5 w-5 text-red-500"
           aria-hidden="true"
+          class="h-5 w-5 text-red-500"
         />
       </div>
     </div>
@@ -104,10 +102,14 @@ watch(localValue, onInput);
 
     <span v-if="showError && v?.$invalid">
       <p
-        v-for="error in v?.$silentErrors"
+        v-for="(error, index) in v?.$silentErrors"
+        :key="index"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+        <span
+          :data-test="dataTest + '-email-error' + error.$uid"
+          class="font-medium"
+        >{{ error.$message }}</span>
       </p>
     </span>
   </div>

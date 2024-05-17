@@ -1,63 +1,78 @@
 <template>
-    <div class="flex flex-col space-y-4">
-        <div class="bg-gray-200 h-80 flex items-center justify-center w-full max-w-md">
-            <cropper
-              v-if="image.src"
-              ref="cropper"
-              class="cropper"
-              :src="image.src"
-              :stencil-props="{
-                handlers: {},
-                movable: false,
-                scalable: false,
-                aspectRatio: 1,
-              }"
-              :canvas="{
-                height: width,
-                width: height
-              }"
-              image-restriction="stencil"
-            />
-        </div>
-
-        <div class="bg-gray-100 flex items-center justify-center p-4">
-            <input
-                ref="file"
-                type="file"
-                accept="image/*"
-                @change="loadImage($event)"
-            />
-        </div>
-
-        <div class="flex items-center justify-between p-4">
-          <Button
-            class="py-2 px-4"
-            type="secondary"
-            @click="reset"
-          >
-            Reset
-          </Button>
-          <Button
-            class="py-2 px-4"
-            type="primary"
-            :disabled="!image.src"
-            @click="save"
-          >
-            Save
-          </Button>
-        </div>
+  <div class="flex flex-col space-y-4">
+    <div class="bg-gray-200 h-80 flex items-center justify-center w-full max-w-md">
+      <cropper
+        v-if="image.src"
+        ref="cropper"
+        :canvas="{
+          height: width,
+          width: height
+        }"
+        :src="image.src"
+        :stencil-props="{
+          handlers: {},
+          movable: false,
+          scalable: false,
+          aspectRatio: 1,
+        }"
+        class="cropper"
+        image-restriction="stencil"
+      />
     </div>
+
+    <div class="bg-gray-100 flex items-center justify-center p-4">
+      <input
+        ref="file"
+        accept="image/*"
+        type="file"
+        @change="loadImage"
+      >
+    </div>
+
+    <div class="flex items-center justify-between p-4">
+      <FormButton
+        class="py-2 px-4"
+        type="secondary"
+        @click="reset"
+      >
+        Reset
+      </FormButton>
+      <FormButton
+        :disabled="!image.src"
+        class="py-2 px-4"
+        type="primary"
+        @click="save"
+      >
+        Save
+      </FormButton>
+    </div>
+  </div>
 </template>
 
-<script>
-import { Cropper } from 'vue-advanced-cropper'
-import Button from "~/components/Form/Buttons/Button.vue";
-
-
+<script setup>
+import {onUnmounted, ref} from 'vue';
+import {Cropper} from 'vue-advanced-cropper';
+import FormButton from '~/components/Form/Buttons/FormButton.vue';
 import 'vue-advanced-cropper/dist/style.css';
 
+const props = defineProps({
+  width: {
+    type: Number,
+    default: 150,
+  },
+  height: {
+    type: Number,
+    default: 150,
+  },
+});
+
+const emits = defineEmits(['image'])
+const image = ref({src: null, type: null});
+const cropper = ref(null);
+const file = ref(null);
+
 function getMimeType(file, fallback = null) {
-  const byteArray = (new Uint8Array(file)).subarray(0, 4);
+  const byteArray = new Uint8Array(file).subarray(0, 4);
   let header = '';
   for (let i = 0; i < byteArray.length; i++) {
     header += byteArray[i].toString(16);
@@ -78,66 +93,40 @@ function getMimeType(file, fallback = null) {
   }
 }
 
-export default {
-  components: {
-    Cropper,
-    Button
-  },
-  props: {
-    width: {
-      type: Number,
-      default: 150,
-    },
-    height: {
-      type: Number,
-      default: 150,
-    },
-  },
-  data() {
-    return {
-      image: {
-        src: null,
-        type: null
-      },
+const save = () => {
+  const {canvas} = cropper.value.getResult();
+  canvas.toBlob((blob) => {
+    emit('image', blob);
+  }, image.value.type);
+};
+
+const reset = () => {
+  image.value = {src: null, type: null};
+};
+
+const loadImage = (event) => {
+  const {files} = event.target;
+  if (files && files[0]) {
+    if (image.value.src) {
+      URL.revokeObjectURL(image.value.src);
     }
-  },
-  destroyed() {
-    if (this.image.src) {
-      URL.revokeObjectURL(this.image.src)
-    }
-  },
-  methods: {
-    save() {
-      const { canvas } = this.$refs.cropper.getResult();
-      canvas.toBlob((blob) => {
-        this.$emit('image', blob);
-      }, this.image.type);
-    },
-    reset() {
-      this.image = {
-        src: null,
-        type: null
-      }
-    },
-    loadImage(event) {
-      const { files } = event.target;
-      if (files && files[0]) {
-        if (this.image.src) {
-          URL.revokeObjectURL(this.image.src)
-        }
-        const blob = URL.createObjectURL(files[0]);
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          this.image = {
-            src: blob,
-            type: getMimeType(e.target.result, files[0].type),
-          };
-        };
-        reader.readAsArrayBuffer(files[0]);
-      }
-    },
+    const blob = URL.createObjectURL(files[0]);
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      image.value = {
+        src: blob,
+        type: getMimeType(e.target.result, files[0].type),
+      };
+    };
+    reader.readAsArrayBuffer(files[0]);
   }
-}
+};
+
+onUnmounted(() => {
+  if (image.value.src) {
+    URL.revokeObjectURL(image.value.src);
+  }
+});
 </script>
 
 <style scoped>

@@ -1,24 +1,40 @@
 <template>
   <span class="isolate inline-flex items-center">
-    <button :class="{ disabled: !isPrevEnable }" @click="goPrev" type="button" class="relative inline-flex items-center px-2 py-2 text-gray-400 hover:bg-gray-50 focus:z-10">
-      <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
+    <button
+      :class="{ disabled: !isPrevEnable }"
+      class="relative inline-flex items-center px-2 py-2 text-gray-400 hover:bg-gray-50 focus:z-10"
+      type="button"
+      @click="goPrev"
+    >
+      <ChevronLeftIcon
+        aria-hidden="true"
+        class="h-5 w-5"
+      />
       <span class="uppercase text-xxs">Previous</span>
     </button>
     <div class="text-gray-300">|</div>
-    <button :class="{ disabled: !isNextEnable }" @click="goNext" type="button" class="relative -ml-px inline-flex items-center px-2 py-2 text-gray-400 hover:bg-gray-50 focus:z-10">
+    <button
+      :class="{ disabled: !isNextEnable }"
+      class="relative -ml-px inline-flex items-center px-2 py-2 text-gray-400 hover:bg-gray-50 focus:z-10"
+      type="button"
+      @click="goNext"
+    >
       <span class="uppercase text-xxs">Next</span>
-      <ChevronRightIcon class="h-5 w-5" aria-hidden="true" />
+      <ChevronRightIcon
+        aria-hidden="true"
+        class="h-5 w-5"
+      />
     </button>
   </span>
 </template>
 
 <script setup>
 import dayjs from "dayjs";
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/20/solid'
+import {ChevronLeftIcon, ChevronRightIcon} from '@heroicons/vue/20/solid'
 import {ref, watch} from 'vue';
 
 const emit = defineEmits(['update:modelValue'])
-const localValue = defineModel({ required: true })
+const localValue = defineModel({type: Array, required: false, default: [null, null]})
 
 const from = ref(localValue.value[0]);
 const to = ref(localValue.value[1]);

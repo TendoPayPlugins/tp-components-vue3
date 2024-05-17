@@ -1,6 +1,6 @@
 import './style.css'
 
-import type { App } from 'vue'
+import type {App} from 'vue'
 import * as components from './components'
 // import * as filters from './filters'
 
@@ -14,4 +14,4 @@ const createPlugin = (options?: any): any => {
     }
 }
 export * from './components'
-export { createPlugin }
+export {createPlugin}
