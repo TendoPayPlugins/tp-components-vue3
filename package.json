@@ -11,6 +11,7 @@
     "link-dev": "vite build --mode production --watch && npm run generate:types",
     "build": "vite build --mode production && npm run generate:types",
     "prepare": "vite build --mode production && npm run generate:types",
+    "lint": "eslint . --ignore-pattern 'node_modules/*' --ignore-pattern 'dist/*'",
     "generate:types": "vue-tsc -p tsconfig-build.json --declaration --emitDeclarationOnly true --outdir ./dist",
     "preview": "vite preview",
     "tailwind": "npx tailwindcss -i ./src/TpComponents/tailwind.css -o ./src/TpComponents/style.css --watch"
