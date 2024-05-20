@@ -1,42 +1,49 @@
-import {ref} from 'vue';
+import { ref, provide, inject } from 'vue';
 
-const useConfirmDialog = () => {
+export const ConfirmDialogSymbol = Symbol('ConfirmDialog');
+
+export function provideConfirmDialog() {
   const isVisible = ref(false);
-  let onConfirmCallback = null;
-  let onCancelCallback = null;
-  let title = '';
-  let message = '';
+  const title = ref('Confirmation');
+  const message = ref('');
+  const resolveFn = ref(null);
 
-  const showDialog = (t, msg, onConfirm, onCancel) => {
+  function showDialog(
+    t = 'Are you sure?',
+    m = 'This operation cannot be undone. Would you like to proceed?'
+    ) {
+    message.value = m
+    title.value = t
     isVisible.value = true;
-    title = t;
-    message = msg;
-    onConfirmCallback = onConfirm;
-    onCancelCallback = onCancel;
-  };
+    return new Promise((resolve) => {
+      resolveFn.value = resolve;
+    });
+  }
 
-  const confirmAction = () => {
-    if (onConfirmCallback) {
-      onConfirmCallback();
-    }
+  function confirm() {
+    if (resolveFn.value) resolveFn.value(true);
     isVisible.value = false;
-  };
+  }
 
-  const cancelAction = () => {
-    if (onCancelCallback) {
-      onCancelCallback();
-    }
+  function cancel() {
+    if (resolveFn.value) resolveFn.value(false);
     isVisible.value = false;
-  };
+  }
 
-  return {
+  provide(ConfirmDialogSymbol, {
     isVisible,
-    title,
     message,
+    title,
     showDialog,
-    confirmAction,
-    cancelAction
-  };
-};
+    confirm,
+    cancel,
+  });
+}
 
-export default useConfirmDialog;
+export function useConfirmDialog() {
+  const confirmDialog = inject(ConfirmDialogSymbol);
+  if (!confirmDialog) {
+    throw new Error('useConfirmDialog must be used within a provideConfirmDialog');
+  }
+  return confirmDialog;
+}

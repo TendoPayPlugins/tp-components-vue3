@@ -25,6 +25,8 @@
 /* eslint-disable vue/no-async-in-computed-properties */
 
 // @todo - Refactor with enabled rules
+// @todo - refactor with https://vueuse.org/core/useClipboard/
+
 import { ref, computed, onBeforeUnmount } from 'vue';
 import { DocumentDuplicateIcon } from '@heroicons/vue/24/solid';
 import Alert from '~/components/Utils/Alert.vue';

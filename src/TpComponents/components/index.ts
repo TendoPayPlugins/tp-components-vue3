@@ -51,3 +51,7 @@ export {default as Tabs} from "./Tabs/Tabs.vue";
 export {default as Pagination} from "./Table/Pagination.vue";
 export {default as Table} from "./Table/Table.vue";
 export {default as Sort} from "./Table/Sort.vue";
+
+// Composables
+export { useConfirmDialog } from '../composables/useConfirmDialog';
+export { provideConfirmDialog } from '../composables/useConfirmDialog';

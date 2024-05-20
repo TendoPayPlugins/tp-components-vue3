@@ -2,7 +2,6 @@ import './style.css'
 
 import type {App} from 'vue'
 import * as components from './components'
-// import * as filters from './filters'
 
 const createPlugin = (options?: any): any => {
     return (app: App) => {
