@@ -1,7 +1,7 @@
 <script setup>
-import { watch, defineModel, defineEmits } from "vue";
+import {defineEmits, defineModel, watch} from "vue";
 
-const localValue = defineModel({ required: true })
+const localValue = defineModel({type: String, default: null, required: false })
 
 const props = defineProps({
   label: {
@@ -37,7 +37,8 @@ const props = defineProps({
   },
   v: {
     type: Object,
-    default: () => {},
+    default: () => {
+    },
   },
   dataTest: {
     type: String,
@@ -58,46 +59,51 @@ watch(localValue, onInput);
   <div>
     <label
       v-if="label"
-      for="input-textarea"
-      class="block text-sm font-medium leading-6 text-gray-900"
       :data-test="dataTest + '-label'"
-      >{{ label }}</label
-    >
+      class="block text-sm font-medium leading-6 text-gray-900"
+      for="input-textarea"
+    >{{ label }}</label>
     <div class="mt-2">
       <textarea
-        v-model="localValue"
-        @input="onInput"
-        rows="4"
-        :placeholder="placeholder"
-        name="comment"
-        :maxlength="maxLength"
-        :disabled="disabled"
-        :readonly="readonly"
-        :data-test="dataTest + '-textarea'"
         id="input-textarea"
-        class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
+        v-model="localValue"
         :class="{
           'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
             v?.$invalid,
           'text-gray-900 shadow-sm placeholder:text-gray-400':
             !v?.$invalid,
         }"
-      >{{ value }}</textarea
-      >
+        :data-test="dataTest + '-textarea'"
+        :disabled="disabled"
+        :maxlength="maxLength"
+        :placeholder="placeholder"
+        :readonly="readonly"
+        class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
+        name="comment"
+        rows="4"
+        @input="onInput"
+      />
     </div>
     <span v-if="showError && v?.$invalid">
       <p
-        v-for="error in v?.$silentErrors"
+        v-for="(error, index) in v?.$silentErrors"
+        :key="index"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+        <span
+          :data-test="dataTest + '-email-error' + error.$uid"
+          class="font-medium"
+        >{{ error.$message }}</span>
       </p>
 
       <p
         v-if="v?.maxLength?.$invalid"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-maxLength-error'">{{
+        <span
+          :data-test="dataTest + '-maxLength-error'"
+          class="font-medium"
+        >{{
           v?.maxLength.$message
         }}</span>
       </p>
@@ -106,9 +112,12 @@ watch(localValue, onInput);
         v-if="v?.minLength?.$invalid"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-minLength-error'">{{
-            v?.minLength.$message
-            }}</span>
+        <span
+          :data-test="dataTest + '-minLength-error'"
+          class="font-medium"
+        >{{
+          v?.minLength.$message
+        }}</span>
       </p>
     </span>
   </div>

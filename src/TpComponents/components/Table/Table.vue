@@ -41,84 +41,103 @@
             </div>
         </div>
     </div>
+  </div>
 </template>
 
 <script setup>
 import DropDownActions from "~/components/Table/DropDownActions.vue";
 import Numbering from "~/components/Table/Numbering.vue";
 import InputCheckbox from "~/components/Form/Inputs/InputCheckbox.vue";
-import {watch, reactive, ref, computed} from "vue";
+import {reactive} from "vue";
+import Pagination from "~/components/Table/Pagination.vue";
 
 const state = reactive({
-    batchList: [],
-    batchAll: false,
-    pagination: {},
-    loading: false,
-    data: [],
+  batchList: [],
+  batchAll: false,
+  pagination: {},
+  loading: false,
+  data: [],
 })
 
 const props = defineProps({
-    numerate: {
-        type: Boolean,
-        default: true,
-    },
-    goPage: {
-        type: Function,
-        default: () => Function(),
-    },
-    batchActions: {
-        type: Array,
-        default: null
-    },
-    itemActions: {
-        type: Array,
-        default: null
-    },
-    dataTest: {
-        type: String,
-        required: true
-    },
+  numerate: {
+    type: Boolean,
+    default: true,
+  },
+  goPage: {
+    type: Function,
+    default: () => Function(),
+  },
+  showPagination: {
+    type: Boolean,
+    default: true,
+  },
+  batchActions: {
+    type: Array,
+    default: null
+  },
+  itemActions: {
+    type: Array,
+    default: null
+  },
+  dataTest: {
+    type: String,
+    required: true
+  },
 })
 
 const clickBatchAll = (value) => {
-    if (value) {
-        state.batchList = state.data
-    } else {
-        state.batchList = []
-    }
+  if (value) {
+    state.batchList = state.data
+  } else {
+    state.batchList = []
+  }
 }
 
 const getPageResource = async (queryParams) => {
-    state.data = props.goPage(1)
+  state.data = props.goPage(1)
 }
 
 getPageResource()
 
 const setPage = (page) => {
-    props.goPage(page)
+  props.goPage(page)
 }
 
 const setData = (inputData) => {
-    const { data: rowsData = [], current_page = 1, from = 0, per_page = 30, to = 0, total = 0 } = inputData
-    state.data = rowsData
+  const {data: rowsData = [], current_page = 1, from = 0, per_page = 30, to = 0, total = 0, last_page = 1} = inputData
+  state.data = rowsData
+
+  if (props.showPagination) {
+    state.pagination = {
+      has_next: current_page < last_page,
+      has_prev: current_page >= 2,
+      current_page: current_page,
+      from: from,
+      to: to,
+      per_page: per_page,
+      total: total,
+      last_page: last_page
+    }
+  }
 }
 
 const hasItemInBatchList = (itemId) => state.batchList.some(i => i.id === itemId)
 
 const toggleBatchItem = (item) => {
-    if (!hasItemInBatchList(item.id)) {
-      state.batchList.push(item)
-    } else {
-        state.batchList = state.batchList.filter(batchItem => batchItem.id !== item.id);
-    }
+  if (!hasItemInBatchList(item.id)) {
+    state.batchList.push(item)
+  } else {
+    state.batchList = state.batchList.filter(batchItem => batchItem.id !== item.id);
+  }
 
-    if (state.batchList.length > 0) {
-        state.batchAll = state.batchList.length === state.data.length
-    }
+  if (state.batchList.length > 0) {
+    state.batchAll = state.batchList.length === state.data.length
+  }
 }
 
 defineExpose({
-    setData,
+  setData,
 });
 </script>
 

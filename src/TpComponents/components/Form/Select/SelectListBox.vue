@@ -1,17 +1,9 @@
 <script setup>
-import { useVuelidate } from "@vuelidate/core";
-import {
-  ComboboxInput,
-  Listbox,
-  ListboxButton,
-  ListboxLabel,
-  ListboxOption,
-  ListboxOptions,
-} from "@headlessui/vue";
-import { CheckIcon, ChevronDownIcon } from "@heroicons/vue/24/solid";
+import {Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions,} from "@headlessui/vue";
+import {CheckIcon, ChevronDownIcon} from "@heroicons/vue/24/solid";
 import {watch} from "vue";
 
-const localValue = defineModel({ required: true })
+const localValue = defineModel({required: false, default: null, type: [Array, Number, String]})
 
 const props = defineProps({
   label: {
@@ -40,7 +32,8 @@ const props = defineProps({
   },
   v: {
     type: Object,
-    default: () => {},
+    default: () => {
+    },
   },
   dataTest: {
     type: String,
@@ -73,16 +66,19 @@ watch(localValue, onInput)
 </script>
 
 <template>
-    <Listbox
-      as="div"
-      v-model="localValue"
-      :multiple="multiple"
-      :disabled="disabled"
-      :data-test="dataTest + '-listbox'"
+  <Listbox
+    v-model="localValue"
+    :data-test="dataTest + '-listbox'"
+    :disabled="disabled"
+    :multiple="multiple"
+    as="div"
+  >
+    <ListboxLabel
+      :data-test="dataTest + '-label'"
+      class="block text-sm font-medium leading-6 text-gray-900"
     >
-      <ListboxLabel class="block text-sm font-medium leading-6 text-gray-900" :data-test="dataTest + '-label'">
-          {{ props.label }}
-      </ListboxLabel>
+      {{ props.label }}
+    </ListboxLabel>
 
       <div class="relative mt-2">
         <ListboxButton
@@ -99,17 +95,17 @@ watch(localValue, onInput)
           </span>
         </ListboxButton>
 
-        <ListboxButton
-          v-if="multiple"
-          :data-test="dataTest + '-button'"
-          class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-tp-primary sm:text-sm sm:leading-6"
-        >
-          <span class="block truncate">{{
-            localValue.map((item) => item.label).join(", ") ||
+      <ListboxButton
+        v-if="multiple"
+        :data-test="dataTest + '-button'"
+        class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-tp-primary sm:text-sm sm:leading-6"
+      >
+        <span class="block truncate">{{
+          localValue.map((item) => item.label).join(", ") ||
             placeholder ||
             "&nbsp;"
-            }}</span>
-            </ListboxButton>
+        }}</span>
+      </ListboxButton>
 
             <transition
               leave-active-class="transition ease-in duration-100"

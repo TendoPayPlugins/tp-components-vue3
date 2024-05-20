@@ -1,16 +1,14 @@
 <script setup>
-import {computed, watch, ref, onMounted} from "vue";
-import { useVuelidate } from "@vuelidate/core";
-import { minLength, maxLength } from "@vuelidate/validators";
+import {computed, ref, watch} from "vue";
 
 const endpoint = ref('');
 const protocol = ref('https');
 
-const initialUrl = defineModel({ required: true });
+const initialUrl = defineModel({type: String, required: false, default: null});
 
 const types = [
-    'https',
-    'http'
+  'https',
+  'http'
 ]
 
 const emit = defineEmits(["update:modelValue"]);
@@ -43,7 +41,6 @@ const props = defineProps({
   }
 });
 
-// Obliczona właściwość pełnego adresu URL
 const fullUrl = computed(() => {
   return `${protocol.value}://${endpoint.value}`;
 });
@@ -62,7 +59,7 @@ watch(initialUrl, () => {
 });
 
 watch([protocol, endpoint], () => {
-  if((endpoint.value).length === 0) {
+  if ((endpoint.value).length === 0) {
     emit('update:modelValue', null);
     return
   }
@@ -75,12 +72,11 @@ watch([protocol, endpoint], () => {
 <template>
   <div>
     <label
-        v-if="label"
-        :for="dataTest"
-        class="block text-sm font-medium leading-6 text-gray-900"
-        :data-test="dataTest + '-label'"
-    >{{ label }}</label
-    >
+      v-if="label"
+      :data-test="dataTest + '-label'"
+      :for="dataTest"
+      class="block text-sm font-medium leading-6 text-gray-900"
+    >{{ label }}</label>
     <div class="relative rounded-md shadow-sm">
       <div class="absolute inset-y-0 left-0 flex items-center">
         <select
@@ -92,9 +88,9 @@ watch([protocol, endpoint], () => {
             class="h-full rounded-md border-0 bg-transparent pl-3 pr-12 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tp-primary sm:text-sm"
         >
           <option
-              :data-test="dataTest + '-option-' + index"
-              v-for="(type, index) in types"
-              :key="index"
+            v-for="(type, index) in types"
+            :key="index"
+            :data-test="dataTest + '-option-' + index"
           >
             {{ type }}
           </option>
@@ -113,10 +109,14 @@ watch([protocol, endpoint], () => {
     </div>
     <span v-if="showError && v?.$invalid">
       <p
-        v-for="error in v?.$silentErrors"
+        v-for="(error, index) in v?.$silentErrors"
+        :key="index"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-url-error' + error.$uid">{{ error.$message }}</span>
+        <span
+          :data-test="dataTest + '-url-error' + error.$uid"
+          class="font-medium"
+        >{{ error.$message }}</span>
       </p>
     </span>
   </div>

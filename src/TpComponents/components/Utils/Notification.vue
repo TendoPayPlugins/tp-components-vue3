@@ -25,13 +25,15 @@
                 </div>
             </transition>
         </div>
+      </transition>
     </div>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { CheckCircleIcon } from '@heroicons/vue/outline'
-import { XMarkIcon } from '@heroicons/vue/solid'
+import {ref} from 'vue'
+import {CheckCircleIcon} from '@heroicons/vue/outline'
+import {XMarkIcon} from '@heroicons/vue/solid'
 
 const show = ref(true)
 </script>

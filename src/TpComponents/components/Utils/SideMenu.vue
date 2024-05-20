@@ -1,7 +1,6 @@
 <script setup>
-import { reactive } from 'vue'
-import { EyeIcon, QueueListIcon, UsersIcon } from '@heroicons/vue/24/outline'
-import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/vue/20/solid'
+import {reactive} from 'vue'
+import {ChevronDownIcon, ChevronRightIcon} from '@heroicons/vue/20/solid'
 
 const _props = defineProps({
   expanded: {

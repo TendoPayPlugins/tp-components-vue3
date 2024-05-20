@@ -1,14 +1,14 @@
 <script setup>
-import { computed } from 'vue';
+import {computed} from 'vue';
 
 const order = computed(() => {
-  const { total = 0 } = props.pagination || {};
+  const {total = 0} = props.pagination || {};
   const order = idxGroup.value + props.idx;
   return props.reverse ? total - order + 1 : order;
 });
 
 const idxGroup = computed(() => {
-  const { current_page: currentPage = 1, per_page: perPage = 1 } = props.pagination || {};
+  const {current_page: currentPage = 1, per_page: perPage = 1} = props.pagination || {};
   return (currentPage - 1) * perPage + 1;
 });
 

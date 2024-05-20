@@ -14,11 +14,11 @@
 
 <script setup>
 import dayjs from "dayjs";
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/20/solid'
+import {ChevronLeftIcon, ChevronRightIcon} from '@heroicons/vue/20/solid'
 import {ref, watch} from 'vue';
 
 const emit = defineEmits(['update:modelValue'])
-const localValue = defineModel({ required: true })
+const localValue = defineModel({type: Array, required: false, default: [null, null]})
 
 const from = ref(localValue.value[0]);
 const to = ref(localValue.value[1]);

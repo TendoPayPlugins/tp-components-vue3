@@ -43,21 +43,37 @@
             </div>
         </div>
     </div>
+  </div>
 </template>
 
 <script setup>
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
+import {ChevronLeftIcon, ChevronRightIcon} from '@heroicons/vue/24/solid'
 
-const emit = defineEmits(['input'])
+const emit = defineEmits(['page'])
 
 const props = defineProps({
   pagination: {
     type: Object,
-    default: () => {},
+    required: true,
+    default: () => {
+      return {
+        current_page: 1,
+        last_page: 1,
+        to: 0,
+        from: 0,
+        total: 0,
+        has_prev: false,
+        has_next: false,
+      }
+    }
   },
 })
-
-function onInput(page) {
-  emit('input', page)
+const goPrev = () => {
+  emit('page', props.pagination.current_page - 1)
 }
+
+const goNext = () => {
+  emit('page', props.pagination.current_page + 1)
+}
+
 </script>

@@ -1,7 +1,7 @@
 <script setup>
-import { watch} from "vue";
+import {watch} from "vue";
 
-const localValue = defineModel({ required: true })
+const localValue = defineModel({type: String, default: null, required: false})
 
 const props = defineProps({
   value: {
@@ -45,7 +45,7 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const onInput = () => {
-  if(localValue.value === "") {
+  if (localValue.value === "") {
     localValue.value = null
   }
   emit("update:modelValue", localValue.value);
@@ -59,17 +59,13 @@ watch(localValue, onInput);
   <div>
     <label
       v-if="label"
-      :for="dataTest"
       :data-test="dataTest + '-label'"
+      :for="dataTest"
       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >{{ label }}</label
-    >
+    >{{ label }}</label>
     <input
-      type="text"
       :id="dataTest"
       v-model="localValue"
-      :disabled="disabled"
-      :readonly="readonly"
       :class="{
           'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500':
             v?.$invalid,
@@ -80,7 +76,11 @@ watch(localValue, onInput);
       class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6"
       :placeholder="placeholder"
       :maxlength="maxLength || null"
-    />
+      :placeholder="placeholder"
+      :readonly="readonly"
+      class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset"
+      type="text"
+    >
     <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
       <slot name="info" />
     </p>
@@ -91,10 +91,14 @@ watch(localValue, onInput);
 
     <span v-if="showError && v?.$invalid">
       <p
-        v-for="error in v?.$silentErrors"
+        v-for="(error, index) in v?.$silentErrors"
+        :key="index"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+        <span
+          :data-test="dataTest + '-email-error' + error.$uid"
+          class="font-medium"
+        >{{ error.$message }}</span>
       </p>
     </span>
   </div>

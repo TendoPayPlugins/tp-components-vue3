@@ -30,30 +30,38 @@
                 </div>
             </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script setup>
-import { CheckCircleIcon, ExclamationTriangleIcon, XMarkIcon, InformationCircleIcon, XCircleIcon  } from '@heroicons/vue/20/solid'
+import {
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  InformationCircleIcon,
+  XCircleIcon,
+  XMarkIcon
+} from '@heroicons/vue/20/solid'
 
 const emit = defineEmits(['close'])
 
 const props = defineProps({
-    message: {
-        type: String,
-        default: '',
-    },
-    type: {
-        type: String,
-        default: 'success' // @todo add error, warning etc
-    },
-    close: {
-        type: Boolean,
-        default: false,
-    }
+  message: {
+    type: String,
+    default: '',
+  },
+  type: {
+    type: String,
+    default: 'success' // @todo add error, warning etc
+  },
+  close: {
+    type: Boolean,
+    default: false,
+  }
 })
 
 const onClose = () => {
-    emit("close");
+  emit("close");
 };
 </script>

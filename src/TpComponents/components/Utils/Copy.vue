@@ -1,6 +1,10 @@
 <template>
   <span class="copy-container">
-    <a class="clickable" href="#" v-on:click.prevent="doCopy">
+    <a
+      class="clickable"
+      href="#"
+      @click.prevent="doCopy"
+    >
       <slot>
           <DocumentDuplicateIcon
               class="-ml-0.5 size-5 text-gray-400"
@@ -8,59 +12,71 @@
       /></slot>
     </a>
 
-    <Alert v-if="showResult" :message="resultMessage" />
+    <Alert
+      v-if="showResult"
+      :message="resultMessage"
+    />
   </span>
 </template>
 
-<script>
-import { DocumentDuplicateIcon } from '@heroicons/vue/24/solid'
-import Alert from "~/components/Utils/Alert.vue";
+<script setup>
+/* eslint-disable vue/require-valid-default-prop */
+/* eslint-disable vue/no-async-in-computed-properties */
 
-export default {
-  name: "Copy",
-  components: { DocumentDuplicateIcon, Alert },
-  props: {
-    value: String | Number,
-    timeout: String,
-    successMessage: String,
+// @todo - Refactor with enabled rules
+// @todo - refactor with https://vueuse.org/core/useClipboard/
+
+import { ref, computed, onBeforeUnmount } from 'vue';
+import { DocumentDuplicateIcon } from '@heroicons/vue/24/solid';
+import Alert from '~/components/Utils/Alert.vue';
+
+const props = defineProps({
+  value: {
+    type: [String, Number],
+    required: true,
   },
-  data() {
-    return {
-      copied: false,
-      timeoutObj: null,
-    };
+  timeout: {
+    type: String,
+    required: false,
+    default: 800,
   },
-  computed: {
-    showResult() {
-      if (!!this.copied) {
-        const timeout = Number(this.timeout || 800);
-        this.timeoutObj = setTimeout(() => (this.copied = false), timeout);
-      }
-      return !!this.copied;
-    },
-    resultMessage() {
-      return this.successMessage || "Copied";
-    },
+  successMessage: {
+    type: String,
+    required: false,
+    default: 'Copied'
   },
-  beforeDestroy() {
-    if (this.timeout) {
-      clearTimeout(this.timeoutObj);
-    }
-  },
-  methods: {
-    doCopy() {
-      const el = document.createElement("textarea");
-      el.value = this.value;
-      el.setAttribute("readonly", "readonly");
-      el.style.position = "absolute";
-      el.style.left = "-9999px";
-      document.body.appendChild(el);
-      el.select();
-      this.copied = document.execCommand("copy");
-      document.body.removeChild(el);
-    },
-  },
+});
+
+const copied = ref(false);
+let timeoutObj = null;
+
+const showResult = computed(() => {
+  if (copied.value) {
+    const timeout = Number(props.timeout);
+    timeoutObj = setTimeout(() => (copied.value = false), timeout);
+  }
+  return copied.value;
+});
+
+const resultMessage = computed(() => props.successMessage);
+
+const doCopy = () => {
+  const el = document.createElement("textarea");
+  el.value = props.value;
+  el.setAttribute("readonly", "readonly");
+  el.style.position = "absolute";
+  el.style.left = "-9999px";
+  document.body.appendChild(el);
+  el.select();
+  copied.value = document.execCommand("copy");
+  document.body.removeChild(el);
 };
+
+onBeforeUnmount(() => {
+  if (props.timeout) {
+    clearTimeout(timeoutObj);
+  }
+});
 </script>
 
 <style scoped>

@@ -10,14 +10,28 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "baseUrl": "./",
     "paths": {
-      "~/*": ["src/TpComponents/*"]
+      "~/*": [
+        "src/TpComponents/*"
+      ]
     }
   },
-  "include": ["src/TpComponents/*.ts", "src/TpComponents/*.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/TpComponents/*.ts",
+    "src/TpComponents/*.d.ts"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

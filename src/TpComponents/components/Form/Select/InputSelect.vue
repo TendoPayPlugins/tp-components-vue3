@@ -1,8 +1,7 @@
 <script setup>
-import {reactive, watch} from "vue";
-import { useVuelidate } from "@vuelidate/core";
+import {watch} from "vue";
 
-const localValue = defineModel({ required: true })
+const localValue = defineModel({default: null, required: false, type: [String, Array, Number]})
 
 const emit = defineEmits(["update:modelValue"]);
 
@@ -10,10 +9,6 @@ const props = defineProps({
   label: {
     type: String,
     default: null,
-  },
-  value: {
-    type: [String, Array],
-    default: [],
   },
   placeholder: {
     type: String,
@@ -37,7 +32,8 @@ const props = defineProps({
   },
   v: {
     type: Object,
-    default: () => {},
+    default: () => {
+    },
   },
   dataTest: {
     type: String,
@@ -56,20 +52,24 @@ watch(localValue, onInput);
   <div>
     <label
       v-if="label"
-      :for="dataTest"
       :data-test="dataTest + '-label'"
+      :for="dataTest"
       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >{{ label }}</label
-    >
+    >{{ label }}</label>
     <select
-      :multiple="multiple"
       :id="dataTest"
-      :disabled="disabled"
       v-model="localValue"
       :data-test="dataTest + '-select'"
+      :disabled="disabled"
+      :multiple="multiple"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-tp-primary block w-full p-2.0 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
     >
-      <option v-if="placeholder" :value="[]" disabled hidden>
+      <option
+        v-if="placeholder"
+        :value="[]"
+        disabled
+        hidden
+      >
         {{ placeholder }}
       </option>
       <option
@@ -89,10 +89,14 @@ watch(localValue, onInput);
     </p>
     <span v-if="showError && v?.$invalid">
       <p
-        v-for="error in v?.$silentErrors"
+        v-for="(error, index) in v?.$silentErrors"
+        :key="index"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
       >
-        <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+        <span
+          :data-test="dataTest + '-email-error' + error.$uid"
+          class="font-medium"
+        >{{ error.$message }}</span>
       </p>
     </span>
   </div>

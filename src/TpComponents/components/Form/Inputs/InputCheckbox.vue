@@ -1,7 +1,7 @@
 <script setup>
-import { watch } from "vue";
+import {watch} from "vue";
 
-const localValue = defineModel({ required: true })
+const localValue = defineModel({type: Boolean, default: null, required: false})
 
 const props = defineProps({
   label: {
@@ -11,7 +11,8 @@ const props = defineProps({
   },
   v: {
     type: Object,
-    default: () => {},
+    default: () => {
+    },
   },
   dataTest: {
     type: String,
@@ -23,7 +24,7 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue", "clicked"]);
 
 const onClickInput = () => {
   emit("clicked", !localValue.value)
