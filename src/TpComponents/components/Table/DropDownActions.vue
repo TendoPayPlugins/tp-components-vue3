@@ -37,7 +37,7 @@
             <a
               :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']"
               class="cursor-pointer"
-              @click.stop.prevent="action.$click"
+              @click.stop.prevent="handleClick(action)"
             >{{ action.label }}</a>
           </MenuItem>
         </div>
@@ -74,6 +74,7 @@ const toggleDropdown = () => {
 
 const handleClick = (item) => {
   if (!item.disabled) {
+    toggleDropdown()
     item.$click();
   }
 };
