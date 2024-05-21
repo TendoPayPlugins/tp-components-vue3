@@ -5,6 +5,7 @@ on: [ pull_request ]
 jobs:
   check-js-files:
     name: "Analyze *.js and *.vue files"
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
