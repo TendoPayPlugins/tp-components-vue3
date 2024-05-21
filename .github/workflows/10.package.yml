@@ -42,3 +42,7 @@ jobs:
 
       - name: Analyze latest files
         run: pnpm run lint
+
+      - name: Cancelling jobs
+        if: failure()
+        uses: andymckay/cancel-action@0.3
