@@ -6,10 +6,10 @@
       @click.prevent="doCopy"
     >
       <slot>
-          <DocumentDuplicateIcon
-              class="-ml-0.5 size-5 text-gray-400"
-              aria-hidden="true"
-      /></slot>
+        <DocumentDuplicateIcon
+          class="-ml-0.5 size-5 text-gray-400"
+          aria-hidden="true"
+        /></slot>
     </a>
 
     <Alert

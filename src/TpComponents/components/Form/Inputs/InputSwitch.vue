@@ -81,9 +81,18 @@ watch(localValue, onInput);
       />
       {{ ' ' }}
     </SwitchLabel>
-    <Switch :disabled="disabled" :data-test="dataTest + '-switch'" @click="onInput" v-model="localValue" :class="[localValue ? 'bg-tp-primary' : 'bg-gray-300', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-offset-2']">
-        <span class="sr-only">Use setting</span>
-        <span aria-hidden="true" :class="[localValue ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+    <Switch
+      v-model="localValue"
+      :disabled="disabled"
+      :data-test="dataTest + '-switch'"
+      :class="[localValue ? 'bg-tp-primary' : 'bg-gray-300', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-offset-2']"
+      @click="onInput"
+    >
+      <span class="sr-only">Use setting</span>
+      <span
+        aria-hidden="true"
+        :class="[localValue ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']"
+      />
     </Switch>
     <SwitchLabel
       v-if="enabledText"

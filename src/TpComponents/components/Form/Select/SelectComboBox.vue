@@ -60,7 +60,10 @@
                   :class="{ 'text-white': active, 'text-teal-600': !active }"
                   class="absolute inset-y-0 left-0 flex items-center pl-3"
                 >
-                  <CheckIcon class="size-5" aria-hidden="true" />
+                  <CheckIcon
+                    class="size-5"
+                    aria-hidden="true"
+                  />
                 </span>
               </li>
             </ComboboxOption>

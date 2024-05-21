@@ -80,12 +80,12 @@ watch([protocol, endpoint], () => {
     <div class="relative rounded-md shadow-sm">
       <div class="absolute inset-y-0 left-0 flex items-center">
         <select
-            :disabled="disabled"
-            name="type"
-            v-model="protocol"
-            autocomplete="type"
-            :data-test="dataTest + '-select-type'"
-            class="h-full rounded-md border-0 bg-transparent pl-3 pr-12 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tp-primary sm:text-sm"
+          v-model="protocol"
+          :disabled="disabled"
+          name="type"
+          autocomplete="type"
+          :data-test="dataTest + '-select-type'"
+          class="h-full rounded-md border-0 bg-transparent pl-3 pr-12 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tp-primary sm:text-sm"
         >
           <option
             v-for="(type, index) in types"
@@ -97,15 +97,15 @@ watch([protocol, endpoint], () => {
         </select>
       </div>
       <input
-          :disabled="disabled"
-          type="text"
-          name="url"
-          :id="dataTest"
-          v-model="endpoint"
-          class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary sm:text-sm sm:leading-6"
-          :placeholder="placeholder"
-          :data-test="dataTest + '-input'"
-      />
+        :id="dataTest"
+        v-model="endpoint"
+        :disabled="disabled"
+        type="text"
+        name="url"
+        class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary sm:text-sm sm:leading-6"
+        :placeholder="placeholder"
+        :data-test="dataTest + '-input'"
+      >
     </div>
     <span v-if="showError && v?.$invalid">
       <p

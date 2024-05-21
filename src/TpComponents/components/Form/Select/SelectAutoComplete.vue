@@ -24,7 +24,10 @@
         :data-test="dataTest + '-button'"
         class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
       >
-        <ChevronDownIcon class="size-5 text-gray-400" aria-hidden="true" />
+        <ChevronDownIcon
+          class="size-5 text-gray-400"
+          aria-hidden="true"
+        />
       </ComboboxButton>
 
       <ComboboxOptions
@@ -58,7 +61,10 @@
                 active ? 'text-white' : 'text-tp-primary',
               ]"
             >
-              <CheckIcon class="size-5" aria-hidden="true" />
+              <CheckIcon
+                class="size-5"
+                aria-hidden="true"
+              />
             </span>
           </li>
         </ComboboxOption>
