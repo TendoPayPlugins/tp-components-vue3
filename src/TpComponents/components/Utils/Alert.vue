@@ -30,9 +30,7 @@
                 </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script setup>
@@ -53,7 +51,7 @@ const props = defineProps({
   },
   type: {
     type: String,
-    default: 'success' // @todo add error, warning etc
+    default: 'success'
   },
   close: {
     type: Boolean,

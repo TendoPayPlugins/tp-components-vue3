@@ -81,15 +81,6 @@ watch(localValue, onInput);
         type="email"
         @input="onInput"
       >
-      <div
-        v-if="v?.$invalid"
-        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-      >
-        <ExclamationCircleIcon
-          class="size-5 text-red-500"
-          aria-hidden="true"
-        />
-      </div>
     </div>
 
     <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
