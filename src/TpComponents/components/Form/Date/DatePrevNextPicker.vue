@@ -1,29 +1,13 @@
 <template>
   <span class="isolate inline-flex items-center">
-    <button
-      :class="{ disabled: !isPrevEnable }"
-      class="relative inline-flex items-center px-2 py-2 text-gray-400 hover:bg-gray-50 focus:z-10"
-      type="button"
-      @click="goPrev"
-    >
-      <ChevronLeftIcon
-        aria-hidden="true"
-        class="h-5 w-5"
-      />
-      <span class="uppercase text-xxs">Previous</span>
+    <button :class="{ disabled: !isPrevEnable }" @click="goPrev" type="button" class="relative inline-flex items-center px-2 py-2 text-gray-800 hover:text-gray-400 focus:z-10">
+      <ChevronLeftIcon class="size-5 text-gray-400" aria-hidden="true" />
+      <span class="uppercase font-semibold text-xxs">Previous</span>
     </button>
     <div class="text-gray-300">|</div>
-    <button
-      :class="{ disabled: !isNextEnable }"
-      class="relative -ml-px inline-flex items-center px-2 py-2 text-gray-400 hover:bg-gray-50 focus:z-10"
-      type="button"
-      @click="goNext"
-    >
-      <span class="uppercase text-xxs">Next</span>
-      <ChevronRightIcon
-        aria-hidden="true"
-        class="h-5 w-5"
-      />
+    <button :class="{ disabled: !isNextEnable }" @click="goNext" type="button" class="relative -ml-px inline-flex items-center px-2 py-2 text-gray-800 hover:text-gray-400 focus:z-10">
+      <span class="uppercase font-semibold text-xxs">Next</span>
+      <ChevronRightIcon class="size-5 text-gray-400" aria-hidden="true" />
     </button>
   </span>
 </template>

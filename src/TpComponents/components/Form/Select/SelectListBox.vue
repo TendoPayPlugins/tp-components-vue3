@@ -80,24 +80,20 @@ watch(localValue, onInput)
       {{ props.label }}
     </ListboxLabel>
 
-    <div class="relative mt-2">
-      <ListboxButton
-        v-if="!multiple"
-        :data-test="dataTest + '-button'"
-        class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-tp-primary sm:text-sm sm:leading-6"
-      >
-        <span class="block truncate">
-          {{
-            localValue?.label || placeholder || ""
-          }}
-        </span>
-        <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-          <ChevronDownIcon
-            aria-hidden="true"
-            class="h-5 w-5 text-gray-400"
-          />
-        </span>
-      </ListboxButton>
+      <div class="relative mt-2">
+        <ListboxButton
+          v-if="!multiple"
+          :data-test="dataTest + '-button'"
+          class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-tp-primary sm:text-sm sm:leading-6"
+        >
+          <span class="block truncate">
+              {{ localValue?.label || placeholder || ""
+              }}
+          </span>
+          <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+            <ChevronDownIcon class="size-5 text-gray-400" aria-hidden="true" />
+          </span>
+        </ListboxButton>
 
       <ListboxButton
         v-if="multiple"
@@ -111,53 +107,41 @@ watch(localValue, onInput)
         }}</span>
       </ListboxButton>
 
-      <transition
-        leave-active-class="transition ease-in duration-100"
-        leave-from-class="opacity-100"
-        leave-to-class="opacity-0"
-      >
-        <ListboxOptions
-          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+            <transition
+              leave-active-class="transition ease-in duration-100"
+              leave-from-class="opacity-100"
+              leave-to-class="opacity-0"
+            >
+              <ListboxOptions class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                <ListboxOption
+                  as="template"
+                  v-for="(option, index) in options"
+                  :key="option.value"
+                  :value="option"
+                  v-slot="{ active, selected }"
+                >
+                  <li :class="[ active ? 'bg-tp-primary text-white' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
+                    <span
+                      :data-test="dataTest + '-option-label' + index"
+                      :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
+                    >
+                      {{ option.label }}
+                    </span>
+                    <span v-if="selected" :class="[active ? 'text-white' : 'text-tp-primary', 'absolute inset-y-0 right-0 flex items-center pr-4']">
+                      <CheckIcon class="size-5" aria-hidden="true" />
+                    </span>
+                  </li>
+                </ListboxOption>
+              </ListboxOptions>
+            </transition>
+        </div>
+    </Listbox>
+    <span v-if="showError && v?.$invalid">
+        <p
+          v-for="error in v?.$silentErrors"
+          class="mt-2 text-xs text-red-600 dark:text-red-400"
         >
-          <ListboxOption
-            v-for="(option, index) in options"
-            :key="option.value"
-            v-slot="{ active, selected }"
-            :value="option"
-            as="template"
-          >
-            <li :class="[ active ? 'bg-tp-primary text-white' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
-              <span
-                :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
-                :data-test="dataTest + '-option-label' + index"
-              >
-                {{ option.label }}
-              </span>
-              <span
-                v-if="selected"
-                :class="[active ? 'text-white' : 'text-tp-primary', 'absolute inset-y-0 right-0 flex items-center pr-4']"
-              >
-                <CheckIcon
-                  aria-hidden="true"
-                  class="h-5 w-5"
-                />
-              </span>
-            </li>
-          </ListboxOption>
-        </ListboxOptions>
-      </transition>
-    </div>
-  </Listbox>
-  <span v-if="showError && v?.$invalid">
-    <p
-      v-for="(error, index) in v?.$silentErrors"
-      :key="index"
-      class="mt-2 text-xs text-red-600 dark:text-red-400"
-    >
-      <span
-        :data-test="dataTest + '-email-error' + error.$uid"
-        class="font-medium"
-      >{{ error.$message }}</span>
-    </p>
-  </span>
+          <span class="font-medium" :data-test="dataTest + '-email-error' + error.$uid">{{ error.$message }}</span>
+        </p>
+      </span>
 </template>

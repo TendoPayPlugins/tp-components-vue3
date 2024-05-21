@@ -86,8 +86,8 @@ watch(localValue, onInput);
         class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
       >
         <ExclamationCircleIcon
+          class="size-5 text-red-500"
           aria-hidden="true"
-          class="h-5 w-5 text-red-500"
         />
       </div>
     </div>

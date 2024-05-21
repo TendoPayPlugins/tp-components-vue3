@@ -14,8 +14,8 @@
             class="absolute inset-y-0 right-0 flex items-center pr-2"
           >
             <ChevronDownIcon
+              class="size-5 text-gray-400"
               aria-hidden="true"
-              class="h-5 w-5 text-gray-400"
             />
           </ComboboxButton>
         </div>
@@ -60,10 +60,7 @@
                   :class="{ 'text-white': active, 'text-teal-600': !active }"
                   class="absolute inset-y-0 left-0 flex items-center pl-3"
                 >
-                  <CheckIcon
-                    aria-hidden="true"
-                    class="h-5 w-5"
-                  />
+                  <CheckIcon class="size-5" aria-hidden="true" />
                 </span>
               </li>
             </ComboboxOption>
