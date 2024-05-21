@@ -67,11 +67,11 @@ watch(localValue, onInput);
       :id="dataTest"
       v-model="localValue"
       :class="{
-          'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500':
-            v?.$invalid,
-          'text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary':
-            !v?.$invalid,
-        }"
+        'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500':
+          v?.$invalid,
+        'text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary':
+          !v?.$invalid,
+      }"
       :data-test="dataTest + '-input'"
       :placeholder="placeholder"
       :maxlength="maxLength || null"

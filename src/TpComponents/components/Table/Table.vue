@@ -1,46 +1,77 @@
 <template>
-    <div class="mt-8 flow-root">
-        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <table class="min-w-full divide-y divide-gray-300" data-test="table">
-                    <thead class="bg-gray-300 text-gray-600 text-xxs">
-                    <tr>
-                        <th v-if="batchActions" class="py-2.5">
-                            <InputCheckbox
-                                :data-test="'checkbox-batch-all' + dataTest"
-                                v-model="state.batchAll"
-                                type="checkbox"
-                                @clicked="clickBatchAll"
-                            />
-                        </th>
-                        <th v-if="numerate">No.</th>
-                        <slot name="headers" />
-                        <th v-if="itemActions">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
-                    <tr v-for="(item, index) in state.data" :key="index" :data-test="'row-index-' + index">
-                        <td v-if="batchActions" class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900">
-                            <InputCheckbox
-                                :data-test="'batch-list-' + index"
-                                :value="hasItemInBatchList(item.id)"
-                                @update:modelValue="toggleBatchItem(item)"
-                                type="checkbox"
-                            />
-                        </td>
-                        <td v-if="numerate" class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900">
-                            <Numbering :pagination="state.pagination" :idx="index" data-test="numbering" />
-                        </td>
-                        <slot name="columns" :item="item" class="text-center" />
-                        <td v-if="itemActions" class="relative whitespace-nowrap py-4 text-sm font-medium sm:pr-0">
-                            <DropDownActions :items="itemActions" />
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  <div class="mt-8 flow-root">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <table
+          class="min-w-full divide-y divide-gray-300"
+          data-test="table"
+        >
+          <thead class="bg-gray-300 text-gray-600 text-xxs">
+            <tr>
+              <th
+                v-if="batchActions"
+                class="py-2.5"
+              >
+                <InputCheckbox
+                  v-model="state.batchAll"
+                  :data-test="'checkbox-batch-all' + dataTest"
+                  type="checkbox"
+                  @clicked="clickBatchAll"
+                />
+              </th>
+              <th v-if="numerate">
+                No.
+              </th>
+              <slot name="headers" />
+              <th v-if="itemActions">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr
+              v-for="(item, index) in state.data"
+              :key="index"
+              :data-test="'row-index-' + index"
+            >
+              <td
+                v-if="batchActions"
+                class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900"
+              >
+                <InputCheckbox
+                  :data-test="'batch-list-' + index"
+                  :value="hasItemInBatchList(item.id)"
+                  type="checkbox"
+                  @update:model-value="toggleBatchItem(item)"
+                />
+              </td>
+              <td
+                v-if="numerate"
+                class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900"
+              >
+                <Numbering
+                  :pagination="state.pagination"
+                  :idx="index"
+                  data-test="numbering"
+                />
+              </td>
+              <slot
+                name="columns"
+                :item="item"
+                class="text-center"
+              />
+              <td
+                v-if="itemActions"
+                class="relative whitespace-nowrap py-4 text-sm font-medium sm:pr-0"
+              >
+                <DropDownActions :items="itemActions" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </template>
 
 <script setup>

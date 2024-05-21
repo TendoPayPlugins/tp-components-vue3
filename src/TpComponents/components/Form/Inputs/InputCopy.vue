@@ -95,8 +95,8 @@ function toggleSecret() {
         @click="toggleSecret"
       >
         <EyeIcon
-            class="-ml-0.5 size-5 text-gray-400"
-            aria-hidden="true"
+          class="-ml-0.5 size-5 text-gray-400"
+          aria-hidden="true"
         />
       </button>
     </div>

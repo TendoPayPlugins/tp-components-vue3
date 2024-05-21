@@ -5,6 +5,7 @@ on: [ pull_request ]
 jobs:
   check-js-files:
     name: "Analyze *.js and *.vue files"
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -28,12 +29,6 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - name: Check package-lock.json version
-        run: |
-          if grep -c '"lockfileVersion": 1,' package-lock.json ; then
-            echo "lockfileVersion is 1, please make sure that you are using proper node and npm version"
-            exit 1
-          fi
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
@@ -42,13 +37,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Install Dependencies
-        if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-
       - name: Install pnpm
         run: |
           pnpm install          
 
       - name: Analyze latest files
-        run: pnpm run eslint
+        run: pnpm run lint
+
+      - name: Cancelling jobs
+        if: failure()
+        uses: andymckay/cancel-action@0.3
