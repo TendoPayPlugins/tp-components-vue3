@@ -47,4 +47,4 @@ jobs:
           pnpm install          
 
       - name: Analyze latest files
-        run: pnpm run eslint
+        run: pnpm run lint
