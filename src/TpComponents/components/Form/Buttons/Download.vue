@@ -50,10 +50,10 @@ watch(() => props.data, async (newVal, oldVal) => {
   <button
     :data-test="dataTest + '-download-button'"
     :disabled="disabled"
-    class="flex items-center bg-transparent border-2 border-black rounded-md px-4 py-2"
+    class="flex items-center bg-transparent border-2 border-tp-grey-600 rounded-md px-4 py-2"
     @click="emit('download')"
   >
-    <ArrowDownIcon class="w-6 h-6 mr-3" />
-    <span class="font-bold">Download</span>
+    <ArrowDownIcon class="size-3 mr-3" />
+    <span class="font-bold text-sm">Download</span>
   </button>
 </template>

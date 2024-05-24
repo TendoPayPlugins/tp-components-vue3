@@ -1,5 +1,6 @@
 <script setup>
 import {watch} from "vue";
+import {ExclamationCircleIcon} from '@heroicons/vue/24/outline'
 
 const localValue = defineModel({type: [Number, String], default: null, required: false})
 
@@ -68,7 +69,13 @@ watch(localValue, onInput);
         :placeholder="placeholder"
         :step="step"
         aria-describedby="price-currency"
-        class="block w-full rounded-md border-0 py-1.5 pl-7 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        class="block w-full rounded-md border-0 py-1.5 pl-7 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+        :class="{
+          'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500':
+            v?.$invalid,
+          'text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary':
+            !v?.$invalid,
+        }"
         name="price"
         type="number"
       >
@@ -77,6 +84,10 @@ watch(localValue, onInput);
           id="price-currency"
           class="text-gray-500 sm:text-sm"
         >{{ props.currency }}</span>
+      </div>
+
+      <div v-if="v?.$invalid" class="absolute right-16 top-1.5">
+        <ExclamationCircleIcon class="size-5 text-red-500" />
       </div>
     </div>
     <span v-if="showError && v?.$invalid">

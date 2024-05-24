@@ -1,5 +1,6 @@
 <script setup>
 import {computed, ref, watch} from "vue";
+import {ExclamationCircleIcon} from '@heroicons/vue/24/outline'
 
 const endpoint = ref('');
 const protocol = ref('https');
@@ -70,7 +71,7 @@ watch([protocol, endpoint], () => {
 </script>
 
 <template>
-  <div>
+  <div class="relative">
     <label
       v-if="label"
       :data-test="dataTest + '-label'"
@@ -102,11 +103,22 @@ watch([protocol, endpoint], () => {
         :disabled="disabled"
         type="text"
         name="url"
-        class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary sm:text-sm sm:leading-6"
+        class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+        :class="{
+          'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500':
+            v?.$invalid,
+          'text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary':
+            !v?.$invalid,
+        }"
         :placeholder="placeholder"
         :data-test="dataTest + '-input'"
       >
     </div>
+
+    <div v-if="v?.$invalid" class="absolute right-1.5 top-1.5">
+      <ExclamationCircleIcon class="size-5 text-red-500" />
+    </div>
+
     <span v-if="showError && v?.$invalid">
       <p
         v-for="(error, index) in v?.$silentErrors"

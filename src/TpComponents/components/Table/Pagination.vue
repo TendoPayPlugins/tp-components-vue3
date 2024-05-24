@@ -3,12 +3,24 @@
     <div class="flex flex-1 justify-between sm:hidden">
       <a
         href="#"
-        class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-      >Previous</a>
+        class="relative inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-400"
+      >
+        <ChevronLeftIcon
+          class="size-5 text-gray-400"
+          aria-hidden="true"
+        />
+        <span class="uppercase font-semibold text-xxs">Previous</span>
+      </a>
       <a
         href="#"
-        class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-      >Next</a>
+        class="relative ml-3 inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-400"
+      >
+        <span class="uppercase font-semibold text-xxs">Next</span>
+        <ChevronRightIcon
+          class="size-5 text-gray-400"
+          aria-hidden="true"
+        />
+      </a>
     </div>
     <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
       <div>
@@ -36,11 +48,11 @@
           <a
             class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 cursor-pointer"
           >
-            <span class="sr-only">Previous</span>
             <ChevronLeftIcon
-              class="size-5"
+              class="size-5 text-gray-400"
               aria-hidden="true"
             />
+            <span class="uppercase font-semibold text-xxs">Previous</span>
           </a>
           <a
             href="#"
@@ -72,9 +84,9 @@
             href="#"
             class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
           >
-            <span class="sr-only">Next</span>
+            <span class="uppercase font-semibold text-xxs">Next</span>
             <ChevronRightIcon
-              class="size-5"
+              class="size-5 text-gray-400"
               aria-hidden="true"
             />
           </a>

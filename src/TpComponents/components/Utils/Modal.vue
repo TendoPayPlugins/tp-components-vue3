@@ -39,18 +39,18 @@
             >
               <div class="absolute right-0 top-0 pr-4 pt-4 sm:block">
                 <button
-                  class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-0"
                   type="button"
                   @click="emit('close')"
                 >
                   <span class="sr-only">Close</span>
                   <XMarkIcon
                     aria-hidden="true"
-                    class="h-6 w-6"
+                    class="size-6"
                   />
                 </button>
               </div>
-              <div class="sm:flex sm:items-start">
+              <div class="sm:flex sm:items-start sm:justify-center">
                 <div class="mt-3 sm:ml-4 sm:mt-0 sm:text-left">
                   <DialogTitle
                     as="h3"
