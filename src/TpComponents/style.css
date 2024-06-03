@@ -1104,35 +1104,6 @@ input:checked + .toggle-bg {
   border-color: #2563eb;
 }
 
-[type='text']:focus,
-    [type='email']:focus,
-    [type='url']:focus,
-    [type='password']:focus,
-    [type='number']:focus,
-    [type='date']:focus,
-    [type='datetime-local']:focus,
-    [type='month']:focus,
-    [type='search']:focus,
-    [type='tel']:focus,
-    [type='time']:focus,
-    [type='week']:focus,
-    [multiple]:focus,
-    textarea:focus,
-    select:focus {
-  --tw-ring-color: #25a5f1 !important;
-  border-color: var(--tw-ring-color) !important;
-}
-
-[type="checkbox"],
-    [type="radio"] {
-  color: #25a5f1 !important;
-}
-
-[type="checkbox"]:focus,
-    [type="radio"]:focus {
-  --tw-ring-color: #25a5f1 !important;
-}
-
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -1376,6 +1347,26 @@ input:checked + .toggle-bg {
   top: 100%;
 }
 
+.right-1 {
+  right: 0.25rem;
+}
+
+.right-1\.5 {
+  right: 0.375rem;
+}
+
+.top-1 {
+  top: 0.25rem;
+}
+
+.top-1\.5 {
+  top: 0.375rem;
+}
+
+.right-16 {
+  right: 4rem;
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -1586,6 +1577,11 @@ input:checked + .toggle-bg {
 
 .hidden {
   display: none;
+}
+
+.size-3 {
+  width: 0.75rem;
+  height: 0.75rem;
 }
 
 .size-4 {
@@ -2126,11 +2122,6 @@ input:checked + .toggle-bg {
   border-style: none;
 }
 
-.border-black {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
-
 .border-black\/\[\.1\] {
   border-color: rgb(0 0 0 / .1);
 }
@@ -2158,6 +2149,21 @@ input:checked + .toggle-bg {
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.border-red-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(252 165 165 / var(--tw-border-opacity));
+}
+
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.border-tp-grey-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(77 90 100 / var(--tw-border-opacity));
 }
 
 .border-tp-primary {
@@ -2673,11 +2679,6 @@ input:checked + .toggle-bg {
   color: rgb(248 113 113 / var(--tw-text-opacity));
 }
 
-.text-red-500 {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
-}
-
 .text-red-600 {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
@@ -2756,6 +2757,11 @@ input:checked + .toggle-bg {
 .text-yellow-700 {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .placeholder-vtd-secondary-400::-moz-placeholder {
@@ -2940,6 +2946,62 @@ input:checked + .toggle-bg {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
+/*@layer base {*/
+
+/*    [type='text']:focus,*/
+
+/*    [type='email']:focus,*/
+
+/*    [type='url']:focus,*/
+
+/*    [type='password']:focus,*/
+
+/*    [type='number']:focus,*/
+
+/*    [type='date']:focus,*/
+
+/*    [type='datetime-local']:focus,*/
+
+/*    [type='month']:focus,*/
+
+/*    [type='search']:focus,*/
+
+/*    [type='tel']:focus,*/
+
+/*    [type='time']:focus,*/
+
+/*    [type='week']:focus,*/
+
+/*    [multiple]:focus,*/
+
+/*    textarea:focus,*/
+
+/*    select:focus {*/
+
+/*      --tw-ring-color: #25a5f1 !important;*/
+
+/*      border-color: var(--tw-ring-color) !important;*/
+
+/*    }*/
+
+/*    [type="checkbox"],*/
+
+/*    [type="radio"] {*/
+
+/*        color: #25a5f1 !important;*/
+
+/*    }*/
+
+/*    [type="checkbox"]:focus,*/
+
+/*    [type="radio"]:focus {*/
+
+/*        --tw-ring-color: #25a5f1 !important;*/
+
+/*    }*/
+
+/*}*/
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -3113,6 +3175,11 @@ input:checked + .toggle-bg {
 
 .focus\:z-20:focus {
   z-index: 20;
+}
+
+.focus\:border-red-500:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
 .focus\:border-tp-primary:focus {
@@ -3709,6 +3776,10 @@ input:checked + .toggle-bg {
 
   .sm\:items-center {
     align-items: center;
+  }
+
+  .sm\:justify-center {
+    justify-content: center;
   }
 
   .sm\:justify-between {

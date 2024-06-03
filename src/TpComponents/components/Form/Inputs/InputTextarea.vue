@@ -1,5 +1,6 @@
 <script setup>
 import {defineEmits, defineModel, watch} from "vue";
+import {ExclamationCircleIcon} from '@heroicons/vue/24/outline'
 
 const localValue = defineModel({type: String, default: null, required: false })
 
@@ -43,7 +44,7 @@ const props = defineProps({
   dataTest: {
     type: String,
     required: true,
-  }
+  },
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -63,14 +64,15 @@ watch(localValue, onInput);
       class="block text-sm font-medium leading-6 text-gray-900"
       for="input-textarea"
     >{{ label }}</label>
-    <div class="mt-2">
+    <div class="relative mt-2">
       <textarea
         id="input-textarea"
         v-model="localValue"
+        class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6"
         :class="{
-          'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
+          'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500':
             v?.$invalid,
-          'text-gray-900 shadow-sm placeholder:text-gray-400':
+          'text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary':
             !v?.$invalid,
         }"
         :data-test="dataTest + '-textarea'"
@@ -78,12 +80,16 @@ watch(localValue, onInput);
         :maxlength="maxLength"
         :placeholder="placeholder"
         :readonly="readonly"
-        class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset focus:ring-tp-primary"
         name="comment"
         rows="4"
         @input="onInput"
       />
+
+      <div v-if="v?.$invalid" class="absolute right-1.5 top-1.5">
+        <ExclamationCircleIcon class="size-5 text-red-500" />
+      </div>
     </div>
+
     <span v-if="showError && v?.$invalid">
       <p
         v-for="(error, index) in v?.$silentErrors"
