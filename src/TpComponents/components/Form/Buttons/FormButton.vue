@@ -21,6 +21,7 @@ const emit = defineEmits(["click"]);
   <button
     :class="['font-bold py-2 px-4 rounded',
              disabled ? 'bg-tp-grey-300 text-white' :
+             type === 'black-outline' ? 'bg-transparent border-2 border-tp-grey-600 rounded-md px-4 py-2' :
              type === 'primary' ? 'bg-tp-primary hover:bg-tp-primary-dark text-white' :
              type === 'primary-outline' ? 'bg-transparent text-tp-primary border-tp-primary border hover:bg-tp-primary hover:text-white' :
              type === 'secondary' ? 'bg-tp-secondary hover:bg-tp-secondary-dark text-white' :
