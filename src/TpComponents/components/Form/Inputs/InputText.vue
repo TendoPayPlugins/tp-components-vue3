@@ -1,6 +1,6 @@
 <script setup>
 import {watch} from "vue";
-import { ExclamationCircleIcon } from "@heroicons/vue/24/outline"
+import {ExclamationCircleIcon} from "@heroicons/vue/24/outline"
 
 const localValue = defineModel({type: String, default: null, required: false})
 
@@ -97,7 +97,7 @@ watch(localValue, onInput);
     </p>
 
     <span v-if="showError && v?.$invalid">
-      <p
+      <span
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
         class="mt-2 text-xs text-red-600 dark:text-red-400"
@@ -106,7 +106,7 @@ watch(localValue, onInput);
           :data-test="dataTest + '-email-error' + error.$uid"
           class="font-medium"
         >{{ error.$message }}</span>
-      </p>
+      </span>
     </span>
   </div>
 </template>

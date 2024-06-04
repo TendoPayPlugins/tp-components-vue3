@@ -1,5 +1,5 @@
 <script setup>
-import { useConfirmDialog} from "~/composables/useConfirmDialog.js";
+import {useConfirmDialog} from "~/composables/useConfirmDialog.js";
 
 const {isVisible, title, message, confirm, cancel} = useConfirmDialog();
 </script>

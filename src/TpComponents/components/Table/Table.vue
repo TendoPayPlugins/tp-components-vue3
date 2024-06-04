@@ -64,7 +64,7 @@
                 v-if="itemActions"
                 class="relative whitespace-nowrap py-4 text-sm font-medium sm:pr-0"
               >
-                <DropDownActions :items="itemActions" />
+                <DropDownActions :actions="itemActions" />
               </td>
             </tr>
           </tbody>
@@ -79,7 +79,6 @@ import DropDownActions from "~/components/Table/DropDownActions.vue";
 import Numbering from "~/components/Table/Numbering.vue";
 import InputCheckbox from "~/components/Form/Inputs/InputCheckbox.vue";
 import {reactive} from "vue";
-import Pagination from "~/components/Table/Pagination.vue";
 
 const state = reactive({
   batchList: [],

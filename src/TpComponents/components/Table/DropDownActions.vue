@@ -46,7 +46,7 @@
 
 <script setup>
 import {Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
-import {computed, defineProps, ref} from 'vue';
+import {defineProps, ref} from 'vue';
 import {EllipsisVerticalIcon} from "@heroicons/vue/24/solid/index.js";
 
 const props = defineProps({
@@ -76,10 +76,6 @@ const handleClick = (item) => {
     item.$click();
   }
 };
-
-const emptyItems = computed(() => {
-  return props.items.length === 0 || props.items.filter(item => show(item)).length === 0;
-});
 
 const show = (item) => {
   const {show} = item || {show: false};

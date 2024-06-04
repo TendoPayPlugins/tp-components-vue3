@@ -1,4 +1,4 @@
-import { ref, provide, inject } from 'vue';
+import {inject, provide, ref} from 'vue';
 
 export const ConfirmDialogSymbol = Symbol('ConfirmDialog');
 
