@@ -79,56 +79,56 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="flex flex-col space-y-4">
-        <div class="bg-gray-200 h-80 flex items-center justify-center w-full max-w-md">
-            <Cropper
-                v-if="image.src"
-                ref="cropper"
-                :canvas="{
-                  height: width,
-                  width: height
-                }"
-                :src="image.src"
-                :stencil-props="{
-                  handlers: {},
-                  movable: false,
-                  scalable: false,
-                  aspectRatio: 1,
-                }"
-                class="cropper"
-                image-restriction="stencil"
-            />
-        </div>
-
-        <div class="bg-gray-100 flex items-center justify-center p-4">
-            <input
-                ref="file"
-                accept="image/*"
-                type="file"
-                @change="loadImage"
-            >
-        </div>
-
-        <div class="flex items-center justify-between p-4">
-            <FormButton
-                class="py-2 px-4"
-                type="secondary"
-                data-test="reset-button"
-                @click="reset"
-            >
-                Reset
-            </FormButton>
-            <FormButton
-                :disabled="!image.src"
-                class="py-2 px-4"
-                type="primary"
-                data-test="save-button"
-                @click="save"
-            >
-                Save
-            </FormButton>
-        </div>
+  <div class="flex flex-col space-y-4">
+    <div class="bg-gray-200 h-80 flex items-center justify-center w-full max-w-md">
+      <Cropper
+        v-if="image.src"
+        ref="cropper"
+        :canvas="{
+          height: width,
+          width: height
+        }"
+        :src="image.src"
+        :stencil-props="{
+          handlers: {},
+          movable: false,
+          scalable: false,
+          aspectRatio: 1,
+        }"
+        class="cropper"
+        image-restriction="stencil"
+      />
     </div>
+
+    <div class="bg-gray-100 flex items-center justify-center p-4">
+      <input
+        ref="file"
+        accept="image/*"
+        type="file"
+        @change="loadImage"
+      >
+    </div>
+
+    <div class="flex items-center justify-between p-4">
+      <FormButton
+        class="py-2 px-4"
+        type="secondary"
+        data-test="reset-button"
+        @click="reset"
+      >
+        Reset
+      </FormButton>
+      <FormButton
+        :disabled="!image.src"
+        class="py-2 px-4"
+        type="primary"
+        data-test="save-button"
+        @click="save"
+      >
+        Save
+      </FormButton>
+    </div>
+  </div>
 </template>
 
 <style scoped>

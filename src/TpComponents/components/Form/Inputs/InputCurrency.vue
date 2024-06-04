@@ -86,7 +86,10 @@ watch(localValue, onInput);
         >{{ props.currency }}</span>
       </div>
 
-      <div v-if="v?.$invalid" class="absolute right-16 top-1.5">
+      <div
+        v-if="v?.$invalid"
+        class="absolute right-16 top-1.5"
+      >
         <ExclamationCircleIcon class="size-5 text-red-500" />
       </div>
     </div>

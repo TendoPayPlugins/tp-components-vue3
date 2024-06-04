@@ -81,7 +81,10 @@ watch(localValue, onInput);
       type="text"
     >
 
-    <div v-if="v?.$invalid" class="absolute right-1.5 top-1.5">
+    <div
+      v-if="v?.$invalid"
+      class="absolute right-1.5 top-1.5"
+    >
       <ExclamationCircleIcon class="size-5 text-red-500" />
     </div>
 

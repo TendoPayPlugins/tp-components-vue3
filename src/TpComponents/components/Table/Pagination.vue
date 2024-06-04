@@ -40,36 +40,36 @@
           results
         </p>
       </div>
-        <div>
-            <nav
-              aria-label="Pagination"
-              class="isolate inline-flex -space-x-px rounded-md shadow-sm"
-            >
-                <button
-                        :disabled="!pagination.has_prev"
-                        class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 mr-2"
-                        @click="goPrev()"
-                >
-                    <ChevronLeftIcon
-                            aria-hidden="true"
-                            class="h-5 w-5"
-                    />
-                    <span>Previous</span>
-                </button>
-                {{ pagination.current_page }} out of {{ pagination.last_page }}
-                <button
-                        :disabled="!pagination.has_next"
-                        class="ml-2 relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                        @click="goNext()"
-                >
-                    <span>Next</span>
-                    <ChevronRightIcon
-                            aria-hidden="true"
-                            class="h-5 w-5"
-                    />
-                </button>
-            </nav>
-        </div>
+      <div>
+        <nav
+          aria-label="Pagination"
+          class="isolate inline-flex -space-x-px rounded-md shadow-sm"
+        >
+          <button
+            :disabled="!pagination.has_prev"
+            class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 mr-2"
+            @click="goPrev()"
+          >
+            <ChevronLeftIcon
+              aria-hidden="true"
+              class="h-5 w-5"
+            />
+            <span>Previous</span>
+          </button>
+          {{ pagination.current_page }} out of {{ pagination.last_page }}
+          <button
+            :disabled="!pagination.has_next"
+            class="ml-2 relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            @click="goNext()"
+          >
+            <span>Next</span>
+            <ChevronRightIcon
+              aria-hidden="true"
+              class="h-5 w-5"
+            />
+          </button>
+        </nav>
+      </div>
     </div>
   </div>
 </template>
