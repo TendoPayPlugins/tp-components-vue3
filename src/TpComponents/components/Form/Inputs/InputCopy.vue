@@ -1,7 +1,8 @@
 <script setup>
 /* eslint-disable vue/no-async-in-computed-properties */
 /* eslint-disable vue/no-side-effects-in-computed-properties */
-import {DocumentDuplicateIcon, EyeIcon} from '@heroicons/vue/24/solid'
+import {DocumentDuplicateIcon, EyeIcon} from '@heroicons/vue/24/outline'
+
 import {computed, reactive} from "vue";
 import Alert from "~/components/Utils/Alert.vue";
 
@@ -79,24 +80,24 @@ function toggleSecret() {
       <button
         :class="{ 'rounded-r-md': !hide }"
         :data-test="dataTest + '-copy-button'"
-        class="relative -ml-px inline-flex items-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        class="relative -ml-px inline-flex items-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-tp-primary hover:bg-gray-50"
         type="button"
         @click="copy"
       >
         <DocumentDuplicateIcon
-          class="-ml-0.5 size-5 text-gray-400"
+          class="-ml-0.5 size-5 text-tp-primary"
           aria-hidden="true"
         />
       </button>
       <button
         v-if="hide"
         :data-test="dataTest + '-toggle-button'"
-        class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-tp-primary hover:bg-gray-50"
         type="button"
         @click="toggleSecret"
       >
         <EyeIcon
-          class="-ml-0.5 size-5 text-gray-400"
+          class="-ml-0.5 size-5 text-tp-primary"
           aria-hidden="true"
         />
       </button>
