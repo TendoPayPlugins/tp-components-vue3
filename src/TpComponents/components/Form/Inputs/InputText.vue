@@ -49,6 +49,7 @@ const onInput = () => {
   if (localValue.value === "") {
     localValue.value = null
   }
+  // noinspection JSCheckFunctionSignatures
   emit("update:modelValue", localValue.value);
 };
 

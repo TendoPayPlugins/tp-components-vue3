@@ -61,9 +61,11 @@ watch(initialUrl, () => {
 
 watch([protocol, endpoint], () => {
   if ((endpoint.value).length === 0) {
+    // noinspection JSCheckFunctionSignatures
     emit('update:modelValue', null);
     return
   }
+  // noinspection JSCheckFunctionSignatures
   emit('update:modelValue', fullUrl.value);
 });
 

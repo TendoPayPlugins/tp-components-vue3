@@ -73,6 +73,7 @@ const goPrev = () => {
     from.value = to.value.clone().subtract(toValue.diff(fromValue, "days"), "days");
   }
 
+  // noinspection JSCheckFunctionSignatures
   emit("update:modelValue", [
     from.value.format("YYYY-MM-DD"),
     to.value.format("YYYY-MM-DD"),
@@ -105,6 +106,7 @@ const goNext = () => {
     to.value = from.value.clone().add(toValue.diff(fromValue, "days"), "days");
   }
 
+  // noinspection JSCheckFunctionSignatures
   emit("update:modelValue", [
     from.value.format("YYYY-MM-DD"),
     to.value.format("YYYY-MM-DD"),

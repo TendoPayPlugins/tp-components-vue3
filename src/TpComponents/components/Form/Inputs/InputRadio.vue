@@ -36,6 +36,7 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const onInput = () => {
+  // noinspection JSCheckFunctionSignatures
   emit("update:modelValue", localValue.value);
 };
 

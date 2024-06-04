@@ -40,7 +40,7 @@ const props = defineProps({
 })
 
 const onInput = (value) => {
-  emit("input", value);
+  emit('input', value);
 };
 </script>
 

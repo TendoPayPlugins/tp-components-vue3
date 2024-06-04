@@ -16,6 +16,7 @@ const state = reactive({
 const showResult = computed(() => {
   if (!!state.copied) {
     const timeout = 800;
+    // noinspection JSValidateTypes
     state.timeoutObj = setTimeout(() => (state.copied = false), timeout);
   }
   return !!state.copied;

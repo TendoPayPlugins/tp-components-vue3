@@ -27,9 +27,11 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue", "clicked"]);
 
 const onClickInput = () => {
+  // noinspection JSCheckFunctionSignatures
   emit("clicked", !localValue.value)
 }
 const onInput = () => {
+  // noinspection JSCheckFunctionSignatures
   emit("update:modelValue", localValue.value);
 };
 

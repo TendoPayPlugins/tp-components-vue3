@@ -47,6 +47,7 @@ const emit = defineEmits(["update:modelValue"]);
 const localValue = defineModel({required: false, default: null, type: [Number, String]})
 
 const onInput = () => {
+  // noinspection JSCheckFunctionSignatures
   emit("update:modelValue", Boolean(localValue.value));
 };
 

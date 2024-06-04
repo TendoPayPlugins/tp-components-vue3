@@ -31,6 +31,7 @@ watch(() => props.data, async (newVal, oldVal) => {
 
   if (props.async) {
     const text = newVal instanceof Blob ? await newVal.text() : newVal;
+    // noinspection JSCheckFunctionSignatures
     emit('asyncDone', text);
     return;
   }
