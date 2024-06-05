@@ -55,7 +55,7 @@ watch(localValue, onInput);
       v-if="label"
       :data-test="dataTest + '-label'"
       :for="dataTest"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      class="block mb-2 text-sm font-medium text-gray-900"
     >{{ label }}</label>
     <select
       :id="dataTest"

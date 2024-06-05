@@ -78,7 +78,7 @@ watch([protocol, endpoint], () => {
       v-if="label"
       :data-test="dataTest + '-label'"
       :for="dataTest"
-      class="block text-sm font-medium leading-6 text-gray-900"
+      class="block text-sm font-medium leading-6 text-gray-900 mb-2"
     >{{ label }}</label>
     <div class="relative rounded-md shadow-sm">
       <div class="absolute inset-y-0 left-0 flex items-center">

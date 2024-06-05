@@ -63,10 +63,11 @@ watch(localValue, onInput);
       v-if="label"
       :data-test="dataTest + '-label'"
       :for="dataTest"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      class="block mb-2 text-sm font-medium text-gray-900"
     >{{ label }}</label>
     <input
       :id="dataTest"
+      :disabled="disabled"
       v-model="localValue"
       class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset"
       :class="{

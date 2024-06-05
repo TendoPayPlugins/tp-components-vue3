@@ -59,20 +59,20 @@ function toggleSecret() {
 </script>
 
 <template>
-  <div>
+  <div class="relative">
     <label
       v-if="label"
       :for="dataTest"
       class="block text-sm font-medium leading-6 text-gray-900"
     >{{ label }}</label>
-    <div class="mt-2 flex rounded-md shadow-sm">
+    <div class="flex rounded-md shadow-sm py-2">
       <div class="relative flex flex-grow items-stretch focus-within:z-10">
         <input
           :id="dataTest"
           :data-test="dataTest + '-input'"
           :type="(hide && state.secretHidden) ? 'password': 'text'"
           :value="value"
-          class="block w-full focus:ring-tp-primary rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+          class="block w-full focus:ring-tp-primary rounded-none rounded-l-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           name="text"
           readonly
         >
