@@ -40,7 +40,6 @@ export {default as Copy} from "./Utils/Copy.vue";
 export {default as Alert} from "./Utils/Alert.vue";
 export {default as Modal} from './Utils/Modal.vue';
 export {default as Chart} from './Utils/Chart.vue';
-export {default as SideMenu} from "./Utils/SideMenu.vue";
 export {default as ImageCropper} from "./Utils/ImageCropper.vue";
 export {default as ConfirmDialog} from './Utils/ConfirmDialog.vue';
 
