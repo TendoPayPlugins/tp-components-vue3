@@ -2,6 +2,9 @@
   <div class="mt-8 flow-root">
     <div class="inline-block min-w-full py-2 align-middle">
       <div class="">
+        <div>
+            <Pagination :pagination="state.pagination" @page="goPage" />
+        </div>
         <table
           class="min-w-full divide-y divide-gray-200"
           data-test="table"
@@ -69,6 +72,10 @@
             </tr>
           </tbody>
         </table>
+
+        <div>
+          <Pagination :pagination="state.pagination" @page="goPage" :show-results="false" />
+        </div>
       </div>
     </div>
   </div>
@@ -79,6 +86,7 @@ import DropDownActions from "~/components/Table/DropDownActions.vue";
 import Numbering from "~/components/Table/Numbering.vue";
 import InputCheckbox from "~/components/Form/Inputs/InputCheckbox.vue";
 import {reactive} from "vue";
+import Pagination from "~/components/Table/Pagination.vue";
 
 const state = reactive({
   batchList: [],
