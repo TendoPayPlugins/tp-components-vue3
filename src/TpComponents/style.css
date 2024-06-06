@@ -3915,6 +3915,14 @@ input:checked + .toggle-bg {
     width: 20rem;
   }
 
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
+  .lg\:w-3\/4 {
+    width: 75%;
+  }
+
   .lg\:flex-col {
     flex-direction: column;
   }

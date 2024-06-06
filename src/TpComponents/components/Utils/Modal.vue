@@ -35,7 +35,7 @@
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <DialogPanel
-              class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
+              class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all lg:w-3/4 sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
             >
               <div class="absolute right-0 top-0 pr-4 pt-4 sm:block">
                 <button
@@ -51,7 +51,7 @@
                 </button>
               </div>
               <div class="sm:flex sm:items-start sm:justify-center">
-                <div class="mt-3 sm:ml-4 sm:mt-0 sm:text-left">
+                <div class="mt-3 sm:ml-4 sm:mt-0 sm:text-left w-full">
                   <DialogTitle
                     as="h3"
                     class="text-base font-semibold leading-6 text-gray-900"

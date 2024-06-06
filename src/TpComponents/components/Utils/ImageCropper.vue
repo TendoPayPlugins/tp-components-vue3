@@ -93,7 +93,7 @@ onUnmounted(() => {
           handlers: {},
           movable: false,
           scalable: false,
-          aspectRatio: 1,
+          aspectRatheadlessui-dialog-panel-5io: 1,
         }"
         class="cropper"
         image-restriction="stencil"
@@ -111,7 +111,6 @@ onUnmounted(() => {
 
     <div class="flex items-center justify-between p-4">
       <FormButton
-        class="py-2 px-4"
         type="secondary"
         data-test="reset-button"
         @click="reset"
