@@ -43,13 +43,13 @@
       <div>
         <nav
           aria-label="Pagination"
-          class="isolate inline-flex -space-x-px rounded-md text-xxs justify-center items-center divide-x"
+          class="isolate inline-flex -space-x-px rounded-md text-xxs justify-center items-center"
         >
           <div class="px-3 justify-center uppercase">
               <button
                 data-test="pagination-prev-button"
                 :disabled="!pagination.has_prev"
-                class="relative inline-flex items-center uppercase font-semibold text-xxs text-gray-700 hover:text-gray-400"
+                class="relative inline-flex uppercase font-semibold text-xxs text-gray-700 hover:text-gray-400"
                 @click="goPrev()"
               >
                 <ChevronLeftIcon
@@ -60,7 +60,9 @@
               </button>
           </div>
 
-          <div class="px-3 justify-center inline-flex">
+          <div class="text-gray-300">|</div>
+
+          <div class="pl-3 justify-center inline-flex">
               <select :value="pagination.current_page" @change="goPage($event.target.value)"
                 data-test="pagination-select-page"
                 class="justify-center block px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
@@ -68,9 +70,11 @@
               </select>
           </div>
 
-          <div class="px-3 justify-center font-normal ml-2">
+          <div class="px-3 justify-center font-normal">
               out of <span class="font-semibold">{{ pagination.last_page }}</span>
           </div>
+
+          <div class="text-gray-300">|</div>
 
           <div class="px-3 justify-center uppercase">
             <button
