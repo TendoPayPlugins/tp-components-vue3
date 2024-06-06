@@ -2312,6 +2312,11 @@ input:checked + .toggle-bg {
   background-color: rgb(254 252 232 / var(--tw-bg-opacity));
 }
 
+.bg-tp-grey-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 246 248 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -2346,6 +2351,10 @@ input:checked + .toggle-bg {
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
 }
 
 .px-0 {
@@ -2431,6 +2440,16 @@ input:checked + .toggle-bg {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .pb-4 {
@@ -2757,6 +2776,16 @@ input:checked + .toggle-bg {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-gray-100 {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
+.text-gray-50 {
+  --tw-text-opacity: 1;
+  color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 
 .placeholder-vtd-secondary-400::-moz-placeholder {

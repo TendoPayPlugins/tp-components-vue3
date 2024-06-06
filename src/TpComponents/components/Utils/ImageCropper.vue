@@ -93,7 +93,7 @@ onUnmounted(() => {
           handlers: {},
           movable: false,
           scalable: false,
-          aspectRatheadlessui-dialog-panel-5io: 1,
+          aspectRatio: 1,
         }"
         class="cropper"
         image-restriction="stencil"
@@ -104,6 +104,7 @@ onUnmounted(() => {
       <input
         ref="file"
         accept="image/*"
+        class="bg-tp-primary py-3 px-8 text-gray-800"
         type="file"
         @change="loadImage"
       >
@@ -111,7 +112,9 @@ onUnmounted(() => {
 
     <div class="flex items-center justify-between p-4">
       <FormButton
-        type="secondary"
+        :disabled="!image.src"
+        type="gray"
+        size="lg"
         data-test="reset-button"
         @click="reset"
       >
@@ -119,8 +122,8 @@ onUnmounted(() => {
       </FormButton>
       <FormButton
         :disabled="!image.src"
-        class="py-2 px-4"
-        type="primary"
+        type="secondary"
+        size="lg"
         data-test="save-button"
         @click="save"
       >
