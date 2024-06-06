@@ -1,12 +1,12 @@
 <template>
   <div class="mt-8 flow-root">
-    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+    <div class="inline-block min-w-full py-2 align-middle">
+      <div class="">
         <table
-          class="min-w-full divide-y divide-gray-300"
+          class="min-w-full divide-y divide-gray-200"
           data-test="table"
         >
-          <thead class="bg-gray-300 text-gray-600 text-xxs">
+          <thead class="bg-gray-300 text-gray-500 text-xxs">
             <tr>
               <th
                 v-if="batchActions"
@@ -173,5 +173,11 @@ defineExpose({
 <style>
 tr > td {
     text-align: center;
+    font-size: 80%;
+    padding: 10px 10px 10px 10px;
+}
+
+th {
+    padding: 10px 10px 10px 10px;
 }
 </style>
