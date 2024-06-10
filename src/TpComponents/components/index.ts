@@ -7,7 +7,6 @@ export {default as InputEmail} from "./Form/Inputs/InputEmail.vue";
 export {default as InputNumber} from "./Form/Inputs/InputNumber.vue";
 export {default as InputPhoneNumber} from "./Form/Inputs/InputPhoneNumber.vue";
 export {default as InputText} from "./Form/Inputs/InputText.vue";
-export {default as InputZipCode} from "./Form/Inputs/InputZipCode.vue";
 export {default as InputSwitch} from "./Form/Inputs/InputSwitch.vue";
 export {default as InputCheckbox} from "./Form/Inputs/InputCheckbox.vue";
 export {default as InputCheckboxGroup} from "./Form/Inputs/InputCheckboxGroup.vue";
@@ -25,8 +24,6 @@ export {default as DateRangePicker} from "./Form/Date/DateRangePicker.vue";
 
 // Select
 export {default as InputSelect} from "./Form/Select/InputSelect.vue";
-// export {default as SelectAutoComplete} from "./Form/Select/SelectAutoComplete.vue";
-// export {default as SelectListBox} from "./Form/Select/SelectListBox.vue";
 
 // Buttons
 export {default as FormButton} from "./Form/Buttons/FormButton.vue";
@@ -54,3 +51,8 @@ export {default as Sort} from "./Table/Sort.vue";
 // Composables
 export { useConfirmDialog } from '../composables/useConfirmDialog';
 export { provideConfirmDialog } from '../composables/useConfirmDialog';
+
+
+// TODO
+// export {default as SelectAutoComplete} from "./Form/Select/SelectAutoComplete.vue";
+// export {default as SelectListBox} from "./Form/Select/SelectListBox.vue";

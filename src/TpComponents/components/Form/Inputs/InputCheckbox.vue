@@ -14,6 +14,10 @@ const props = defineProps({
     default: () => {
     },
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   dataTest: {
     type: String,
     required: true,
@@ -21,7 +25,7 @@ const props = defineProps({
   showError: {
     type: Boolean,
     default: true,
-  }
+  },
 });
 
 const emit = defineEmits(["update:modelValue", "clicked"]);
@@ -40,6 +44,7 @@ watch(localValue, onInput)
 
 <template>
   <input
+    :disabled="disabled"
     :id="dataTest + 'checkbox-label'"
     v-model="localValue"
     type="checkbox"
