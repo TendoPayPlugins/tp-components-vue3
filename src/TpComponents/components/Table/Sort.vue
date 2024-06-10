@@ -22,7 +22,7 @@ const updateSort = () => {
     class="cursor-pointer group inline-flex"
     @click="updateSort()"
   >
-    <slot />{{ props.dir }} / {{ props.sort }}
+    <slot />
     <span class="ml-2 flex-none rounded bg-gray-100 text-gray-900 group-hover:bg-gray-200">
       <ChevronUpIcon
         v-if="props.dir === 'asc'"
