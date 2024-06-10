@@ -22,6 +22,14 @@ const props = defineProps({
     type: String,
     required: true
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
+  },
   v: {
     type: Object,
     default: () => null
@@ -162,6 +170,9 @@ onMounted(() => {
     <input
       v-if="!editable"
       v-model="phoneNumberLocal"
+      disabled="disabled"
+      readonly="readonly"
+      :placeholder="placeholder"
       aria-describedby="PhoneNumberHelp"
       class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset"
       :class="{

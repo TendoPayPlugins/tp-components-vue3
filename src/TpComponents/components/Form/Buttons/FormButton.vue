@@ -32,7 +32,7 @@ const emit = defineEmits(["click"]);
              type === 'secondary' ? 'bg-tp-secondary hover:bg-tp-secondary-dark text-gray-800' :
              type === 'secondary-outline' ? 'bg-transparent text-tp-secondary border-tp-secondary border hover:bg-tp-secondary hover:text-white' :
              'bg-blue-500 text-white hover:bg-blue-700',
-             size === 'sm' ? 'text-sm px-8 py-3' : type === 'md' ? 'text-base px-8 py-3' : 'text-lg px-8 py-3'
+             size === 'sm' ? 'text-sm px-8 py-3' : size === 'md' ? 'text-base px-8 py-3' : 'text-lg px-8 py-3'
     ]"
     :data-test="dataTest + '-button'"
     :disabled="disabled"
