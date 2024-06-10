@@ -86,7 +86,7 @@ watch(localValue, onInput);
 
     <div
       v-if="v?.$invalid"
-      class="absolute right-1.5 top-1.5"
+      :class="`absolute right-1.5 ${ label ? 'top-8' : 'top-1.5'}`"
     >
       <ExclamationCircleIcon class="size-5 text-red-500" />
     </div>
