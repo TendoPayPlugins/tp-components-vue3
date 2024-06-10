@@ -32,13 +32,12 @@ export {default as Download} from './Form/Buttons/Download.vue';
 
 // Utils
 export {default as StepBar} from "./Utils/StepBar.vue";
-export {default as Tooltip} from "./Utils/Tooltip.vue";
-export {default as Copy} from "./Utils/Copy.vue";
 export {default as Alert} from "./Utils/Alert.vue";
 export {default as Modal} from './Utils/Modal.vue';
 export {default as Chart} from './Utils/Chart.vue';
 export {default as ImageCropper} from "./Utils/ImageCropper.vue";
 export {default as ConfirmDialog} from './Utils/ConfirmDialog.vue';
+export {default as Copy} from "./Utils/Copy.vue";
 
 // Tabs
 export {default as Tabs} from "./Tabs/Tabs.vue";
@@ -54,5 +53,6 @@ export { provideConfirmDialog } from '../composables/useConfirmDialog';
 
 
 // TODO
+// export {default as Tooltip} from "./Utils/Tooltip.vue";
 // export {default as SelectAutoComplete} from "./Form/Select/SelectAutoComplete.vue";
 // export {default as SelectListBox} from "./Form/Select/SelectListBox.vue";

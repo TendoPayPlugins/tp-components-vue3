@@ -5,7 +5,6 @@
         class="sr-only"
         for="tabs"
       >Select a tab</label>
-      <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
       <select
         id="tabs"
         class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-tp-primary focus:outline-none focus:ring-tp-primary sm:text-sm"
