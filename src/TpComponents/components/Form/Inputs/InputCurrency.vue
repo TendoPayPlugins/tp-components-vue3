@@ -14,6 +14,10 @@ const props = defineProps({
     required: false,
     default: null,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   placeholder: {
     type: String,
     required: false,
@@ -65,6 +69,7 @@ watch(localValue, onInput);
       <input
         id="price"
         v-model="localValue"
+        :disabled="disabled"
         :max="max"
         :min="min"
         :placeholder="placeholder"
