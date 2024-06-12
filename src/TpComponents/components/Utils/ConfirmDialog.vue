@@ -5,6 +5,16 @@ import InputText from "~/components/Form/Inputs/InputText.vue";
 import FormButton from "~/components/Form/Buttons/FormButton.vue";
 const localPassword = ref(null)
 const {isVisible, title, message, confirm, cancel, password = null} = useConfirmDialog();
+
+const onCancel = () => {
+  localPassword.value = null
+  cancel()
+}
+const onConfirm = () => {
+  localPassword.value = null
+  confirm()
+}
+
 </script>
 
 <template>
@@ -26,7 +36,7 @@ const {isVisible, title, message, confirm, cancel, password = null} = useConfirm
         <FormButton
           type="gray"
           class="px-4 py-2 mr-2"
-          @click="cancel"
+          @click="onCancel"
           data-test="cancel-delete"
         >
           Cancel
@@ -34,7 +44,7 @@ const {isVisible, title, message, confirm, cancel, password = null} = useConfirm
         <FormButton
           type="danger"
           data-test="confirm-delete"
-          @click="confirm"
+          @click="onConfirm"
           :disabled="password !== localPassword"
         >
           Confirm
