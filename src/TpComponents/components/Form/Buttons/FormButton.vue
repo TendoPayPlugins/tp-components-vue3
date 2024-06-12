@@ -25,6 +25,7 @@ const emit = defineEmits(["click"]);
   <button
     :class="['font-bold rounded text-sm',
              disabled ? 'bg-tp-grey-300 text-white' :
+             type === 'danger' ? 'bg-red-500 text-white hover:bg-red-600 focus:outline-none' :
              type === 'gray' ? 'bg-tp-grey-300 text-gray-400' :
              type === 'black-outline' ? 'bg-transparent border-2 border-tp-grey-600 rounded-md px-4 py-2' :
              type === 'primary' ? 'bg-tp-primary hover:bg-tp-primary-dark text-white' :
