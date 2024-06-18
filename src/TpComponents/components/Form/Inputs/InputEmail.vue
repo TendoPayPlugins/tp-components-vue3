@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {watch} from "vue";
 import {ExclamationCircleIcon} from '@heroicons/vue/24/outline'
 
