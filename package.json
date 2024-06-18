@@ -18,7 +18,7 @@
   },
   "main": "./dist/tp-components.umd.cjs",
   "module": "./dist/tp-components.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/components/index.d.ts",
   "peerDependencies": {
     "tailwindcss": "^3.4.3",
     "vue": "^3.4.21"
