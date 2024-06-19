@@ -11,11 +11,6 @@ export default defineConfig({
         includeSource: ['src/**/*.spec.ts', 'src/**/*.test.ts'],
     },
     plugins: [vue(), dts({outDir: 'dist', insertTypesEntry: true})],
-    resolve: {
-        alias: {
-            '~': resolve(__dirname, 'src', 'components'),
-        },
-    },
     build: {
         manifest: true,
         minify: true,
@@ -29,8 +24,8 @@ export default defineConfig({
             },
         },
         lib: {
-            entry: resolve(__dirname, 'src/index.ts'),
-            formats: ['es'],
+            entry: resolve(__dirname, './src/index.ts'),
+            formats: ['es', 'umd'],
             name: 'TpComponentsVue3',
             fileName: 'tp-components-vue3',
         },
