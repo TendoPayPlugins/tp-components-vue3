@@ -1,1 +1,1 @@
-// export { useConfirmDialog, provideConfirmDialog } from './useConfirmDialog';
+export { useConfirmDialog, provideConfirmDialog } from './useConfirmDialog';

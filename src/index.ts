@@ -1,35 +1,3 @@
-import { InputEmail, InputNumber, InputPhoneNumber, InputText, InputSwitch, InputCheckbox, InputCheckboxGroup, InputRadio, InputCopy, InputTextarea, InputUrl, InputCurrency, DatePicker, DatePrevNextPicker, DateRangePicker, InputSelect, FormButton, Download, StepBar, Alert, Modal, Chart, ImageCropper, ConfirmDialog, Copy, Tooltip, Tabs, Pagination, Table, Sort, DropDownActions } from './components';
+export * from './components';
 
-export default {
-    InputEmail,
-    InputNumber,
-    InputPhoneNumber,
-    InputText,
-    InputSwitch,
-    InputCheckbox,
-    InputCheckboxGroup,
-    InputRadio,
-    InputCopy,
-    InputTextarea,
-    InputUrl,
-    InputCurrency,
-    DatePicker,
-    DatePrevNextPicker,
-    DateRangePicker,
-    InputSelect,
-    FormButton,
-    Download,
-    StepBar,
-    Alert,
-    Modal,
-    Chart,
-    ImageCropper,
-    ConfirmDialog,
-    Copy,
-    Tooltip,
-    Tabs,
-    Pagination,
-    Table,
-    Sort,
-    DropDownActions,
-};
+export { useConfirmDialog, provideConfirmDialog } from './composables/useConfirmDialog';
