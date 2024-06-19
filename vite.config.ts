@@ -24,7 +24,7 @@ export default defineConfig({
             },
         },
         lib: {
-            entry: resolve(__dirname, './src/index.ts'),
+            entry: resolve(__dirname, 'src/index.ts'),
             formats: ['es', 'umd'],
             name: 'TpComponentsVue3',
             fileName: 'tp-components-vue3',
