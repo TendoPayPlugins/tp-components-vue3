@@ -1,7 +1,7 @@
 <script setup>
 import {onUnmounted, ref} from 'vue';
 import {Cropper} from 'vue-advanced-cropper';
-import FormButton from '~/components/Form/Buttons/FormButton.vue';
+import FormButton from "../Form/Buttons/FormButton.vue";
 import 'vue-advanced-cropper/dist/style.css';
 
 const props = defineProps({

@@ -82,11 +82,11 @@
 </template>
 
 <script setup>
-import DropDownActions from "~/components/Table/DropDownActions.vue";
-import Numbering from "~/components/Table/Numbering.vue";
-import InputCheckbox from "~/components/Form/Inputs/InputCheckbox.vue";
+import InputCheckbox from "../Form/Inputs/InputCheckbox.vue";
+import DropDownActions from "./DropDownActions.vue";
+import Numbering from "./Numbering.vue";
 import {reactive} from "vue";
-import Pagination from "~/components/Table/Pagination.vue";
+import Pagination from "./Pagination.vue";
 
 const state = reactive({
   batchList: [],

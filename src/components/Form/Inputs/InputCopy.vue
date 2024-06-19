@@ -4,7 +4,7 @@
 import {DocumentDuplicateIcon, EyeIcon} from '@heroicons/vue/24/outline'
 
 import {computed, reactive} from "vue";
-import Alert from "~/components/Utils/Alert.vue";
+import Alert from "../../Utils/Alert.vue";
 
 const emit = defineEmits(['copy'])
 

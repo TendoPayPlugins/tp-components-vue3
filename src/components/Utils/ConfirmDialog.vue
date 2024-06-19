@@ -1,8 +1,8 @@
 <script setup>
-import {useConfirmDialog} from "~/composables/useConfirmDialog.js";
+import { useConfirmDialog } from "../../composables/useConfirmDialog.js"
 import {ref} from "vue";
-import InputText from "~/components/Form/Inputs/InputText.vue";
-import FormButton from "~/components/Form/Buttons/FormButton.vue";
+import InputText from "../Form/Inputs/InputText.vue";
+import FormButton from "../Form/Buttons/FormButton.vue";
 const localPassword = ref(null)
 const {isVisible, title, message, confirm, cancel, password = null} = useConfirmDialog();
 
