@@ -13,7 +13,7 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
     content: [
         './index.html',
-        './src/TpComponents/components/**/*.{js,jsx,ts,tsx,html,js,vue}',
+        './src/components/**/*.{js,jsx,ts,tsx,html,js,vue}',
         "./node_modules/vue-tailwind-datepicker/**/*.js",
         "./node_modules/flowbite/**/*.js"
     ],

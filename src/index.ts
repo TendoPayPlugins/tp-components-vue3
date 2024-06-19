@@ -1,3 +1,3 @@
 export * from './components';
-export default './style.css'
+import './style.css'
 export { useConfirmDialog, provideConfirmDialog } from './composables/useConfirmDialog';
