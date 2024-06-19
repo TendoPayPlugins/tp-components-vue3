@@ -15,8 +15,8 @@
     "preview": "vite preview",
     "tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/style.css --watch"
   },
-  "main": "./dist/tp-components.umd.cjs",
-  "module": "./dist/tp-components.js",
+  "main": "./dist/tp-components-vue3.umd.cjs",
+  "module": "./dist/tp-components-vue3.js",
   "types": "./dist/index.d.ts",
   "peerDependencies": {
     "tailwindcss": "^3.4.3",
@@ -24,8 +24,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/tp-components.js",
-      "require": "./dist/tp-components.umd.cjs",
+      "import": "./dist/tp-components-vue3.js",
+      "require": "./dist/tp-components-vue3.umd.cjs",
       "types": "./dist/index.d.ts"
     },
     "./dist/*.css": {
