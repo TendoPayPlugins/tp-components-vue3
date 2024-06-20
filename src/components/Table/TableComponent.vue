@@ -3,7 +3,7 @@
     <div class="inline-block min-w-full py-2 align-middle">
       <div class="">
         <div>
-            <Pagination :pagination="state.pagination" @page="goPage" />
+            <TablePagination :pagination="state.pagination" @page="goPage" />
         </div>
         <table
           class="min-w-full divide-y divide-gray-200"
@@ -52,7 +52,7 @@
                 v-if="numerate"
                 class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900"
               >
-                <Numbering
+                <TableNumbering
                   :pagination="state.pagination"
                   :idx="index"
                   data-test="numbering"
@@ -74,7 +74,7 @@
         </table>
 
         <div>
-          <Pagination :pagination="state.pagination" @page="goPage" :show-results="false" />
+          <TablePagination :pagination="state.pagination" @page="goPage" :show-results="false" />
         </div>
       </div>
     </div>
@@ -84,9 +84,9 @@
 <script setup>
 import InputCheckbox from "../Form/Inputs/InputCheckbox.vue";
 import DropDownActions from "./DropDownActions.vue";
-import Numbering from "./Numbering.vue";
+import TableNumbering from "./TableNumbering.vue";
 import {reactive} from "vue";
-import Pagination from "./Pagination.vue";
+import TablePagination from "./TablePagination.vue";
 
 const state = reactive({
   batchList: [],

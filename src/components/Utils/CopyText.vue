@@ -28,7 +28,7 @@
 
 import {computed, onBeforeUnmount, ref} from 'vue';
 import {DocumentDuplicateIcon} from '@heroicons/vue/24/solid';
-import Alert from "./Alert.vue";
+import Alert from "./AlertDialog.vue";
 const props = defineProps({
   value: {
     type: [String, Number],
