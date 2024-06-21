@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+  <div class="tc-flex tc-items-center tc-justify-between tc-border-t tc-border-gray-200 tc-bg-white tc-px-4 tc-py-3 sm:tc-px-6">
 <!--    <div class="flex flex-1 justify-between sm:hidden">-->
 <!--      <a-->
 <!--        href="#"-->
@@ -22,9 +22,9 @@
 <!--        />-->
 <!--      </a>-->
 <!--    </div>-->
-    <div class="sm:flex sm:flex-1 sm:items-center sm:justify-between">
+    <div class="sm:tc-flex sm:tc-flex-1 sm:tc-items-center sm:tc-justify-between">
       <div>
-        <p class="text-sm text-gray-700" v-if="showResults">
+        <p class="tc-text-sm tc-text-gray-700" v-if="showResults">
           Showing
           {{ ' ' }}
           <span data-test="pagination-from">{{ pagination?.from || 0 }}</span>
@@ -43,50 +43,50 @@
       <div>
         <nav
           aria-label="Pagination"
-          class="isolate inline-flex -space-x-px rounded-md text-xxs justify-center items-center"
+          class="tc-isolate tc-inline-flex -tc-space-x-px tc-rounded-md tc-text-xxs tc-justify-center tc-items-center"
         >
-          <div class="px-3 justify-center uppercase">
+          <div class="tc-px-3 tc-justify-center tc-uppercase">
               <button
                 data-test="pagination-prev-button"
                 :disabled="!pagination.has_prev"
-                class="relative inline-flex uppercase font-semibold text-xxs text-gray-700 hover:text-gray-400"
+                class="tc-relative tc-inline-flex tc-uppercase tc-font-semibold tc-text-xxs tc-text-gray-700 hover:tc-text-gray-400"
                 @click="goPrev()"
               >
                 <ChevronLeftIcon
                   aria-hidden="true"
-                  class="h-3 w-3 mr-2"
+                  class="tc-h-3 tc-w-3 tc-mr-2"
                 />
                 <span>Previous</span>
               </button>
           </div>
 
-          <div class="text-gray-300">|</div>
+          <div class="tc-text-gray-300">|</div>
 
-          <div class="pl-3 justify-center inline-flex">
+          <div class="tc-pl-3 tc-justify-center tc-inline-flex">
               <select :value="pagination.current_page" @change="goPage($event.target.value)"
                 data-test="pagination-select-page"
-                class="justify-center block px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                class="tc-justify-center tc-block tc-px-2 tc-py-1 tc-text-sm tc-border tc-border-gray-300 tc-rounded-md focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-blue-500 focus:tc-border-blue-500">
                   <option v-for="(option, index) in options(pagination.last_page)" :key="index" :value="option">{{ option }}</option>
               </select>
           </div>
 
-          <div class="px-3 justify-center font-normal">
-              out of <span class="font-semibold">{{ pagination.last_page }}</span>
+          <div class="tc-px-3 tc-justify-center tc-font-normal">
+              out of <span class="tc-font-semibold">{{ pagination.last_page }}</span>
           </div>
 
-          <div class="text-gray-300">|</div>
+          <div class="tc-text-gray-300">|</div>
 
-          <div class="px-3 justify-center uppercase">
+          <div class="tc-px-3 tc-justify-center tc-uppercase">
             <button
               data-test="pagination-next-button"
               :disabled="!pagination.has_next"
-              class="relative inline-flex items-center uppercase font-semibold text-xxs text-gray-700 hover:text-gray-400"
+              class="tc-relative tc-inline-flex tc-items-center tc-uppercase tc-font-semibold tc-text-xxs tc-text-gray-700 hover:tc-text-gray-400"
               @click="goNext()"
             >
               <span>Next</span>
               <ChevronRightIcon
                 aria-hidden="true"
-                class="h-3 w-3 ml-2"
+                class="tc-h-3 tc-w-3 tc-ml-2"
               />
             </button>
           </div>

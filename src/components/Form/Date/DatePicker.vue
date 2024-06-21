@@ -58,11 +58,11 @@ const onInput = (value) => {
     <p
       v-for="(error, index) in v?.$silentErrors"
       :key="index"
-      class="mt-2 text-xs text-red-600 dark:text-red-400"
+      class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
     >
       <span
         :data-test="dataTest + '-email-error' + error.$uid"
-        class="font-medium"
+        class="tc-font-medium"
       >{{ error.$message }}</span>
     </p>
   </span>

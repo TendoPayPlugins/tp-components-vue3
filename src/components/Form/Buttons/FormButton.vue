@@ -24,16 +24,16 @@ const emit = defineEmits(["click"]);
 <template>
   <button
     :class="['font-bold rounded text-sm',
-             disabled ? 'bg-tp-grey-300 text-white' :
-             type === 'danger' ? 'bg-red-500 text-white hover:bg-red-600 focus:outline-none' :
-             type === 'gray' ? 'bg-tp-grey-300 text-gray-400' :
-             type === 'black-outline' ? 'bg-transparent border-2 border-tp-grey-600 rounded-md px-4 py-2' :
-             type === 'primary' ? 'bg-tp-primary hover:bg-tp-primary-dark text-white' :
-             type === 'primary-outline' ? 'bg-transparent text-tp-primary border-tp-primary border hover:bg-tp-primary hover:text-white' :
-             type === 'secondary' ? 'bg-tp-secondary hover:bg-tp-secondary-dark text-gray-800' :
-             type === 'secondary-outline' ? 'bg-transparent text-tp-secondary border-tp-secondary border hover:bg-tp-secondary hover:text-white' :
-             'bg-blue-500 text-white hover:bg-blue-700',
-             size === 'sm' ? 'text-sm px-8 py-3' : size === 'md' ? 'text-base px-8 py-3' : 'text-lg px-8 py-3'
+             disabled ? 'tc-bg-tp-grey-300 tc-text-white' :
+             type === 'danger' ? 'tc-bg-red-500 tc-text-white hover:tc-bg-red-600 focus:tc-outline-none' :
+             type === 'gray' ? 'tc-bg-tp-grey-300 tc-text-gray-400' :
+             type === 'black-outline' ? 'tc-bg-transparent tc-border-2 tc-border-tp-grey-600 tc-rounded-md tc-px-4 tc-py-2' :
+             type === 'primary' ? 'tc-bg-tp-primary hover:tc-bg-tp-primary-dark tc-text-white' :
+             type === 'primary-outline' ? 'tc-bg-transparent tc-text-tp-primary tc-border-tp-primary tc-border hover:tc-bg-tp-primary hover:tc-text-white' :
+             type === 'secondary' ? 'tc-bg-tp-secondary hover:tc-bg-tp-secondary-dark tc-text-gray-800' :
+             type === 'secondary-outline' ? 'tc-bg-transparent tc-text-tp-secondary tc-border-tp-secondary tc-border hover:tc-bg-tp-secondary hover:tc-text-white' :
+             'tc-bg-blue-500 tc-text-white hover:tc-bg-blue-700',
+             size === 'sm' ? 'text-sm px-8 py-3' : size === 'md' ? 'tc-text-base tc-px-8 tc-py-3' : 'tc-text-lg tc-px-8 tc-py-3'
     ]"
     :data-test="dataTest + '-button'"
     :disabled="disabled"

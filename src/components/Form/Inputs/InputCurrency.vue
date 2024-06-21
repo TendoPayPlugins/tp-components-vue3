@@ -60,12 +60,12 @@ watch(localValue, onInput);
   <div>
     <label
       v-if="props.label"
-      class="block text-sm font-medium leading-6 text-gray-900"
+      class="tc-block tc-text-sm tc-font-medium tc-leading-6 tc-text-gray-900"
       for="price"
     >
       <slot name="label">{{ label }}</slot>
     </label>
-    <div class="relative mt-2 rounded-md shadow-sm">
+    <div class="tc-relative tc-mt-2 tc-rounded-md tc-shadow-sm">
       <input
         id="price"
         v-model="localValue"
@@ -75,39 +75,39 @@ watch(localValue, onInput);
         :placeholder="placeholder"
         :step="step"
         aria-describedby="price-currency"
-        class="block w-full rounded-md border-0 py-1.5 pl-7 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+        class="tc-block tc-w-full tc-rounded-md tc-border-0 tc-py-1.5 tc-pl-7 tc-pr-12 tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-gray-300 placeholder:tc-text-gray-400 sm:tc-text-sm sm:tc-leading-6"
         :class="{
-          'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500':
+          'tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
             v?.$invalid,
-          'text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary':
+          'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tp-primary':
             !v?.$invalid,
         }"
         name="price"
         type="number"
       >
-      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+      <div class="tc-pointer-events-none tc-absolute tc-inset-y-0 tc-right-0 tc-flex tc-items-center tc-pr-3">
         <span
           id="price-currency"
-          class="text-gray-500 sm:text-sm"
+          class="tc-text-gray-500 sm:tc-text-sm"
         >{{ props.currency }}</span>
       </div>
 
       <div
         v-if="v?.$invalid"
-        class="absolute right-16 top-1.5"
+        class="tc-absolute tc-right-16 tc-top-1.5"
       >
-        <ExclamationCircleIcon class="size-5 text-red-500" />
+        <ExclamationCircleIcon class="tc-size-5 tc-text-red-500" />
       </div>
     </div>
     <span v-if="showError && v?.$invalid">
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
+        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-email-error' + error.$uid"
-          class="font-medium"
+          class="tc-font-medium"
         >{{ error.$message }}</span>
       </p>
     </span>

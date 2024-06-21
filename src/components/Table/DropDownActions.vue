@@ -1,14 +1,14 @@
 <template>
   <Menu
     as="div"
-    class="relative inline-block text-left"
+    class="tc-relative tc-inline-block tc-text-left"
   >
     <div>
-      <MenuButton class="flex items-center rounded-full bg-gray-100 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-        <span class="sr-only">Open options</span>
+      <MenuButton class="tc-flex tc-items-center tc-rounded-full tc-bg-gray-100 tc-text-gray-400 hover:tc-text-gray-600 focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-indigo-500 focus:tc-ring-offset-2 focus:tc-ring-offset-gray-100">
+        <span class="tc-sr-only">Open options</span>
         <slot name="icon">
           <EllipsisVerticalIcon
-            class="size-5"
+            class="tc-size-5"
             aria-hidden="true"
           />
         </slot>
@@ -16,26 +16,26 @@
     </div>
 
     <transition
-      enter-active-class="transition ease-out duration-100"
-      enter-from-class="transform opacity-0 scale-95"
-      enter-to-class="transform opacity-100 scale-100"
-      leave-active-class="transition ease-in duration-75"
-      leave-from-class="transform opacity-100 scale-100"
-      leave-to-class="transform opacity-0 scale-95"
+      enter-active-class="tc-transition tc-ease-out tc-duration-100"
+      enter-from-class="tc-transform tc-opacity-0 tc-scale-95"
+      enter-to-class="tc-transform tc-opacity-100 tc-scale-100"
+      leave-active-class="tc-transition tc-ease-in tc-duration-75"
+      leave-from-class="tc-transform tc-opacity-100 tc-scale-100"
+      leave-to-class="tc-transform tc-opacity-0 tc-scale-95"
     >
       <MenuItems
-        class="absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-        :class="position === 'left' ? 'right-0 z-50' : 'left-0 z-50'"
+        class="tc-absolute tc-right-0 tc-z-50 tc-mt-2 tc-w-56 tc-origin-top-right tc-rounded-md tc-bg-white tc-shadow-lg tc-ring-1 tc-ring-black tc-ring-opacity-5 focus:tc-outline-none"
+        :class="position === 'left' ? 'tc-right-0 z-50' : 'tc-left-0 tc-z-50'"
       >
-        <div class="py-1">
+        <div class="tc-py-1">
           <MenuItem
             v-for="(action, index) in actions"
             :key="index"
             v-slot="{ active }"
           >
             <a
-              :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']"
-              class="cursor-pointer"
+              :class="[active ? 'tc-bg-gray-100 tc-text-gray-900' : 'tc-text-gray-700', 'tc-block tc-px-4 tc-py-2 tc-text-sm']"
+              class="tc-cursor-pointer"
               @click.stop.prevent="handleClick(action)"
             >{{ action.label }}</a>
           </MenuItem>

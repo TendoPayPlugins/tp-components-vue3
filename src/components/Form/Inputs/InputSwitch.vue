@@ -57,16 +57,16 @@ watch(localValue, onInput);
 <template>
   <SwitchGroup
     as="div"
-    class="flex items-center"
+    class="tc-flex tc-items-center"
   >
     <SwitchLabel
       v-if="disabledText"
       as="span"
-      class="mr-3 text-sm"
+      class="tc-mr-3 tc-text-sm"
     >
       <span
         :data-test="dataTest + '-disabled-text'"
-        class="font-medium text-gray-900"
+        class="tc-font-medium tc-text-gray-900"
       >{{ disabledText }}</span>
       {{ ' ' }}
     </SwitchLabel>
@@ -74,11 +74,11 @@ watch(localValue, onInput);
       v-if="disabledIcon"
       :data-test="dataTest + '-disabled-icon'"
       as="span"
-      class="mr-3"
+      class="tc-mr-3"
     >
       <component
         :is="disabledIcon"
-        class="h-6 w-6"
+        class="tc-h-6 tc-w-6"
       />
       {{ ' ' }}
     </SwitchLabel>
@@ -86,23 +86,23 @@ watch(localValue, onInput);
       v-model="localValue"
       :disabled="disabled"
       :data-test="dataTest + '-switch'"
-      :class="[localValue ? 'bg-tp-primary' : 'bg-gray-300', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-tp-primary focus:ring-offset-2']"
+      :class="[localValue ? 'tc-bg-tp-primary' : 'tc-bg-gray-300', 'tc-relative tc-inline-flex tc-h-6 tc-w-11 tc-flex-shrink-0 tc-cursor-pointer tc-rounded-full tc-border-2 tc-border-transparent tc-transition-colors tc-duration-200 tc-ease-in-out focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-tp-primary focus:tc-ring-offset-2']"
       @click="onInput"
     >
       <span class="sr-only">Use setting</span>
       <span
         aria-hidden="true"
-        :class="[localValue ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']"
+        :class="[localValue ? 'tc-translate-x-5' : 'tc-translate-x-0', 'tc-pointer-events-none tc-inline-block tc-size-5 tc-transform tc-rounded-full tc-bg-white tc-shadow tc-ring-0 tc-transition tc-duration-200 tc-ease-in-out']"
       />
     </Switch>
     <SwitchLabel
       v-if="enabledText"
       as="span"
-      class="ml-3 text-sm"
+      class="tc-ml-3 tc-text-sm"
     >
       <span
         :data-test="dataTest + '-enabled-text'"
-        class="font-medium text-gray-900"
+        class="tc-font-medium tc-text-gray-900"
       >{{ enabledText }}</span>
       {{ ' ' }}
     </SwitchLabel>
@@ -110,11 +110,11 @@ watch(localValue, onInput);
       v-if="enabledIcon"
       :data-test="dataTest + '-enabled-icon'"
       as="span"
-      class="ml-3"
+      class="tc-ml-3"
     >
       <component
         :is="enabledIcon"
-        class="h-6 w-6"
+        class="tc-h-6 tc-w-6"
       />
       {{ ' ' }}
     </SwitchLabel>
@@ -123,11 +123,11 @@ watch(localValue, onInput);
     <p
       v-for="(error, index) in v?.$silentErrors"
       :key="index"
-      class="mt-2 text-xs text-red-600 dark:text-red-400"
+      class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
     >
       <span
         :data-test="dataTest + '-email-error' + error.$uid"
-        class="font-medium"
+        class="tc-font-medium"
       >{{ error.$message }}</span>
     </p>
   </span>

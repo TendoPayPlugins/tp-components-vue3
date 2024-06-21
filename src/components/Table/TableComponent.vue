@@ -1,19 +1,19 @@
 <template>
-  <div class="mt-8 flow-root">
-    <div class="inline-block min-w-full py-2 align-middle">
+  <div class="tc-mt-8 tc-flow-root">
+    <div class="tc-inline-block tc-min-w-full tc-py-2 tc-align-middle">
       <div class="">
         <div>
             <TablePagination :pagination="state.pagination" @page="goPage" />
         </div>
         <table
-          class="min-w-full divide-y divide-gray-200"
+          class="tc-min-w-full tc-divide-y tc-divide-gray-200"
           data-test="table"
         >
-          <thead class="bg-gray-300 text-gray-500 text-xxs">
+          <thead class="tc-bg-gray-300 tc-text-gray-500 tc-text-xxs">
             <tr>
               <th
                 v-if="batchActions"
-                class="py-2.5"
+                class="tc-py-2.5"
               >
                 <InputCheckbox
                   v-model="state.batchAll"
@@ -31,7 +31,7 @@
               </th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200">
+          <tbody class="tc-divide-y tc-divide-gray-200">
             <tr
               v-for="(item, index) in state.data"
               :key="index"
@@ -39,7 +39,7 @@
             >
               <td
                 v-if="batchActions"
-                class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900"
+                class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-sm tc-font-medium tc-text-gray-900"
               >
                 <InputCheckbox
                   :data-test="'batch-list-' + index"
@@ -50,7 +50,7 @@
               </td>
               <td
                 v-if="numerate"
-                class="whitespace-nowrap text-center py-4 text-sm font-medium text-gray-900"
+                class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-sm tc-font-medium tc-text-gray-900"
               >
                 <TableNumbering
                   :pagination="state.pagination"
@@ -61,11 +61,11 @@
               <slot
                 name="columns"
                 :item="item"
-                class="text-center"
+                class="tc-text-center"
               />
               <td
                 v-if="itemActions"
-                class="relative whitespace-nowrap py-4 text-sm font-medium sm:pr-0"
+                class="tc-relative tc-whitespace-nowrap tc-py-4 tc-text-sm tc-font-medium sm:tc-pr-0"
               >
                 <DropDownActions :actions="itemActions" />
               </td>

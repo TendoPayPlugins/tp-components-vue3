@@ -59,45 +59,45 @@ function toggleSecret() {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="tc-relative">
     <label
       v-if="label"
       :for="dataTest"
-      class="block text-sm font-medium leading-6 text-gray-900"
+      class="tc-block tc-text-sm tc-font-medium tc-leading-6 tc-text-gray-900"
     >{{ label }}</label>
-    <div class="flex rounded-md shadow-sm py-2">
-      <div class="relative flex flex-grow items-stretch focus-within:z-10">
+    <div class="tc-flex tc-rounded-md tc-shadow-sm tc-py-2">
+      <div class="tc-relative tc-flex tc-flex-grow tc-items-stretch focus-within:tc-z-10">
         <input
           :id="dataTest"
           :data-test="dataTest + '-input'"
           :type="(hide && state.secretHidden) ? 'password': 'text'"
           :value="value"
-          class="block w-full focus:ring-tp-primary rounded-none rounded-l-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+          class="tc-block tc-w-full focus:tc-ring-tp-primary tc-rounded-none tc-rounded-l-md tc-border-0 tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-gray-300 placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset sm:tc-text-sm sm:tc-leading-6"
           name="text"
           readonly
         >
       </div>
       <button
-        :class="{ 'rounded-r-md': !hide }"
+        :class="{ 'tc-rounded-r-md': !hide }"
         :data-test="dataTest + '-copy-button'"
-        class="relative -ml-px inline-flex items-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-tp-primary hover:bg-gray-50"
+        class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-gap-x-1.5 tc-px-3 tc-py-2 tc-text-sm tc-font-semibold tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-tp-primary hover:tc-bg-gray-50"
         type="button"
         @click="copy"
       >
         <DocumentDuplicateIcon
-          class="-ml-0.5 size-5 text-tp-primary"
+          class="-tc-ml-0.5 tc-size-5 tc-text-tp-primary"
           aria-hidden="true"
         />
       </button>
       <button
         v-if="hide"
         :data-test="dataTest + '-toggle-button'"
-        class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-tp-primary hover:bg-gray-50"
+        class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-gap-x-1.5 tc-rounded-r-md tc-px-3 tc-py-2 tc-text-sm tc-font-semibold tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-tp-primary hover:tc-bg-gray-50"
         type="button"
         @click="toggleSecret"
       >
         <EyeIcon
-          class="-ml-0.5 size-5 text-tp-primary"
+          class="-tc-ml-0.5 tc-size-5 tc-text-tp-primary"
           aria-hidden="true"
         />
       </button>
@@ -106,7 +106,7 @@ function toggleSecret() {
   <Alert
     v-if="showResult"
     :message="props.resultMessage"
-    class="mt-2 mb-2"
+    class="tc-mt-2 tc-mb-2"
     type="success"
   />
 </template>

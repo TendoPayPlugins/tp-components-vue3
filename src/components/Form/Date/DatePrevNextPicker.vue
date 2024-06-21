@@ -1,27 +1,27 @@
 <template>
-  <span class="isolate inline-flex items-center">
+  <span class="tc-isolate tc-inline-flex tc-items-center">
     <button
       :class="{ disabled: !isPrevEnable }"
       type="button"
-      class="relative inline-flex items-center px-2 py-2 text-gray-800 hover:text-gray-400 focus:z-10"
+      class="tc-relative tc-inline-flex tc-items-center tc-px-2 tc-py-2 tc-text-gray-800 hover:tc-text-gray-400 focus:tc-z-10"
       @click="goPrev"
     >
       <ChevronLeftIcon
-        class="size-5 text-gray-400"
+        class="tc-size-5 tc-text-gray-400"
         aria-hidden="true"
       />
-      <span class="uppercase font-semibold text-xxs">Previous</span>
+      <span class="tc-uppercase tc-font-semibold tc-text-xxs">Previous</span>
     </button>
-    <div class="text-gray-300">|</div>
+    <div class="tc-text-gray-300">|</div>
     <button
       :class="{ disabled: !isNextEnable }"
       type="button"
-      class="relative -ml-px inline-flex items-center px-2 py-2 text-gray-800 hover:text-gray-400 focus:z-10"
+      class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-px-2 tc-py-2 tc-text-gray-800 hover:tc-text-gray-400 focus:tc-z-10"
       @click="goNext"
     >
-      <span class="uppercase font-semibold text-xxs">Next</span>
+      <span class="tc-uppercase tc-font-semibold tc-text-xxs">Next</span>
       <ChevronRightIcon
-        class="size-5 text-gray-400"
+        class="tc-size-5 tc-text-gray-400"
         aria-hidden="true"
       />
     </button>

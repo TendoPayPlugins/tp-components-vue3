@@ -19,20 +19,20 @@ const updateSort = () => {
 </script>
 <template>
   <span
-    class="cursor-pointer group inline-flex"
+    class="tc-cursor-pointer tc-group tc-inline-flex"
     @click="updateSort()"
   >
     <slot />
-    <span class="ml-2 flex-none rounded bg-gray-100 text-gray-900 group-hover:bg-gray-200">
+    <span class="tc-ml-2 tc-flex-none tc-rounded tc-bg-gray-100 tc-text-gray-900 group-hover:tc-bg-gray-200">
       <ChevronUpIcon
         v-if="props.dir === 'asc'"
         aria-hidden="true"
-        class="h-5 w-5"
+        class="tc-h-5 tc-w-5"
       />
       <ChevronDownIcon
         v-if="props.dir === 'desc'"
         aria-hidden="true"
-        class="h-5 w-5"
+        class="tc-h-5 tc-w-5"
       />
     </span>
   </span>

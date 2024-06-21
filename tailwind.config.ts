@@ -11,6 +11,7 @@ delete colors.blueGray
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
+    prefix: 'tc-',
     content: [
         './index.html',
         './src/components/**/*.{js,jsx,ts,tsx,html,js,vue}',

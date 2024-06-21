@@ -62,18 +62,18 @@ watch(localValue, onInput);
     <label
       v-if="label"
       :data-test="dataTest + '-label'"
-      class="block text-sm font-medium leading-6 text-gray-900"
+      class="tc-block tc-text-sm tc-font-medium tc-leading-6 tc-text-gray-900"
       for="input-textarea"
     >{{ label }}</label>
-    <div class="relative mt-2">
+    <div class="tc-relative tc-mt-2">
       <textarea
         id="input-textarea"
         v-model="localValue"
-        class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6"
+        class="tc-block tc-w-full tc-rounded-md tc-border-0 tc-py-1.5 tc-ring-1 tc-ring-inset tc-ring-gray-300 sm:tc-text-sm sm:tc-leading-6"
         :class="{
-          'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500':
+          'tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
             v?.$invalid,
-          'text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary':
+          'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tp-primary':
             !v?.$invalid,
         }"
         :data-test="dataTest + '-textarea'"
@@ -88,9 +88,9 @@ watch(localValue, onInput);
 
       <div
         v-if="v?.$invalid"
-        :class="`absolute right-1.5 ${ label ? 'top-8' : 'top-1.5'}`"
+        :class="`tc-absolute tc-right-1.5 ${ label ? 'tc-top-8' : 'tc-top-1.5'}`"
       >
-        <ExclamationCircleIcon class="size-5 text-red-500" />
+        <ExclamationCircleIcon class="tc-size-5 tc-text-red-500" />
       </div>
     </div>
 
@@ -98,21 +98,21 @@ watch(localValue, onInput);
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
+        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-email-error' + error.$uid"
-          class="font-medium"
+          class="tc-font-medium"
         >{{ error.$message }}</span>
       </p>
 
       <p
         v-if="v?.maxLength?.$invalid"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
+        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-maxLength-error'"
-          class="font-medium"
+          class="tc-font-medium"
         >{{
           v?.maxLength.$message
         }}</span>
@@ -120,11 +120,11 @@ watch(localValue, onInput);
 
       <p
         v-if="v?.minLength?.$invalid"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
+        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-minLength-error'"
-          class="font-medium"
+          class="tc-font-medium"
         >{{
           v?.minLength.$message
         }}</span>

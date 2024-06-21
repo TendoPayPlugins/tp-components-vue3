@@ -73,22 +73,22 @@ watch([protocol, endpoint], () => {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="tc-relative">
     <label
       v-if="label"
       :data-test="dataTest + '-label'"
       :for="dataTest"
-      class="block text-sm font-medium leading-6 text-gray-900 mb-2"
+      class="tc-block tc-text-sm tc-font-medium tc-leading-6 tc-text-gray-900 tc-mb-2"
     >{{ label }}</label>
-    <div class="relative rounded-md shadow-sm">
-      <div class="absolute inset-y-0 left-0 flex items-center">
+    <div class="tc-relative tc-rounded-md tc-shadow-sm">
+      <div class="tc-absolute tc-inset-y-0 tc-left-0 tc-flex tc-items-center">
         <select
           v-model="protocol"
           :disabled="disabled"
           name="type"
           autocomplete="type"
           :data-test="dataTest + '-select-type'"
-          class="h-full rounded-md border-0 bg-transparent pl-3 pr-12 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tp-primary sm:text-sm"
+          class="tc-h-full tc-rounded-md tc-border-0 tc-bg-transparent tc-pl-3 tc-pr-12 tc-text-gray-500 focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tp-primary sm:tc-text-sm"
         >
           <option
             v-for="(type, index) in types"
@@ -105,11 +105,11 @@ watch([protocol, endpoint], () => {
         :disabled="disabled"
         type="text"
         name="url"
-        class="input-offset block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+        class="tc-input-offset tc-block tc-w-full tc-rounded-md tc-border-0 tc-py-1.5 tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-gray-300 placeholder:tc-text-gray-400 sm:tc-text-sm sm:tc-leading-6"
         :class="{
-          'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500':
+          'tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
             v?.$invalid,
-          'text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-tp-primary':
+          'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tp-primary':
             !v?.$invalid,
         }"
         :placeholder="placeholder"
@@ -119,20 +119,20 @@ watch([protocol, endpoint], () => {
 
     <div
       v-if="v?.$invalid"
-      :class="`absolute right-1.5 ${ label ? 'top-8' : 'top-1.5'}`"
+      :class="`tc-absolute tc-right-1.5 ${ label ? 'tc-top-8' : 'tc-top-1.5'}`"
     >
-      <ExclamationCircleIcon class="size-5 text-red-500" />
+      <ExclamationCircleIcon class="tc-size-5 tc-text-red-500" />
     </div>
 
     <span v-if="showError && v?.$invalid">
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
-        class="mt-2 text-xs text-red-600 dark:text-red-400"
+        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-url-error' + error.$uid"
-          class="font-medium"
+          class="tc-font-medium"
         >{{ error.$message }}</span>
       </p>
     </span>
