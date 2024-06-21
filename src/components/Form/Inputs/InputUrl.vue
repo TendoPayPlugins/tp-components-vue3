@@ -105,7 +105,7 @@ watch([protocol, endpoint], () => {
         :disabled="disabled"
         type="text"
         name="url"
-        class="tc-input-offset tc-block tc-w-full tc-rounded-md tc-border-0 tc-py-1.5 tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-gray-300 placeholder:tc-text-gray-400 sm:tc-text-sm sm:tc-leading-6"
+        class="input-offset tc-block tc-w-full tc-rounded-md tc-border-0 tc-py-1.5 tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-gray-300 placeholder:tc-text-gray-400 sm:tc-text-sm sm:tc-leading-6"
         :class="{
           'tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
             v?.$invalid,
