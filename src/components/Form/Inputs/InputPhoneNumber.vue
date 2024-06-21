@@ -170,8 +170,8 @@ onMounted(() => {
     <input
       v-if="!editable"
       v-model="phoneNumberLocal"
-      disabled="disabled"
-      readonly="readonly"
+      :disabled="disabled"
+      :readonly="readonly"
       :placeholder="placeholder"
       aria-describedby="PhoneNumberHelp"
       class="block w-full rounded-md border-0 py-1.5 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:ring-2 focus:ring-inset"
