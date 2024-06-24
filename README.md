@@ -33,6 +33,7 @@ Example import of component from the package
 - <a href="https://vue-tailwind-datepicker.com/" target="_blank">https://vue-tailwind-datepicker.com</a>
 
 ## Local development
+During development, please use `tc-` prefix for each class based on tailwind to prevent incompatibility with other app. This solution helps to separate package itself from overriding.
 
 # Component library
 
