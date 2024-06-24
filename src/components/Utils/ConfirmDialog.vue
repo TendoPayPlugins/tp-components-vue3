@@ -20,22 +20,22 @@ const onConfirm = () => {
 <template>
   <div
     v-if="isVisible"
-    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+    class="tc-fixed tc-inset-0 tc-flex tc-items-center tc-justify-center tc-bg-black tc-bg-opacity-50 tc-z-50"
   >
-    <div class="bg-white p-8 rounded-lg shadow-md lg:w-1/3 md:w-1/2 sm:w-auto">
-      <p class="text-lg font-semibold mb-4">
+    <div class="tc-bg-white tc-p-8 tc-rounded-lg tc-shadow-md lg:tc-w-1/3 md:tc-w-1/2 sm:tc-w-auto">
+      <p class="tc-text-lg tc-font-semibold tc-mb-4">
         {{ title || '-' }}
       </p>
-      <p class="text-gray-700 mb-6">
+      <p class="tc-text-gray-700 tc-mb-6">
         {{ message || '-' }}
       </p>
       <p v-if="password">
           <InputText v-model="localPassword" data-test="confirm-password"/>
       </p>
-      <div class="flex justify-end">
+      <div class="tc-flex tc-justify-end">
         <FormButton
           type="gray"
-          class="px-4 py-2 mr-2"
+          class="tc-px-4 tc-py-2 tc-mr-2"
           @click="onCancel"
           data-test="cancel-delete"
         >

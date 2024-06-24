@@ -7,12 +7,12 @@
     >
       <slot>
         <DocumentDuplicateIcon
-          class="-ml-0.5 size-5 text-gray-400"
+          class="-tc-ml-0.5 tc-size-5 tc-text-gray-400"
           aria-hidden="true"
         /></slot>
     </a>
 
-    <Alert
+    <AlertDialog
       v-if="showResult"
       :message="resultMessage"
     />
@@ -28,7 +28,7 @@
 
 import {computed, onBeforeUnmount, ref} from 'vue';
 import {DocumentDuplicateIcon} from '@heroicons/vue/24/solid';
-import Alert from "./AlertDialog.vue";
+import AlertDialog from "./AlertDialog.vue";
 const props = defineProps({
   value: {
     type: [String, Number],

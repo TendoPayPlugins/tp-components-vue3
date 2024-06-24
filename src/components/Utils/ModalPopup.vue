@@ -19,12 +19,12 @@
       >
         <div
           v-if="props.backdrop"
-          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          class="fixed tc-inset-0 tc-bg-gray-500 tc-bg-opacity-75 tc-transition-opacity"
         />
       </TransitionChild>
 
-      <div class="fixed inset-0 z-10 w-full overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+      <div class="tc-fixed tc-inset-0 tc-z-10 tc-w-full tc-overflow-y-auto">
+        <div class="tc-flex tc-min-h-full tc-items-end tc-justify-center tc-p-4 tc-text-center sm:tc-items-center sm:tc-p-0">
           <TransitionChild
             as="template"
             enter="ease-out duration-300"
@@ -35,31 +35,31 @@
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <DialogPanel
-              class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all lg:w-3/4 sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
+              class="tc-relative tc-transform tc-overflow-hidden tc-rounded-lg tc-bg-white tc-px-4 tc-pb-4 tc-pt-5 tc-text-left tc-shadow-xl tc-transition-all lg:tc-w-3/4 sm:tc-my-8 sm:tc-w-full sm:tc-max-w-lg sm:tc-p-6"
             >
-              <div class="absolute right-0 top-0 pr-4 pt-4 sm:block">
+              <div class="tc-absolute tc-right-0 tc-top-0 tc-pr-4 tc-pt-4 sm:tc-block">
                 <button
-                  class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-0"
+                  class="tc-rounded-md tc-bg-white tc-text-gray-400 hover:tc-text-gray-500 focus:tc-outline-none focus:tc-ring-0"
                   type="button"
                   @click="emit('close')"
                 >
                   <span class="sr-only">Close</span>
                   <XMarkIcon
                     aria-hidden="true"
-                    class="size-6"
+                    class="tc-size-6"
                   />
                 </button>
               </div>
-              <div class="sm:flex sm:items-start sm:justify-center">
-                <div class="mt-3 sm:ml-4 sm:mt-0 sm:text-left w-full">
+              <div class="sm:tc-flex sm:tc-items-start sm:tc-justify-center">
+                <div class="tc-mt-3 sm:tc-ml-4 sm:tc-mt-0 sm:tc-text-left tc-w-full">
                   <DialogTitle
                     as="h3"
-                    class="text-base font-semibold leading-6 text-gray-900"
+                    class="tc-text-base tc-font-semibold tc-leading-6 tc-text-gray-900"
                   >
                     <slot name="title" />
                   </DialogTitle>
-                  <div class="mt-2">
-                    <p class="text-sm text-gray-500">
+                  <div class="tc-mt-2">
+                    <p class="tc-text-sm tc-text-gray-500">
                       <slot name="content" />
                     </p>
                   </div>
@@ -67,14 +67,14 @@
               </div>
               <div
                 v-if="buttons"
-                class="mt-5 sm:mt-4 sm:flex"
+                class="tc-mt-5 sm:tc-mt-4 sm:tc-flex"
               >
                 <slot
-                  class="flex-col"
+                  class="tc-flex-col"
                   name="buttons"
                 >
                   <FormButton
-                    class="justify-center"
+                    class="tc-justify-center"
                     data-test="cancel-app"
                     type="secondary-bordered"
                     @click="emit('close')"
@@ -82,7 +82,7 @@
                     Cancel
                   </FormButton>
                   <FormButton
-                    class="justify-center ml-4"
+                    class="tc-justify-center tc-ml-4"
                     data-test="save-app"
                     type="primary"
                     @click="emit('save')"

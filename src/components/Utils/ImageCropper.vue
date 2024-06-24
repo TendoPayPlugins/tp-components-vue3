@@ -79,8 +79,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col space-y-4">
-    <div class="bg-gray-200 h-80 flex items-center justify-center w-full max-w-md">
+  <div class="tc-flex tc-flex-col tc-space-y-4">
+    <div class="tc-bg-gray-200 tc-h-80 tc-flex tc-items-center tc-justify-center tc-w-full tc-max-w-md">
       <Cropper
         v-if="image.src"
         ref="cropper"
@@ -100,17 +100,17 @@ onUnmounted(() => {
       />
     </div>
 
-    <div class="bg-gray-100 flex items-center justify-center p-4">
+    <div class="tc-bg-gray-100 tc-flex tc-items-center tc-justify-center tc-p-4">
       <input
         ref="file"
         accept="image/*"
-        class="bg-tp-primary py-3 px-8 text-gray-800"
+        class="tc-bg-tp-primary tc-py-3 tc-px-8 tc-text-gray-800"
         type="file"
         @change="loadImage"
       >
     </div>
 
-    <div class="flex items-center justify-between p-4">
+    <div class="tc-flex tc-items-center tc-justify-between tc-p-4">
       <FormButton
         :disabled="!image.src"
         type="gray"

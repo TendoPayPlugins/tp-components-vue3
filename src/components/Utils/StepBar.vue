@@ -18,70 +18,70 @@ const onInput = (step) => {
 <template>
   <nav aria-label="Progress">
     <ol
-      class="flex items-center"
+      class="tc-flex tc-items-center"
       role="list"
     >
       <li
         v-for="(step, stepIdx) in steps"
         :key="step.name"
         :class="[
-          stepIdx !== steps.length - 1 ? 'pr-8 sm:pr-20' : '',
-          'relative',
+          stepIdx !== steps.length - 1 ? 'tc-pr-8 sm:tc-pr-20' : '',
+          'tc-relative',
         ]"
       >
         <template v-if="step.status === 'complete'">
           <div
             aria-hidden="true"
-            class="absolute inset-0 flex items-center"
+            class="tc-absolute tc-inset-0 tc-flex tc-items-center"
           >
-            <div class="h-0.5 w-full bg-tp-primary" />
+            <div class="tc-h-0.5 tc-w-full tc-bg-tp-primary" />
           </div>
           <a
-            class="cursor-pointer relative flex h-8 w-8 items-center justify-center rounded-full bg-tp-primary hover:bg-tp-primary-dark"
+            class="tc-cursor-pointer tc-relative tc-flex tc-h-8 tc-w-8 tc-items-center tc-justify-center tc-rounded-full tc-bg-tp-primary hover:tc-bg-tp-primary-dark"
             @click="onInput(step)"
           >
             <CheckIcon
-              class="size-5 text-white"
+              class="tc-size-5 tc-text-white"
               aria-hidden="true"
             />
-            <span class="sr-only">{{ step.name }}</span>
+            <span class="tc-sr-only">{{ step.name }}</span>
           </a>
         </template>
         <template v-else-if="step.status === 'current'">
           <div
             aria-hidden="true"
-            class="cursor-pointer absolute inset-0 flex items-center"
+            class="tc-cursor-pointer tc-absolute tc-inset-0 tc-flex tc-items-center"
           >
-            <div class="h-0.5 w-full bg-gray-200" />
+            <div class="tc-h-0.5 tc-w-full tc-bg-gray-200" />
           </div>
           <a
             aria-current="step"
-            class="cursor-pointer relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-tp-primary bg-white"
+            class="tc-cursor-pointer tc-relative tc-flex tc-h-8 tc-w-8 tc-items-center tc-justify-center tc-rounded-full tc-border-2 tc-border-tp-primary bg-white"
             @click="onInput(step)"
           >
             <span
               aria-hidden="true"
-              class="h-2.5 w-2.5 rounded-full bg-tp-primary"
+              class="tc-h-2.5 tc-w-2.5 tc-rounded-full tc-bg-tp-primary"
             />
-            <span class="sr-only">{{ step.name }}</span>
+            <span class="tc-sr-only">{{ step.name }}</span>
           </a>
         </template>
         <template v-else>
           <div
             aria-hidden="true"
-            class="absolute inset-0 flex items-center"
+            class="tc-absolute tc-inset-0 tc-flex tc-items-center"
           >
-            <div class="h-0.5 w-full bg-gray-200" />
+            <div class="tc-h-0.5 tc-w-full tc-bg-gray-200" />
           </div>
           <a
-            class="cursor-pointer group relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white hover:border-gray-400"
+            class="tc-cursor-pointer tc-group tc-relative tc-flex tc-h-8 tc-w-8 tc-items-center tc-justify-center tc-rounded-full tc-border-2 tc-border-gray-300 tc-bg-white hover:tc-border-gray-400"
             @click="onInput(step)"
           >
             <span
               aria-hidden="true"
-              class="h-2.5 w-2.5 rounded-full bg-transparent group-hover:bg-gray-300"
+              class="tc-h-2.5 tc-w-2.5 tc-rounded-full tc-bg-transparent group-hover:tc-bg-gray-300"
             />
-            <span class="sr-only">{{ step.name }}</span>
+            <span class="tc-sr-only">{{ step.name }}</span>
           </a>
         </template>
       </li>
