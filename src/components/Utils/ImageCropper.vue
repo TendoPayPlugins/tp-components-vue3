@@ -104,7 +104,7 @@ onUnmounted(() => {
       <input
         ref="file"
         accept="image/*"
-        class="tc-bg-tp-primary tc-py-3 tc-px-8 tc-text-gray-800"
+        class="tc-py-3 tc-px-8 tc-text-gray-800"
         type="file"
         @change="loadImage"
       >
