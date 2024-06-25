@@ -63,7 +63,7 @@ watch(localValue, onInput);
       class="tc-block tc-text-sm tc-font-medium tc-leading-6 tc-text-gray-900"
       for="price"
     >
-      <slot name="label">{{ label }}</slot>
+      <slot name="label">{{ label }} <span v-if="v?.required" class="text-red-500">*</span></slot>
     </label>
     <div class="tc-relative tc-mt-2 tc-rounded-md tc-shadow-sm">
       <input

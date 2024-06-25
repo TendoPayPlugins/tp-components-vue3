@@ -64,7 +64,7 @@ watch(localValue, onInput);
       :data-test="dataTest + '-label'"
       :for="dataTest"
       class="tc-block tc-mb-2 tc-text-sm tc-font-medium tc-text-gray-900"
-    >{{ label }}</label>
+    >{{ label }} <span v-if="v?.required" class="text-red-500">*</span></label>
     <input
       :id="dataTest"
       :disabled="disabled"
@@ -105,7 +105,7 @@ watch(localValue, onInput);
         class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
       >
         <span
-          :data-test="dataTest + '-email-error' + error.$uid"
+          :data-test="dataTest + '-error' + error.$uid"
           class="tc-font-medium"
         >{{ error.$message }}</span>
       </span>

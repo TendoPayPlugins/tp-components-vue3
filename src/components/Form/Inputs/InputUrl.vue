@@ -79,7 +79,7 @@ watch([protocol, endpoint], () => {
       :data-test="dataTest + '-label'"
       :for="dataTest"
       class="tc-block tc-text-sm tc-font-medium tc-leading-6 tc-text-gray-900 tc-mb-2"
-    >{{ label }}</label>
+    >{{ label }} <span v-if="v?.required" class="text-red-500">*</span></label>
     <div class="tc-relative tc-rounded-md tc-shadow-sm">
       <div class="tc-absolute tc-inset-y-0 tc-left-0 tc-flex tc-items-center">
         <select

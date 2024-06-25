@@ -65,7 +65,7 @@ watch(localValue, onInput);
       :data-test="dataTest + '-label'"
       class="tc-block tc-mb-2 tc-text-sm tc-font-medium tc-text-gray-900 dark:tc-text-white"
       for="number-input"
-    >{{ label }}</label>
+    >{{ label }} <span v-if="v?.required" class="text-red-500">*</span></label>
     <div class="tc-relative tc-mt-2 tc-rounded-md tc-shadow-sm">
       <input
         id="number-input"

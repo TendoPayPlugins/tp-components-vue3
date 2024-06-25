@@ -56,7 +56,7 @@ watch(localValue, onInput);
       :data-test="dataTest + '-label'"
       :for="dataTest"
       class="tc-block tc-mb-2 tc-text-sm tc-font-medium tc-text-gray-900"
-    >{{ label }}</label>
+    >{{ label }} <span v-if="v?.required" class="text-red-500">*</span></label>
     <select
       :id="dataTest"
       v-model="localValue"

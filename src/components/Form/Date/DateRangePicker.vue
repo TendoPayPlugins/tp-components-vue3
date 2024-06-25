@@ -107,7 +107,7 @@ watch(localValue, onInput);
         class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
       >
         <span
-          :data-test="dataTest + '-email-error' + error.$uid"
+          :data-test="dataTest + '-error' + error.$uid"
           class="tc-font-medium"
         >{{ error.$message }}</span>
       </p>
