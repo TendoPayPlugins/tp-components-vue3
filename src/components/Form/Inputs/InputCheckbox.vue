@@ -57,7 +57,7 @@ watch(localValue, onInput)
     :for="dataTest + 'checkbox-label'"
     :data-test="dataTest + '-label'"
     class="tc-font-medium tc-text-gray-900 tc-ml-2"
-  >{{ label }} <span v-if="v?.required" class="text-red-500">*</span></label>
+  >{{ label }} <span v-if="v?.required" class="tc-text-red-500">*</span></label>
   <span v-if="showError && v?.$invalid">
     <p
       v-for="(error, index) in v?.$silentErrors"
