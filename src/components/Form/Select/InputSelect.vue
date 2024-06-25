@@ -63,7 +63,13 @@ watch(localValue, onInput);
       :data-test="dataTest + '-select'"
       :disabled="disabled"
       :multiple="multiple"
-      class="tc-border tc-border-gray-300 tc-text-gray-900 tc-text-sm tc-rounded-lg focus:tc-ring-blue-500 focus:tc-border-tp-primary tc-block tc-w-full tc-p-2.0"
+      class="tc-block tc-w-full tc-rounded-lg tc-p-2.0 tc-text-gray-900 tc-text-sm"
+      :class="{
+        'tc-border-red-300 tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-border-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
+          v?.$invalid,
+        'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tp-primary':
+          !v?.$invalid,
+      }"
     >
       <option
         v-if="placeholder"
