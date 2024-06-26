@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme")
 
 // Workaround for errors in consoles
 delete colors.lightBlue
@@ -45,7 +46,24 @@ module.exports = {
                 "apple": "#333333",
                 "playstore": "#01875f",
                 "vtd-primary": colors.sky, // Light mode Datepicker color
-                "vtd-secondary": colors.gray, // Dark mode Datepicker color
+                "vtd-secondary": colors.gray, // Dark mode Datepicker color,
+                "tendo-blue": "#3d9dff",
+                "tonik-purple": "#785aff",
+                "blue-1": "#3336e3",
+                "blue-2": "#555af1",
+                "blue-3": "#2e6aab",
+                "blue-4": "#2f196a",
+                "green-1": "#73f5d7",
+                "green-2": "#70d3a6",
+                "green-3": "#25d4db",
+                "green-4": "#01d2ed",
+                "pink": "#fd95f8",
+                "yellow-1": "#fcda85",
+                "yellow-2": "#cbce23",
+                "yellow-3": "#f7d365",
+                "black": "#101010",
+                "grey-1": "#a1b4c2",
+                "grey-2": "#f3f6f8"
             },
             screens: {
                 "max-sm": {
@@ -208,6 +226,9 @@ module.exports = {
                     },
                 },
             },
+            fontFamily: {
+                'sans': ['"Proxima Nova"', ...defaultTheme.fontFamily.sans]
+            }
         },
     },
     variants: [
