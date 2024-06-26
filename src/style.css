@@ -46,7 +46,7 @@ html,
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Proxima Nova", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -1754,7 +1754,7 @@ input:checked + .toggle-bg {
 
 .tc-bg-black {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  background-color: rgb(16 16 16 / var(--tw-bg-opacity));
 }
 
 .tc-bg-blue-50 {
@@ -2180,7 +2180,7 @@ input:checked + .toggle-bg {
 
 .tc-ring-black {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(16 16 16 / var(--tw-ring-opacity));
 }
 
 .tc-ring-gray-300 {
