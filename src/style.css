@@ -1297,6 +1297,10 @@ input:checked + .toggle-bg {
   z-index: 50;
 }
 
+.tc-m-auto {
+  margin: auto;
+}
+
 .-tc-mx-1 {
   margin-left: -0.25rem;
   margin-right: -0.25rem;
@@ -2014,6 +2018,11 @@ input:checked + .toggle-bg {
   line-height: 1.5rem;
 }
 
+.tc-text-black {
+  --tw-text-opacity: 1;
+  color: rgb(16 16 16 / var(--tw-text-opacity));
+}
+
 .tc-text-blue-400 {
   --tw-text-opacity: 1;
   color: rgb(96 165 250 / var(--tw-text-opacity));
@@ -2122,6 +2131,21 @@ input:checked + .toggle-bg {
 .tc-text-yellow-700 {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
+.tc-text-green-2 {
+  --tw-text-opacity: 1;
+  color: rgb(112 211 166 / var(--tw-text-opacity));
+}
+
+.tc-text-tendo-blue {
+  --tw-text-opacity: 1;
+  color: rgb(61 157 255 / var(--tw-text-opacity));
+}
+
+.tc-text-error {
+  --tw-text-opacity: 1;
+  color: rgb(228 76 76 / var(--tw-text-opacity));
 }
 
 .tc-opacity-0 {
