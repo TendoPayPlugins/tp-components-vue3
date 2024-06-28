@@ -1285,6 +1285,14 @@ input:checked + .toggle-bg {
   top: 2rem;
 }
 
+.tc-left-1 {
+  left: 0.25rem;
+}
+
+.tc-left-5 {
+  left: 1.25rem;
+}
+
 .tc-isolate {
   isolation: isolate;
 }
@@ -1295,6 +1303,10 @@ input:checked + .toggle-bg {
 
 .tc-z-50 {
   z-index: 50;
+}
+
+.tc-m-auto {
+  margin: auto;
 }
 
 .-tc-mx-1 {
@@ -2122,6 +2134,11 @@ input:checked + .toggle-bg {
 .tc-text-yellow-700 {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
+.tc-text-black {
+  --tw-text-opacity: 1;
+  color: rgb(16 16 16 / var(--tw-text-opacity));
 }
 
 .tc-opacity-0 {
