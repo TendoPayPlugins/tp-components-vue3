@@ -1285,6 +1285,14 @@ input:checked + .toggle-bg {
   top: 2rem;
 }
 
+.tc-left-1 {
+  left: 0.25rem;
+}
+
+.tc-left-5 {
+  left: 1.25rem;
+}
+
 .tc-isolate {
   isolation: isolate;
 }
@@ -2018,11 +2026,6 @@ input:checked + .toggle-bg {
   line-height: 1.5rem;
 }
 
-.tc-text-black {
-  --tw-text-opacity: 1;
-  color: rgb(16 16 16 / var(--tw-text-opacity));
-}
-
 .tc-text-blue-400 {
   --tw-text-opacity: 1;
   color: rgb(96 165 250 / var(--tw-text-opacity));
@@ -2131,6 +2134,11 @@ input:checked + .toggle-bg {
 .tc-text-yellow-700 {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
+.tc-text-black {
+  --tw-text-opacity: 1;
+  color: rgb(16 16 16 / var(--tw-text-opacity));
 }
 
 .tc-text-green-2 {

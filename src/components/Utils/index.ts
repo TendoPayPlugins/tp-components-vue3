@@ -6,4 +6,5 @@ export { default as ImageCropper } from './ImageCropper.vue';
 export { default as ConfirmDialog } from './ConfirmDialog.vue';
 export { default as CopyText } from './CopyText.vue';
 export { default as ToolTip } from './ToolTip.vue';
+export { default as RoleIcon } from './RoleIcon.vue';
 export { default as Status } from './Status.vue';
