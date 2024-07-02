@@ -1,5 +1,5 @@
 <!-- Usage
-<Status :status="status">
+<StatusIcon :status="status">
 -->
 <script setup>
 import {CheckIcon, NoSymbolIcon} from '@heroicons/vue/24/solid'
