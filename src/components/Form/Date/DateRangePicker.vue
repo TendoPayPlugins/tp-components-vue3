@@ -2,7 +2,7 @@
 const emit = defineEmits(['update:modelValue'])
 
 import {ref, watch} from "vue";
-import VueTailwindDatepicker from "vue-tailwind-datepicker";
+import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.vue";
 
 const localValue = defineModel({required: false, type: Array, default: [null, null]})
 

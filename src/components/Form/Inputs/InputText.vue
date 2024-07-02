@@ -64,11 +64,14 @@ watch(localValue, onInput);
       :data-test="dataTest + '-label'"
       :for="dataTest"
       class="tc-block tc-mb-2 tc-text-sm tc-font-medium tc-text-gray-900"
-    >{{ label }} <span v-if="v?.required" class="tc-text-red-500">*</span></label>
+    >{{ label }} <span
+      v-if="v?.required"
+      class="tc-text-red-500"
+    >*</span></label>
     <input
       :id="dataTest"
-      :disabled="disabled"
       v-model="localValue"
+      :disabled="disabled"
       class="tc-block tc-w-full tc-rounded-md tc-border-0 tc-py-1.5 tc-ring-1 tc-ring-inset tc-ring-gray-300 sm:tc-text-sm sm:tc-leading-6 focus:tc-ring-2 focus:tc-ring-inset"
       :class="{
         'tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':

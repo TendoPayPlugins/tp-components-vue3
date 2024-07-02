@@ -3,7 +3,10 @@
     <div class="tc-inline-block tc-min-w-full tc-py-2 tc-align-middle">
       <div class="">
         <div>
-            <TablePagination :pagination="state.pagination" @page="goPage" />
+          <TablePagination
+            :pagination="state.pagination"
+            @page="goPage"
+          />
         </div>
         <table
           class="tc-min-w-full tc-divide-y tc-divide-gray-200"
@@ -74,7 +77,11 @@
         </table>
 
         <div>
-          <TablePagination :pagination="state.pagination" @page="goPage" :show-results="false" />
+          <TablePagination
+            :pagination="state.pagination"
+            :show-results="false"
+            @page="goPage"
+          />
         </div>
       </div>
     </div>

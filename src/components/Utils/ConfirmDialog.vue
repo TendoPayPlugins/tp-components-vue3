@@ -30,22 +30,25 @@ const onConfirm = () => {
         {{ message || '-' }}
       </p>
       <p v-if="password">
-          <InputText v-model="localPassword" data-test="confirm-password"/>
+        <InputText
+          v-model="localPassword"
+          data-test="confirm-password"
+        />
       </p>
       <div class="tc-flex tc-justify-end">
         <FormButton
           type="gray"
           class="tc-px-4 tc-py-2 tc-mr-2"
-          @click="onCancel"
           data-test="cancel-delete"
+          @click="onCancel"
         >
           Cancel
         </FormButton>
         <FormButton
           type="danger"
           data-test="confirm-delete"
-          @click="onConfirm"
           :disabled="password !== localPassword"
+          @click="onConfirm"
         >
           Confirm
         </FormButton>

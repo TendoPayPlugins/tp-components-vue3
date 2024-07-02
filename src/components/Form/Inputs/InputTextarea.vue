@@ -64,7 +64,10 @@ watch(localValue, onInput);
       :data-test="dataTest + '-label'"
       class="tc-block tc-text-sm tc-font-medium tc-leading-6 tc-text-gray-900"
       for="input-textarea"
-    >{{ label }} <span v-if="v?.required" class="tc-text-red-500">*</span></label>
+    >{{ label }} <span
+      v-if="v?.required"
+      class="tc-text-red-500"
+    >*</span></label>
     <div class="tc-relative tc-mt-2">
       <textarea
         id="input-textarea"

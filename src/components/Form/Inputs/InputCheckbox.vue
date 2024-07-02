@@ -44,9 +44,9 @@ watch(localValue, onInput)
 
 <template>
   <input
-    :disabled="disabled"
     :id="dataTest + 'checkbox-label'"
     v-model="localValue"
+    :disabled="disabled"
     type="checkbox"
     :data-test="dataTest + '-option'"
     class="tc-size-4 tc-rounded tc-border-gray-300 tc-text-tp-primary focus:tc-ring-tp-primary"
@@ -57,7 +57,10 @@ watch(localValue, onInput)
     :for="dataTest + 'checkbox-label'"
     :data-test="dataTest + '-label'"
     class="tc-font-medium tc-text-gray-900 tc-ml-2"
-  >{{ label }} <span v-if="v?.required" class="tc-text-red-500">*</span></label>
+  >{{ label }} <span
+    v-if="v?.required"
+    class="tc-text-red-500"
+  >*</span></label>
   <span v-if="showError && v?.$invalid">
     <p
       v-for="(error, index) in v?.$silentErrors"

@@ -2,7 +2,7 @@
 const emit = defineEmits(['input'])
 
 import {ref} from "vue";
-import VueTailwindDatepicker from "vue-tailwind-datepicker";
+import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.vue";
 
 const dateValue = ref([]);
 

@@ -20,7 +20,7 @@ const props = defineProps({
         aria-hidden="true"
       />
       <div class="tc-text-green-2">
-        <span class="tc-text-xs tc-uppercase tc-font-semibold">{{status}}</span>
+        <span class="tc-text-xs tc-uppercase tc-font-semibold">{{ status }}</span>
       </div>
     </template>
     <template v-else-if="status === 'complete'">
@@ -29,7 +29,7 @@ const props = defineProps({
         aria-hidden="true"
       />
       <div class="tc-text-tendo-blue">
-        <span class="tc-text-xs tc-uppercase tc-font-semibold">{{status}}</span>
+        <span class="tc-text-xs tc-uppercase tc-font-semibold">{{ status }}</span>
       </div>
     </template>
     <template v-else-if="status === 'canceled'">
@@ -38,7 +38,7 @@ const props = defineProps({
         aria-hidden="true"
       />
       <div class="tc-text-error">
-        <span class="tc-text-xs tc-uppercase tc-font-semibold">{{status}}</span>
+        <span class="tc-text-xs tc-uppercase tc-font-semibold">{{ status }}</span>
       </div>
     </template>
   </div>
