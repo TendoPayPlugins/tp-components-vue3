@@ -4,7 +4,7 @@
 import {DocumentDuplicateIcon, EyeIcon} from '@heroicons/vue/24/outline'
 
 import {computed, reactive} from "vue";
-import Alert from "../../Utils/AlertDialog.vue";
+import AlertDialog from "../../Utils/AlertDialog.vue";
 
 const emit = defineEmits(['copy'])
 
@@ -103,7 +103,7 @@ function toggleSecret() {
       </button>
     </div>
   </div>
-  <Alert
+  <AlertDialog
     v-if="showResult"
     :message="props.resultMessage"
     class="tc-mt-2 tc-mb-2"

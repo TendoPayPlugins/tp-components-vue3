@@ -65,7 +65,9 @@ module.exports = {
                 "yellow-3": "#f7d365",
                 "black": "#101010",
                 "grey-1": "#a1b4c2",
-                "grey-2": "#f3f6f8"
+                "grey-2": "#f3f6f8",
+                'info': '#C5E0FA',
+                'success': '#08925b',
             },
             screens: {
                 "max-sm": {

@@ -3,16 +3,16 @@
     class="tc-rounded-md tc-p-4"
     :class="{
       'tc-bg-yellow-50': type === 'warning',
-      'tc-bg-green-50': type === 'success',
-      'tc-bg-red-50': type === 'error',
-      'tc-bg-blue-50': type === 'primary'
+      'tc-bg-green-2': type === 'success',
+      'tc-bg-error-light': type === 'error',
+      'tc-bg-info': type === 'primary'
     }"
   >
     <div class="tc-flex">
       <div class="tc-flex-shrink-0">
         <CheckCircleIcon
           v-if="type === 'success'"
-          class="tc-size-5 tc-text-green-400"
+          class="tc-size-5 tc-text-success"
           aria-hidden="true"
         />
         <ExclamationTriangleIcon
@@ -22,12 +22,12 @@
         />
         <XCircleIcon
           v-if="type === 'error'"
-          class="tc-size-5 tc-text-red-400"
+          class="tc-size-5 tc-text-error"
           aria-hidden="true"
         />
         <InformationCircleIcon
           v-if="type === 'primary'"
-          class="tc-size-5 tc-text-blue-400"
+          class="tc-size-5 tc-text-tendo-blue"
           aria-hidden="true"
         />
       </div>
@@ -36,9 +36,9 @@
           class="tc-text-sm tc-font-medium"
           :class="{
             'tc-text-yellow-700': type === 'warning',
-            'tc-text-green-800': type === 'success',
-            'tc-text-red-800': type === 'error',
-            'tc-text-blue-400': type === 'primary'}"
+            'tc-text-success': type === 'success',
+            'tc-text-error': type === 'error',
+            'tc-text-tendo-blue': type === 'primary'}"
         >
           {{ message }}
         </p>
@@ -52,7 +52,7 @@
         <div class="-tc-mx-1.5 -tc-my-1.5">
           <button
             type="button"
-            class="tc-inline-flex tc-rounded-md tc-bg-green-50 tc-p-1.5 tc-text-green-500 hover:tc-bg-green-100 focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-green-600 focus:tc-ring-offset-2 focus:tc-ring-offset-green-50"
+            class="tc-inline-flex tc-rounded-md tc-bg-green-2 tc-p-1.5 tc-text-success hover:tc-bg-green-100 focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-green-600 focus:tc-ring-offset-2 focus:tc-ring-offset-green-50"
             @click="onClose"
           >
             <span class="tc-sr-only">Dismiss</span>
