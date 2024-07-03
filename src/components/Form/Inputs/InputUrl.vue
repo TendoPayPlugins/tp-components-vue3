@@ -91,7 +91,7 @@ watch([protocol, endpoint], () => {
           name="type"
           autocomplete="type"
           :data-test="dataTest + '-select-type'"
-          class="tc-h-full tc-rounded-md tc-border-0 tc-bg-transparent tc-pl-3 tc-pr-12 tc-text-gray-500 focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tp-primary sm:tc-text-sm"
+          class="tc-h-full tc-rounded-md tc-border-0 tc-bg-transparent tc-pl-3 tc-pr-12 tc-text-gray-500 focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple sm:tc-text-sm"
         >
           <option
             v-for="(type, index) in types"
@@ -112,7 +112,7 @@ watch([protocol, endpoint], () => {
         :class="{
           'tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
             v?.$invalid,
-          'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tp-primary':
+          'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
             !v?.$invalid,
         }"
         :placeholder="placeholder"

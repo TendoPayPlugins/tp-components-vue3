@@ -58,7 +58,7 @@ const atMouseOver = injectStrict(atMouseOverKey)
                     >
             <span
                     v-if="isBetweenRange(date) || date.hovered()"
-                    class="tc-absolute tc-bg-vtd-primary-100 tc-bg-opacity-60 dark:tc-bg-vtd-secondary-700 dark:tc-bg-opacity-50"
+                    class="tc-absolute tc-bg-light-blue-1 tc-bg-opacity-60 dark:tc-bg-vtd-secondary-700 dark:tc-bg-opacity-50"
                     :class="betweenRangeClasses(date)"
             />
                     </transition>

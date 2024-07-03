@@ -72,7 +72,7 @@ watch(localValue, onInput);
           v-model="localValue"
           :data-test="dataTest + '-input-' + index"
           :value="option.value"
-          class="tc-h-4 tc-w-4 tc-border-gray-300 tc-text-tp-primary focus:tc-ring-tp-primary"
+          class="tc-h-4 tc-w-4 tc-border-gray-300 tc-text-tp-primary focus:tc-ring-tonik-purple"
           type="radio"
           @change="onInput"
         >

@@ -58,8 +58,7 @@ watch(localValue, onInput);
               v-model="localValue"
               :data-test="dataTest + '-option-' + index"
               :value="option.value"
-              class="tc-h-4 tc-w-4 tc-rounded tc-border-gray-300 tc-text-tp-primary focus:tc-ring-tp-primary"
-              name="comments"
+              class="tc-h-4 tc-w-4 tc-rounded tc-border-gray-300 tc-text-tp-primary focus:tc-ring-tonik-purple"
               type="checkbox"
             >
           </div>

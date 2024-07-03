@@ -68,9 +68,9 @@ watch(localValue, onInput);
       :multiple="multiple"
       class="tc-block tc-w-full tc-rounded-lg tc-p-2.0 tc-text-gray-900 tc-text-sm"
       :class="{
-        'tc-border-red-300 tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-border-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
+        'tc-border-red-300 tc-border-0 tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-border-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
           v?.$invalid,
-        'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tp-primary':
+        'tc-text-gray-900 tc-border-0 tc-ring-1 tc-ring-inset tc-ring-gray-300 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
           !v?.$invalid,
       }"
     >

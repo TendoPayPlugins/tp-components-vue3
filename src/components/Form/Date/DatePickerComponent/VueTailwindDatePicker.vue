@@ -958,40 +958,40 @@ function datepickerClasses(date: DatePickerDay) {
   }
   if (active) {
     classes = today
-      ? 'text-vtd-primary-500 font-semibold dark:text-vtd-primary-400 rounded-full focus:bg-vtd-primary-50 focus:text-vtd-secondary-900 focus:border-vtd-primary-300 focus:ring focus:ring-vtd-primary-500 focus:ring-opacity-10 focus:outline-none dark:tc-bg-vtd-secondary-800 dark:text-vtd-secondary-300 dark:hover:bg-vtd-secondary-700 dark:hover:text-vtd-secondary-300 dark:focus:bg-vtd-secondary-600 dark:focus:text-vtd-secondary-100 dark:focus:border-vtd-primary-500 dark:focus:ring-opacity-25 dark:focus:bg-opacity-50'
+      ? 'tc-text-vtd-primary-500 tc-font-semibold dark:tc-text-vtd-primary-400 tc-rounded-full focus:tc-bg-vtd-primary-50 focus:tc-text-vtd-secondary-900 focus:tc-border-vtd-primary-300 focus:tc-ring focus:tc-ring-vtd-primary-500 focus:tc-ring-opacity-10 focus:tc-outline-none dark:tc-bg-vtd-secondary-800 dark:tc-text-vtd-secondary-300 dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-secondary-300 dark:focus:tc-bg-vtd-secondary-600 dark:focus:tc-text-vtd-secondary-100 dark:focus:tc-border-vtd-primary-500 dark:focus:tc-ring-opacity-25 dark:focus:tc-bg-opacity-50'
       : disabled
-        ? 'text-vtd-secondary-600 font-normal disabled:text-vtd-secondary-500 disabled:cursor-not-allowed rounded-full'
+        ? 'tc-text-vtd-secondary-600 tc-font-normal disabled:tc-text-vtd-secondary-500 disabled:tc-cursor-not-allowed tc-rounded-full'
         : date.isBetween(s as Dayjs, e as Dayjs, 'date', '()')
-          ? 'text-vtd-secondary-700 font-medium dark:text-vtd-secondary-100 rounded-full'
-          : 'text-vtd-secondary-600 font-medium dark:text-vtd-secondary-200 rounded-full'
+          ? 'tc-text-vtd-secondary-700 tc-font-medium dark:tc-text-vtd-secondary-100 tc-rounded-full'
+          : 'tc-text-vtd-secondary-600 tc-font-medium dark:tc-text-vtd-secondary-200 tc-rounded-full'
   }
   if (off)
-    classes = 'text-vtd-secondary-400 font-light disabled:cursor-not-allowed'
+    classes = 'tc-text-vtd-secondary-400 tc-font-light disabled:tc-cursor-not-allowed'
 
   if (s && e && !off) {
     if (date.isSame(s, 'date')) {
       classes = e.isAfter(s, 'date')
-        ? 'bg-vtd-primary-500 text-white font-bold rounded-l-full disabled:cursor-not-allowed'
-        : 'bg-vtd-primary-500 text-white font-bold rounded-r-full disabled:cursor-not-allowed'
+        ? 'tc-bg-tonik-purple tc-text-white tc-font-bold tc-rounded-l-full disabled:tc-cursor-not-allowed'
+        : 'tc-bg-tonik-purple tc-text-white tc-font-bold tc-rounded-r-full disabled:tc-cursor-not-allowed'
       if (s.isSame(e, 'date')) {
         classes
-          = 'bg-vtd-primary-500 text-white font-bold rounded-full disabled:cursor-not-allowed'
+          = 'tc-bg-tonik-purple tc-text-white tc-font-bold tc-rounded-full disabled:tc-cursor-not-allowed'
       }
     }
     if (date.isSame(e, 'date')) {
       classes = e.isAfter(s, 'date')
-        ? 'bg-vtd-primary-500 text-white font-bold rounded-r-full disabled:cursor-not-allowed'
-        : 'bg-vtd-primary-500 text-white font-bold rounded-l-full disabled:cursor-not-allowed'
+        ? 'tc-bg-tonik-purple tc-text-white tc-font-bold tc-rounded-r-full disabled:tc-cursor-not-allowed'
+        : 'tc-bg-tonik-purple tc-text-white tc-font-bold tc-rounded-l-full disabled:tc-cursor-not-allowed'
       if (s.isSame(e, 'date')) {
         classes
-          = 'bg-vtd-primary-500 text-white font-bold rounded-full disabled:cursor-not-allowed'
+          = 'tc-bg-tonik-purple tc-text-white tc-font-bold tc-rounded-full disabled:tc-cursor-not-allowed'
       }
     }
   }
   else if (s) {
     if (date.isSame(s, 'date') && !off) {
       classes
-        = 'bg-vtd-primary-500 text-white font-bold rounded-full disabled:cursor-not-allowed'
+        = 'tc-bg-tonik-purple tc-text-white tc-font-bold tc-rounded-full disabled:tc-cursor-not-allowed'
     }
   }
 
@@ -1439,7 +1439,7 @@ provide(setToCustomShortcutKey, setToCustomShortcut)
                        :disabled="props.disabled" :class="[
             props.disabled ? 'tc-cursor-default tc-opacity-50' : 'tc-opacity-100',
             inputClasses
-            || 'tc-pl-3 tc-pr-12 tc-py-2.5 tc-rounded-lg tc-overflow-hidden tc-border-solid tc-text-sm tc-text-vtd-secondary-700 tc-placeholder-vtd-secondary-400 tc-transition-colors tc-bg-white tc-border tc-border-vtd-secondary-300 focus:tc-border-vtd-primary-300 focus:tc-ring focus:tc-ring-vtd-primary-500 focus:tc-ring-opacity-10 focus:tc-outline-none dark:tc-bg-vtd-secondary-800 dark:tc-border-vtd-secondary-700 dark:tc-text-vtd-secondary-100 dark:tc-placeholder-vtd-secondary-500 dark:focus:tc-border-vtd-primary-500 dark:focus:tc-ring-opacity-20',
+            || 'tc-pl-3 tc-pr-12 tc-py-2.5 tc-rounded-lg tc-overflow-hidden tc-text-sm tc-text-vtd-secondary-700 tc-placeholder-vtd-secondary-400 tc-transition-colors tc-bg-white tc-border-0 tc-ring-1 tc-ring-inset tc-ring-gray-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple dark:tc-bg-vtd-secondary-800 dark:tc-border-vtd-secondary-700 dark:tc-text-vtd-secondary-100 dark:tc-placeholder-vtd-secondary-500 dark:focus:tc-border-vtd-primary-500 dark:focus:tc-ring-opacity-20',
           ]" autocomplete="off" data-lpignore="true" data-form-type="other" :placeholder="givenPlaceholder"
                        @keyup.stop="keyUp" @keydown.stop>
                 <div class="tc-absolute tc-inset-y-0 tc-right-0 tc-inline-flex tc-items-center tc-rounded-md tc-overflow-hidden">

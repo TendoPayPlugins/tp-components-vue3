@@ -49,6 +49,8 @@ module.exports = {
                 "vtd-secondary": colors.gray, // Dark mode Datepicker color,
                 "tendo-blue": "#3d9dff",
                 "tonik-purple": "#785aff",
+                "tonik-purple-dark": "#6847fd",
+                'light-blue-1': '#DBF1FE',
                 "blue-1": "#3336e3",
                 "blue-2": "#555af1",
                 "blue-3": "#2e6aab",

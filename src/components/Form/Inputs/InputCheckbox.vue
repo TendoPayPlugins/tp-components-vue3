@@ -49,7 +49,7 @@ watch(localValue, onInput)
     :disabled="disabled"
     type="checkbox"
     :data-test="dataTest + '-option'"
-    class="tc-size-4 tc-rounded tc-border-gray-300 tc-text-tp-primary focus:tc-ring-tp-primary"
+    class="tc-size-4 tc-rounded tc-border-gray-300 tc-text-tp-primary focus:tc-ring-tonik-purple"
     @click="onClickInput"
   >
   <label

@@ -72,7 +72,7 @@ function toggleSecret() {
           :data-test="dataTest + '-input'"
           :type="(hide && state.secretHidden) ? 'password': 'text'"
           :value="value"
-          class="tc-block tc-w-full focus:tc-ring-tp-primary tc-rounded-none tc-rounded-l-md tc-border-0 tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-gray-300 placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset sm:tc-text-sm sm:tc-leading-6"
+          class="tc-block tc-w-full focus:tc-ring-tonik-purple tc-rounded-none tc-rounded-l-md tc-border-0 tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-gray-300 placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset sm:tc-text-sm sm:tc-leading-6"
           name="text"
           readonly
         >
