@@ -80,24 +80,24 @@ function toggleSecret() {
       <button
         :class="{ 'tc-rounded-r-md': !hide }"
         :data-test="dataTest + '-copy-button'"
-        class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-gap-x-1.5 tc-px-3 tc-py-2 tc-text-sm tc-font-semibold tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-tp-primary hover:tc-bg-gray-50"
+        class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-gap-x-1.5 tc-px-3 tc-py-2 tc-text-sm tc-font-semibold tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-tonik-purple hover:tc-bg-gray-50"
         type="button"
         @click="copy"
       >
         <DocumentDuplicateIcon
-          class="-tc-ml-0.5 tc-size-5 tc-text-tp-primary"
+          class="-tc-ml-0.5 tc-size-5 tc-text-tonik-purple"
           aria-hidden="true"
         />
       </button>
       <button
         v-if="hide"
         :data-test="dataTest + '-toggle-button'"
-        class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-gap-x-1.5 tc-rounded-r-md tc-px-3 tc-py-2 tc-text-sm tc-font-semibold tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-tp-primary hover:tc-bg-gray-50"
+        class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-gap-x-1.5 tc-rounded-r-md tc-px-3 tc-py-2 tc-text-sm tc-font-semibold tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-tonik-purple hover:tc-bg-gray-50"
         type="button"
         @click="toggleSecret"
       >
         <EyeIcon
-          class="-tc-ml-0.5 tc-size-5 tc-text-tp-primary"
+          class="-tc-ml-0.5 tc-size-5 tc-text-tonik-purple"
           aria-hidden="true"
         />
       </button>
