@@ -16,12 +16,7 @@
     </div>
 
     <transition
-      enter-active-class="tc-transition tc-ease-out tc-duration-100"
-      enter-from-class="tc-transform tc-opacity-0 tc-scale-95"
-      enter-to-class="tc-transform tc-opacity-100 tc-scale-100"
-      leave-active-class="tc-transition tc-ease-in tc-duration-75"
-      leave-from-class="tc-transform tc-opacity-100 tc-scale-100"
-      leave-to-class="tc-transform tc-opacity-0 tc-scale-95"
+      name="dropdown"
     >
       <MenuItems
         class="tc-absolute tc-right-0 tc-z-50 tc-mt-2 tc-w-56 tc-origin-top-right tc-rounded-md tc-bg-white tc-shadow-lg tc-ring-1 tc-ring-black tc-ring-opacity-5 focus:tc-outline-none"
@@ -31,12 +26,12 @@
           <MenuItem
             v-for="(action, index) in actions"
             :key="index"
-            v-slot="{ active }"
+            v-slot="{ active, close }"
           >
             <a
               :class="[active ? 'tc-bg-gray-100 tc-text-gray-900' : 'tc-text-gray-700', 'tc-block tc-px-4 tc-py-2 tc-text-sm']"
               class="tc-cursor-pointer"
-              @click.stop.prevent="handleClick(action)"
+              @click.stop.prevent="handleClick(action, close)"
             >{{ action.label }}</a>
           </MenuItem>
         </div>
@@ -69,16 +64,10 @@ const props = defineProps({
   }
 });
 
-const isOpen = ref(false);
-
-const toggleDropdown = () => {
-  isOpen.value = !isOpen.value;
-};
-
-const handleClick = (item) => {
+const handleClick = (item, close) => {
   if (!item.disabled) {
-    toggleDropdown()
     item.$click();
+    close()
   }
 };
 
@@ -93,4 +82,11 @@ const disabled = (item) => {
 </script>
 
 <style scoped>
+.dropdown-enter-active, .dropdown-leave-active {
+    transition: all 0.3s ease;
+}
+.dropdown-enter-from, .dropdown-leave-to {
+    opacity: 0;
+    transform: scale(0.95);
+}
 </style>
