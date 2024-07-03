@@ -114,6 +114,7 @@ watch([protocol, endpoint], () => {
             v?.$invalid,
           'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
             !v?.$invalid,
+         'disabled': disabled
         }"
         :placeholder="placeholder"
         :data-test="dataTest + '-input'"

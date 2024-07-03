@@ -86,7 +86,7 @@ watch(localValue, onInput);
       v-model="localValue"
       :disabled="disabled"
       :data-test="dataTest + '-switch'"
-      :class="[localValue ? 'tc-bg-tp-primary' : 'tc-bg-gray-300', 'tc-relative tc-inline-flex tc-h-6 tc-w-11 tc-flex-shrink-0 tc-cursor-pointer tc-rounded-full tc-border-2 tc-border-transparent tc-transition-colors tc-duration-200 tc-ease-in-out focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-tonik-purple focus:tc-ring-offset-2']"
+      :class="[localValue ? 'tc-bg-tonik-purple' : 'tc-bg-gray-300', 'tc-relative tc-inline-flex tc-h-6 tc-w-11 tc-flex-shrink-0 tc-cursor-pointer tc-rounded-full tc-border-2 tc-border-transparent tc-transition-colors tc-duration-200 tc-ease-in-out focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-tonik-purple focus:tc-ring-offset-2']"
       @click="onInput"
     >
       <span class="sr-only">Use setting</span>

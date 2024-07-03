@@ -158,6 +158,7 @@ onMounted(() => {
           v?.$invalid,
         'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
           !v?.$invalid,
+       'disabled': disabled
       }"
       data-private
       name="phone"
@@ -180,6 +181,7 @@ onMounted(() => {
           v?.$invalid,
         'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
           !v?.$invalid,
+       'disabled': disabled
       }"
       data-private
       name="phone"

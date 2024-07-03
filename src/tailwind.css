@@ -5,3 +5,7 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+.disabled {
+    background-color: #f3f3f3;
+}

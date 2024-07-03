@@ -72,6 +72,7 @@ watch(localValue, onInput);
           v?.$invalid,
         'tc-text-gray-900 tc-border-0 tc-ring-1 tc-ring-inset tc-ring-gray-300 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
           !v?.$invalid,
+         'disabled': disabled
       }"
     >
       <option

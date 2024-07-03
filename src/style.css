@@ -1938,14 +1938,14 @@ input:checked + .toggle-bg {
   background-color: rgb(16 16 16 / var(--tw-bg-opacity));
 }
 
-.tc-bg-blue-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 246 255 / var(--tw-bg-opacity));
-}
-
 .tc-bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.tc-bg-error-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 195 195 / var(--tw-bg-opacity));
 }
 
 .tc-bg-gray-100 {
@@ -1968,19 +1968,19 @@ input:checked + .toggle-bg {
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
-.tc-bg-green-50 {
+.tc-bg-green-2 {
   --tw-bg-opacity: 1;
-  background-color: rgb(240 253 244 / var(--tw-bg-opacity));
+  background-color: rgb(112 211 166 / var(--tw-bg-opacity));
+}
+
+.tc-bg-info {
+  --tw-bg-opacity: 1;
+  background-color: rgb(197 224 250 / var(--tw-bg-opacity));
 }
 
 .tc-bg-light-blue-1 {
   --tw-bg-opacity: 1;
   background-color: rgb(219 241 254 / var(--tw-bg-opacity));
-}
-
-.tc-bg-red-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
 }
 
 .tc-bg-red-500 {
@@ -2025,21 +2025,6 @@ input:checked + .toggle-bg {
 .tc-bg-yellow-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 252 232 / var(--tw-bg-opacity));
-}
-
-.tc-bg-error-light {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 195 195 / var(--tw-bg-opacity));
-}
-
-.tc-bg-info {
-  --tw-bg-opacity: 1;
-  background-color: rgb(197 224 250 / var(--tw-bg-opacity));
-}
-
-.tc-bg-green-2 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(112 211 166 / var(--tw-bg-opacity));
 }
 
 .tc-bg-opacity-50 {
@@ -2273,11 +2258,6 @@ input:checked + .toggle-bg {
   color: rgb(16 16 16 / var(--tw-text-opacity));
 }
 
-.tc-text-blue-400 {
-  --tw-text-opacity: 1;
-  color: rgb(96 165 250 / var(--tw-text-opacity));
-}
-
 .tc-text-error {
   --tw-text-opacity: 1;
   color: rgb(228 76 76 / var(--tw-text-opacity));
@@ -2323,24 +2303,9 @@ input:checked + .toggle-bg {
   color: rgb(112 211 166 / var(--tw-text-opacity));
 }
 
-.tc-text-green-400 {
-  --tw-text-opacity: 1;
-  color: rgb(74 222 128 / var(--tw-text-opacity));
-}
-
-.tc-text-green-500 {
-  --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
-}
-
 .tc-text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
-}
-
-.tc-text-red-400 {
-  --tw-text-opacity: 1;
-  color: rgb(248 113 113 / var(--tw-text-opacity));
 }
 
 .tc-text-red-500 {
@@ -2356,6 +2321,11 @@ input:checked + .toggle-bg {
 .tc-text-red-900 {
   --tw-text-opacity: 1;
   color: rgb(127 29 29 / var(--tw-text-opacity));
+}
+
+.tc-text-success {
+  --tw-text-opacity: 1;
+  color: rgb(8 146 91 / var(--tw-text-opacity));
 }
 
 .tc-text-tendo-blue {
@@ -2416,11 +2386,6 @@ input:checked + .toggle-bg {
 .tc-text-yellow-700 {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
-}
-
-.tc-text-success {
-  --tw-text-opacity: 1;
-  color: rgb(8 146 91 / var(--tw-text-opacity));
 }
 
 .tc-placeholder-vtd-secondary-400::-moz-placeholder {
@@ -2584,6 +2549,10 @@ input:checked + .toggle-bg {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.disabled {
+  background-color: #f3f3f3;
 }
 
 .placeholder\:tc-text-gray-400::-moz-placeholder {
