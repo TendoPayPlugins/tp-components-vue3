@@ -68,7 +68,7 @@ watch(localValue, onInput);
         class="tc-text-red-500"
       >*</span></slot>
     </label>
-    <div class="tc-relative tc-mt-2 tc-rounded-md tc-shadow-sm">
+    <div class="tc-relative tc-rounded-md tc-shadow-sm">
       <input
         id="price"
         v-model="localValue"
@@ -98,12 +98,12 @@ watch(localValue, onInput);
 
       <div
         v-if="v?.$invalid"
-        class="tc-absolute tc-right-16 tc-top-1.5"
+        class="tc-absolute tc-right-16 tc-top-2"
       >
         <ExclamationCircleIcon class="tc-size-5 tc-text-red-500" />
       </div>
     </div>
-    <span v-if="showError && v?.$invalid">
+    <span v-if="showError && v?.$invalid" class="block tc-mb-2">
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"

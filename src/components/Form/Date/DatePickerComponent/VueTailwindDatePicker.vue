@@ -1609,6 +1609,11 @@ provide(setToCustomShortcutKey, setToCustomShortcut)
 
 
 <style>
+
+.vtd-datepicker {
+    max-width: 462px !important;
+}
+
 .vtd-datepicker-overlay.open::before {
   @apply tc-block tc-opacity-50;
 }

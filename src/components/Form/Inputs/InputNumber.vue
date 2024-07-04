@@ -95,7 +95,7 @@ watch(localValue, onInput);
 
       <div
         v-if="v?.$invalid"
-        :class="`tc-absolute tc-right-1.5 ${ label ? 'tc-top-8' : 'tc-top-1.5'}`"
+        :class="`tc-absolute tc-right-2 ${ label ? 'tc-top-9' : 'tc-top-2'}`"
       >
         <ExclamationCircleIcon class="tc-size-5 tc-text-red-500" />
       </div>
@@ -108,7 +108,7 @@ watch(localValue, onInput);
       <slot name="success" />
     </p>
 
-    <span v-if="showError && v?.$invalid">
+    <span v-if="showError && v?.$invalid" class="block tc-mb-2">
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
