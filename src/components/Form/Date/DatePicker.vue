@@ -1,14 +1,15 @@
 <script setup>
 const emit = defineEmits(['input'])
 
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.vue";
 
-const dateValue = ref([]);
+const localValue = defineModel({default: []})
 
 const formatter = ref({
   date: 'YYYY-MM-DD',
-  month: 'MMM'
+  month: 'MMM',
+  preview: 'MM/DD/YYYY'
 })
 
 const props = defineProps({
@@ -39,20 +40,22 @@ const props = defineProps({
   }
 })
 
-const onInput = (value) => {
-  emit('input', value);
+const onInput = () => {
+  // noinspection JSCheckFunctionSignatures
+  emit("update:modelValue", localValue.value);
 };
+
+watch(localValue, onInput);
 </script>
 
 <template>
   <vue-tailwind-datepicker
-    v-model="dateValue"
+    v-model="localValue"
     :disabled="disabled"
     :formatter="formatter"
     :no-input="inline"
     :placeholder="placeholder"
     as-single
-    @update:model-value="onInput"
   />
   <span v-if="showError && v?.$invalid">
     <p

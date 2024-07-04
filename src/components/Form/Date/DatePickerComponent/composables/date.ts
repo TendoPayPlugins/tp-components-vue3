@@ -58,6 +58,13 @@ export default function useDate() {
     return date.format(formatter.date)
   }
 
+  const useToFormattedValueFromString = (
+      date: Dayjs,
+      { formatter }: { formatter: { date: string; month: string } },
+  ) => {
+    return date.format(formatter.preview)
+  }
+
   const useToValueFromArray = (
     { previous, next }: { previous: Dayjs; next: Dayjs },
     {
@@ -69,6 +76,19 @@ export default function useDate() {
       formatter.date,
     )}`
   }
+
+  const useToFormattedValueFromArray = (
+      { previous, next }: { previous: Dayjs; next: Dayjs },
+      {
+        formatter,
+        separator,
+      }: { formatter: { date: string; month: string }; separator: string },
+  ) => {
+    return `${previous.format(formatter.preview)}${separator}${next.format(
+        formatter.preview,
+    )}`
+  }
+
   return {
     usePreviousDate,
     useCurrentDate,
@@ -76,6 +96,8 @@ export default function useDate() {
     useDisableDate,
     useBetweenRange,
     useToValueFromString,
+    useToFormattedValueFromString,
     useToValueFromArray,
+    useToFormattedValueFromArray,
   }
 }

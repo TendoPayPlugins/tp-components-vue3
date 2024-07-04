@@ -8,7 +8,8 @@ const localValue = defineModel({required: false, type: Array, default: [null, nu
 
 const formatter = ref({
   date: 'YYYY-MM-DD',
-  month: 'MMM'
+  month: 'MMM',
+  preview: 'MM/DD/YYYY'
 })
 
 const props = defineProps({

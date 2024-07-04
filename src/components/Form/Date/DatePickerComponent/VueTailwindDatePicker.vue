@@ -65,8 +65,9 @@ interface Props {
   separator?: string
   formatter?: {
     date: string
-    month: string
-  }
+    month: string,
+    preview: string,
+  },
   startFrom?: Date
   weekdaysSize?: string
   weekNumber?: boolean
@@ -102,10 +103,11 @@ const props = withDefaults(defineProps<Props>(), {
   disableDate: false,
   autoApply: true,
   shortcuts: true,
-  separator: ' ~ ',
+  separator: ' - ',
   formatter: () => ({
     date: 'YYYY-MM-DD HH:mm:ss',
     month: 'MMM',
+    preview: 'MM/DD/YYYY'
   }),
   startFrom: () => new Date(),
   weekdaysSize: 'short',
@@ -145,7 +147,9 @@ const {
   useNextDate,
   usePreviousDate,
   useToValueFromArray,
+  useToFormattedValueFromArray,
   useToValueFromString,
+  useToFormattedValueFromString,
 } = useDate()
 
 const { useVisibleViewport } = useDom()
@@ -164,6 +168,7 @@ const placement = ref<boolean | null>(null)
 const givenPlaceholder = ref('')
 const selection = ref<Dayjs | null>(null)
 const pickerValue = ref('')
+const formattedPickerValue = ref('')
 const hoverValue = ref<Dayjs[]>([])
 const applyValue = ref<Dayjs[]>([])
 const previous = ref<Dayjs | null>(null)
@@ -1323,6 +1328,13 @@ watchEffect(() => {
           },
           props,
         )
+        formattedPickerValue.value = useToFormattedValueFromArray(
+          {
+                previous: s,
+                next: e,
+              },
+              props,
+          )
         if (e.isBefore(s, 'month')) {
           datepicker.value.previous = e
           datepicker.value.next = s
@@ -1373,6 +1385,7 @@ watchEffect(() => {
 
       if (s && s.isValid()) {
         pickerValue.value = useToValueFromString(s, props)
+        formattedPickerValue.value = useToFormattedValueFromString(s, props)
         datepicker.value.previous = s
         datepicker.value.next = s.add(1, 'month')
         datepicker.value.year.previous = s.year()
@@ -1435,7 +1448,7 @@ provide(setToCustomShortcutKey, setToCustomShortcut)
 
         <PopoverButton as="label" class="tc-relative tc-block">
             <slot :value="pickerValue" :placeholder="givenPlaceholder" :clear="clearPicker">
-                <input ref="VtdInputRef" v-bind="$attrs" v-model="pickerValue" type="text" class="tc-relative tc-block tc-w-full"
+                <input ref="VtdInputRef" v-bind="$attrs" v-model="formattedPickerValue" type="text" class="tc-relative tc-block tc-w-full"
                        :disabled="props.disabled" :class="[
             props.disabled ? 'tc-cursor-default tc-opacity-50' : 'tc-opacity-100',
             inputClasses
