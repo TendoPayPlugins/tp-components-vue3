@@ -1,11 +1,9 @@
 /* eslint-disable no-unreachable */
 <template>
-  <span>
-    <div
-      :id="props.id"
-      :ref="props.id"
-    />
-  </span>
+  <div
+    :id="props.id"
+    :ref="props.id"
+  />
 </template>
 
 <script setup>
