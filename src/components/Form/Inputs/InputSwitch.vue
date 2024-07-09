@@ -78,7 +78,7 @@ watch(localValue, onInput);
     >
       <component
         :is="disabledIcon"
-        class="tc-h-6 tc-w-6 cursor-pointer"
+        class="tc-h-6 tc-w-6 tc-cursor-pointer"
       />
       {{ ' ' }}
     </SwitchLabel>
@@ -119,7 +119,7 @@ watch(localValue, onInput);
       {{ ' ' }}
     </SwitchLabel>
   </SwitchGroup>
-  <span v-if="showError && v?.$invalid" class="block tc-mb-2">
+  <span v-if="showError && v?.$invalid" class="tc-block tc-mb-2">
     <p
       v-for="(error, index) in v?.$silentErrors"
       :key="index"

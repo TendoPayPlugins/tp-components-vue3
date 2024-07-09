@@ -48,7 +48,7 @@
             ]"
           >
             <span
-              :class="['block truncate', selected && 'font-semibold']"
+              :class="['tc-block tc-truncate', selected && 'tc-font-semibold']"
               :data-test="dataTest + '-option-label-' + index"
             >
               {{ option.label }}

@@ -23,7 +23,7 @@ const emit = defineEmits(["click"]);
 
 <template>
   <button
-    :class="['font-bold rounded text-sm',
+    :class="['tc-font-bold tc-rounded tc-text-sm',
              disabled ? 'tc-bg-tp-grey-300 tc-text-white' :
              type === 'danger' ? 'tc-bg-red-500 tc-text-white hover:tc-bg-red-600 focus:tc-outline-none' :
              type === 'gray' ? 'tc-bg-tp-grey-300 tc-text-gray-400' :
@@ -33,7 +33,7 @@ const emit = defineEmits(["click"]);
              type === 'secondary' ? 'tc-bg-tp-secondary hover:tc-bg-tp-secondary-dark tc-text-gray-800' :
              type === 'secondary-outline' ? 'tc-bg-transparent tc-text-tp-secondary tc-border-tp-secondary tc-border hover:tc-bg-tp-secondary hover:tc-text-white' :
              'tc-bg-blue-500 tc-text-white hover:tc-bg-blue-700',
-             size === 'sm' ? 'text-sm px-8 py-3' : size === 'md' ? 'tc-text-base tc-px-8 tc-py-3' : 'tc-text-lg tc-px-8 tc-py-3'
+             size === 'sm' ? 'tc-text-sm tc-px-8 tc-py-3' : size === 'md' ? 'tc-text-base tc-px-8 tc-py-3' : 'tc-text-lg tc-px-8 tc-py-3'
     ]"
     :data-test="dataTest + '-button'"
     :disabled="disabled"

@@ -1615,11 +1615,6 @@ input:checked + .toggle-bg {
   max-width: 28rem;
 }
 
-.tc-max-w-fit {
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-}
-
 .tc-flex-1 {
   flex: 1 1 0%;
 }
@@ -1797,6 +1792,12 @@ input:checked + .toggle-bg {
 
 .tc-overflow-y-auto {
   overflow-y: auto;
+}
+
+.tc-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .tc-whitespace-nowrap {
