@@ -34,7 +34,7 @@ const props = defineProps({
         <span class="tc-text-xs tc-uppercase tc-font-semibold">{{ status }}</span>
       </div>
     </template>
-    <template v-else-if="status === 'canceled'">
+    <template v-else-if="status === 'cancelled'">
       <NoSymbolIcon
         class="tc-size-6 tc-text-error"
         aria-hidden="true"
