@@ -11,7 +11,7 @@ const props = defineProps({
 
 <template>
   <div class="tc-relative tc-m-auto tc-text-black">
-    <div class="tc-size-6 tc-text-black">
+    <div class="tc-size-6 tc-text-black tc-fill-black">
       <template v-if="role === 'manager'">
         <svg
           xmlns="http://www.w3.org/2000/svg"

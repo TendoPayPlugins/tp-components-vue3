@@ -15,7 +15,7 @@ const props = defineProps({
 <template>
   <div class="tc-m-auto tc-flex tc-flex-col tc-items-center">
     <template v-if="status === 'pending'">
-      <div class="tc-size-6 tc-text-green-2">
+      <div class="tc-size-6 tc-text-green-2 tc-fill-green-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 384 512"
