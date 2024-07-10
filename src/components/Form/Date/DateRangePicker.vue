@@ -1,4 +1,6 @@
 <script setup>
+import dayjs from "dayjs";
+
 const emit = defineEmits(['update:modelValue'])
 
 import {ref, watch} from "vue";
@@ -50,36 +52,31 @@ const customShortcuts = () => {
     {
       label: "Past 1 week",
       atClick: () => {
-        const date = new Date();
-        return [new Date(date.setDate(date.getDate() - 7)), new Date()];
+        return [dayjs().startOf('week'), dayjs().endOf('week')];
       },
     },
     {
       label: "Past 1 month",
       atClick: () => {
-        const date = new Date();
-        return [new Date(date.setMonth(date.getMonth() - 1)), new Date()];
+        return [dayjs().startOf('month'), dayjs().endOf('month')];
       },
     },
     {
       label: "Past 3 months",
       atClick: () => {
-        const date = new Date();
-        return [new Date(date.setMonth(date.getMonth() - 3)), new Date()];
+        return [dayjs().subtract(2, 'months').startOf('month'), dayjs().endOf('month')];
       },
     },
     {
       label: "Past 6 months",
       atClick: () => {
-        const date = new Date();
-        return [new Date(date.setMonth(date.getMonth() - 6)), new Date()];
+        return [dayjs().subtract(5, 'months').startOf('month'), dayjs().endOf('month')];
       },
     },
     {
       label: "Past 1 year",
       atClick: () => {
-        const date = new Date();
-        return [new Date(date.setFullYear(date.getFullYear() - 1)), new Date()];
+        return [dayjs().subtract(11, 'months').startOf('month'), dayjs().endOf('month')];
       },
     },
   ];
