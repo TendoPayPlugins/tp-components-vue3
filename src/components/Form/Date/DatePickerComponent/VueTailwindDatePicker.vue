@@ -1448,7 +1448,7 @@ provide(setToCustomShortcutKey, setToCustomShortcut)
 
         <PopoverButton as="label" class="tc-relative tc-block">
             <slot :value="pickerValue" :placeholder="givenPlaceholder" :clear="clearPicker">
-                <input ref="VtdInputRef" v-bind="$attrs" v-model="formattedPickerValue" type="text" class="tc-relative tc-block tc-w-full"
+                <input ref="VtdInputRef" v-bind="$attrs" v-model="formattedPickerValue" type="text" class="tc-relative tc-block tc-w-full tc-min-w-56"
                        :disabled="props.disabled" :class="[
             props.disabled ? 'tc-cursor-default tc-opacity-50' : 'tc-opacity-100',
             inputClasses

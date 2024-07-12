@@ -1607,6 +1607,10 @@ input:checked + .toggle-bg {
   width: 100%;
 }
 
+.tc-min-w-56 {
+  min-width: 14rem;
+}
+
 .tc-min-w-full {
   min-width: 100%;
 }
