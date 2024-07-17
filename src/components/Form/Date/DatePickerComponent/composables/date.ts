@@ -48,19 +48,19 @@ export default function useDate() {
   ) => {
     const pattern = previous.isAfter(next, 'date') ? '(]' : '[)'
 
-    return !!(date.isBetween(previous, next, 'date', pattern) && !date.off)
+    return (date.isBetween(previous, next, 'date', pattern) && !date.off)
   }
 
   const useToValueFromString = (
     date: Dayjs,
-    { formatter }: { formatter: { date: string; month: string } },
+    { formatter }: { formatter: { date: string; month: string, preview: string } },
   ) => {
     return date.format(formatter.date)
   }
 
   const useToFormattedValueFromString = (
       date: Dayjs,
-      { formatter }: { formatter: { date: string; month: string } },
+      { formatter }: { formatter: { date: string; month: string, preview: string } },
   ) => {
     return date.format(formatter.preview)
   }
@@ -70,7 +70,7 @@ export default function useDate() {
     {
       formatter,
       separator,
-    }: { formatter: { date: string; month: string }; separator: string },
+    }: { formatter: { date: string; month: string, preview: string }; separator: string },
   ) => {
     return `${previous.format(formatter.date)}${separator}${next.format(
       formatter.date,
@@ -82,7 +82,7 @@ export default function useDate() {
       {
         formatter,
         separator,
-      }: { formatter: { date: string; month: string }; separator: string },
+      }: { formatter: { date: string; month: string, preview: string }; separator: string },
   ) => {
     return `${previous.format(formatter.preview)}${separator}${next.format(
         formatter.preview,
