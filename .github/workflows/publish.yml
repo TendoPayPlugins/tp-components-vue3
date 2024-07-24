@@ -79,11 +79,11 @@ jobs:
 
       - name: Configure npm authentication
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.npm_token }}" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ NPM_TOKEN }}" > ~/.npmrc
           cat ~/.npmrc
       - name: Verify authentication
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+          NODE_AUTH_TOKEN: ${{ NPM_TOKEN }}
         run: npm whoami
 
       - name: Bump version and push tag
@@ -95,7 +95,7 @@ jobs:
 
       - name: Publish to npm
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+          NODE_AUTH_TOKEN: ${{ NPM_TOKEN }}
         run: |
           npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
           npm publish
