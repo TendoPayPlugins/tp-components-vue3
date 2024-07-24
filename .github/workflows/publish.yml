@@ -8,34 +8,39 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-#      - name: Checkout repository
-      - uses: actions/checkout@v4
 
-#      - name: Setup Node.js
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-#      - name: Install dependencies
-#        run: npm install
-#      - name: Whoami
+      - name: Install dependencies
+        run: npm install
+      - name: Whoami
         env:
           GH_TOKEN: ${{ github.token }}
-      - run: |
+        run: |
           git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
           git config --global user.name "$(gh api /users/${GITHUB_ACTOR} | jq .name -r)"
           git config -l
+      - name: Bump version and tag
+        id: bump_version
+        run: |
+          VERSION=$(npm version patch -m "chore(release): %s")
+          echo "::set-output name=VERSION::$VERSION"
+
+      - name: Push new tag to repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           git push origin HEAD:main --tags
+
+      - name: Publish to pnpm
         env:
-          GH_TOKEN: ${{ github.token }}
-      - run: |
-          npm ci
-          npm publish --provenance --access public
-        env:
-          GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish
