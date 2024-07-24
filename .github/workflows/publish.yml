@@ -77,8 +77,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
-        run: npm run build # Zakładając, że masz skrypt "build" w swoim package.json
+      - name: Create .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Verify authentication
+        run: npm whoami
 
       - name: Bump version and push tag
         env:
@@ -91,5 +94,4 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npm whoami
           npm publish
