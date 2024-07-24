@@ -78,7 +78,7 @@ jobs:
         run: npm install
 
       - name: Create .npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ vars.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Verify authentication
         run: npm whoami
