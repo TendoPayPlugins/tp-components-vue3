@@ -32,7 +32,6 @@ jobs:
         id: bump_version
         run: |
           VERSION=$(npm version patch -m "chore(release): %s")
-          echo "::set-output name=VERSION::$VERSION"
 
       - name: Push new tag to repository
         env:
@@ -42,5 +41,5 @@ jobs:
 
       - name: Publish to pnpm
         env:
-          NODE_AUTH_TOKEN: ${{ vars.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish
