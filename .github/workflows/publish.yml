@@ -1,10 +1,10 @@
-name: Publish to pnpm
-
-on:
-  push:
-    branches:
-      - main
-
+#name: Publish to pnpm
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
 #jobs:
 #  publish:
 #    runs-on: ubuntu-latest
@@ -48,28 +48,40 @@ on:
 #          npm ci
 #          npm publish
 
+
+name: Npm directory update
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   publish:
-    # When setting up node:
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '20.x'
-        registry-url: 'https://registry.npmjs.org'
+    name: Build, bump & publish to npm
+    runs-on: ubuntu-latest
+    container: httptoolkit/act-build-base:v3.0.0
+    steps:
+      - uses: actions/checkout@v4
 
-    # ...[build & test etc]...
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
 
-    # Bump the version & push (if you're not doing that elsewhere)
-    - name: Bump version & push
-      run: |
-        git config --global user.name 'Automated publish'
-        git config --global user.email '$YOUR_USERNAME@users.noreply.github.com'
-    
-        # Update the version in package.json, and commit & tag the change:
-        npm version patch # YMMV - you might want the semver level as a workflow input
-    
-        git push && git push --tags
+      - run: npm ci
 
-    # Publish the result to npm with your granular token:
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Check that the tests and overall build all still pass:
+#      - run: npm test
+      - run: npm run build
+
+      # Create the new release:
+      - name: Bump version & push
+        run: |
+          git config --global user.name 'Automated publish'
+          git config --global user.email 'pimterry@users.noreply.github.com'
+          npm version patch
+          git push && git push --tags
+      # Publish the release to npm:
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
