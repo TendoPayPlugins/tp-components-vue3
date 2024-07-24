@@ -77,14 +77,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Create .npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          cat ~/.npmrc
-      - name: Verify authentication
-        run: npm whoami
+#      - name: Create .npmrc
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#        run: |
+#          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+#          cat ~/.npmrc
+#      - name: Verify authentication
+#        run: npm whoami
 
       - name: Bump version and push tag
         env:
