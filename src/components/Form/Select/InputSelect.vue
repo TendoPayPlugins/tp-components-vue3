@@ -72,7 +72,7 @@ watch(localValue, onInput);
           v?.$invalid,
         'tc-text-gray-900 tc-border-0 tc-ring-1 tc-ring-inset tc-ring-gray-300 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
           !v?.$invalid,
-         'disabled': disabled
+        'disabled': disabled
       }"
     >
       <option
@@ -98,7 +98,10 @@ watch(localValue, onInput);
     <p class="tc-mt-2 tc-text-xs tc-text-green-600 dark:tc-text-green-400">
       <slot name="success" />
     </p>
-    <span v-if="showError && v?.$invalid" class="block tc-mb-2">
+    <span
+      v-if="showError && v?.$invalid"
+      class="block tc-mb-2"
+    >
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
