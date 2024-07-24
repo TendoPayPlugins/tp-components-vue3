@@ -75,7 +75,7 @@ jobs:
       - name: Echo npm token
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "NPM Token starts with: ${NODE_AUTH_TOKEN:0:4}****"
+        run: echo "${NODE_AUTH_TOKEN:0:4}****"
 
       - name: Bump version and push tag
         env:
