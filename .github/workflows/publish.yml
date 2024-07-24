@@ -72,11 +72,6 @@ jobs:
       - name: Build project
         run: npm run build # Zakładając, że masz skrypt "build" w swoim package.json
 
-      - name: Echo npm token
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "${secrets.NPM_TOKEN:0:4}****"
-
       - name: Bump version and push tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
