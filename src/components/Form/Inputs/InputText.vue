@@ -78,7 +78,7 @@ watch(localValue, onInput);
           v?.$invalid,
         'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
           !v?.$invalid,
-          'disabled': disabled
+        'disabled': disabled
       }"
       :data-test="dataTest + '-input'"
       :placeholder="placeholder"
@@ -94,7 +94,10 @@ watch(localValue, onInput);
       <ExclamationCircleIcon class="tc-size-5 tc-text-red-500" />
     </div>
 
-    <span v-if="showError && v?.$invalid" class="block tc-mb-2">
+    <span
+      v-if="showError && v?.$invalid"
+      class="block tc-mb-2"
+    >
       <span
         v-for="(error, index) in v?.$silentErrors"
         :key="index"

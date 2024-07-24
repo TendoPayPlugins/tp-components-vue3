@@ -119,7 +119,10 @@ watch(localValue, onInput);
       {{ ' ' }}
     </SwitchLabel>
   </SwitchGroup>
-  <span v-if="showError && v?.$invalid" class="tc-block tc-mb-2">
+  <span
+    v-if="showError && v?.$invalid"
+    class="tc-block tc-mb-2"
+  >
     <p
       v-for="(error, index) in v?.$silentErrors"
       :key="index"

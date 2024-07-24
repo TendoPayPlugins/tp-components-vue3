@@ -108,7 +108,10 @@ watch(localValue, onInput);
       <slot name="success" />
     </p>
 
-    <span v-if="showError && v?.$invalid" class="block tc-mb-2">
+    <span
+      v-if="showError && v?.$invalid"
+      class="block tc-mb-2"
+    >
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
