@@ -26,6 +26,7 @@ import {
   watch,
   watchEffect,
 } from 'vue'
+
 import { localesMap } from './utils'
 import VtdHeader from './components/Header.vue'
 import VtdShortcut from './components/Shortcut.vue'
