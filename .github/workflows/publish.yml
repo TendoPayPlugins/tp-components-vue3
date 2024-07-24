@@ -77,6 +77,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Configure npm authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          cat ~/.npmrc
       - name: Verify authentication
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
