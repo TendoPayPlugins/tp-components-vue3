@@ -1,7 +1,7 @@
 {
   "name": "tp-components-vue3",
   "private": true,
-  "version": "0.0.18",
+  "version": "0.0.19",
   "type": "module",
   "files": [
     "dist"
