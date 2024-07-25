@@ -75,7 +75,7 @@ jobs:
           git config -l
       - name: Configure npm authentication
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ $NODE_AUTH_TOKEN }}" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ env.NODE_AUTH_TOKEN }}" > ~/.npmrc
           cat ~/.npmrc
 
       - name: Install dependencies
@@ -83,7 +83,7 @@ jobs:
 
       - name: Configure npm authentication
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ $NODE_AUTH_TOKEN }}" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ env.NODE_AUTH_TOKEN }}" > ~/.npmrc
           cat ~/.npmrc
 
       - name: Verify authentication
@@ -102,5 +102,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ vars.NPM_TOKEN }}
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${$NODE_AUTH_TOKEN}
+          npm config set //registry.npmjs.org/:_authToken=${env.NODE_AUTH_TOKEN}
           npm publish
