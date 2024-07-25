@@ -41,5 +41,8 @@ jobs:
         run: |
           git push origin HEAD:main --tags 
 
+      - name: login
+        run: npm login
+
       - name: Publish
         run: npm publish
