@@ -32,8 +32,8 @@ jobs:
         run: |
           VERSION=$(npm version patch -m "chore(release): %s")
 
-      - name: WhoAmI
-        run: npm whoami
+      - name: Adduser
+        run: npm adduser
 
       - name: Build
         run: npm run build
