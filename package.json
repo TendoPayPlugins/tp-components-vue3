@@ -1,6 +1,6 @@
 {
   "name": "tp-components-vue3",
-  "private": true,
+  "private": false,
   "version": "0.0.21",
   "type": "module",
   "files": [
