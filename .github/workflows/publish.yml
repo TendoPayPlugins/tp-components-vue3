@@ -87,7 +87,9 @@ jobs:
         run: |
           npx standard-version --release-as patch
           git push --follow-tags origin main
+
       - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-#          npm config set //registry.npmjs.org/:_authToken=${env.NODE_AUTH_TOKEN}
           npm publish
