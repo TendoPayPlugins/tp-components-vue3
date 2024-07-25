@@ -75,12 +75,14 @@ jobs:
           git config --global user.name "$(gh api /users/${GITHUB_ACTOR} | jq .name -r)"
           git config -l
 
-      - name: Configure npm authentication
-        run: |
-          cat ~/.npmrc
-
       - name: Install dependencies
         run: npm install
+
+      - name: test config
+        run: cat $NPM_CONFIG_USERCONFIG
+
+      - name: Build
+        run: npm run build
 
       - name: Bump version and push tag
         env:
