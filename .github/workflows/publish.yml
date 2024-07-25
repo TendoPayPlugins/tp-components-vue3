@@ -32,14 +32,14 @@ jobs:
         run: |
           VERSION=$(npm version patch -m "chore(release): %s")
 
-      - name: Build
-        run: npm run build
-
       - name: Push new tag to repository
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git push origin HEAD:main --tags 
+
+      - name: Build
+        run: npm run build
 
       - name: Publish
         run: npm publish
