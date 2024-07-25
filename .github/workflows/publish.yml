@@ -89,8 +89,6 @@ jobs:
           git push --follow-tags origin main
 
       - name: Publish to npm
-        env:
-          NODE_AUTH_TOKEN: ${{ vars.NPM_TOKEN }}
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${env.NODE_AUTH_TOKEN}
+#          npm config set //registry.npmjs.org/:_authToken=${env.NODE_AUTH_TOKEN}
           npm publish
