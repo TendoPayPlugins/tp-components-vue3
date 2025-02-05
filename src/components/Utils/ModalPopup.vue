@@ -6,7 +6,7 @@
   >
     <Dialog
       as="div"
-      class="relative z-10"
+      :class="`relative z-${zindex}`"
     >
       <TransitionChild
         as="template"
@@ -123,6 +123,14 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  size: {
+    type: String,
+    default: 'md',
+  },
+  zindex: {
+    type: Number,
+    default: 10
+  }
 })
 
 function doCloseOutside() {
