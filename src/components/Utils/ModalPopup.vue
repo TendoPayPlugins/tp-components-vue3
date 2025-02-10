@@ -35,7 +35,7 @@
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <DialogPanel
-              :class="`tc-relative tc-transform tc-overflow-hidden tc-rounded-lg tc-bg-white tc-px-4 tc-pb-4 tc-pt-5 tc-text-left tc-shadow-xl tc-transition-all sm:tc-my-8 sm:tc-max-w-lg sm:tc-p-6 ${modalSize[size]}`"
+              :class="`tc-relative tc-transform tc-overflow-hidden tc-rounded-lg tc-bg-white tc-px-4 tc-pb-4 tc-pt-5 tc-text-left tc-shadow-xl tc-transition-all sm:tc-my-8 sm:tc-p-6 ${modalSize[size]}`"
             >
               <div class="tc-absolute tc-right-0 tc-top-0 tc-pr-4 tc-pt-4 sm:tc-block">
                 <button
@@ -102,7 +102,7 @@
 <script setup>
 import {Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot} from '@headlessui/vue'
 import {XMarkIcon} from '@heroicons/vue/24/solid'
-import FormButton from "../Form/Buttons/FormButton.vue";
+import FormButton from "./FormButton.vue";
 
 const emit = defineEmits(['close', 'save'])
 

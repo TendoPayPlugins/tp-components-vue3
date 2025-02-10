@@ -16,8 +16,8 @@ module.exports = {
     content: [
         './index.html',
         './src/components/**/*.{js,jsx,ts,tsx,html,js,vue}',
-        "./node_modules/vue-tailwind-datepicker/**/*.js",
-        "./node_modules/flowbite/**/*.js"
+        './node_modules/vue-tailwind-datepicker/**/*.js',
+        './node_modules/flowbite/**/*.js'
     ],
     darkMode: ['class', '[data-mode="dark"]'],
     theme: {
@@ -106,6 +106,12 @@ module.exports = {
                 "500-px": "500px",
                 "700-px": "700px",
             },
+            minWidth: {
+                "lg": "32rem",
+                "xl": "36rem",
+                "2xl": "42rem",
+                "5xl": "64rem",
+            },
             translate: {
                 "-1/5": "-20%",
                 "1/5": "20%",
@@ -132,6 +138,10 @@ module.exports = {
                 3: 3,
                 4: 4,
                 5: 5,
+                10: 10,
+                15: 15,
+                20: 20,
+                25: 25,
                 9998: 9998,
                 9999: 9999,
             },
