@@ -102,7 +102,7 @@
 <script setup>
 import {Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot} from '@headlessui/vue'
 import {XMarkIcon} from '@heroicons/vue/24/solid'
-import FormButton from "./FormButton.vue";
+import FormButton from "../Form/Buttons/FormButton.vue";
 
 const emit = defineEmits(['close', 'save'])
 
