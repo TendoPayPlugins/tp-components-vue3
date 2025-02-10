@@ -1603,12 +1603,24 @@ input:checked + .toggle-bg {
   width: 100%;
 }
 
+.tc-min-w-2xl {
+  min-width: 42rem;
+}
+
 .tc-min-w-56 {
   min-width: 14rem;
 }
 
+.tc-min-w-5xl {
+  min-width: 64rem;
+}
+
 .tc-min-w-full {
   min-width: 100%;
+}
+
+.tc-min-w-lg {
+  min-width: 32rem;
 }
 
 .tc-max-w-md {

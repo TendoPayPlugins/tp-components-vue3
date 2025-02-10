@@ -106,12 +106,6 @@ module.exports = {
                 "500-px": "500px",
                 "700-px": "700px",
             },
-            minWidth: {
-                "lg": "32rem",
-                "xl": "36rem",
-                "2xl": "42rem",
-                "5xl": "64rem",
-            },
             translate: {
                 "-1/5": "-20%",
                 "1/5": "20%",
@@ -210,6 +204,10 @@ module.exports = {
             minWidth: {
                 "140-px": "140px",
                 48: "12rem",
+                "lg": "32rem",
+                "xl": "36rem",
+                "2xl": "42rem",
+                "5xl": "64rem",
             },
             backgroundSize: {
                 full: "100%",
