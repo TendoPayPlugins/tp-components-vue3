@@ -27,7 +27,7 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(["download", "asyncDone", "event1", "event2", "event3"]);
+const emit = defineEmits(["download", "asyncDone"]);
 
 watch(() => props.data, async (newVal, oldVal) => {
   if (props.data === null) {
