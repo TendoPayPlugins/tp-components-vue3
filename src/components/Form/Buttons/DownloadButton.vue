@@ -1,6 +1,6 @@
 <script setup>
-import {ArrowDownIcon} from "@heroicons/vue/24/solid/index.js";
-import {watch} from "vue";
+import {ArrowDownIcon} from '@heroicons/vue/24/solid/index.js';
+import {watch} from 'vue';
 import { Menu, MenuButton, MenuItem, MenuItems } from  '@headlessui/vue'
 
 const props = defineProps({
@@ -27,7 +27,7 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(["download", "asyncDone"]);
+const emit = defineEmits(['download', 'asyncDone']);
 
 watch(() => props.data, async (newVal, oldVal) => {
   if (props.data === null) {
@@ -88,7 +88,7 @@ watch(() => props.data, async (newVal, oldVal) => {
             >
               <div
                 :class="[active ? 'tc-bg-gray-100 tc-text-gray-900 tc-outline-none' : 'tc-text-gray-700', 'tc-block tc-px-4 tc-py-2 tc-text-sm tc-cursor-pointer']"
-                @click="item.event"
+                @click="emit('download', item.type)"
               >
                 {{ item.label }}
               </div>
