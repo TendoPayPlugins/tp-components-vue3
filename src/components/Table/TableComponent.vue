@@ -2,7 +2,7 @@
   <div class="tc-mt-8 tc-flow-root">
     <div class="tc-inline-block tc-min-w-full tc-py-2 tc-align-middle">
       <div class="">
-        <div>
+        <div v-if="showPagination">
           <TablePagination
             :pagination="state.pagination"
             @page="goPage"
@@ -76,7 +76,7 @@
           </tbody>
         </table>
 
-        <div>
+        <div v-if="showPagination">
           <TablePagination
             :pagination="state.pagination"
             :show-results="false"

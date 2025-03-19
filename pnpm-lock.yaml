@@ -26,6 +26,9 @@ importers:
       plotly.js-dist-min:
         specifier: ^2.35.3
         version: 2.35.3
+      tp-components-vue3:
+        specifier: github:TendoPayPlugins/tp-components-vue3#v0.0.30
+        version: https://codeload.github.com/TendoPayPlugins/tp-components-vue3/tar.gz/1de45785c97be5ef8088e3e14effdf174ee7c93e(rollup@4.34.6)(tailwindcss@3.4.17)(vue@3.5.13(typescript@5.7.3))
       vue:
         specifier: ^3.4.21
         version: 3.5.13(typescript@5.7.3)
@@ -1504,6 +1507,13 @@ packages:
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
+
+  tp-components-vue3@https://codeload.github.com/TendoPayPlugins/tp-components-vue3/tar.gz/1de45785c97be5ef8088e3e14effdf174ee7c93e:
+    resolution: {tarball: https://codeload.github.com/TendoPayPlugins/tp-components-vue3/tar.gz/1de45785c97be5ef8088e3e14effdf174ee7c93e}
+    version: 0.0.28
+    peerDependencies:
+      tailwindcss: ^3.4.3
+      vue: ^3.4.21
 
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
@@ -3112,6 +3122,20 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
+
+  tp-components-vue3@https://codeload.github.com/TendoPayPlugins/tp-components-vue3/tar.gz/1de45785c97be5ef8088e3e14effdf174ee7c93e(rollup@4.34.6)(tailwindcss@3.4.17)(vue@3.5.13(typescript@5.7.3)):
+    dependencies:
+      '@headlessui/vue': 1.7.23(vue@3.5.13(typescript@5.7.3))
+      '@heroicons/vue': 2.2.0(vue@3.5.13(typescript@5.7.3))
+      '@popperjs/core': 2.11.8
+      dayjs: 1.11.13
+      flowbite: 2.5.2(rollup@4.34.6)
+      plotly.js-dist-min: 2.35.3
+      tailwindcss: 3.4.17
+      vue: 3.5.13(typescript@5.7.3)
+      vue-advanced-cropper: 2.8.9(vue@3.5.13(typescript@5.7.3))
+    transitivePeerDependencies:
+      - rollup
 
   ts-interface-checker@0.1.13: {}
 

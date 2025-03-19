@@ -1,7 +1,7 @@
 {
   "name": "tp-components-vue3",
   "private": false,
-  "version": "0.0.30",
+  "version": "0.0.31",
   "type": "module",
   "files": [
     "dist"
@@ -40,6 +40,7 @@
     "dayjs": "^1.11.13",
     "flowbite": "^2.5.2",
     "plotly.js-dist-min": "^2.35.3",
+    "tp-components-vue3": "github:TendoPayPlugins/tp-components-vue3#v0.0.30",
     "vue-advanced-cropper": "^2.8.9"
   },
   "devDependencies": {
