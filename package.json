@@ -1,7 +1,7 @@
 {
   "name": "tp-components-vue3",
   "private": false,
-  "version": "0.0.32",
+  "version": "0.0.33",
   "type": "module",
   "files": [
     "dist"
@@ -45,15 +45,15 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
-    "@types/node": "^20.17.17",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9.20.0",
-    "eslint-plugin-vue": "^9.32.0",
-    "postcss": "^8.5.1",
+    "@types/node": "^20.17.27",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.23.0",
+    "eslint-plugin-vue": "^9.33.0",
+    "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.3",
-    "vite": "^5.4.14",
+    "typescript": "^5.8.2",
+    "vite": "^5.4.15",
     "vite-plugin-dts": "^3.9.1",
     "vite-plugin-static-copy": "^1.0.6",
     "vitest": "^1.6.1",
