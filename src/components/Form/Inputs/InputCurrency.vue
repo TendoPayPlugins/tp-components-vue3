@@ -43,6 +43,10 @@ const props = defineProps({
   step: {
     type: Number,
     default: 0.01,
+  },
+  showError: {
+    type: Boolean,
+    default: true,
   }
 })
 

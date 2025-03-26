@@ -10,6 +10,11 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  active: {
+    type: Boolean,
+    default: false,
+    required: false,
+  }
 })
 
 const emit = defineEmits(['sort'])
@@ -23,7 +28,10 @@ const updateSort = () => {
     @click="updateSort()"
   >
     <slot />
-    <span class="tc-ml-2 tc-flex-none tc-rounded tc-bg-gray-100 tc-text-gray-900 group-hover:tc-bg-gray-200">
+    <span
+        class="tc-ml-2 tc-flex-none tc-rounded group-hover:tc-bg-gray-200"
+        :class="{ 'tc-bg-tonik-purple tc-text-white': props.active, 'tc-bg-gray-100 tc-text-gray-900': !props.active }
+    ">
       <ChevronUpIcon
         v-if="props.dir === 'asc'"
         aria-hidden="true"
