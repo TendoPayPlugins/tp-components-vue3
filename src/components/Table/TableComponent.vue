@@ -35,6 +35,7 @@
             </tr>
           </thead>
           <tbody class="tc-divide-y tc-divide-gray-200">
+            <slot name="rows" />
             <tr
               v-for="(item, index) in state.data"
               :key="index"
