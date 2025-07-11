@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import {watch} from "vue";
 import {ExclamationCircleIcon} from '@heroicons/vue/24/outline'
 
@@ -84,7 +84,7 @@ watch(localValue, onInput);
         :readonly="readonly"
         aria-describedby="helper-text-explanation"
         type="email"
-        @input="onInput"
+        @change="onInput"
       >
     </div>
 
