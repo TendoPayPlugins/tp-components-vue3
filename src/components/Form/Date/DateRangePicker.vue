@@ -5,6 +5,28 @@ import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.v
 
 const emit = defineEmits(['update:modelValue'])
 
+const customShortcuts = () => [
+  {
+    label: "Past 1 week",
+    atClick: () => [dayjs().startOf('week'), dayjs().endOf('week')],
+  },
+  {
+    label: "Past 1 month",
+    atClick: () => [dayjs().startOf('month'), dayjs().endOf('month')],
+  },
+  {
+    label: "Past 3 months",
+    atClick: () => [dayjs().subtract(2, 'months').startOf('month'), dayjs().endOf('month')],
+  },
+  {
+    label: "Past 6 months",
+    atClick: () => [dayjs().subtract(5, 'months').startOf('month'), dayjs().endOf('month')],
+  },
+  {
+    label: "Past 1 year",
+    atClick: () => [dayjs().subtract(11, 'months').startOf('month'), dayjs().endOf('month')],
+  },
+]
 const localValue = defineModel({ required: false, type: Array, default: [null, null] })
 
 const props = defineProps({
@@ -33,43 +55,16 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  shortcutsOverride: {
-    type: Function,
-    default: null,
-  }
+  shortcuts: {
+    type: [Function, Array],
+    default: customShortcuts,
+  },
 })
 
 const formatter = ref({
   date: 'YYYY-MM-DD',
   month: 'MMM',
   preview: 'MM/DD/YYYY',
-})
-
-const customShortcuts = () => [
-  {
-    label: "Past 1 week",
-    atClick: () => [dayjs().startOf('week'), dayjs().endOf('week')],
-  },
-  {
-    label: "Past 1 month",
-    atClick: () => [dayjs().startOf('month'), dayjs().endOf('month')],
-  },
-  {
-    label: "Past 3 months",
-    atClick: () => [dayjs().subtract(2, 'months').startOf('month'), dayjs().endOf('month')],
-  },
-  {
-    label: "Past 6 months",
-    atClick: () => [dayjs().subtract(5, 'months').startOf('month'), dayjs().endOf('month')],
-  },
-  {
-    label: "Past 1 year",
-    atClick: () => [dayjs().subtract(11, 'months').startOf('month'), dayjs().endOf('month')],
-  },
-]
-
-const activeShortcuts = computed(() => {
-  return props.shortcutsOverride?.() || customShortcuts()
 })
 
 const onInput = () => {
@@ -86,7 +81,7 @@ watch(localValue, onInput)
         :formatter="formatter"
         :no-input="inline"
         :placeholder="placeholder"
-        :shortcuts="activeShortcuts"
+        :shortcuts="props.shortcuts"
         as-single
         input-classes=""
         use-range
