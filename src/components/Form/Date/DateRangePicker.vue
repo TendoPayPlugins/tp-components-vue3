@@ -5,28 +5,6 @@ import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.v
 
 const emit = defineEmits(['update:modelValue'])
 
-const customShortcuts = () => [
-  {
-    label: "Past 1 week",
-    atClick: () => [dayjs().startOf('week'), dayjs().endOf('week')],
-  },
-  {
-    label: "Past 1 month",
-    atClick: () => [dayjs().startOf('month'), dayjs().endOf('month')],
-  },
-  {
-    label: "Past 3 months",
-    atClick: () => [dayjs().subtract(2, 'months').startOf('month'), dayjs().endOf('month')],
-  },
-  {
-    label: "Past 6 months",
-    atClick: () => [dayjs().subtract(5, 'months').startOf('month'), dayjs().endOf('month')],
-  },
-  {
-    label: "Past 1 year",
-    atClick: () => [dayjs().subtract(11, 'months').startOf('month'), dayjs().endOf('month')],
-  },
-]
 const localValue = defineModel({ required: false, type: Array, default: [null, null] })
 
 const props = defineProps({
@@ -57,7 +35,28 @@ const props = defineProps({
   },
   shortcuts: {
     type: [Function, Array],
-    default: customShortcuts,
+    default: () => [
+      {
+        label: "Past 1 week",
+        atClick: () => [dayjs().startOf('week'), dayjs().endOf('week')],
+      },
+      {
+        label: "Past 1 month",
+        atClick: () => [dayjs().startOf('month'), dayjs().endOf('month')],
+      },
+      {
+        label: "Past 3 months",
+        atClick: () => [dayjs().subtract(2, 'months').startOf('month'), dayjs().endOf('month')],
+      },
+      {
+        label: "Past 6 months",
+        atClick: () => [dayjs().subtract(5, 'months').startOf('month'), dayjs().endOf('month')],
+      },
+      {
+        label: "Past 1 year",
+        atClick: () => [dayjs().subtract(11, 'months').startOf('month'), dayjs().endOf('month')],
+      },
+    ],
   },
 })
 
