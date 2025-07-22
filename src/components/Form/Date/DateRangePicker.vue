@@ -18,8 +18,7 @@ const props = defineProps({
   },
   v: {
     type: Object,
-    default: () => {
-    },
+    default: () => ({}),
   },
   inline: {
     type: Boolean,
@@ -35,28 +34,8 @@ const props = defineProps({
   },
   shortcuts: {
     type: [Function, Array],
-    default: () => [
-      {
-        label: "Past 1 week",
-        atClick: () => [dayjs().startOf('week'), dayjs().endOf('week')],
-      },
-      {
-        label: "Past 1 month",
-        atClick: () => [dayjs().startOf('month'), dayjs().endOf('month')],
-      },
-      {
-        label: "Past 3 months",
-        atClick: () => [dayjs().subtract(2, 'months').startOf('month'), dayjs().endOf('month')],
-      },
-      {
-        label: "Past 6 months",
-        atClick: () => [dayjs().subtract(5, 'months').startOf('month'), dayjs().endOf('month')],
-      },
-      {
-        label: "Past 1 year",
-        atClick: () => [dayjs().subtract(11, 'months').startOf('month'), dayjs().endOf('month')],
-      },
-    ],
+    default: undefined,
+    required: false
   },
 })
 
@@ -66,9 +45,39 @@ const formatter = ref({
   preview: 'MM/DD/YYYY',
 })
 
+const defaultShortcuts = computed(() => [
+  {
+    label: "Past 1 week",
+    atClick: () => [dayjs().subtract(6, 'day').startOf('day').toDate(), dayjs().endOf('day').toDate()],
+  },
+  {
+    label: "Past 1 month",
+    atClick: () => [dayjs().subtract(1, 'month').startOf('day').toDate(), dayjs().endOf('day').toDate()],
+  },
+  {
+    label: "Past 3 months",
+    atClick: () => [dayjs().subtract(3, 'month').startOf('day').toDate(), dayjs().endOf('day').toDate()],
+  },
+  {
+    label: "Past 6 months",
+    atClick: () => [dayjs().subtract(6, 'month').startOf('day').toDate(), dayjs().endOf('day').toDate()],
+  },
+  {
+    label: "Past 1 year",
+    atClick: () => [dayjs().subtract(1, 'year').startOf('day').toDate(), dayjs().endOf('day').toDate()],
+  },
+])
+
+// fallback: jeśli shortcuty z props, użyj ich, inaczej computed default
+const computedShortcuts = computed(() => {
+  if (props.shortcuts) return props.shortcuts
+  return defaultShortcuts.value
+})
+
 const onInput = () => {
   emit("update:modelValue", localValue.value)
 }
+
 watch(localValue, onInput)
 </script>
 
@@ -80,7 +89,7 @@ watch(localValue, onInput)
         :formatter="formatter"
         :no-input="inline"
         :placeholder="placeholder"
-        :shortcuts="shortcuts"
+        :shortcuts="computedShortcuts"
         as-single
         input-classes=""
         use-range
