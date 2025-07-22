@@ -105,7 +105,7 @@
         :formatter="formatter"
         :no-input="inline"
         :placeholder="placeholder"
-        :shortcuts="resolvedShortcuts"
+        :shortcuts="defaultShortcuts"
         as-single
         input-classes=""
         use-range
