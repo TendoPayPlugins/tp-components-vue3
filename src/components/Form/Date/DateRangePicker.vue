@@ -63,7 +63,7 @@ const defaultShortcuts = [
   ]
 
 const resolvedShortcuts = computed(() => {
-  const s = props.shortcuts
+  const s = props.shortcutsOverride
 
   if (!s) return defaultShortcuts
 
