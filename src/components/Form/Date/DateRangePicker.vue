@@ -60,25 +60,7 @@ const defaultShortcuts = () =>  [
     label: "Past 1 year",
     atClick: () => [dayjs().subtract(11, 'months').startOf('month'), dayjs().endOf('month')],
   },
-  ]
-
-const resolvedShortcuts = () => {
-  const s = props.shortcutsOverride
-
-  if (!s) return defaultShortcuts
-
-  if (typeof s === 'function') {
-    try {
-      const result = s()
-      if (!result) return defaultShortcuts
-      return result
-    } catch {
-      return defaultShortcuts
-    }
-  }
-
-  return defaultShortcuts
-}
+]
 
 const formatter = ref({
   date: 'YYYY-MM-DD',
@@ -101,7 +83,7 @@ watch(localValue, onInput)
         :formatter="formatter"
         :no-input="inline"
         :placeholder="placeholder"
-        :shortcuts="resolvedShortcuts"
+        :shortcuts="props.shortcutsOverride || defaultShortcuts"
         as-single
         input-classes=""
         use-range
