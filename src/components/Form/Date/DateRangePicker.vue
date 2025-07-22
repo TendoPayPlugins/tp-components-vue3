@@ -63,12 +63,27 @@
   ]
 
   const resolvedShortcuts = computed(() => {
-  const s = props.shortcuts
-  if (!s || (Array.isArray(s) && s.length === 0)) {
-  return defaultShortcuts
-}
-  return s
-})
+    const s = props.shortcuts
+
+    if (!s) return defaultShortcuts
+
+    if (typeof s === 'function') {
+      try {
+        const result = s()
+        if (!result || (Array.isArray(result) && result.length === 0)) return defaultShortcuts
+        return result
+      } catch {
+        return defaultShortcuts
+      }
+    }
+
+    if (Array.isArray(s)) {
+      return s.length ? s : defaultShortcuts
+    }
+
+    return defaultShortcuts
+  })
+
 
   const formatter = ref({
   date: 'YYYY-MM-DD',
