@@ -1,45 +1,45 @@
 <script setup>
-  import dayjs from "dayjs"
-  import { ref, watch, computed } from "vue"
-  import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.vue"
+import dayjs from "dayjs"
+import { ref, watch, computed } from "vue"
+import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.vue"
 
-  const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue'])
 
-  const localValue = defineModel({ required: false, type: Array, default: [null, null] })
+const localValue = defineModel({ required: false, type: Array, default: [null, null] })
 
-  const props = defineProps({
+const props = defineProps({
   disabled: {
-  type: Boolean,
-  default: false,
-},
+    type: Boolean,
+    default: false,
+  },
   placeholder: {
-  type: String,
-  default: 'Select',
-},
+    type: String,
+    default: 'Select',
+  },
   v: {
-  type: Object,
-  default: () => {
-},
-},
+    type: Object,
+    default: () => {
+    },
+  },
   inline: {
-  type: Boolean,
-  default: false,
-},
+    type: Boolean,
+    default: false,
+  },
   showError: {
-  type: Boolean,
-  default: true,
-},
+    type: Boolean,
+    default: true,
+  },
   dataTest: {
-  type: String,
-  required: true,
-},
-  shortcuts: {
-  type: [Function, Array],
-  default: undefined,
-},
+    type: String,
+    required: true,
+  },
+  shortcutsOverride: {
+    type: [Function, Array],
+    default: undefined,
+  },
 })
 
-  const defaultShortcuts = [
+const defaultShortcuts = [
   {
     label: "Past 1 week",
     atClick: () => [dayjs().startOf('week'), dayjs().endOf('week')],
@@ -62,39 +62,40 @@
   },
   ]
 
-  const resolvedShortcuts = computed(() => {
-    const s = props.shortcuts
+const resolvedShortcuts = computed(() => {
+  const s = props.shortcuts
 
-    if (!s) return defaultShortcuts
+  if (!s) return defaultShortcuts
 
-    if (typeof s === 'function') {
-      try {
-        const result = s()
-        if (!result || (Array.isArray(result) && result.length === 0)) return defaultShortcuts
-        return result
-      } catch {
-        return defaultShortcuts
-      }
+  if (typeof s === 'function') {
+    try {
+      const result = s()
+      if (!result || (Array.isArray(result) && result.length === 0)) return defaultShortcuts
+      return result
+    } catch {
+      return defaultShortcuts
     }
+  }
 
-    if (Array.isArray(s)) {
-      return s.length ? s : defaultShortcuts
-    }
+  if (Array.isArray(s)) {
+    return s.length ? s : defaultShortcuts
+  }
 
-    return defaultShortcuts
-  })
+  return defaultShortcuts
+})
 
 
-  const formatter = ref({
+const formatter = ref({
   date: 'YYYY-MM-DD',
   month: 'MMM',
   preview: 'MM/DD/YYYY',
 })
 
-  const onInput = () => {
+const onInput = () => {
   emit("update:modelValue", localValue.value)
 }
-  watch(localValue, onInput)
+
+watch(localValue, onInput)
 </script>
 
 <template>
@@ -105,7 +106,7 @@
         :formatter="formatter"
         :no-input="inline"
         :placeholder="placeholder"
-        :shortcuts="defaultShortcuts"
+        :shortcuts="resolvedShortcuts"
         as-single
         input-classes=""
         use-range
