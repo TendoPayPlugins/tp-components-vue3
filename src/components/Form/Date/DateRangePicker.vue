@@ -33,10 +33,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  // shortcutsOverride: {
-  //   type: [Function, Array],
-  //   default: undefined,
-  // },
+  shortcutsOverride: {
+    type: Function,
+    default: undefined,
+  },
 })
 
 const defaultShortcuts = () =>  [
@@ -62,28 +62,23 @@ const defaultShortcuts = () =>  [
   },
   ]
 
-// const resolvedShortcuts = computed(() => {
-//   const s = props.shortcutsOverride
-//
-//   if (!s) return defaultShortcuts
-//
-//   if (typeof s === 'function') {
-//     try {
-//       const result = s()
-//       if (!result || (Array.isArray(result) && result.length === 0)) return defaultShortcuts
-//       return result
-//     } catch {
-//       return defaultShortcuts
-//     }
-//   }
-//
-//   if (Array.isArray(s)) {
-//     return s.length ? s : defaultShortcuts
-//   }
-//
-//   return defaultShortcuts
-// })
+const resolvedShortcuts = () => {
+  const s = props.shortcutsOverride
 
+  if (!s) return defaultShortcuts
+
+  if (typeof s === 'function') {
+    try {
+      const result = s()
+      if (!result) return defaultShortcuts
+      return result
+    } catch {
+      return defaultShortcuts
+    }
+  }
+
+  return defaultShortcuts
+}
 
 const formatter = ref({
   date: 'YYYY-MM-DD',
@@ -106,7 +101,7 @@ watch(localValue, onInput)
         :formatter="formatter"
         :no-input="inline"
         :placeholder="placeholder"
-        :shortcuts="defaultShortcuts"
+        :shortcuts="resolvedShortcuts"
         as-single
         input-classes=""
         use-range
