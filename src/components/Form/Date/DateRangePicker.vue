@@ -80,7 +80,7 @@ watch(localValue, onInput)
         :formatter="formatter"
         :no-input="inline"
         :placeholder="placeholder"
-        :shortcuts="props.shortcuts"
+        :shortcuts="shortcuts"
         as-single
         input-classes=""
         use-range
