@@ -63,7 +63,7 @@ function toggleSecret() {
     <label
       v-if="label"
       :for="dataTest"
-      class="tc-block tc-text-sm tc-font-medium tc-leading-6 tc-text-gray-900"
+      class="tc-block tc-text-base tc-font-medium tc-leading-6 tc-text-gray-900"
     >{{ label }}</label>
     <div class="tc-flex tc-rounded-md tc-shadow-sm tc-py-2">
       <div class="tc-relative tc-flex tc-flex-grow tc-items-stretch focus-within:tc-z-10">
@@ -80,7 +80,7 @@ function toggleSecret() {
       <button
         :class="{ 'tc-rounded-r-md': !hide }"
         :data-test="dataTest + '-copy-button'"
-        class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-gap-x-1.5 tc-px-3 tc-py-2 tc-text-sm tc-font-semibold tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-tonik-purple hover:tc-bg-gray-50"
+        class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-gap-x-1.5 tc-px-3 tc-py-2 tc-text-base tc-font-semibold tc-text-gray-900 tc-ring-1 tc-ring-inset tc-ring-tonik-purple hover:tc-bg-gray-50"
         type="button"
         @click="copy"
       >

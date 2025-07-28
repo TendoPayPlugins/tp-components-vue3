@@ -33,7 +33,7 @@
       </div>
       <div class="tc-ml-3">
         <p
-          class="tc-text-sm tc-font-medium"
+          class="tc-text-base tc-font-medium"
           :class="{
             'tc-text-yellow-700': type === 'warning',
             'tc-text-success': type === 'success',
@@ -42,7 +42,7 @@
         >
           {{ message }}
         </p>
-        <slot class="tc-mt-2 tc-text-sm" />
+        <slot class="tc-mt-2 tc-text-base" />
       </div>
 
       <div

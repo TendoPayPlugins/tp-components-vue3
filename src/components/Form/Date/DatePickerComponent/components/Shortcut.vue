@@ -49,7 +49,7 @@ const withShortcut = computed(() => {
             <li v-for="(item, i) in withShortcut" :key="i">
                 <a
                         href="#"
-                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-xs tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
+                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-base tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
                         @click.prevent="setToCustomShortcut(item, close)" v-text="item.label"
                 />
             </li>
@@ -61,7 +61,7 @@ const withShortcut = computed(() => {
             <li>
                 <a
                         href="#"
-                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-xs tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
+                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-base tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
                         @click.prevent="setToToday(close)"
                 >
                     {{ props.i18n.today }}
@@ -70,7 +70,7 @@ const withShortcut = computed(() => {
             <li>
                 <a
                         href="#"
-                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-xs tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
+                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-base tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
                         @click.prevent="setToYesterday(close)"
                 >
                     {{ props.i18n.yesterday }}
@@ -79,7 +79,7 @@ const withShortcut = computed(() => {
             <li>
                 <a
                         href="#"
-                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-xs tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
+                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-base tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
                         @click.prevent="setToLastDay(7, close)"
                 >
                     {{ props.i18n.past(7) }}
@@ -88,7 +88,7 @@ const withShortcut = computed(() => {
             <li>
                 <a
                         href="#"
-                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-xs tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
+                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-base tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
                         @click.prevent="setToLastDay(30, close)"
                 >
                     {{ props.i18n.past(30) }}
@@ -97,7 +97,7 @@ const withShortcut = computed(() => {
             <li>
                 <a
                         href="#"
-                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-xs tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
+                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-base tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
                         @click.prevent="setToThisMonth(close)"
                 >
                     {{ props.i18n.currentMonth }}
@@ -106,7 +106,7 @@ const withShortcut = computed(() => {
             <li>
                 <a
                         href="#"
-                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-xs tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
+                        class="tc-vtd-shortcuts tc-block tc-text-sm lg:tc-text-base tc-px-2 tc-py-2 sm:tc-leading-4 tc-whitespace-nowrap tc-font-medium tc-rounded tc-text-tonik-purple hover:tc-text-tonik-purple-dark tc-transition-colors hover:tc-bg-vtd-secondary-100 focus:tc-bg-vtd-secondary-100 focus:tc-text-tonik-purple dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-primary-300 dark:tc-text-vtd-primary-400 dark:focus:tc-bg-vtd-secondary-700 dark:focus:tc-text-vtd-primary-300"
                         @click.prevent="setToLastMonth(close)"
                 >
                     {{ props.i18n.pastMonth }}

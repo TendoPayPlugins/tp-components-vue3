@@ -44,7 +44,7 @@ watch(localValue, onInput);
     <fieldset>
       <legend
         v-if="label"
-        class="tc-text-sm tc-font-semibold tc-leading-6 tc-text-gray-900"
+        class="tc-text-base tc-font-semibold tc-leading-6 tc-text-gray-900"
       />
       <div class="tc-mt-6 tc-space-y-6">
         <div
@@ -62,7 +62,7 @@ watch(localValue, onInput);
               type="checkbox"
             >
           </div>
-          <div class="tc-text-sm tc-leading-6">
+          <div class="tc-text-base tc-leading-6">
             <label
               :data-test="dataTest + '-label-' + index"
               :for="option.index + '-label'"
@@ -83,7 +83,7 @@ watch(localValue, onInput);
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
-        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
+        class="tc-mt-2 tc-text-sm tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-email-error' + error.$uid"

@@ -105,7 +105,7 @@ watch(localValue, onInput);
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
-        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
+        class="tc-mt-2 tc-text-sm tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-email-error' + error.$uid"
@@ -115,7 +115,7 @@ watch(localValue, onInput);
 
       <p
         v-if="v?.maxLength?.$invalid"
-        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
+        class="tc-mt-2 tc-text-sm tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-maxLength-error'"
@@ -127,7 +127,7 @@ watch(localValue, onInput);
 
       <p
         v-if="v?.minLength?.$invalid"
-        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
+        class="tc-mt-2 tc-text-sm tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-minLength-error'"

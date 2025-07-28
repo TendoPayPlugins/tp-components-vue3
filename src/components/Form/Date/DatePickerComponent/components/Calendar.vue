@@ -64,7 +64,7 @@ const atMouseOver = injectStrict(atMouseOverKey)
                     </transition>
                     <button
                             type="button"
-                            class="vtd-datepicker-date tc-relative tc-w-[2.7rem] tc-h-[2.7rem] lg:tc-w-10 lg:tc-h-10 tc-flex tc-justify-center tc-items-center tc-text-xs 2xl:tc-text-sm"
+                            class="vtd-datepicker-date tc-relative tc-w-[2.7rem] tc-h-[2.7rem] lg:tc-w-10 lg:tc-h-10 tc-flex tc-justify-center tc-items-center tc-text-sm 2xl:tc-text-base"
                             :class="[
               datepickerClasses(date),
               asRange ? 'tc-transition-all' : 'tc-transition-colors',

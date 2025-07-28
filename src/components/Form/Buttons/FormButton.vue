@@ -24,7 +24,7 @@ const emit = defineEmits(["click"]);
 <template>
   <button
     :class="[
-      'tc-font-bold tc-rounded tc-text-sm',
+      'tc-font-bold tc-rounded tc-text-base',
       disabled ? 'tc-bg-tp-grey-300 tc-text-white' :
       type === 'danger' ? 'tc-bg-red-500 tc-text-white hover:tc-bg-red-600 focus:tc-outline-none' :
       type === 'gray' ? 'tc-bg-tp-grey-300 tc-text-gray-400' :

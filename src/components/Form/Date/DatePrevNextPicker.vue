@@ -10,7 +10,7 @@
         class="tc-size-5 tc-text-gray-400"
         aria-hidden="true"
       />
-      <span class="tc-uppercase tc-font-semibold tc-text-xxs">Previous</span>
+      <span class="tc-uppercase tc-font-semibold tc-text-sm">Previous</span>
     </button>
     <div class="tc-text-gray-300">|</div>
     <button
@@ -19,7 +19,7 @@
       class="tc-relative -tc-ml-px tc-inline-flex tc-items-center tc-px-2 tc-py-2 tc-text-gray-800 hover:tc-text-gray-400 focus:tc-z-10"
       @click="goNext"
     >
-      <span class="tc-uppercase tc-font-semibold tc-text-xxs">Next</span>
+      <span class="tc-uppercase tc-font-semibold tc-text-sm">Next</span>
       <ChevronRightIcon
         class="tc-size-5 tc-text-gray-400"
         aria-hidden="true"

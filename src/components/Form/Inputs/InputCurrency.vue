@@ -64,7 +64,7 @@ watch(localValue, onInput);
   <div>
     <label
       v-if="props.label"
-      class="tc-block tc-text-sm tc-font-medium tc-leading-6 tc-text-gray-900"
+      class="tc-block tc-text-base tc-font-medium tc-leading-6 tc-text-gray-900"
       for="price"
     >
       <slot name="label">{{ label }} <span
@@ -114,7 +114,7 @@ watch(localValue, onInput);
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
-        class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
+        class="tc-mt-2 tc-text-sm tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-email-error' + error.$uid"

@@ -49,14 +49,14 @@ watch(localValue, onInput);
     <legend
       v-if="legend"
       :data-test="dataTest + '-legend'"
-      class="tc-text-sm tc-font-semibold tc-leading-6 tc-text-gray-900"
+      class="tc-text-base tc-font-semibold tc-leading-6 tc-text-gray-900"
     >
       {{ legend }}
     </legend>
     <p
       v-if="description"
       :data-test="dataTest + '-description'"
-      class="tc-mt-1 tc-text-sm tc-leading-6 tc-text-gray-600"
+      class="tc-mt-1 tc-text-base tc-leading-6 tc-text-gray-600"
     >
       {{ description }}
     </p>
@@ -85,7 +85,7 @@ watch(localValue, onInput);
           <p
             v-for="(error, eIndex) in v?.$silentErrors"
             :key="eIndex"
-            class="tc-mt-2 tc-text-xs tc-text-red-600 dark:tc-text-red-400"
+            class="tc-mt-2 tc-text-sm tc-text-red-600 dark:tc-text-red-400"
           >
             <span
               :data-test="dataTest + '-email-error' + error.$uid"
