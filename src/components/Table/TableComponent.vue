@@ -12,7 +12,7 @@
           class="tc-min-w-full tc-divide-y tc-divide-gray-200"
           data-test="table"
         >
-          <thead class="tc-bg-gray-300 tc-text-gray-500 tc-text-base">
+          <thead class="tc-bg-gray-300 tc-text-gray-500 tc-text-sm">
             <tr>
               <th
                 v-if="batchActions"
