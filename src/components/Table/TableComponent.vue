@@ -189,7 +189,6 @@ defineExpose({
 <style>
 tr > td {
     text-align: center;
-    font-size: 80%;
     padding: 10px 10px 10px 10px;
 }
 
