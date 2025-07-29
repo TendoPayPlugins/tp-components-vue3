@@ -59,7 +59,7 @@ watch(() => props.data, async (newVal, oldVal) => {
             class="tc-absolute tc-flex tc-items-center tc-bg-transparent tc-border-2 tc-border-tp-grey-600 tc-rounded-md tc-px-4 tc-py-2"
         >
           <ArrowDownIcon class="tc-size-3 tc-mr-3" />
-          <span class="tc-font-bold tc-text-base">Download</span>
+          <span class="tc-font-bold tc-text-sm">Download</span>
         </MenuButton>
       </div>
 
@@ -72,7 +72,7 @@ watch(() => props.data, async (newVal, oldVal) => {
           leave-to-class="transform opacity-0 scale-95"
       >
         <MenuItems
-            class="tc-right-0 tc-z-0 tc-w-56 tc-origin-top-right tc-rounded-md tc-bg-white tc-shadow-lg tc-border tc-border-tp-grey-300 focus:tc-outline-none"
+            class="tc-absolute tc-right-0 tc-z-0 tc-w-56 tc-origin-top-right tc-rounded-md tc-bg-white tc-shadow-lg tc-border tc-border-tp-grey-300 focus:tc-outline-none"
         >
           <div class="py-1">
             <MenuItem
@@ -81,7 +81,7 @@ watch(() => props.data, async (newVal, oldVal) => {
                 :key="`item-${item.key}`"
             >
               <div
-                  :class="[active ? 'tc-bg-gray-100 tc-text-gray-900 tc-outline-none' : 'tc-text-gray-700', 'tc-block tc-px-4 tc-py-2 tc-text-base tc-cursor-pointer']"
+                  :class="[active ? 'tc-bg-gray-100 tc-text-gray-900 tc-outline-none' : 'tc-text-gray-700', 'tc-block tc-px-4 tc-py-2 tc-text-sm tc-cursor-pointer']"
                   @click="emit('download', item.type)"
               >
                 {{ item.label }}
@@ -97,11 +97,11 @@ watch(() => props.data, async (newVal, oldVal) => {
     <button
         :data-test="dataTest + '-download-button'"
         :disabled="disabled"
-        class="tc-absolute tc-flex tc-items-center tc-bg-transparent tc-border-2 tc-border-tp-grey-600 tc-rounded-md tc-px-4 tc-py-2"
+        class="tc-flex tc-items-center tc-bg-transparent tc-border-2 tc-border-tp-grey-600 tc-rounded-md tc-px-4 tc-py-2"
         @click="emit('download')"
     >
       <ArrowDownIcon class="tc-size-3 tc-mr-3" />
-      <span class="tc-font-bold tc-text-base">Download</span>
+      <span class="tc-font-bold tc-text-sm">Download</span>
     </button>
   </template>
 </template>
