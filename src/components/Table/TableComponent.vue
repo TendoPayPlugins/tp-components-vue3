@@ -43,7 +43,7 @@
             >
               <td
                 v-if="batchActions"
-                class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-base tc-font-medium tc-text-gray-900"
+                class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-sm tc-font-medium tc-text-gray-900"
               >
                 <InputCheckbox
                   :data-test="'batch-list-' + index"
@@ -54,7 +54,7 @@
               </td>
               <td
                 v-if="numerate"
-                class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-base tc-font-medium tc-text-gray-900"
+                class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-sm tc-font-medium tc-text-gray-900"
               >
                 <TableNumbering
                   :pagination="state.pagination"
@@ -65,11 +65,11 @@
               <slot
                 name="columns"
                 :item="item"
-                class="tc-text-center tc-text-base"
+                class="tc-text-center tc-text-sm"
               />
               <td
                 v-if="itemActions"
-                class="tc-relative tc-whitespace-nowrap tc-py-4 tc-text-base tc-font-medium sm:tc-pr-0"
+                class="tc-relative tc-whitespace-nowrap tc-py-4 tc-text-sm tc-font-medium sm:tc-pr-0"
               >
                 <DropDownActions :actions="itemActions" />
               </td>
