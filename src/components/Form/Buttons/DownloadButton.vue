@@ -97,7 +97,7 @@ watch(() => props.data, async (newVal, oldVal) => {
     <button
         :data-test="dataTest + '-download-button'"
         :disabled="disabled"
-        class="tc-flex tc-items-center tc-bg-transparent tc-border-2 tc-border-tp-grey-600 tc-rounded-md tc-px-4 tc-py-2"
+        class="tc-absolute tc-flex tc-items-center tc-bg-transparent tc-border-2 tc-border-tp-grey-600 tc-rounded-md tc-px-4 tc-py-2"
         @click="emit('download')"
     >
       <ArrowDownIcon class="tc-size-3 tc-mr-3" />
