@@ -12,7 +12,6 @@ const idxGroup = computed(() => {
   return (currentPage - 1) * perPage + 1;
 });
 
-// Props
 const props = defineProps({
   idx: {
     type: Number,
@@ -35,5 +34,5 @@ const props = defineProps({
 
 
 <template>
-  <span :data-test="'batch-item-' + idx">{{ order }}</span>
+  <span class="text-base" :data-test="'batch-item-' + idx">{{ order }}</span>
 </template>
