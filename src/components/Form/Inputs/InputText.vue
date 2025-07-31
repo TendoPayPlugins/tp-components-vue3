@@ -63,7 +63,7 @@ watch(localValue, onInput);
       v-if="label"
       :data-test="dataTest + '-label'"
       :for="dataTest"
-      class="tc-block tc-mb-2 tc-text-sm tc-font-medium tc-text-gray-900"
+      class="tc-block tc-mb-2 tc-text-base tc-font-medium tc-text-gray-900"
     >{{ label }} <span
       v-if="v?.required"
       class="tc-text-red-500"
