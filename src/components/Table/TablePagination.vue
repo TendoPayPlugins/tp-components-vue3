@@ -1,32 +1,10 @@
 <template>
   <div class="tc-flex tc-items-center tc-justify-between tc-border-t tc-border-gray-200 tc-bg-white tc-px-4 tc-py-3 sm:tc-px-6">
-    <!--    <div class="flex flex-1 justify-between sm:hidden">-->
-    <!--      <a-->
-    <!--        href="#"-->
-    <!--        class="relative inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-400"-->
-    <!--      >-->
-    <!--        <ChevronLeftIcon-->
-    <!--          class="size-5 text-gray-400"-->
-    <!--          aria-hidden="true"-->
-    <!--        />-->
-    <!--        <span class="uppercase font-semibold text-xxs">Previous</span>-->
-    <!--      </a>-->
-    <!--      <a-->
-    <!--        href="#"-->
-    <!--        class="relative ml-3 inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-400"-->
-    <!--      >-->
-    <!--        <span class="uppercase font-semibold text-xxs">Next</span>-->
-    <!--        <ChevronRightIcon-->
-    <!--          class="size-5 text-gray-400"-->
-    <!--          aria-hidden="true"-->
-    <!--        />-->
-    <!--      </a>-->
-    <!--    </div>-->
     <div class="sm:tc-flex sm:tc-flex-1 sm:tc-items-center sm:tc-justify-between">
       <div>
         <p
           v-if="showResults"
-          class="tc-text-sm tc-text-gray-700"
+          class="tc-text-basic tc-text-gray-700"
         >
           Showing
           {{ ' ' }}
@@ -46,13 +24,13 @@
       <div>
         <nav
           aria-label="Pagination"
-          class="tc-isolate tc-inline-flex -tc-space-x-px tc-rounded-md tc-text-xxs tc-justify-center tc-items-center"
+          class="tc-isolate tc-inline-flex -tc-space-x-px tc-rounded-md tc-text-xs tc-justify-center tc-items-center"
         >
           <div class="tc-px-3 tc-justify-center tc-uppercase">
             <button
               data-test="pagination-prev-button"
               :disabled="!pagination.has_prev"
-              class="tc-relative tc-inline-flex tc-uppercase tc-font-semibold tc-text-xxs tc-text-gray-700 hover:tc-text-gray-400"
+              class="tc-relative tc-inline-flex tc-uppercase tc-font-semibold tc-text-xs tc-text-gray-700 hover:tc-text-gray-400"
               @click="goPrev()"
             >
               <ChevronLeftIcon
@@ -84,7 +62,7 @@
             </select>
           </div>
 
-          <div class="tc-px-3 tc-justify-center tc-font-normal">
+          <div class="tc-px-3 tc-justify-center tc-font-normal tc-text-xs">
             out of <span class="tc-font-semibold">{{ pagination.last_page }}</span>
           </div>
 
@@ -96,7 +74,7 @@
             <button
               data-test="pagination-next-button"
               :disabled="!pagination.has_next"
-              class="tc-relative tc-inline-flex tc-items-center tc-uppercase tc-font-semibold tc-text-xxs tc-text-gray-700 hover:tc-text-gray-400"
+              class="tc-relative tc-inline-flex tc-items-center tc-uppercase tc-font-semibold tc-text-xs tc-text-gray-700 hover:tc-text-gray-400"
               @click="goNext()"
             >
               <span>Next</span>
