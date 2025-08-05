@@ -53,13 +53,13 @@
               <div class="sm:tc-flex sm:tc-items-start sm:tc-justify-center">
                 <div class="tc-mt-3 sm:tc-ml-4 sm:tc-mt-0 sm:tc-text-left tc-w-full">
                   <DialogTitle
-                    as="h3"
-                    class="tc-text-base tc-font-semibold tc-leading-6 tc-text-gray-900"
+                    as="h2"
+                    class="tc-text-lg tc-font-semibold tc-leading-6 tc-text-gray-900"
                   >
                     <slot name="title" />
                   </DialogTitle>
                   <div class="tc-mt-2">
-                    <p class="tc-text-sm tc-text-gray-500">
+                    <p class="tc-text-base tc-text-gray-500">
                       <slot name="content" />
                     </p>
                   </div>
