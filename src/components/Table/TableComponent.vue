@@ -1,88 +1,90 @@
 <template>
-  <div class="tc-mt-8 tc-flow-root">
-    <div class="tc-inline-block tc-min-w-full tc-py-2 tc-align-middle">
-      <div class="">
-        <div v-if="showPagination">
-          <TablePagination
-            :pagination="state.pagination"
-            @page="goPage"
-          />
-        </div>
-        <table
-          class="tc-min-w-full tc-divide-y tc-divide-gray-200"
-          data-test="table"
-        >
-          <thead class="tc-bg-gray-300 tc-text-gray-500 tc-text-sm">
-            <tr>
-              <th
-                v-if="batchActions"
-                class="tc-py-2.5"
+  <div class="overflow-x-auto">
+    <div class="tc-mt-8 tc-flow-root">
+      <div class="tc-inline-block tc-min-w-full tc-py-2 tc-align-middle">
+        <div class="">
+          <div v-if="showPagination">
+            <TablePagination
+              :pagination="state.pagination"
+              @page="goPage"
+            />
+          </div>
+          <table
+            class="tc-min-w-full tc-divide-y tc-divide-gray-200"
+            data-test="table"
+          >
+            <thead class="tc-bg-gray-300 tc-text-gray-500 tc-text-sm">
+              <tr>
+                <th
+                  v-if="batchActions"
+                  class="tc-py-2.5"
+                >
+                  <InputCheckbox
+                    v-model="state.batchAll"
+                    :data-test="'checkbox-batch-all' + dataTest"
+                    type="checkbox"
+                    @clicked="clickBatchAll"
+                  />
+                </th>
+                <th v-if="numerate">
+                  No.
+                </th>
+                <slot name="headers" />
+                <th v-if="itemActions">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="tc-divide-y tc-divide-gray-200">
+              <slot name="rows" />
+              <tr
+                v-for="(item, index) in state.data"
+                :key="index"
+                :data-test="'row-index-' + index"
               >
-                <InputCheckbox
-                  v-model="state.batchAll"
-                  :data-test="'checkbox-batch-all' + dataTest"
-                  type="checkbox"
-                  @clicked="clickBatchAll"
+                <td
+                  v-if="batchActions"
+                  class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-sm tc-font-medium tc-text-gray-900"
+                >
+                  <InputCheckbox
+                    :data-test="'batch-list-' + index"
+                    :value="hasItemInBatchList(item.id)"
+                    type="checkbox"
+                    @update:model-value="toggleBatchItem(item)"
+                  />
+                </td>
+                <td
+                  v-if="numerate"
+                  class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-sm tc-font-medium tc-text-gray-900"
+                >
+                  <TableNumbering
+                    :pagination="state.pagination"
+                    :idx="index"
+                    data-test="numbering"
+                  />
+                </td>
+                <slot
+                  name="columns"
+                  :item="item"
+                  class="tc-text-center tc-text-sm"
                 />
-              </th>
-              <th v-if="numerate">
-                No.
-              </th>
-              <slot name="headers" />
-              <th v-if="itemActions">
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody class="tc-divide-y tc-divide-gray-200">
-            <slot name="rows" />
-            <tr
-              v-for="(item, index) in state.data"
-              :key="index"
-              :data-test="'row-index-' + index"
-            >
-              <td
-                v-if="batchActions"
-                class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-sm tc-font-medium tc-text-gray-900"
-              >
-                <InputCheckbox
-                  :data-test="'batch-list-' + index"
-                  :value="hasItemInBatchList(item.id)"
-                  type="checkbox"
-                  @update:model-value="toggleBatchItem(item)"
-                />
-              </td>
-              <td
-                v-if="numerate"
-                class="tc-whitespace-nowrap tc-text-center tc-py-4 tc-text-sm tc-font-medium tc-text-gray-900"
-              >
-                <TableNumbering
-                  :pagination="state.pagination"
-                  :idx="index"
-                  data-test="numbering"
-                />
-              </td>
-              <slot
-                name="columns"
-                :item="item"
-                class="tc-text-center tc-text-sm"
-              />
-              <td
-                v-if="itemActions"
-                class="tc-relative tc-whitespace-nowrap tc-py-4 tc-text-sm tc-font-medium sm:tc-pr-0"
-              >
-                <DropDownActions :actions="itemActions" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                <td
+                  v-if="itemActions"
+                  class="tc-relative tc-whitespace-nowrap tc-py-4 tc-text-sm tc-font-medium sm:tc-pr-0"
+                >
+                  <DropDownActions :actions="itemActions" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-        <div v-if="showPagination">
-          <TablePagination
-            :pagination="state.pagination"
-            :show-results="false"
-            @page="goPage"
-          />
+          <div v-if="showPagination">
+            <TablePagination
+              :pagination="state.pagination"
+              :show-results="false"
+              @page="goPage"
+            />
+          </div>
         </div>
       </div>
     </div>
