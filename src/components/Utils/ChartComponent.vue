@@ -16,11 +16,9 @@ const randomColor = () => {
 }
 
 const colors = [
-  '#2b93db',
   '#1f77b4',
   '#185a88',
   '#ff7f0e',
-  '#02C39A',
   '#E71D36',
   '#ad8bcc',
   '#9467bd',
@@ -29,7 +27,17 @@ const colors = [
   '#e377c2',
   '#7f7f7f',
   '#bcbd22',
-  '#17becf',
+  '#0062cc',
+  '#6610f2',
+  '#6f42c1',
+  '#e83e8c',
+  '#dc3545',
+  '#fd7e14',
+  '#ffc107',
+  '#28a745',
+  '#6c757d',
+  '#343a40',
+  '#007bff',
 ]
 
 const props = defineProps({
@@ -47,7 +55,6 @@ const props = defineProps({
   }
 })
 
-// helper: wybór palety kolorów
 const getColorArray = () => {
   if (props.config?.layout?.colorway && Array.isArray(props.config.layout.colorway)) {
     return props.config.layout.colorway
