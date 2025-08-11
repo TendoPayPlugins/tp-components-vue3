@@ -1,41 +1,41 @@
 /* eslint-disable no-unreachable */
 <template>
   <div
-    :id="props.id"
-    :ref="props.id"
+      :id="props.id"
+      :ref="props.id"
   />
 </template>
 
 <script setup>
 import Plotly from 'plotly.js-dist-min'
-import {onMounted, watch} from "vue";
+import { onMounted, watch } from "vue";
 
 const randomColor = () => {
-  const number = Math.floor(Math.random()*16777215).toString(16);
+  const number = Math.floor(Math.random() * 16777215).toString(16);
   return '#' + number
 }
 
 const colors = [
-    '#2b93db',
-    '#1f77b4',
-    '#185a88',
-    '#ff7f0e',
-    '#02C39A',
-    '#E71D36',
-    '#ad8bcc',
-    '#9467bd',
-    '#7b49a8',
-    '#8c564b',
-    '#e377c2',
-    '#7f7f7f',
-    '#bcbd22',
-    '#17becf',
+  '#2b93db',
+  '#1f77b4',
+  '#185a88',
+  '#ff7f0e',
+  '#02C39A',
+  '#E71D36',
+  '#ad8bcc',
+  '#9467bd',
+  '#7b49a8',
+  '#8c564b',
+  '#e377c2',
+  '#7f7f7f',
+  '#bcbd22',
+  '#17becf',
 ]
+
 const props = defineProps({
   config: {
     type: Object,
-    default: () => {
-    }
+    default: () => {}
   },
   data: {
     required: true,
@@ -47,15 +47,22 @@ const props = defineProps({
   }
 })
 
-function extractObject2Array(items) {
+// helper: wybór palety kolorów
+const getColorArray = () => {
+  if (props.config?.layout?.colorway && Array.isArray(props.config.layout.colorway)) {
+    return props.config.layout.colorway
+  }
+  return colors
+}
 
+function extractObject2Array(items) {
   if (!items || !Array.isArray(items) || items.length === 0) {
     return []
   }
 
-  const {x, headers, type, opacity, options} = props.config
+  const { x, headers, type, opacity, options } = props.config
   const keys = Object.keys(headers)
-  const initObj = keys.reduce((c, k) => ({...c, [k]: []}), {x: []})
+  const initObj = keys.reduce((c, k) => ({ ...c, [k]: [] }), { x: [] })
 
   const objs = items.reduce((c, item) => {
     const obj = keys.reduce((c, k) => {
@@ -69,7 +76,10 @@ function extractObject2Array(items) {
 
   const objX = objs.x
   delete objs.x
-  const {parents} = props.config
+  const { parents } = props.config
+
+  const colorArray = getColorArray()
+
   switch (type) {
     case 'pie':
       return Object.keys(objs).reduce((c, k) => ([...c, {
@@ -92,7 +102,7 @@ function extractObject2Array(items) {
         x: objX,
         y: objs[k],
         name: headers[k],
-        marker: { color: colors[i] ?? randomColor()},
+        marker: { color: colorArray[i] ?? randomColor() },
         type: type,
         opacity: 1.0,
         ...(options ? options[k] || {} : {})
@@ -105,6 +115,7 @@ function extractObject2Array(items) {
         name: headers[k],
         type: type || 'scatter',
         opacity: opacity && i > 0 ? opacity : 1.0,
+        marker: { color: colorArray[i] ?? randomColor() },
         ...(options ? options[k] || {} : {})
       }]), [])
   }
@@ -112,12 +123,12 @@ function extractObject2Array(items) {
 
 const drawPlot = () => {
   Plotly.newPlot(
-    props.id,
-    extractObject2Array(props.data),
-    props.config?.layout || {},
-    {
-      showSendToCloud: true, responsive: true,
-    }
+      props.id,
+      extractObject2Array(props.data),
+      props.config?.layout || {},
+      {
+        showSendToCloud: true, responsive: true,
+      }
   )
 };
 
