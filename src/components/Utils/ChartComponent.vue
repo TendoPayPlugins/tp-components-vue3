@@ -16,17 +16,20 @@ const randomColor = () => {
 }
 
 const colors = [
-  '#785aff',
-  '#00ffc4',
-  '#2f196a',
-  '#70d3a6',
-  '#3d9dff',
-  '#fd95f8',
-  '#e44c4c',
-  '#4267b2',
-  '#3336e3',
-  '#DBF1FE',
-  '#01d2ed'
+    '#2b93db',
+    '#1f77b4',
+    '#185a88',
+    '#ff7f0e',
+    '#02C39A',
+    '#E71D36',
+    '#ad8bcc',
+    '#9467bd',
+    '#7b49a8',
+    '#8c564b',
+    '#e377c2',
+    '#7f7f7f',
+    '#bcbd22',
+    '#17becf',
 ]
 const props = defineProps({
   config: {
