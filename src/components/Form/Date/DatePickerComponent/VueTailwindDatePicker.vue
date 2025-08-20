@@ -1449,11 +1449,11 @@ provide(setToCustomShortcutKey, setToCustomShortcut)
 
         <PopoverButton as="label" class="tc-relative tc-block">
             <slot :value="pickerValue" :placeholder="givenPlaceholder" :clear="clearPicker">
-                <input ref="VtdInputRef" v-bind="$attrs" v-model="formattedPickerValue" type="text" class="tc-relative tc-block tc-w-full tc-min-w-56"
+                <input ref="VtdInputRef" v-bind="$attrs" v-model="formattedPickerValue" type="text" class="tc-relative tc-block tc-w-full tc-min-w-[300px]"
                        :disabled="props.disabled" :class="[
             props.disabled ? 'tc-cursor-default tc-opacity-50' : 'tc-opacity-100',
             inputClasses
-            || 'tc-pl-3 tc-pr-12 tc-py-2.5 tc-rounded-lg tc-overflow-hidden tc-text-sm tc-text-vtd-secondary-700 tc-placeholder-vtd-secondary-400 tc-transition-colors tc-bg-white tc-border-0 tc-ring-1 tc-ring-inset tc-ring-gray-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple dark:tc-bg-vtd-secondary-800 dark:tc-border-vtd-secondary-700 dark:tc-text-vtd-secondary-100 dark:tc-placeholder-vtd-secondary-500 dark:focus:tc-border-vtd-primary-500 dark:focus:tc-ring-opacity-20',
+            || 'tc-pl-3 tc-pr-12 tc-py-2.5 tc-rounded-lg tc-overflow-hidden tc-text-base tc-text-vtd-secondary-700 tc-placeholder-vtd-secondary-400 tc-transition-colors tc-bg-white tc-border-0 tc-ring-1 tc-ring-inset tc-ring-gray-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple dark:tc-bg-vtd-secondary-800 dark:tc-border-vtd-secondary-700 dark:tc-text-vtd-secondary-100 dark:tc-placeholder-vtd-secondary-500 dark:focus:tc-border-vtd-primary-500 dark:focus:tc-ring-opacity-20',
           ]" autocomplete="off" data-lpignore="true" data-form-type="other" :placeholder="givenPlaceholder"
                        @keyup.stop="keyUp" @keydown.stop>
                 <div class="tc-absolute tc-inset-y-0 tc-right-0 tc-inline-flex tc-items-center tc-rounded-md tc-overflow-hidden">

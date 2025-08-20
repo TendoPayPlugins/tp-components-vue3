@@ -1585,10 +1585,6 @@ input:checked + .toggle-bg {
   min-width: 42rem;
 }
 
-.tc-min-w-56 {
-  min-width: 14rem;
-}
-
 .tc-min-w-5xl {
   min-width: 64rem;
 }
@@ -1599,6 +1595,10 @@ input:checked + .toggle-bg {
 
 .tc-min-w-lg {
   min-width: 32rem;
+}
+
+.tc-min-w-\[300px\] {
+  min-width: 300px;
 }
 
 .tc-max-w-md {
@@ -2535,6 +2535,16 @@ input:checked + .toggle-bg {
 
 .disabled {
   background-color: #f3f3f3;
+}
+
+.placeholder\:tc-text-black::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(16 16 16 / var(--tw-text-opacity, 1));
+}
+
+.placeholder\:tc-text-black::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(16 16 16 / var(--tw-text-opacity, 1));
 }
 
 .placeholder\:tc-text-gray-400::-moz-placeholder {
