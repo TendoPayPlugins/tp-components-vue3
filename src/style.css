@@ -1589,16 +1589,16 @@ input:checked + .toggle-bg {
   min-width: 64rem;
 }
 
+.tc-min-w-\[300px\] {
+  min-width: 300px;
+}
+
 .tc-min-w-full {
   min-width: 100%;
 }
 
 .tc-min-w-lg {
   min-width: 32rem;
-}
-
-.tc-min-w-\[300px\] {
-  min-width: 300px;
 }
 
 .tc-max-w-md {
@@ -2038,6 +2038,10 @@ input:checked + .toggle-bg {
 
 .tc-p-1\.5 {
   padding: 0.375rem;
+}
+
+.tc-p-2 {
+  padding: 0.5rem;
 }
 
 .tc-p-4 {

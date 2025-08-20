@@ -86,7 +86,6 @@ watch(localValue, onInput);
       :readonly="readonly"
       type="text"
     >
-
     <div
       v-if="v?.$invalid"
       :class="`tc-absolute tc-right-2 ${ label ? 'tc-top-9' : 'tc-top-2'}`"
