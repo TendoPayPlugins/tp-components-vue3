@@ -34,7 +34,7 @@ const emit = defineEmits(["click"]);
       type === 'secondary' ? 'tc-bg-tp-secondary hover:tc-bg-tp-secondary-dark tc-text-gray-800' :
       type === 'secondary-outline' ? 'tc-bg-transparent tc-text-tp-secondary tc-border-tp-secondary tc-border hover:tc-bg-tp-secondary hover:tc-text-white' :
       'tc-bg-blue-500 tc-text-white hover:tc-bg-blue-700',
-      size === 'sm' ? 'tc-text-sm tc-px-4 tc-py-2' : size === 'md' ? 'tc-text-base tc-px-5 tc-py-3' : size === 'xs' ? 'tc-text-xs tc-px-2 tc-py-1' : 'tc-text-lg tc-px-8 tc-py-3'
+      size === 'sm' ? 'tc-text-sm tc-px-4 tc-py-2.5' : size === 'md' ? 'tc-text-base tc-px-5 tc-py-3' : size === 'xs' ? 'tc-text-xs tc-px-2 tc-py-1' : 'tc-text-lg tc-px-8 tc-py-3'
     ]"
     :data-test="dataTest + '-button'"
     :disabled="disabled"
