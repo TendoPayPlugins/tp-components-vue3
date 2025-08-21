@@ -91,13 +91,18 @@ watch(localValue, onInput);
         {{ option.label }}
       </option>
     </select>
-    <p class="tc-mt-2 tc-text-sm tc-text-gray-500 dark:tc-text-gray-400">
-      <slot name="info" />
-    </p>
+    <template v-if="$slots.info">
+      <p class="tc-mt-2 tc-text-sm tc-text-gray-500 dark:tc-text-gray-400">
+        <slot name="info" />
+      </p>
+    </template>
 
-    <p class="tc-mt-2 tc-text-sm tc-text-green-600 dark:tc-text-green-400">
-      <slot name="success" />
-    </p>
+    <template v-if="$slots.success">
+      <p class="tc-mt-2 tc-text-sm tc-text-green-600 dark:tc-text-green-400">
+        <slot name="success" />
+      </p>
+    </template>
+
     <span
       v-if="showError && v?.$invalid"
       class="block tc-mb-2"
