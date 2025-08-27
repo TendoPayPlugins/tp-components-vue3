@@ -2,7 +2,6 @@
 import { ref, computed } from "vue";
 import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.vue";
 
-// Zewnętrznie dalej trzymasz TABLICĘ (kompatybilne z Twoim formularzem i API)
 const modelArray = defineModel({type: Array, default: []})
 
 const formatter = ref({
