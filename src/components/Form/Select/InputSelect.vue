@@ -66,7 +66,7 @@ watch(localValue, onInput);
       :data-test="dataTest + '-select'"
       :disabled="disabled"
       :multiple="multiple"
-      class="tc-block tc-w-full tc-rounded-lg tc-p-2.0 tc-text-gray-900 tc-text-base"
+      class="tc-block tc-w-full tc-rounded-lg tc-p-2.0 tc-text-gray-900 tc-text-base border border-gray-300 sm:border-0"
       :class="{
         'tc-border-red-300 tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-border-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
           v?.$invalid,
