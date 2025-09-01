@@ -74,7 +74,7 @@ watch(() => props.data, async (newVal, oldVal) => {
           leave-to-class="transform opacity-0 scale-95"
       >
         <MenuItems
-            class="tc-absolute tc-right-0 tc-z-0 tc-w-56 tc-origin-top-right tc-rounded-md tc-bg-white tc-shadow-lg tc-border tc-border-tp-grey-300 focus:tc-outline-none"
+            class="tc-absolute tc-right-0 tc-z-1 tc-w-56 tc-origin-top-right tc-rounded-md tc-bg-white tc-shadow-lg tc-border tc-border-tp-grey-300 focus:tc-outline-none"
         >
           <div class="py-1">
             <MenuItem
