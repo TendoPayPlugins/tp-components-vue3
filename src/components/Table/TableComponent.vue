@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-x-auto">
     <div class="tc-mt-8 tc-flow-root">
-      <div class="tc-inline-block tc-min-w-full tc-py-2 tc-align-middle">
+      <div class="tc-inline-block tc-min-w-full tc-py-2 tc-align-middle min-h-[300px]">
         <div class="">
           <div v-if="showPagination">
             <TablePagination
