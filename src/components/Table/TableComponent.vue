@@ -1,8 +1,8 @@
 <template>
   <div class="overflow-x-auto">
     <div class="tc-mt-8 tc-flow-root">
-      <div class="tc-inline-block tc-min-w-full tc-py-2 min-h-[300px] tc-align-middle">
-        <div class="min-h-[300px]">
+      <div class="tc-inline-block tc-min-w-full tc-py-2 tc-min-h-[300px] tc-align-middle">
+        <div class="tc-min-h-[300px]">
           <div v-if="showPagination">
             <TablePagination
               :pagination="state.pagination"

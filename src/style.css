@@ -1533,6 +1533,10 @@ input:checked + .toggle-bg {
   height: 100%;
 }
 
+.tc-min-h-\[300px\] {
+  min-height: 300px;
+}
+
 .tc-min-h-full {
   min-height: 100%;
 }
