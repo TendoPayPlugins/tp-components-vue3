@@ -1333,6 +1333,10 @@ input:checked + .toggle-bg {
   z-index: 50;
 }
 
+.tc-z-\[9999\] {
+  z-index: 9999;
+}
+
 .tc-order-last {
   order: 9999;
 }
