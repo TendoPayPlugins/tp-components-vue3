@@ -66,7 +66,7 @@ const props = defineProps({
 
 const handleClick = (item, close) => {
   if (!item.disabled) {
-    item.$click();
+    item.$click(item);
     close()
   }
 };
