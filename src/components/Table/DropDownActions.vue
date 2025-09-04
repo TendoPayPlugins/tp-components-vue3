@@ -61,12 +61,17 @@ const props = defineProps({
   isDisabled: {
     type: Boolean,
     default: false,
+  },
+  item: {
+    type: Object|Number|String,
+    default: () => null,
+    required: false
   }
 });
 
 const handleClick = (item, close) => {
   if (!item.disabled) {
-    item.$click(item);
+    item.$click(props.item);
     close()
   }
 };

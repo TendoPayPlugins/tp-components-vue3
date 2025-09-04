@@ -69,10 +69,10 @@
                   class="tc-text-center tc-text-sm"
                 />
                 <td
-                  v-if="itemActions"
+                  v-if="packaitemActions"
                   class="tc-relative tc-whitespace-nowrap tc-py-4 tc-text-sm tc-font-medium sm:tc-pr-0"
                 >
-                  <DropDownActions :actions="itemActions" />
+                  <DropDownActions :actions="itemActions" :item="item" />
                 </td>
               </tr>
             </tbody>
