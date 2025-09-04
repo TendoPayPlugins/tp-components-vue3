@@ -1,5 +1,5 @@
 <script setup>
-import { useConfirmDialog } from "../../composables/index.js"
+import { useConfirmDialog } from "../../composables/useConfirmDialog.js"
 import {ref} from "vue";
 import InputText from "../Form/Inputs/InputText.vue";
 import FormButton from "../Form/Buttons/FormButton.vue";
