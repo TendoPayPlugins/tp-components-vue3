@@ -1,0 +1,12 @@
+export { default as InputNumber } from './InputNumber.vue';
+export { default as InputEmail } from './InputEmail.vue';
+export { default as InputPhoneNumber } from './InputPhoneNumber.vue';
+export { default as InputText } from './InputText.vue';
+export { default as InputSwitch } from './InputSwitch.vue';
+export { default as InputCheckbox } from './InputCheckbox.vue';
+export { default as InputCheckboxGroup } from './InputCheckboxGroup.vue';
+export { default as InputRadio } from './InputRadio.vue';
+export { default as InputCopy } from './InputCopy.vue';
+export { default as InputTextarea } from './InputTextarea.vue';
+export { default as InputUrl } from './InputUrl.vue';
+export { default as InputCurrency } from './InputCurrency.vue';

@@ -1,0 +1,27 @@
+{
+  "_index-DXSb_CNo.js": {
+    "file": "index-DXSb_CNo.js",
+    "name": "index",
+    "dynamicImports": [
+      "_plotly.min-DK8Svk3i.js"
+    ]
+  },
+  "_plotly.min-DK8Svk3i.js": {
+    "file": "plotly.min-DK8Svk3i.js",
+    "name": "plotly.min",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-DXSb_CNo.js"
+    ]
+  },
+  "src/index.ts": {
+    "file": "tp-components-vue3.umd.cjs",
+    "name": "index",
+    "src": "src/index.ts",
+    "isEntry": true
+  },
+  "style.css": {
+    "file": "style.css",
+    "src": "style.css"
+  }
+}
