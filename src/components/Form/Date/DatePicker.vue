@@ -1,15 +1,9 @@
 <script setup>
-import {ref, watch} from "vue";
+import { computed, watch } from "vue";
 import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.vue";
 const emit = defineEmits(['input', 'update:modelValue'])
 
 const localValue = defineModel({type: Array, default: []})
-
-const formatter = ref({
-  date: 'YYYY-MM-DD',
-  month: 'MMM',
-  preview: 'MM/DD/YYYY'
-})
 
 const props = defineProps({
   disabled: {
@@ -36,6 +30,26 @@ const props = defineProps({
   showError: {
     type: Boolean,
     default: true
+  },
+  time: {
+    type: Boolean,
+    default: () => false
+  }
+})
+
+const formatter = computed(() => {
+  if (props.time) {
+    return {
+      date: 'YYYY-MM-DD HH:mm',
+      month: 'MMM',
+      preview: 'MM/DD/YYYY HH:mm A',
+    }
+  } else {
+    return {
+      date: 'YYYY-MM-DD',
+      month: 'MMM',
+      preview: 'MM/DD/YYYY',
+    }
   }
 })
 

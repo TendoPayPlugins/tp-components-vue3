@@ -72,7 +72,10 @@
                   v-if="itemActions"
                   class="tc-relative tc-whitespace-nowrap tc-py-4 tc-text-sm tc-font-medium sm:tc-pr-0"
                 >
-                  <DropDownActions :actions="itemActions" :item="item" />
+                  <DropDownActions
+                    :actions="itemActions"
+                    :item="item"
+                  />
                 </td>
               </tr>
             </tbody>

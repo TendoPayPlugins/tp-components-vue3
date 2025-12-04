@@ -61,34 +61,34 @@ watch(localValue, onInput);
       class="tc-text-red-500"
     >*</span></label>
     <select
-        :id="dataTest"
-        v-model="localValue"
-        :data-test="dataTest + '-select'"
-        :disabled="disabled"
-        :multiple="multiple"
-        class="tc-block tc-w-full tc-rounded-lg tc-px-4 tc-py-2 tc-text-gray-900 tc-text-base border border-gray-400 sm:border-0"
-        :class="{
-    'tc-border-red-300 tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-border-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
-      v?.$invalid,
-    'tc-border-0 tc-ring-1 tc-ring-inset tc-ring-gray-300 tc-shadow-sm placeholder:tc-text-black focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
-      !v?.$invalid,
-    'disabled': disabled
-  }"
+      :id="dataTest"
+      v-model="localValue"
+      :data-test="dataTest + '-select'"
+      :disabled="disabled"
+      :multiple="multiple"
+      class="tc-block tc-w-full tc-rounded-lg tc-px-4 tc-py-2 tc-text-gray-900 tc-text-base border border-gray-400 sm:border-0"
+      :class="{
+        'tc-border-red-300 tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-border-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
+          v?.$invalid,
+        'tc-border-0 tc-ring-1 tc-ring-inset tc-ring-gray-300 tc-shadow-sm placeholder:tc-text-black focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
+          !v?.$invalid,
+        'disabled': disabled
+      }"
     >
       <option
-          v-if="placeholder"
-          :value="[]"
-          disabled
-          hidden
-          class="whitespace-nowrap"
+        v-if="placeholder"
+        :value="[]"
+        disabled
+        hidden
+        class="whitespace-nowrap"
       >
         {{ placeholder }}
       </option>
       <option
-          v-for="(option, index) in options"
-          :key="index"
-          :value="option.value"
-          class="whitespace-nowrap"
+        v-for="(option, index) in options"
+        :key="index"
+        :value="option.value"
+        class="whitespace-nowrap"
       >
         {{ option.label }}
       </option>

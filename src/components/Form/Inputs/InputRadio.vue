@@ -1,5 +1,5 @@
 <script setup>
-import {defineEmits, defineModel, watch} from "vue";
+import { watch } from "vue";
 
 const localValue = defineModel({default: null, type: Array, required: true})
 

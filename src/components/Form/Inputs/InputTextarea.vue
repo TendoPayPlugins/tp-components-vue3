@@ -1,6 +1,6 @@
 <script setup>
-import {defineEmits, defineModel, watch} from "vue";
-import {ExclamationCircleIcon} from '@heroicons/vue/24/outline'
+import { watch } from "vue";
+import { ExclamationCircleIcon } from '@heroicons/vue/24/outline'
 
 const localValue = defineModel({type: String, default: null, required: false })
 

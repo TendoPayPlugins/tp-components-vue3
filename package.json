@@ -1,7 +1,7 @@
 {
   "name": "tp-components-vue3",
   "private": false,
-  "version": "0.0.84",
+  "version": "0.0.85",
   "type": "module",
   "files": [
     "dist"
@@ -13,14 +13,17 @@
     "prepare": "vite build --mode production",
     "lint": "eslint . --ignore-pattern 'node_modules/*' --ignore-pattern 'dist/*' --ignore-pattern 'src/components/Form/Date/DatePickerComponent'",
     "preview": "vite preview",
-    "tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/style.css --watch"
+    "tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/style.css --watch",
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview"
   },
   "main": "./dist/tp-components-vue3.umd.cjs",
   "module": "./dist/tp-components-vue3.js",
   "types": "./dist/index.d.ts",
   "peerDependencies": {
-    "tailwindcss": "^3.4.3",
-    "vue": "^3.4.21"
+    "tailwindcss": "^3.4.18",
+    "vue": "^3.5.22"
   },
   "exports": {
     ".": {
@@ -37,23 +40,25 @@
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
     "@popperjs/core": "^2.11.8",
-    "dayjs": "^1.11.13",
+    "canvas": "^3.2.0",
+    "dayjs": "^1.11.19",
     "flowbite": "^2.5.2",
     "plotly.js-dist-min": "^2.35.3",
-    "tp-components-vue3": "github:TendoPayPlugins/tp-components-vue3#v0.0.30",
     "vue-advanced-cropper": "^2.8.9"
   },
   "devDependencies": {
+    "@histoire/plugin-vue": "0.17.9",
     "@tailwindcss/forms": "^0.5.10",
-    "@types/node": "^20.17.27",
-    "@vitejs/plugin-vue": "^5.2.3",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.23.0",
+    "@types/node": "^20.19.25",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^9.39.1",
     "eslint-plugin-vue": "^9.33.0",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.2",
-    "vite": "^5.4.15",
+    "histoire": "0.17.9",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21",
     "vite-plugin-dts": "^3.9.1",
     "vite-plugin-static-copy": "^1.0.6",
     "vitest": "^1.6.1",

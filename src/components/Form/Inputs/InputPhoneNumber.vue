@@ -1,5 +1,5 @@
 <script setup>
-import {defineEmits, defineModel, nextTick, onMounted, ref, watch} from "vue";
+import { nextTick, onMounted, ref, watch } from "vue";
 import {ExclamationCircleIcon} from "@heroicons/vue/24/outline"
 
 const INPUT_PHONE_PATTERN_11 = /(\w)(\w{3})(\w{3})(\w{4})/

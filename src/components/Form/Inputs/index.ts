@@ -1,5 +1,5 @@
-export { default as InputEmail } from './InputEmail.vue';
 export { default as InputNumber } from './InputNumber.vue';
+export { default as InputEmail } from './InputEmail.vue';
 export { default as InputPhoneNumber } from './InputPhoneNumber.vue';
 export { default as InputText } from './InputText.vue';
 export { default as InputSwitch } from './InputSwitch.vue';

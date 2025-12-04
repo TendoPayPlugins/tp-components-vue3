@@ -1,225 +1,61 @@
 <template>
-  <div class="help-tooltip px-0 py-0">
-    aaa {{ positionClass() }}
-    <slot name="icon">
-      <QuestionMarkCircleIcon />
-    </slot>
-    <div :class="positionClass">
-      <slot>slots to do</slot>
-      <i />
+  <div class="tc-relative tc-inline-block">
+    <div class="tc-flex tc-items-center">
+      <slot />
+      <div
+        class="tc-relative tc-flex tc-items-center"
+        @mouseenter="isHovered = true"
+        @mouseleave="isHovered = false"
+      >
+        <slot name="icon">
+          <question-mark-circle-icon class="tc-w-5 tc-h-5 tc-ml-2 tc-text-tonik-purple tc-cursor-pointer" />
+        </slot>
+        <div
+          v-if="isHovered"
+          :class="[
+            'tc-absolute tc-z-10 tc-bg-gray-800 tc-text-white tc-text-sm tc-rounded tc-p-3 tc-whitespace-nowrap tc-transition-opacity tc-duration-300',
+            positionClasses
+          ]"
+        >
+          {{ text }}
+          <slot name="html" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
+
 <script setup>
-import {QuestionMarkCircleIcon} from '@heroicons/vue/24/solid';
+import { ref, computed } from 'vue'
+import { QuestionMarkCircleIcon } from '@heroicons/vue/24/solid'
 
 const props = defineProps({
+  text: {
+    type: String,
+    required: false,
+    default: () => null
+  },
   position: {
     type: String,
-    default: 'top'
+    default: 'top',
+    validator: (val) => ['top', 'bottom', 'left', 'right'].includes(val)
   }
 })
 
-function positionClass() {
+const isHovered = ref(false)
+
+const positionClasses = computed(() => {
   switch (props.position) {
-    case "top":
-    case "bottom":
-    case "right":
-    case "left":
-      return props.position;
+    case 'bottom':
+      return 'tc-top-full tc-mt-2 tc-left-1/2 -tc-translate-x-1/2'
+    case 'left':
+      return 'tc-right-full tc-mr-2 tc-top-1/2 -tc-translate-y-1/2'
+    case 'right':
+      return 'tc-left-full tc-ml-2 tc-top-1/2 -tc-translate-y-1/2'
+    case 'top':
     default:
-      return "right";
+      return 'tc-bottom-full tc-mb-2 tc-left-1/2 -tc-translate-x-1/2'
   }
-}
+})
 </script>
-
-<style scoped>
-/* @see http://www.menucool.com/tooltip/css-tooltip/ */
-.help-tooltip {
-    display: inline-block;
-    position: relative;
-    text-align: left;
-}
-
-/* Top */
-.help-tooltip .top {
-    min-width: 200px;
-    top: -20px;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    padding: 10px 20px;
-    color: #444444;
-    background-color: #eeeeee;
-    font-weight: normal;
-    font-size: 13px;
-    border-radius: 8px;
-    position: absolute;
-    z-index: 99999999;
-    box-sizing: border-box;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-    display: none;
-}
-
-.help-tooltip:hover .top {
-    display: block;
-    z-index: 99999999;
-}
-
-.help-tooltip .top i {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -12px;
-    width: 24px;
-    height: 12px;
-    overflow: hidden;
-}
-
-.help-tooltip .top i::after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    background-color: #eeeeee;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Left */
-.help-tooltip .left {
-    min-width: 200px;
-    top: 50%;
-    right: 100%;
-    margin-right: 20px;
-    transform: translate(0, -50%);
-    padding: 10px 20px;
-    color: #444444;
-    background-color: #eeeeee;
-    font-weight: normal;
-    font-size: 13px;
-    border-radius: 8px;
-    position: absolute;
-    z-index: 99999999;
-    box-sizing: border-box;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-    display: none;
-}
-
-.help-tooltip:hover .left {
-    display: block;
-}
-
-.help-tooltip .left i {
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    margin-top: -12px;
-    width: 12px;
-    height: 24px;
-    overflow: hidden;
-}
-
-.help-tooltip .left i::after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    left: 0;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    background-color: #eeeeee;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Right */
-.help-tooltip .right {
-    min-width: 200px;
-    top: 50%;
-    left: 100%;
-    margin-left: 20px;
-    transform: translate(0, -50%);
-    padding: 10px 20px;
-    color: #444444;
-    background-color: #eeeeee;
-    font-weight: normal;
-    font-size: 13px;
-    border-radius: 8px;
-    position: absolute;
-    z-index: 99999999;
-    box-sizing: border-box;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-    display: none;
-}
-
-.help-tooltip:hover .right {
-    display: block;
-}
-
-.help-tooltip .right i {
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -12px;
-    width: 12px;
-    height: 24px;
-    overflow: hidden;
-}
-
-.help-tooltip .right i::after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    left: 0;
-    top: 50%;
-    transform: translate(50%, -50%) rotate(-45deg);
-    background-color: #eeeeee;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Bottom */
-.help-tooltip .bottom {
-    min-width: 200px;
-    top: 40px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    padding: 10px 20px;
-    color: #444444;
-    background-color: #eeeeee;
-    font-weight: normal;
-    font-size: 13px;
-    border-radius: 8px;
-    position: absolute;
-    z-index: 99999999;
-    box-sizing: border-box;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-    display: none;
-}
-
-.help-tooltip:hover .bottom {
-    display: block;
-}
-
-.help-tooltip .bottom i {
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -12px;
-    width: 24px;
-    height: 12px;
-    overflow: hidden;
-}
-
-.help-tooltip .bottom i::after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    left: 50%;
-    transform: translate(-50%, 50%) rotate(45deg);
-    background-color: #eeeeee;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-}
-</style>

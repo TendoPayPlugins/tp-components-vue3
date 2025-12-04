@@ -42,12 +42,12 @@
 
 <script setup>
 import {Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
-import {defineProps, ref} from 'vue';
-import {EllipsisVerticalIcon} from "@heroicons/vue/24/solid/index.js";
+import { EllipsisVerticalIcon } from '@heroicons/vue/24/solid'
 
 const props = defineProps({
   actions: {
     type: Array,
+    default: () => null,
     required: true,
   },
   position: {
@@ -63,7 +63,7 @@ const props = defineProps({
     default: false,
   },
   item: {
-    type: Object|Number|String,
+    type: [Object, Number, String],
     default: () => null,
     required: false
   }

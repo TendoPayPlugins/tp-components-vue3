@@ -9,3 +9,5 @@ export { default as ToolTip } from './ToolTip.vue';
 export { default as RoleIcon } from './RoleIcon.vue';
 export { default as StatusIcon } from './StatusIcon.vue';
 export { default as EmployerRoleIcon } from './EmployerRoleIcon.vue';
+export { default as CountdownComponent } from './CountdownComponent.vue'
+export { default as Badge } from './Badge.vue'

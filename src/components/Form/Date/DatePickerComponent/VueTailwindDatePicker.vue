@@ -7,6 +7,7 @@ import {
 } from '@headlessui/vue'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone'
 import localeData from 'dayjs/plugin/localeData'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
@@ -49,6 +50,7 @@ import {
   setToTodayKey,
   setToYesterdayKey,
 } from './keys'
+import TimePicker from "../TimePicker.vue"
 
 interface Props {
   noInput?: boolean
@@ -85,6 +87,7 @@ interface Props {
       cancel: string
     }
   }
+  time: boolean
   modelValue:
   | [Date, Date]
   | { start: Date | string; end: Date | string }
@@ -126,6 +129,7 @@ const props = withDefaults(defineProps<Props>(), {
       cancel: 'Cancel',
     },
   }),
+  time: false,
   modelValue: () => [new Date(), new Date()],
 })
 
@@ -133,6 +137,7 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: Array<string> | Array<Dayjs> | string | Record<string, string>): void;
   (e: 'selectMonth', value: Dayjs): void;
   (e: 'selectYear', value: Dayjs): void;
+  (e: 'selectTime', value: Dayjs): void;
   (e: 'selectRightMonth', value: Dayjs): void;
   (e: 'selectRightYear', value: Dayjs): void;
   (e: 'clickPrev', value: Dayjs): void;
@@ -162,6 +167,8 @@ dayjs.extend(isToday)
 dayjs.extend(isBetween)
 dayjs.extend(duration)
 dayjs.extend(weekOfYear)
+dayjs.extend(timezone);
+dayjs.tz.setDefault("Asia/Manila");
 
 const VtdRef = ref(null)
 const VtdInputRef = ref<HTMLInputElement | null>(null)
@@ -170,6 +177,29 @@ const givenPlaceholder = ref('')
 const selection = ref<Dayjs | null>(null)
 const pickerValue = ref('')
 const formattedPickerValue = ref('')
+
+const normalizedRange = computed<[Date | null, Date | null]>(() => {
+  if(props.time) {
+    const mv = props.modelValue;
+
+    if (Array.isArray(mv)) {
+      return [
+        mv[0] ? dayjs(mv[0]).toDate() : null,
+        mv[1] ? dayjs(mv[1]).toDate() : null,
+      ];
+    }
+  }
+
+  return [null, null];
+})
+const timeStart = ref(
+    normalizedRange.value[0] ? dayjs(normalizedRange.value[0]).format('HH:mm') : ''
+);
+
+const timeEnd = ref(
+    normalizedRange.value[1] ? dayjs(normalizedRange.value[1]).format('HH:mm') : ''
+);
+
 const hoverValue = ref<Dayjs[]>([])
 const applyValue = ref<Dayjs[]>([])
 const previous = ref<Dayjs | null>(null)
@@ -585,6 +615,36 @@ function keyUp() {
         emit('update:modelValue', pickerValue.value)
       }
     }
+  }
+}
+
+function setTime(time: string, type: string) {
+  const [h, m] = time.split(':').map(Number)
+  if (asRange()) {
+    const [s, e] = pickerValue.value.split(props.separator)
+    const [sd, ed] = [
+      dayjs(s, props.formatter.date, true),
+      dayjs(e, props.formatter.date, true),
+    ]
+
+    var fromDate = sd
+    var toDate = ed
+
+    if (type === 'from') {
+      fromDate = sd.hour(h)
+          .minute(m)
+          .second(0)
+      setDate(fromDate)
+    }
+
+    if (type === 'to') {
+      toDate = ed.hour(h)
+          .minute(m)
+          .second(0)
+      setDate(toDate)
+    }
+
+    emit('update:modelValue', [fromDate.format(props.formatter.date), toDate.format(props.formatter.date)])
   }
 }
 
@@ -1254,9 +1314,11 @@ watch(
 
 watchEffect(() => {
   if (!props.placeholder) {
-    if (asRange())
+    if (asRange()) {
       givenPlaceholder.value = `${props.formatter.date}${props.separator}${props.formatter.date}`
-    else givenPlaceholder.value = props.formatter.date
+    } else {
+      givenPlaceholder.value = props.formatter.date
+    }
   }
   else {
     givenPlaceholder.value = props.placeholder
@@ -1269,6 +1331,7 @@ watch(() => props.i18n, () => dayjs.locale(props.i18n))
 watchEffect(() => {
   const locale = props.i18n
   const modelValueCloned = props.modelValue
+
   nextTick(async () => {
     if (locale in localesMap) {
       const localeData = await localesMap[locale]()
@@ -1534,7 +1597,31 @@ provide(setToCustomShortcutKey, setToCustomShortcut)
                                     </div>
                                 </div>
                             </div>
-                            <div v-if="!props.autoApply">
+                          <div class="tc-border-t tc-border-gray-200 tc-p-5" v-if="props.time">
+                            <div class="tc-flex tc-gap-6 tc-justify-end">
+                            <div class="tc-flex tc-flex-col tc-gap-2">
+                              <div>
+                                <p class="tc-font-bold">Start:</p>
+                                <time-picker
+                                    v-model="timeStart"
+                                    data-test="hour-from"
+                                    @update:model-value="(val) => setTime(val, 'from')">
+                                </time-picker>
+                              </div>
+                              <div>
+                                <p class="tc-font-bold">End:</p>
+                                <time-picker
+                                    v-model="timeEnd"
+                                    data-test="hour-to"
+                                    @update:model-value="(val) => setTime(val, 'to')">
+                                </time-picker>
+                              </div>
+                            </div>
+                          </div>
+
+                          </div>
+
+                          <div v-if="!props.autoApply">
                                 <div class="tc-mt-2 tc-mx-2 tc-py-1.5 tc-border-t tc-border-black/[.1] dark:tc-border-vtd-secondary-700/[1]">
                                     <div class="tc-mt-1.5 sm:tc-flex sm:tc-flex-row-reverse">
                                         <button type="button"

@@ -34,5 +34,8 @@ const props = defineProps({
 
 
 <template>
-  <span class="text-base" :data-test="'batch-item-' + idx">{{ order }}</span>
+  <span
+    class="text-base"
+    :data-test="'batch-item-' + idx"
+  >{{ order }}</span>
 </template>

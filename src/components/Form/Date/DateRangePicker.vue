@@ -1,6 +1,6 @@
 <script setup>
 import dayjs from "dayjs"
-import { ref, watch, computed } from "vue"
+import { watch, computed } from "vue"
 import VueTailwindDatepicker from "./DatePickerComponent/VueTailwindDatePicker.vue"
 
 const emit = defineEmits(['update:modelValue'])
@@ -37,6 +37,10 @@ const props = defineProps({
     type: Function,
     default: undefined,
   },
+  time: {
+    type: Boolean,
+    default: () => false
+  }
 })
 
 const defaultShortcuts = () =>  [
@@ -62,10 +66,20 @@ const defaultShortcuts = () =>  [
   },
 ]
 
-const formatter = ref({
-  date: 'YYYY-MM-DD',
-  month: 'MMM',
-  preview: 'MM/DD/YYYY',
+const formatter = computed(() => {
+  if (props.time) {
+    return {
+      date: 'YYYY-MM-DD HH:mm',
+      month: 'MMM',
+      preview: 'MM/DD/YYYY HH:mm A',
+    }
+  } else {
+    return {
+      date: 'YYYY-MM-DD',
+      month: 'MMM',
+      preview: 'MM/DD/YYYY',
+    }
+  }
 })
 
 const onInput = () => {
@@ -78,25 +92,26 @@ watch(localValue, onInput)
 <template>
   <div class="tc-flex">
     <vue-tailwind-datepicker
-        v-model="localValue"
-        :disabled="disabled"
-        :formatter="formatter"
-        :no-input="inline"
-        :placeholder="placeholder"
-        :shortcuts="props.shortcutsOverride || defaultShortcuts"
-        as-single
-        input-classes=""
-        use-range
+      v-model="localValue"
+      :disabled="disabled"
+      :formatter="formatter"
+      :no-input="inline"
+      :placeholder="placeholder"
+      :shortcuts="props.shortcutsOverride || defaultShortcuts"
+      as-single
+      input-classes=""
+      use-range
+      :time="props.time"
     />
     <span v-if="showError && v?.$invalid">
       <p
-          v-for="(error, index) in v?.$silentErrors"
-          :key="index"
-          class="tc-mt-2 tc-text-sm tc-text-red-600 dark:tc-text-red-400"
+        v-for="(error, index) in v?.$silentErrors"
+        :key="index"
+        class="tc-mt-2 tc-text-sm tc-text-red-600 dark:tc-text-red-400"
       >
         <span
-            :data-test="dataTest + '-error' + error.$uid"
-            class="tc-font-medium"
+          :data-test="dataTest + '-error' + error.$uid"
+          class="tc-font-medium"
         >
           {{ error.$message }}
         </span>

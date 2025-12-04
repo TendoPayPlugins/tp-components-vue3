@@ -34,9 +34,10 @@ const updateSort = () => {
   >
     <slot />
     <span
-        class="tc-ml-2 tc-flex-none tc-rounded"
-        :class="{ 'tc-bg-tonik-purple tc-text-white': isActive, 'tc-bg-gray-100 tc-text-gray-900': isActive }
-    ">
+      class="tc-ml-2 tc-flex-none tc-rounded"
+      :class="{ 'tc-bg-tonik-purple tc-text-white': isActive, 'tc-bg-gray-100 tc-text-gray-900': isActive }
+      "
+    >
       <ChevronUpIcon
         v-if="props.dir === 'asc'"
         aria-hidden="true"

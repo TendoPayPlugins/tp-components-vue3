@@ -1,14 +1,9 @@
-/* eslint-disable no-unreachable */
 <template>
-  <div
-      :id="props.id"
-      :ref="props.id"
-  />
+  <div :id="id" />
 </template>
 
 <script setup>
-import Plotly from 'plotly.js-dist-min'
-import { onMounted, watch } from "vue";
+import { usePlotly } from '../../composables/usePlotly.js'
 
 const randomColor = () => {
   const number = Math.floor(Math.random() * 16777215).toString(16);
@@ -41,19 +36,11 @@ const colors = [
 ]
 
 const props = defineProps({
-  config: {
-    type: Object,
-    default: () => {}
-  },
-  data: {
-    required: true,
-    type: [Array, Object],
-  },
-  id: {
-    type: String,
-    required: true
-  }
+  id: { type: String, required: true },
+  data: { type: Array, required: true },
+  config: { type: Object, default: () => ({}) }
 })
+
 
 const getColorArray = () => {
   if (props.config?.layout?.colorway && Array.isArray(props.config.layout.colorway)) {
@@ -128,26 +115,13 @@ function extractObject2Array(items) {
   }
 }
 
-const drawPlot = () => {
-  Plotly.newPlot(
-      props.id,
-      extractObject2Array(props.data),
-      props.config?.layout || {},
-      {
-        showSendToCloud: true, responsive: true,
-      }
-  )
-};
+const getData = () => {
+  return extractObject2Array(props.data)
+}
 
-watch(props, () => {
-  drawPlot();
-});
-
-onMounted(() => {
-  drawPlot();
-});
+usePlotly({
+  id: props.id,
+  layout: props.config.layout,
+  getData,
+})
 </script>
-
-<style scoped>
-
-</style>

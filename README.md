@@ -35,6 +35,9 @@ Example import of component from the package
 ## Local development
 During development, please use `tc-` prefix for each class based on tailwind to prevent incompatibility with other app. This solution helps to separate package itself from overriding.
 
+## Run histoire to preview component docs
+> pnpm run story:dev
+
 # Component library
 
 1. In tp-components vue3
