@@ -68,7 +68,7 @@ watch(localValue, onInput);
       :multiple="multiple"
       class="tc-block tc-w-full tc-rounded-lg tc-px-4 tc-py-2 tc-text-gray-900 tc-text-base border border-gray-400 sm:border-0"
       :class="{
-        'tc-border-red-300 tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-border-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
+        'tc-border-red-500 tc-text-red-500 tc-ring-red-500 placeholder:tc-text-red-500 focus:tc-border-red-500 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
           v?.$invalid,
         'tc-border-0 tc-ring-1 tc-ring-inset tc-ring-gray-300 tc-shadow-sm placeholder:tc-text-black focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
           !v?.$invalid,
@@ -112,7 +112,7 @@ watch(localValue, onInput);
       <p
         v-for="(error, index) in v?.$silentErrors"
         :key="index"
-        class="tc-mt-2 tc-text-sm tc-text-red-600 dark:tc-text-red-400"
+        class="tc-text-sm tc-text-red-600 dark:tc-text-red-400"
       >
         <span
           :data-test="dataTest + '-email-error' + error.$uid"

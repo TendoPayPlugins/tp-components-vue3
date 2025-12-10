@@ -14,6 +14,10 @@ const props = defineProps({
     type: String,
     default: 'starts with 09',
   },
+  label: {
+    type: String,
+    default: null,
+  },
   title: {
     type: String,
     default: 'Mobile Number',
@@ -146,15 +150,24 @@ onMounted(() => {
 
 <template>
   <div class="relative">
+    <label
+      v-if="label"
+      :data-test="dataTest + '-label'"
+      :for="dataTest"
+      class="tc-block tc-mb-2 tc-text-base tc-font-medium tc-text-gray-900"
+    >{{ label }} <span
+      v-if="v?.required"
+      class="tc-text-red-500"
+    >*</span></label>
     <input
       v-if="editable"
       ref="editableField"
       v-model="phoneNumberWithoutAreaCode"
       :placeholder="placeholder"
       aria-describedby="PhoneNumberHelp"
-      class="tc-block tc-w-full tc-rounded-md tc-border-0 tc-py-1.5 tc-ring-1 tc-ring-inset tc-ring-gray-300 sm:tc-text-sm sm:tc-leading-6 focus:tc-ring-2 focus:tc-ring-inset"
+      class="tc-text-base tc-block tc-w-full tc-rounded-md tc-border-0 tc-p-2 tc-ring-1 tc-ring-inset tc-ring-gray-300 sm:tc-leading-6 focus:tc-ring-2 focus:tc-ring-inset"
       :class="{
-        'tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
+        'tc-text-red-900 tc-ring-red-500 placeholder:tc-text-red-500 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
           v?.$invalid,
         'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
           !v?.$invalid,
@@ -175,7 +188,7 @@ onMounted(() => {
       :readonly="readonly"
       :placeholder="placeholder"
       aria-describedby="PhoneNumberHelp"
-      class="tc-block tc-w-full tc-rounded-md tc-border-0 tc-py-1.5 tc-ring-1 tc-ring-inset tc-ring-gray-300 sm:tc-text-sm sm:tc-leading-6 focus:tc-ring-2 focus:tc-ring-inset"
+      class="tc-text-base tc-block tc-w-full tc-rounded-md tc-border-0 tc-p-2 tc-ring-1 tc-ring-inset tc-ring-gray-300 sm:tc-leading-6 focus:tc-ring-2 focus:tc-ring-inset"
       :class="{
         'tc-text-red-900 tc-ring-red-300 placeholder:tc-text-red-300 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
           v?.$invalid,

@@ -1,7 +1,7 @@
 {
   "name": "tp-components-vue3",
   "private": false,
-  "version": "0.0.90",
+  "version": "0.0.91",
   "type": "module",
   "files": [
     "dist"
@@ -40,6 +40,8 @@
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
     "@popperjs/core": "^2.11.8",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "canvas": "^3.2.0",
     "dayjs": "^1.11.19",
     "flowbite": "^2.5.2",
@@ -49,7 +51,7 @@
   "devDependencies": {
     "@histoire/plugin-vue": "0.17.9",
     "@tailwindcss/forms": "^0.5.10",
-    "@types/node": "^20.19.25",
+    "@types/node": "^20.19.26",
     "@vitejs/plugin-vue": "^5.2.4",
     "autoprefixer": "^10.4.22",
     "eslint": "^9.39.1",

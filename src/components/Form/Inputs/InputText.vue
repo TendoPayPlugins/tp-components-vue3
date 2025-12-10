@@ -74,7 +74,7 @@ watch(localValue, onInput);
       :disabled="disabled"
       class="tc-text-base tc-block tc-w-full tc-rounded-md tc-border-0 tc-p-2 tc-ring-1 tc-ring-inset tc-ring-gray-300 sm:tc-leading-6 focus:tc-ring-2 focus:tc-ring-inset"
       :class="{
-        'tc-text-red-900 tc-ring-red-500 placeholder:tc-text-red-500 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
+        'tc-text-red-500 tc-ring-red-500 placeholder:tc-text-red-500 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-red-500':
           v?.$invalid,
         'tc-text-gray-900 tc-shadow-sm placeholder:tc-text-gray-400 focus:tc-ring-2 focus:tc-ring-inset focus:tc-ring-tonik-purple':
           !v?.$invalid,
@@ -88,7 +88,7 @@ watch(localValue, onInput);
     >
     <div
       v-if="v?.$invalid"
-      :class="`tc-absolute tc-right-2 ${ label ? 'tc-top-9' : 'tc-top-2'}`"
+      :class="`tc-absolute tc-right-2 ${ label ? 'tc-top-10' : 'tc-top-2'}`"
     >
       <ExclamationCircleIcon class="tc-size-5 tc-text-red-500" />
     </div>
