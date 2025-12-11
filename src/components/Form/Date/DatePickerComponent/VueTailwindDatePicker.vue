@@ -1678,8 +1678,8 @@ provide(setToCustomShortcutKey, setToCustomShortcut)
                                 <div class="tc-mt-2 tc-mx-2 tc-py-1.5 tc-border-t tc-border-black/[.1] dark:tc-border-vtd-secondary-700/[1]">
                                     <div class="tc-mt-1.5 sm:tc-flex sm:tc-flex-row-reverse">
                                         <button type="button"
-                                                class="away-cancel-picker tc-w-full tc-transition tc-ease-out tc-duration-300 tc-inline-flex tc-justify-center tc-rounded-md tc-border tc-border-vtd-secondary-300 tc-shadow-sm tc-px-4 tc-py-2 tc-bg-white tc-text-base tc-font-medium tc-text-vtd-secondary-700 hover:tc-bg-vtd-secondary-50 focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-offset-2 focus:tc-ring-vtd-primary-500 sm:tc-mt-0 sm:tc-ml-3 sm:tc-w-auto sm:tc-text-sm dark:tc-ring-offset-vtd-secondary-800"
-                                                @click="close()" v-text="props.options.footer.cancel" />
+                                          class="away-cancel-picker tc-w-full tc-transition tc-ease-out tc-duration-300 tc-inline-flex tc-justify-center tc-rounded-md tc-border tc-border-vtd-secondary-300 tc-shadow-sm tc-px-4 tc-py-2 tc-bg-white tc-text-base tc-font-medium tc-text-vtd-secondary-700 hover:tc-bg-vtd-secondary-50 focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-offset-2 focus:tc-ring-vtd-primary-500 sm:tc-mt-0 sm:tc-ml-3 sm:tc-w-auto sm:tc-text-sm dark:tc-ring-offset-vtd-secondary-800"
+                                          @click="close()" v-text="props.options.footer.cancel" />
                                     </div>
                                 </div>
                             </div>
