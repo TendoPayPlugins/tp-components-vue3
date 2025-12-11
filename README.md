@@ -38,6 +38,12 @@ During development, please use `tc-` prefix for each class based on tailwind to 
 ## Run histoire to preview component docs
 > pnpm run story:dev
 
+# Release new tag
+> git commit -m "xxx" (including build)
+> git tag v0.0.XX
+> git push origin main --tags
+
+
 # Component library
 
 1. In tp-components vue3

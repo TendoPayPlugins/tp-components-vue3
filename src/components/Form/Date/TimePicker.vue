@@ -93,7 +93,7 @@ const minute = ref(0);
 const period = ref("AM");
 const openPart = ref(null);
 
-const hours12 = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const hours12 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const minutes = Array.from({ length: 60 }, (_, i) => i);
 
 // Parse initial 24h value into 12h format
