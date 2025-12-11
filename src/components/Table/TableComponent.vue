@@ -154,6 +154,16 @@ const setPage = (page) => {
   props.goPage(page)
 }
 
+const updateRecordById = (data) => {
+  const index = state.data.findIndex(item => item.id === data.id)
+  if (index !== -1) {
+    state.data[index] = { ...state.data[index], ...data }
+  }
+}
+
+const getData = () => {
+  return state.data
+}
 const setData = (inputData) => {
   const {data: rowsData = [], current_page = 1, from = 0, per_page = 30, to = 0, total = 0, last_page = 1} = inputData
   state.data = rowsData
@@ -188,6 +198,8 @@ const toggleBatchItem = (item) => {
 
 defineExpose({
   setData,
+  getData,
+  updateRecordById
 });
 </script>
 
