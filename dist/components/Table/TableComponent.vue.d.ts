@@ -7,6 +7,7 @@ declare const __VLS_component: import('vue').DefineComponent<{}, {
     setData: (inputData: any) => void;
     getData: () => never[];
     updateRecordById: (data: any) => void;
+    getCurrentPage: () => any;
     dataTest: string;
     numerate: boolean;
     goPage: Function;

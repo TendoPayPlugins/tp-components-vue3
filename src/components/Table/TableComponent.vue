@@ -154,6 +154,9 @@ const setPage = (page) => {
   props.goPage(page)
 }
 
+const getCurrentPage = () => {
+  return state.pagination?.current_page ?? 1
+}
 const updateRecordById = (data) => {
   const index = state.data.findIndex(item => item.id === data.id)
   if (index !== -1) {
@@ -199,7 +202,8 @@ const toggleBatchItem = (item) => {
 defineExpose({
   setData,
   getData,
-  updateRecordById
+  updateRecordById,
+  getCurrentPage
 });
 </script>
 
