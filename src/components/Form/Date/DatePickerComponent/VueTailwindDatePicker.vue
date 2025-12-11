@@ -618,34 +618,65 @@ function keyUp() {
   }
 }
 
-function setTime(time: string, type: string) {
-  const [h, m] = time.split(':').map(Number)
-  if (asRange()) {
-    const [s, e] = pickerValue.value.split(props.separator)
-    const [sd, ed] = [
-      dayjs(s, props.formatter.date, true),
-      dayjs(e, props.formatter.date, true),
-    ]
+function applyDateTime(close?: (ref?: Ref | HTMLElement) => void) {
+  let startDateDayjs: Dayjs | null = null;
+  let endDateDayjs: Dayjs | null = null;
 
-    var fromDate = sd
-    var toDate = ed
+  const [s, e] = pickerValue.value.split(props.separator);
 
-    if (type === 'from') {
-      fromDate = sd.hour(h)
-          .minute(m)
-          .second(0)
-      setDate(fromDate)
-    }
-
-    if (type === 'to') {
-      toDate = ed.hour(h)
-          .minute(m)
-          .second(0)
-      setDate(toDate)
-    }
-
-    emit('update:modelValue', [fromDate.format(props.formatter.date), toDate.format(props.formatter.date)])
+  if (s) {
+    startDateDayjs = dayjs(s, props.formatter.date, true);
   }
+  if (e) {
+    endDateDayjs = dayjs(e, props.formatter.date, true);
+  } else if (s && !props.asSingle) {
+    endDateDayjs = startDateDayjs;
+  }
+
+  if (startDateDayjs && timeStart.value) {
+    const [h, m] = timeStart.value.split(':').map(Number);
+    startDateDayjs = startDateDayjs
+        .hour(h)
+        .minute(m)
+        .second(0);
+  }
+
+  if (endDateDayjs && timeEnd.value) {
+    const [h, m] = timeEnd.value.split(':').map(Number);
+    endDateDayjs = endDateDayjs
+        .hour(h)
+        .minute(m)
+        .second(0);
+  }
+
+  if (startDateDayjs && endDateDayjs) {
+    const formattedStart = startDateDayjs.format(props.formatter.date);
+    const formattedEnd = endDateDayjs.format(props.formatter.date);
+
+    emit('update:modelValue', [formattedStart, formattedEnd]);
+
+    pickerValue.value = `${formattedStart}${props.separator}${formattedEnd}`;
+
+    if (close) {
+      close();
+    }
+  } else if (startDateDayjs && props.asSingle) {
+    const formattedStart = startDateDayjs.format(props.formatter.date);
+    emit('update:modelValue', [formattedStart]);
+
+    if (close) {
+      close();
+    }
+  }
+}
+
+function updateLocalTime(time: string, type: string) {
+  if (type === 'from') {
+    timeStart.value = time;
+  } else if (type === 'to') {
+    timeEnd.value = time;
+  }
+  // NIE EMITUJEMY JESZCZE NICZEGO!
 }
 
 function setDate(date: Dayjs, close?: (ref?: Ref | HTMLElement) => void) {
@@ -1134,20 +1165,20 @@ function betweenRangeClasses(date: Dayjs) {
   if (s && e) {
     if (date.isSame(s, 'date')) {
       if (e.isBefore(s))
-        classes += ' rounded-r-full inset-0'
+        classes += ' tc-rounded-r-full tc-inset-0'
 
       if (s.isBefore(e))
-        classes += ' rounded-l-full inset-0'
+        classes += ' tc-rounded-l-full tc-inset-0'
     }
     else if (date.isSame(e, 'date')) {
       if (e.isBefore(s))
-        classes += ' rounded-l-full inset-0'
+        classes += ' tc-rounded-l-full tc-inset-0'
 
       if (s.isBefore(e))
-        classes += ' rounded-r-full inset-0'
+        classes += ' tc-rounded-r-full tc-inset-0'
     }
     else {
-      classes += ' inset-0'
+      classes += ' tc-inset-0'
     }
   }
   return classes
@@ -1598,27 +1629,34 @@ provide(setToCustomShortcutKey, setToCustomShortcut)
                                 </div>
                             </div>
                           <div class="tc-border-t tc-border-gray-200 tc-p-5" v-if="props.time">
-                            <div class="tc-flex tc-gap-6 tc-justify-end">
-                            <div class="tc-flex tc-flex-col tc-gap-2">
-                              <div>
-                                <p class="tc-font-bold">Start:</p>
-                                <time-picker
-                                    v-model="timeStart"
-                                    data-test="hour-from"
-                                    @update:model-value="(val) => setTime(val, 'from')">
-                                </time-picker>
-                              </div>
-                              <div>
-                                <p class="tc-font-bold">End:</p>
-                                <time-picker
-                                    v-model="timeEnd"
-                                    data-test="hour-to"
-                                    @update:model-value="(val) => setTime(val, 'to')">
-                                </time-picker>
+                            <div class="tc-flex tc-gap-6 tc-justify-center">
+                              <div class="tc-flex tc-flex-col tc-gap-2">
+                                <div>
+                                  <p class="tc-font-bold">Start:</p>
+                                  <time-picker
+                                      v-model="timeStart"
+                                      data-test="hour-from"
+                                      @update:model-value="(val) => updateLocalTime(val, 'from')"> </time-picker>
+                                </div>
+                                <div>
+                                  <p class="tc-font-bold">End:</p>
+                                  <time-picker
+                                      v-model="timeEnd"
+                                      data-test="hour-to"
+                                      @update:model-value="(val) => updateLocalTime(val, 'to')"> </time-picker>
+                                </div>
                               </div>
                             </div>
-                          </div>
 
+                            <div class="tc-mt-3 tc-flex tc-justify-center">
+                              <button
+                                  type="button"
+                                  class="tc-px-4 tc-py-2 tc-bg-tonik-purple tc-text-white tc-rounded-md tc-font-medium hover:tc-bg-tonik-purple-dark"
+                                  @click="applyDateTime(close)"
+                              >
+                                Set time
+                              </button>
+                            </div>
                           </div>
 
                           <div v-if="!props.autoApply">
