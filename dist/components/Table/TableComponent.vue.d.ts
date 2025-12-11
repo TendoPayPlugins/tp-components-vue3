@@ -5,6 +5,8 @@ type __VLS_WithTemplateSlots<T, S> = T & (new () => {
 });
 declare const __VLS_component: import('vue').DefineComponent<{}, {
     setData: (inputData: any) => void;
+    getData: () => never[];
+    updateRecordById: (data: any) => void;
     dataTest: string;
     numerate: boolean;
     goPage: Function;
