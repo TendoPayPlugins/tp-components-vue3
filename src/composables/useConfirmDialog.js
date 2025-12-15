@@ -26,12 +26,12 @@ export function provideConfirmDialog() {
   }
 
   function confirm(value = null) {
-    if (resolveFn.value) resolveFn.value(true);
+    if (resolveFn.value) resolveFn.value(true, value);
     isVisible.value = false;
   }
 
   function cancel() {
-    if (resolveFn.value) resolveFn.value(false);
+    if (resolveFn.value) resolveFn.value(false, null);
     isVisible.value = false;
   }
 
