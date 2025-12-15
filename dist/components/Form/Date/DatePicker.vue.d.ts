@@ -2,6 +2,7 @@ declare const _default: import('vue').DefineComponent<{}, {
     $emit: (event: "input" | "update:modelValue", ...args: any[]) => void;
     disabled: boolean;
     dataTest: string;
+    label: string;
     time: boolean;
     placeholder: string;
     v: Record<string, any>;
@@ -10,6 +11,7 @@ declare const _default: import('vue').DefineComponent<{}, {
     $props: {
         readonly disabled?: boolean | undefined;
         readonly dataTest?: string | undefined;
+        readonly label?: string | undefined;
         readonly time?: boolean | undefined;
         readonly placeholder?: string | undefined;
         readonly v?: Record<string, any> | undefined;

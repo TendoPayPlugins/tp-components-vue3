@@ -18,6 +18,10 @@ const props = defineProps({
     type: String,
     default: 'Select'
   },
+  label: {
+    type: String,
+    default: () => null,
+  },
   v: {
     type: Object,
     default: () => {
@@ -62,6 +66,15 @@ watch(localValue, onInput);
 </script>
 
 <template>
+  <label
+    v-if="label"
+    :data-test="dataTest + '-label'"
+    :for="dataTest"
+    class="tc-block tc-mb-2 tc-text-base tc-font-medium tc-text-gray-900"
+  >{{ label }} <span
+    v-if="v?.required"
+    class="tc-text-red-500"
+  >*</span></label>
   <vue-tailwind-datepicker
     v-model="localValue"
     :disabled="disabled"

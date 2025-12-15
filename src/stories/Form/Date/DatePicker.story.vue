@@ -2,6 +2,7 @@
   <Story>
     <date-picker
       v-model="date"
+      label="Label"
     />
   </Story>
 </template>

@@ -8,21 +8,24 @@ export function provideConfirmDialog() {
   const message = ref('');
   const resolveFn = ref(null);
   const password = ref(null)
+  const options = ref(null)
   function showDialog(
     t = 'Are you sure?',
     m = 'This operation cannot be undone. Would you like to proceed?',
-    p = null
+    p = null,
+    o = null,
     ) {
     message.value = m
     title.value = t
     isVisible.value = true;
     password.value = p
+    options.value = o
     return new Promise((resolve) => {
       resolveFn.value = resolve;
     });
   }
 
-  function confirm() {
+  function confirm(value = null) {
     if (resolveFn.value) resolveFn.value(true);
     isVisible.value = false;
   }

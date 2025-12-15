@@ -1,10 +1,12 @@
 <script setup>
-import { useConfirmDialog } from "../../composables/useConfirmDialog.js"
+import { useConfirmDialog } from '../../composables/useConfirmDialog.js'
 import {ref} from "vue";
 import InputText from "../Form/Inputs/InputText.vue";
+import InputSelect from "../Form/Select/InputSelect.vue";
 import FormButton from "../Form/Buttons/FormButton.vue";
 const localPassword = ref(null)
-const {isVisible, title, message, confirm, cancel, password = null} = useConfirmDialog();
+const localOption = ref(null)
+const {isVisible, title, message, confirm, cancel, password = null, options = null} = useConfirmDialog();
 
 const onCancel = () => {
   localPassword.value = null
@@ -12,9 +14,10 @@ const onCancel = () => {
 }
 const onConfirm = () => {
   localPassword.value = null
-  confirm()
+  const optionSelected = localOption.value
+  localOption.value = null
+  confirm(optionSelected)
 }
-
 </script>
 
 <template>
@@ -42,6 +45,14 @@ const onConfirm = () => {
           />
         </p>
 
+        <p v-if="options">
+          <InputSelect
+            v-model="localOption"
+            :options="options"
+            data-test="options"
+          />
+        </p>
+
         <div class="tc-flex tc-justify-end">
           <FormButton
             type="gray"
@@ -54,7 +65,7 @@ const onConfirm = () => {
           <FormButton
             type="danger"
             data-test="confirm-delete"
-            :disabled="password !== localPassword"
+            :disabled="password !== localPassword || (options && localOption === null)"
             @click="onConfirm"
           >
             Confirm
