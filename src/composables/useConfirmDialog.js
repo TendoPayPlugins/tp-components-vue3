@@ -20,18 +20,19 @@ export function provideConfirmDialog() {
     isVisible.value = true;
     password.value = p
     options.value = o
+
     return new Promise((resolve) => {
       resolveFn.value = resolve;
     });
   }
 
-  function confirm(value = null) {
-    if (resolveFn.value) resolveFn.value(true, value);
+  function confirm(option = null) {
+    if (resolveFn.value) resolveFn.value( { result: true, option: option });
     isVisible.value = false;
   }
 
   function cancel() {
-    if (resolveFn.value) resolveFn.value(false, null);
+    if (resolveFn.value) resolveFn.value(false, { result: false, option: null});
     isVisible.value = false;
   }
 
@@ -43,6 +44,7 @@ export function provideConfirmDialog() {
     confirm,
     cancel,
     password,
+    options
   });
 }
 

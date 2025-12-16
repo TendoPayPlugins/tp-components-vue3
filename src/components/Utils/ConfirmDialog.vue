@@ -1,12 +1,20 @@
 <script setup>
 import { useConfirmDialog } from '../../composables/useConfirmDialog.js'
-import {ref} from "vue";
+import {ref, computed} from "vue";
 import InputText from "../Form/Inputs/InputText.vue";
 import InputSelect from "../Form/Select/InputSelect.vue";
 import FormButton from "../Form/Buttons/FormButton.vue";
 const localPassword = ref(null)
 const localOption = ref(null)
+
 const {isVisible, title, message, confirm, cancel, password = null, options = null} = useConfirmDialog();
+
+const allOptions = computed(() => {
+  return [
+    { label: 'Select', value: null },
+    ...options.value
+  ]
+})
 
 const onCancel = () => {
   localPassword.value = null
@@ -38,17 +46,23 @@ const onConfirm = () => {
           {{ message || '-' }}
         </p>
 
-        <p v-if="password">
+        <p
+          v-if="password"
+          class="tc-mb-3"
+        >
           <InputText
             v-model="localPassword"
             data-test="confirm-password"
           />
         </p>
 
-        <p v-if="options">
+        <p
+          v-if="options"
+          class="tc-mb-3"
+        >
           <InputSelect
             v-model="localOption"
-            :options="options"
+            :options="allOptions"
             data-test="options"
           />
         </p>
