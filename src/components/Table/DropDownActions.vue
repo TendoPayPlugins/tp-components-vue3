@@ -49,8 +49,8 @@ import { computed } from 'vue'
 
 const props = defineProps({
   actions: {
-    type: Array,
-    default: () => [],
+    type: Function,
+    default: () => null,
     required: true,
   },
   position: {
@@ -72,7 +72,7 @@ const props = defineProps({
 });
 
 const visibleActions = computed(() => {
-  return props.actions.filter(action => action.show !== false)
+  return props.actions(props.item).filter(action => action.show !== false)
 });
 
 const handleClick = (item, close) => {

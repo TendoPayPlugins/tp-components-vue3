@@ -4,6 +4,7 @@
     <drop-down-actions
       :actions="actions"
       position="right"
+      :item="'test1'"
     />
   </Story>
 </template>
@@ -12,20 +13,25 @@
 import { DropDownActions } from '@/components'
 import {computed} from "vue";
 
-const actions = computed(() => {
+const actions = (row) => {
+  console.log('Actions input item', row)
   return [
     {
       label: 'Test',
-      $click: () => {
-        alert('test')
+      show: row === 'test1',
+      $click: (item, close) => {
+        alert('Test')
+        console.log(item)
       }
     },
     {
       label: 'Test 2',
-      $click: () => {
-        alert('test 2')
+      show: row === 'test2',
+      $click: (item, close) => {
+        alert('Test 2')
+        console.log(item)
       }
     }
   ]
-})
+}
 </script>

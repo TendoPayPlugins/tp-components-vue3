@@ -5,13 +5,13 @@ type __VLS_WithTemplateSlots<T, S> = T & (new () => {
 });
 declare const __VLS_component: import('vue').DefineComponent<{}, {
     item: string | number | Record<string, any>;
-    actions: unknown[];
+    actions: Function;
     position: string;
     buttonClass: string;
     isDisabled: boolean;
     $props: {
         readonly item?: string | number | Record<string, any> | undefined;
-        readonly actions?: unknown[] | undefined;
+        readonly actions?: Function | undefined;
         readonly position?: string | undefined;
         readonly buttonClass?: string | undefined;
         readonly isDisabled?: boolean | undefined;
