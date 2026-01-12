@@ -1,5 +1,6 @@
 <template>
   <Menu
+    v-if="visibleActions.length > 0"
     as="div"
     class="tc-relative tc-inline-block tc-text-left"
   >
