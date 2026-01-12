@@ -50,8 +50,7 @@ import { computed } from 'vue'
 
 const props = defineProps({
   actions: {
-    type: Function,
-    default: () => null,
+    type: [Function, Array],
     required: true,
   },
   position: {
@@ -73,7 +72,13 @@ const props = defineProps({
 });
 
 const visibleActions = computed(() => {
-  return props.actions(props.item).filter(action => action.show !== false)
+  const allActions = typeof props.actions === 'function'
+      ? props.actions(props.item)
+      : props.actions;
+
+  if (!Array.isArray(allActions)) return [];
+
+  return allActions.filter(action => action.show !== false);
 });
 
 const handleClick = (item, close) => {
