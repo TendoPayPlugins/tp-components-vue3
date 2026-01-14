@@ -11,8 +11,8 @@
       >
         <span class="tc-sr-only">Open options</span>
         <slot name="icon">
-          <EllipsisVerticalIcon
-            class="tc-size-5"
+          <Cog6ToothIcon
+            class="tc-size-5 tc-text-tonik-purple"
             aria-hidden="true"
           />
         </slot>
@@ -45,7 +45,7 @@
 
 <script setup>
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { EllipsisVerticalIcon } from '@heroicons/vue/24/solid'
+import { Cog6ToothIcon } from '@heroicons/vue/24/solid'
 import { computed } from 'vue'
 
 const props = defineProps({
