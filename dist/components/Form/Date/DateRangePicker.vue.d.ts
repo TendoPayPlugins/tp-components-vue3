@@ -3,6 +3,7 @@ declare const _default: import('vue').DefineComponent<{}, {
     disabled: boolean;
     dataTest: string;
     time: boolean;
+    disableDate: Function;
     placeholder: string;
     v: Record<string, any>;
     inline: boolean;
@@ -12,6 +13,7 @@ declare const _default: import('vue').DefineComponent<{}, {
         readonly disabled?: boolean | undefined;
         readonly dataTest?: string | undefined;
         readonly time?: boolean | undefined;
+        readonly disableDate?: Function | undefined;
         readonly placeholder?: string | undefined;
         readonly v?: Record<string, any> | undefined;
         readonly inline?: boolean | undefined;

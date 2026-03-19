@@ -38,6 +38,10 @@ const props = defineProps({
   time: {
     type: Boolean,
     default: () => false
+  },
+  disableDate: {
+    type: Function,
+    default: () => false
   }
 })
 
@@ -81,6 +85,7 @@ watch(localValue, onInput);
     :formatter="formatter"
     :no-input="inline"
     :placeholder="placeholder"
+    :disable-date="props.disableDate"
     as-single
   />
   <span v-if="showError && v?.$invalid">
