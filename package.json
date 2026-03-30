@@ -1,16 +1,15 @@
 {
   "name": "tp-components-vue3",
   "private": false,
-  "version": "0.0.112",
+  "version": "0.0.113",
   "type": "module",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "link-dev": "vite build --mode production --watch",
-    "build": "vite build --mode production",
-    "prepare": "vite build --mode production",
+    "build": "NODE_OPTIONS=--max-old-space-size=4096 vite build --mode production",
+    "prepare": "NODE_OPTIONS=--max-old-space-size=4096 vite build --mode production",
     "lint": "eslint . --ignore-pattern 'node_modules/*' --ignore-pattern 'dist/*' --ignore-pattern 'src/components/Form/Date/DatePickerComponent'",
     "preview": "vite preview",
     "tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/style.css --watch",
