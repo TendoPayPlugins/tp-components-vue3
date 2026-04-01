@@ -28,11 +28,15 @@
           <MenuItem
             v-for="(action, index) in visibleActions"
             :key="index"
-            v-slot="{ active, close }"
+            v-slot="{ active, close, disabled }"
+            :disabled="action.disabled"
           >
             <a
-              :class="[active ? 'tc-bg-gray-100 tc-text-gray-900' : 'tc-text-gray-700', 'tc-block tc-px-4 tc-py-2 tc-text-sm tc-cursor-pointer']"
-              @click.stop.prevent="handleClick(action, close)"
+              :class="[
+                disabled ? 'tc-opacity-50 tc-cursor-not-allowed tc-pointer-events-none' : (active ? 'tc-bg-gray-100 tc-text-gray-900' : 'tc-text-gray-700'),
+                'tc-block tc-px-4 tc-py-2 tc-text-sm tc-cursor-pointer'
+              ]"
+              @click.stop.prevent="!action.disabled && handleClick(action, close)"
             >
               {{ action.label }}
             </a>

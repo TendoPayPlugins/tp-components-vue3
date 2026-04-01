@@ -31,6 +31,15 @@ const actions = (row) => {
         alert('Test 2')
         console.log(item)
       }
+    },
+    {
+      label: 'Test 2',
+      show: row === 'test1',
+      disabled: true,
+      $click: (item, close) => {
+        alert('Test 2')
+        console.log(item)
+      }
     }
   ]
 }
