@@ -244,7 +244,6 @@ const calendar = computed(() => {
                 active: previous.month() === v.month(),
                 off: previous.month() !== v.month(),
                 sunday: v.day() === 0,
-                // FIX: Odpięcie logiki 'disabled' od zakresów
                 disabled: useDisableDate(v, props),
                 inRange: () => {
                   if (props.asSingle && !props.useRange)
@@ -361,7 +360,6 @@ const calendar = computed(() => {
                 active: next.month() === v.month(),
                 off: next.month() !== v.month(),
                 sunday: v.day() === 0,
-                // FIX: Odpięcie logiki 'disabled' od zakresów
                 disabled: useDisableDate(v, props),
                 inRange: () => {
                   if (props.asSingle && !props.useRange)
@@ -950,7 +948,6 @@ function isBetweenRange(date: DatePickerDay) {
   return false
 }
 
-// FIX: Prawidłowe nadawanie klas, które szanuje disabled dla wszystkich dni
 function datepickerClasses(date: DatePickerDay) {
   const { today, active, off, disabled } = date
   let classes, s, e
@@ -1057,10 +1054,9 @@ function datepickerClasses(date: DatePickerDay) {
     }
   }
 
-  // ZMIANA: Priorytetyzacja klas, disabled zawsze nadpisuje stylizację
   if (active) {
     if (disabled) {
-      classes = 'tc-text-vtd-secondary-600 tc-font-normal disabled:tc-text-vtd-secondary-500 disabled:tc-cursor-not-allowed tc-rounded-full'
+      classes = 'tc-text-vtd-secondary-300 tc-font-normal disabled:tc-text-vtd-secondary-200 disabled:tc-cursor-not-allowed tc-rounded-full'
     } else if (today) {
       classes = 'tc-text-vtd-primary-500 tc-font-semibold dark:tc-text-vtd-primary-400 tc-rounded-full focus:tc-bg-vtd-primary-50 focus:tc-text-vtd-secondary-900 focus:tc-border-vtd-primary-300 focus:tc-ring focus:tc-ring-vtd-primary-500 focus:tc-ring-opacity-10 focus:tc-outline-none dark:tc-bg-vtd-secondary-800 dark:tc-text-vtd-secondary-300 dark:hover:tc-bg-vtd-secondary-700 dark:hover:tc-text-vtd-secondary-300 dark:focus:tc-bg-vtd-secondary-600 dark:focus:tc-text-vtd-secondary-100 dark:focus:tc-border-vtd-primary-500 dark:focus:tc-ring-opacity-25 dark:focus:tc-bg-opacity-50'
     } else if (date.isBetween(s as Dayjs, e as Dayjs, 'date', '()')) {
@@ -1071,7 +1067,11 @@ function datepickerClasses(date: DatePickerDay) {
   }
 
   if (off) {
-    classes = 'tc-text-vtd-secondary-400 tc-font-light disabled:tc-cursor-not-allowed'
+    if(disabled) {
+      classes = 'tc-text-vtd-secondary-300 tc-font-light disabled:tc-cursor-not-allowed'
+    } else {
+      classes = 'tc-text-vtd-secondary-400 tc-font-light disabled:tc-cursor-not-allowed'
+    }
   }
 
   if (!disabled) {
