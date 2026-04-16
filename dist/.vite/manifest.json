@@ -1,17 +1,17 @@
 {
-  "_index-Ckgpp44v.js": {
-    "file": "index-Ckgpp44v.js",
+  "_index-Cca7XiNd.js": {
+    "file": "index-Cca7XiNd.js",
     "name": "index",
     "dynamicImports": [
-      "_plotly.min-CS5iRRNM.js"
+      "_plotly.min-DE7O-wou.js"
     ]
   },
-  "_plotly.min-CS5iRRNM.js": {
-    "file": "plotly.min-CS5iRRNM.js",
+  "_plotly.min-DE7O-wou.js": {
+    "file": "plotly.min-DE7O-wou.js",
     "name": "plotly.min",
     "isDynamicEntry": true,
     "imports": [
-      "_index-Ckgpp44v.js"
+      "_index-Cca7XiNd.js"
     ]
   },
   "src/index.ts": {
