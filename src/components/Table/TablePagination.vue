@@ -46,20 +46,16 @@
           </div>
 
           <div class="tc-pl-3 tc-justify-center tc-inline-flex">
-            <select
+            <input
+              type="number"
               :value="pagination.current_page"
+              :min="1"
+              :max="pagination.last_page"
               data-test="pagination-select-page"
-              class="tc-justify-center tc-block tc-px-2 tc-py-1 tc-text-sm tc-border tc-border-gray-300 tc-rounded-md focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-blue-500 focus:tc-border-blue-500"
+              class="tc-justify-center tc-block tc-w-16 tc-text-center tc-px-2 tc-py-1 tc-text-sm tc-border tc-border-gray-300 tc-rounded-md focus:tc-outline-none focus:tc-ring-2 focus:tc-ring-blue-500 focus:tc-border-blue-500"
               @change="goPage($event.target.value)"
-            >
-              <option
-                v-for="(option, index) in options(pagination.last_page)"
-                :key="index"
-                :value="option"
-              >
-                {{ option }}
-              </option>
-            </select>
+              @keyup.enter="goPage($event.target.value)"
+            />
           </div>
 
           <div class="tc-px-3 tc-justify-center tc-font-normal tc-text-xs">
@@ -117,15 +113,6 @@ const props = defineProps({
   }
 })
 
-function options(max) {
-  var result = [];
-
-  for (let i = 1; i <= max; i++) {
-    result.push(i);
-  }
-
-  return result;
-}
 
 const goPrev = () => {
   emit('page', props.pagination.current_page - 1)
