@@ -1,17 +1,17 @@
 {
-  "_index-Cca7XiNd.js": {
-    "file": "index-Cca7XiNd.js",
+  "_index-CTXvuAj_.js": {
+    "file": "index-CTXvuAj_.js",
     "name": "index",
     "dynamicImports": [
-      "_plotly.min-DE7O-wou.js"
+      "_plotly.min-Bv9GZ5wt.js"
     ]
   },
-  "_plotly.min-DE7O-wou.js": {
-    "file": "plotly.min-DE7O-wou.js",
+  "_plotly.min-Bv9GZ5wt.js": {
+    "file": "plotly.min-Bv9GZ5wt.js",
     "name": "plotly.min",
     "isDynamicEntry": true,
     "imports": [
-      "_index-Cca7XiNd.js"
+      "_index-CTXvuAj_.js"
     ]
   },
   "src/index.ts": {
